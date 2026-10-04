@@ -54,9 +54,31 @@ Named frameworks are applied explicitly when requested, but their conclusions fe
 
 ## Installation
 
-To make these skills available to your coding agents, you can use one of the two methods below.
+To make these skills available to your coding agents, you can use one of the methods below.
 
-### Option 1: Using the Vercel Skills CLI
+### Option 1: Claude Code Plugin Marketplace
+
+This repository is a Claude Code plugin marketplace (see `.claude-plugin/marketplace.json`). Each plugin bundles one skill family, so you can install only what you need.
+
+```bash
+# Add the marketplace (once)
+/plugin marketplace add diogonmoura/agent-skills-public
+
+# Install the plugins you want
+/plugin install business-strategy@agent-skills-public
+/plugin install presentation-building@agent-skills-public
+/plugin install architecture-diagraming@agent-skills-public
+```
+
+The same commands work from a shell as `claude plugin marketplace add ...` and `claude plugin install ...`. Run `/plugin marketplace update agent-skills-public` to pull new versions.
+
+| Plugin | Skills |
+| ------ | ------ |
+| `business-strategy` | `business-strategy`, `business-opportunity-analysis` (deprecated compatibility) |
+| `presentation-building` | `presentation-building` |
+| `architecture-diagraming` | `architecture-diagraming` |
+
+### Option 2: Using the Vercel Skills CLI
 
 ```bash
 # Install all skills from this repository
@@ -66,7 +88,7 @@ npx skills add joao-aires/agent-skills-public
 npx skills add joao-aires/agent-skills-public --skill business-strategy
 ```
 
-### Option 2: Using the Sync Script
+### Option 3: Using the Sync Script
 
 Alternatively, use the included `sync-skills.sh` script to symlink tools into a global `~/.agents/skills` directory.
 
@@ -96,6 +118,7 @@ When adding a new skill:
 3. Keep the main `SKILL.md` concise and use progressive disclosure for detailed methodologies.
 4. Keep the skill modular and self-contained so agents can ingest and run it in different environments.
 5. Add regression cases for important behavior when a skill contains a multi-step reasoning workflow.
+6. Register the skill in `.claude-plugin/marketplace.json` (add it to an existing plugin's `skills` list or add a new plugin entry), bump that plugin's `version`, and run `claude plugin validate .`.
 
 ## License
 

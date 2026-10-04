@@ -1,0 +1,48 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-skills-public",
+  "description": "Reusable, general purpose skills for coding agents: business strategy, HTML presentations, and architecture diagrams.",
+  "owner": {
+    "name": "Diogo Moura",
+    "url": "https://github.com/diogonmoura"
+  },
+  "plugins": [
+    {
+      "name": "business-strategy",
+      "description": "Develop, evaluate, compare, and continuously update business and product strategy. Includes the deprecated business-opportunity-analysis compatibility skill.",
+      "version": "2.2.0",
+      "category": "productivity",
+      "keywords": ["strategy", "business", "market-sizing", "positioning", "valuation"],
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/business-strategy",
+        "./skills/business-opportunity-analysis"
+      ]
+    },
+    {
+      "name": "presentation-building",
+      "description": "Build single-file HTML presentations with a dark theme, scroll-driven slides, responsive card grids, and reveal animations.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": ["presentation", "slides", "html"],
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/presentation-building"
+      ]
+    },
+    {
+      "name": "architecture-diagraming",
+      "description": "Build responsive, theme-aware HTML architecture diagrams: system, cloud, sequence, state, pipeline, and more.",
+      "version": "2.0.0",
+      "category": "development",
+      "keywords": ["architecture", "diagrams", "html"],
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/architecture-diagraming"
+      ]
+    }
+  ]
+}
