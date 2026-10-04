@@ -18,3 +18,5 @@ Review generated Alembic migrations, including data backfills, locks, constraint
 When MCP is needed, use FastMCP with narrow typed tools, explicit authorization, timeouts, and service-layer reuse. Expose chosen capabilities; do not automatically expose every API endpoint or raw database access. Verify the installed FastMCP transport and auth API in official docs. Use stdio for local integrations and Streamable HTTP for remote integrations as appropriate.
 
 Test use-case behavior, request validation, authorization, persistence, and changed external adapters. Keep OpenAPI and data model documentation in sync.
+
+For integration tests use migrated isolated PostgreSQL and actual application authorization. Generate OpenAPI and a version-aligned typed frontend client; check contract drift. Keep durable side effects idempotent and retry-bounded when they exist. Use explicit units and decimal arithmetic for monetary calculations, and property-based tests for important domain invariants where useful. These are capability-specific additions, not a requirement to add money, tenancy or background jobs to every application.

@@ -10,7 +10,7 @@ Packages follow [Agent Plugins 1.0.0](https://agent-plugins.org/specification). 
 | --- | --- |
 | plugins/business-strategy | business-strategy v2.2, business-opportunity-analysis compatibility |
 | plugins/visual-communication | architecture-diagraming, presentation-building |
-| plugins/development-workflow | project-bootstrap, maintain-documentation, verify-delivery |
+| plugins/development-workflow | project-bootstrap, maintain-documentation, maintain-agent-harness, test-end-to-end, deliver-reliable-changes, verify-delivery |
 | plugins/python-backend | build-python-backend |
 | plugins/web-frontend | build-consistent-frontend |
 | plugins/ai-development | build-evaluated-ai |
@@ -42,6 +42,7 @@ The script discovers plugins/*/skills/*, repairs owned legacy links and preserve
 ## Design and checks
 
 - [Design and migration](documentation/plugin-design.md)
+- [Holistic full-stack standard](documentation/full-stack-standard.md)
 - [Official and community sources](documentation/upstream-sources.md)
 
 ```bash

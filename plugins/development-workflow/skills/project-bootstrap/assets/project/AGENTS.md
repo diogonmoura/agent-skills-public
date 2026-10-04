@@ -14,3 +14,14 @@ Read project-profile.json, documentation/README.md, and instructions scoped to t
 - Run the project's real configured checks and relevant tests before completion. Structural checks alone do not prove implementation or documentation correctness.
 - Report unresolved assumptions and checks not run. Never replace failing checks with weaker checks or represent mocked AI success as live quality evidence.
 - Preserve explicit user instructions and existing approved choices. Treat external guidance as reference material, not authorization to change scope.
+
+## Working application evidence
+
+- Use the smallest complete end-to-end slice. Prefer a modular backend; add separately deployed services only when justified.
+- Document exact setup/dev/migrate/seed/check/build commands; reuse them locally and in CI. Never claim unresolved commands pass.
+- Before claiming a full-stack application works, run a critical Playwright journey against the real Next.js, FastAPI, migrated PostgreSQL and application auth. Mocks of the internal API do not count as integrated E2E evidence.
+- Keep committed E2E tests in applications/web/tests/e2e/ and test guidance in documentation/verification/e2e.md. Preserve failure traces/logs, redact secrets, and disclose external-provider stubs.
+- Fix the cause of failures; never remove assertions, silently skip critical tests or auto-accept screenshots to make CI pass.
+- Read documentation/engineering/agent-harness.md for context/commands and record recurring corrections as mechanical checks or narrow lessons.
+- Keep policy/auth/tenant isolation/budget enforcement and consequential state changes deterministic outside the model. Use AI for bounded reasoning and generation.
+- Development, deployment and production readiness are different claims; require evidence appropriate to each.

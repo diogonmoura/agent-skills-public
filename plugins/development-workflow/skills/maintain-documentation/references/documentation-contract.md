@@ -23,3 +23,5 @@ Use short Markdown documents with status, owner, review trigger, and related req
 Review documentation in the same change when behavior, boundaries, contracts, schema, deployment, UX, or decisions change. Record rejected alternatives only when relevant to the decision. Generated schemas derive from code; SQL migrations remain the database evolution authority. Documentation must not promise features that exist only in a plan.
 
 References: https://arc42.org/overview/ ; https://c4model.com/diagrams ; https://adr.github.io/madr/
+
+Additional default documents: engineering/agent-harness.md (context/command map), engineering/lessons.md (evidence-based correction log), verification/e2e.md (journey matrix and runtime/evidence), operations/delivery.md (CI/release/recovery), operations/observability.md (signals and budgets), architecture/security.md (actual trust/data boundaries). Apply a change-impact review; expand depth with real complexity rather than filling templates with invented facts.

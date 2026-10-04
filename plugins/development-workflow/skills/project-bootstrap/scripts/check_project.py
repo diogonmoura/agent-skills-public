@@ -16,6 +16,9 @@ REQUIRED = (
     "documentation/ux/design-system.md", "documentation/operations/runbook.md",
     "documentation/verification/strategy.md", "documentation/verification/traceability.md",
     "applications/tooling/check_project.py",
+    "documentation/engineering/agent-harness.md", "documentation/engineering/lessons.md",
+    "documentation/verification/e2e.md", "documentation/operations/delivery.md",
+    "documentation/operations/observability.md", "documentation/architecture/security.md",
 )
 
 
@@ -59,6 +62,29 @@ def check(root: Path) -> list[str]:
             for name, command in checks.items():
                 if not isinstance(command, list) or not command or not all(isinstance(x, str) and x for x in command):
                     errors.append(f"Check {name} must be a nonempty argument array")
+        readiness = profile.get("readiness")
+        if readiness not in {"scaffold", "implemented", "deployed", "production"}:
+            errors.append("readiness must be scaffold, implemented, deployed or production")
+        testing = profile.get("testing")
+        if not isinstance(testing, dict):
+            errors.append("testing must describe the E2E contract")
+        else:
+            expected = {"e2e_runner": "playwright", "internal_api": "real", "database": "postgresql"}
+            for key, value in expected.items():
+                if testing.get(key) != value:
+                    errors.append(f"testing.{key} must be {value} for this full-stack profile")
+            journeys = testing.get("critical_journeys")
+            if not isinstance(journeys, list) or not all(isinstance(x, str) and x.strip() for x in journeys):
+                errors.append("testing.critical_journeys must be a string array")
+            elif readiness in {"implemented", "deployed", "production"} and not journeys:
+                errors.append("Implemented applications require explicit critical E2E journeys")
+        if readiness in {"implemented", "deployed", "production"}:
+            required_checks = {"setup", "dev", "e2e-critical", "api-tests", "web-build"}
+            if readiness in {"deployed", "production"}:
+                required_checks.add("deploy-smoke")
+            configured = set(checks) if isinstance(checks, dict) else set()
+            for missing in sorted(required_checks - configured):
+                errors.append(f"Readiness {readiness} requires configured check: {missing}")
     except (OSError, ValueError, TypeError) as error:
         errors.append(f"Invalid project profile: {error}")
     docs = root / "documentation"

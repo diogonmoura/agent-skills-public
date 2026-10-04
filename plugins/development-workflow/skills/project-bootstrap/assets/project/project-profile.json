@@ -49,6 +49,19 @@
     "web-types",
     "web-build",
     "web-tests",
-    "schema-generation"
-  ]
+    "schema-generation",
+    "setup",
+    "dev",
+    "e2e-critical",
+    "deploy-smoke"
+  ],
+  "readiness": "scaffold",
+  "testing": {
+    "e2e_runner": "playwright",
+    "internal_api": "real",
+    "database": "postgresql",
+    "external_providers": "stubbed-in-default-ci",
+    "critical_journeys": [],
+    "artifact_directory": "artifacts/e2e"
+  }
 }

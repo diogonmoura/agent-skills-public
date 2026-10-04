@@ -64,6 +64,33 @@ class ScaffoldTests(unittest.TestCase):
             path.write_text(json.dumps(profile))
             self.assertTrue(any("stack.backend" in x for x in check(root)))
 
+    def test_implemented_claim_requires_real_e2e_contract(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "project"
+            scaffold(root)
+            path = root / "project-profile.json"
+            profile = json.loads(path.read_text())
+            profile["readiness"] = "implemented"
+            profile["testing"]["internal_api"] = "mocked"
+            path.write_text(json.dumps(profile))
+            failures = check(root)
+            self.assertTrue(any("testing.internal_api" in x for x in failures))
+            self.assertTrue(any("critical E2E journeys" in x for x in failures))
+            self.assertTrue(any("e2e-critical" in x for x in failures))
+
+    def test_implemented_metadata_is_not_execution_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "project"
+            scaffold(root)
+            path = root / "project-profile.json"
+            profile = json.loads(path.read_text())
+            profile["readiness"] = "implemented"
+            profile["testing"]["critical_journeys"] = ["REQ-001 primary journey"]
+            for name in ["setup", "dev", "e2e-critical", "api-tests", "web-build"]:
+                profile["checks"][name] = ["command-not-executed-by-structural-check"]
+            path.write_text(json.dumps(profile))
+            self.assertEqual(check(root), [])
+
     def test_escaping_doc_and_destination_symlink_fail(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / "project"

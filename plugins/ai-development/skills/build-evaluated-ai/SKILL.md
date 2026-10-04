@@ -18,3 +18,5 @@ Keep prompts, tool definitions, fixtures, and evaluators versioned. Use structur
 Run ordinary CI against deterministic mocks/recorded synthetic fixtures. Use opt-in Gemini smoke tests and curated live evals for schema adherence, tool selection, grounded answers, failure handling, latency, cost, and speech word error rate. Avoid exact-string assertions on live model output. Store model/config/evaluation metadata; never commit keys or private recordings.
 
 Maintain architecture, AI evaluation guidance, limitations, and runbooks with the implementation.
+
+Separate product behavior correctness from model quality. Keep policy, credentials, tenant scopes, budget enforcement and state transitions deterministic outside the model. Preserve source provenance/freshness where retrieved facts matter and make uncertainty explicit. For agent-generated UI use constrained schemas and an approved component catalogue with validation; do not make a generative UI runtime mandatory for ordinary frontend projects.
