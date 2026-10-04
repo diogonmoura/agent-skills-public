@@ -3,8 +3,8 @@
   "name": "agent-skills-public",
   "description": "Reusable, general purpose skills for coding agents: business strategy, HTML presentations, and architecture diagrams.",
   "owner": {
-    "name": "Diogo Moura",
-    "url": "https://github.com/diogonmoura"
+    "name": "João Aires",
+    "url": "https://github.com/joao-aires"
   },
   "plugins": [
     {

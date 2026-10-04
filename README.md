@@ -62,7 +62,7 @@ This repository is a Claude Code plugin marketplace (see `.claude-plugin/marketp
 
 ```bash
 # Add the marketplace (once)
-/plugin marketplace add diogonmoura/agent-skills-public
+/plugin marketplace add joao-aires/agent-skills-public
 
 # Install the plugins you want
 /plugin install business-strategy@agent-skills-public
