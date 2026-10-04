@@ -1,0 +1,54 @@
+{
+  "profile_version": 1,
+  "layout": {
+    "applications": "applications",
+    "documentation": "documentation"
+  },
+  "stack": {
+    "backend": [
+      "python",
+      "fastapi",
+      "uvicorn",
+      "sqlalchemy",
+      "alembic",
+      "postgresql"
+    ],
+    "frontend": [
+      "nextjs",
+      "typescript",
+      "shadcn",
+      "tailwind"
+    ],
+    "ai": "none",
+    "mcp": false
+  },
+  "package_managers": {
+    "api": "uv",
+    "web": "pnpm"
+  },
+  "versions": {},
+  "deployment": {
+    "web": "unresolved",
+    "api": "unresolved",
+    "database": "unresolved"
+  },
+  "upstream_skills": [],
+  "checks": {
+    "structure": [
+      "python3",
+      "applications/tooling/check_project.py",
+      "."
+    ]
+  },
+  "pending_checks": [
+    "api-lint",
+    "api-types",
+    "api-tests",
+    "postgres-migrations",
+    "web-lint",
+    "web-types",
+    "web-build",
+    "web-tests",
+    "schema-generation"
+  ]
+}
