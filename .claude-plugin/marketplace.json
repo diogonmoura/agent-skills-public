@@ -1,0 +1,47 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-skills-public",
+  "description": "Portable Agent Plugins for business strategy, visual communication, and consistent application development.",
+  "owner": {
+    "name": "João Aires",
+    "url": "https://github.com/joao-aires"
+  },
+  "plugins": [
+    {
+      "name": "ai-development",
+      "description": "Google ADK or LangChain/LangGraph, Gemini testing, audio transcription, and agent evaluation.",
+      "version": "0.2.0",
+      "source": "./plugins/ai-development"
+    },
+    {
+      "name": "business-strategy",
+      "description": "Business strategy, opportunity evaluation, and the legacy opportunity-analysis entry point.",
+      "version": "0.1.0",
+      "source": "./plugins/business-strategy"
+    },
+    {
+      "name": "development-workflow",
+      "description": "Bootstrap application repositories, keep product and architecture documentation current, and verify changes.",
+      "version": "0.2.0",
+      "source": "./plugins/development-workflow"
+    },
+    {
+      "name": "python-backend",
+      "description": "Python, FastAPI, Uvicorn, SQLAlchemy, Alembic, PostgreSQL, and optional FastMCP conventions.",
+      "version": "0.2.0",
+      "source": "./plugins/python-backend"
+    },
+    {
+      "name": "visual-communication",
+      "description": "HTML architecture diagrams and presentations.",
+      "version": "0.1.0",
+      "source": "./plugins/visual-communication"
+    },
+    {
+      "name": "web-frontend",
+      "description": "Next.js, TypeScript, shadcn/ui, Vercel practices, and consistent UI/UX governance.",
+      "version": "0.1.0",
+      "source": "./plugins/web-frontend"
+    }
+  ]
+}

@@ -62,6 +62,18 @@ def validate() -> list[str]:
                 skill_names.add(skill_name)
         except (ValueError, TypeError, KeyError, jsonschema.ValidationError, yaml.YAMLError) as error:
             failures.append(f"{manifest.relative_to(ROOT)}: {error}")
+    marketplace = ROOT / ".claude-plugin" / "marketplace.json"
+    if marketplace.exists():
+        entries = {entry["name"]: entry for entry in json.loads(marketplace.read_text()).get("plugins", [])}
+        for manifest in manifests:
+            metadata = json.loads(manifest.read_text())
+            entry = entries.pop(metadata["name"], None)
+            if entry is None:
+                failures.append(f"marketplace.json: missing plugin {metadata['name']}")
+            elif entry.get("source") != f"./plugins/{manifest.parent.name}" or entry.get("version") != metadata["version"]:
+                failures.append(f"marketplace.json: source or version out of sync for {metadata['name']}")
+        for name in entries:
+            failures.append(f"marketplace.json: unknown plugin {name}")
     for profile in (ROOT / "profiles").glob("*.json"):
         data = json.loads(profile.read_text())
         referenced = data.get("plugins", []) + sum(data.get("optional_plugins", {}).values(), [])

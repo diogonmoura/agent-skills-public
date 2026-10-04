@@ -21,6 +21,16 @@ The [full-stack profile](profiles/full-stack.json) selects workflow, backend and
 
 Select/install a plugin directory through your compatible client's documented flow. There is no universal plugin installation command in this standard. Load the three full-stack plugins together and add AI only when needed.
 
+Claude Code reads the packages through the repository marketplace in .claude-plugin/marketplace.json:
+
+```bash
+/plugin marketplace add joao-aires/agent-skills-public
+/plugin install development-workflow@agent-skills-public
+/plugin install business-strategy@agent-skills-public
+```
+
+Each entry points at plugins/<name>/, so Claude Code loads the same skills/ tree; keep entry names and versions aligned with plugin.json (the validator checks this).
+
 Create conventions in a new/empty project:
 
 ```bash
@@ -51,7 +61,7 @@ python3 scripts/validate_plugins.py
 python3 -m unittest discover -s tests -v
 ```
 
-Validation covers official manifest schemas, skill metadata, package containment, profile references and scaffold regressions. Structural checks do not establish application correctness or semantic documentation freshness.
+Validation covers official manifest schemas, skill metadata, package containment, profile references, Claude Code marketplace alignment and scaffold regressions. Structural checks do not establish application correctness or semantic documentation freshness.
 
 Upstream skill content is referenced, not vendored or installed. No MCP server is automatically launched; configure optional project integrations with the actual application path.
 
