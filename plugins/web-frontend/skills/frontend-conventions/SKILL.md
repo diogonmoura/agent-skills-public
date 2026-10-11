@@ -1,6 +1,13 @@
 ---
 name: frontend-conventions
-description: Build, extend or review React/Next.js interfaces using opinionated shadcn/Tailwind conventions and supplied visual references. Use for dashboards, customer applications, storefronts, content sites, navigation, styling, forms and frontend architecture; preserve accepted project choices during ordinary feature work.
+description: Build, extend or review React/Next.js interfaces using opinionated shadcn/Tailwind
+  conventions and supplied visual references. Use for dashboards, customer applications,
+  storefronts, content sites, navigation, styling, forms and frontend architecture;
+  preserve accepted project choices during ordinary feature work.
+metadata:
+  scope: stack-specific
+  invocation: both
+  stack: React, Next.js, Tailwind, shadcn
 ---
 
 # Frontend conventions
@@ -51,4 +58,4 @@ Avoid request waterfalls, oversized client bundles and avoidable layout shifts. 
 
 Run relevant types, lint and build checks. Inspect rendered desktop/mobile layouts, navigation, keyboard focus and failure states. Test the critical journey against real persistence using the project's E2E workflow; a screenshot alone is insufficient. Keep changed contracts and accepted design decisions synchronized, and report checks actually performed.
 
-These defaults cover routine work without reference browsing. Use bundled shadcn, Vercel React/composition and Tailwind design-system skills for unfamiliar components or deeper implementation questions. Our default and the Tailwind upstream guide both target **v4**. Apply a requested v3-to-v4 upgrade as a focused migration: check browser compatibility, dependencies, configuration and rendered behavior; do not migrate an unrelated existing application silently. Consult [sources and exceptions](references/sources-and-exceptions.md) for version migrations or decisions these defaults do not resolve.
+These defaults cover routine work without reference browsing. Use bundled shadcn, Vercel React/composition and Tailwind design-system skills for unfamiliar components or deeper implementation questions. My default and the Tailwind upstream guide both target **v4**. Apply a requested v3-to-v4 upgrade as a focused migration: check browser compatibility, dependencies, configuration and rendered behavior; do not migrate an unrelated existing application silently. Consult [sources and exceptions](references/sources-and-exceptions.md) for version migrations or decisions these defaults do not resolve.
