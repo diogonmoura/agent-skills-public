@@ -16,7 +16,7 @@ Read [workflow framing](../../WORKFLOW.md) for skill selection and invocation bo
 
 # Keep documentation useful
 
-When writing or revising prose, read and apply [write-scannable-documentation](../write-scannable-documentation/SKILL.md) for headings, focused paragraphs and appropriate lists/tables. This skill owns what to maintain; the writing skill owns how to present it.
+When writing or revising prose, read and apply [write-project-documentation](../write-project-documentation/SKILL.md) for reader purpose, explanations, examples, precision and presentation. This skill owns document responsibilities and maintenance; the writing skill guides authoring and reader review.
 
 Use `documentation/` with a short index and these areas as needed:
 
