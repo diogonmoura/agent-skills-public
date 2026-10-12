@@ -66,6 +66,8 @@ Check resource authorization, configuration and sensitive-data handling at their
 
 For a migration that removes data, assess old/new application compatibility and recovery before delivery. Reverting application code alone may not restore lost data. Record the consequential tradeoff; keep destructive/live actions within the user's authorization.
 
+For a changed critical journey, check the operational outcome/latency definitions and collection boundary as well as behaviour tests. Keep eligible attempts, confirmed effects, failed acknowledgements and retries distinguishable; a reply failure after a commit must not trigger a second write. Update affected SLI/SLO status, telemetry gaps and alert/runbook links. Live service evidence is required before declaring a target met; do not build a monitoring stack for a change that does not need one.
+
 ## Close with evidence
 
 Execute the documented application entry point and production build, not only imported component or route tests. Confirm the declared tools are installed through the locked dependency path, generated runtime artifacts exist and startup addresses agree across client, service and container configuration. A missing browser entry file, unavailable declared linter or failed command blocks the corresponding claim even when unit tests pass. A runner SUCCESS flag or a completion narrative cannot override failed or unfinished checks.
