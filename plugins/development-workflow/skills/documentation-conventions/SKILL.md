@@ -16,6 +16,8 @@ Read [workflow framing](../../WORKFLOW.md) for skill selection and invocation bo
 
 # Keep documentation useful
 
+For architecture baselines or substantive architecture/interface changes, read [document-software-architecture](../document-software-architecture/SKILL.md) for views, runtime/lifecycle boundaries, API analysis and source-backed verification.
+
 When writing or revising prose, read and apply [write-project-documentation](../write-project-documentation/SKILL.md) for reader purpose, explanations, examples, precision and presentation. This skill owns document responsibilities and maintenance; the writing skill guides authoring and reader review.
 
 Use `documentation/` with a short index and these areas as needed:
