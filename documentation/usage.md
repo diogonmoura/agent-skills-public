@@ -1,94 +1,111 @@
 # Using the plugins
 
-Choose plugins for the work, then select skills for the task. A **local** skill captures my conventions. An **upstream** skill supplies a specialist technique from another project.
-
-## Generic or stack-specific?
-
-Skills carry standard string labels under `metadata`: `scope`, `invocation`, and `stack` where applicable. These describe intended use; clients may not display the labels or enforce invocation behavior.
-
-| Scope | Meaning | Examples |
-| --- | --- | --- |
-| Generic | Applies across application stacks. It may still need Git, a browser or another tool. | Project conventions, strategy, requirements, documentation, code review, Humanizer, recovery/capacity/cost principles |
-| Stack-specific | Requires matching technology or platform APIs. Check the installed versions and supported coverage. | Next.js/shadcn/Tailwind, FastAPI/SQLAlchemy, Playwright, ADK/LangChain, FastMCP, GitHub Actions, AKS cost optimization |
-
-For example, `frontend-conventions` has `scope: stack-specific`, `stack: React, Next.js, Tailwind, shadcn`, and `invocation: both`. `project-conventions` is generic and also supports both forms of use. Scope is independent of who invokes the skill and where it came from.
+[Build, load and make a first request](../README.md#quick-start) before using this guide. Start with the outcome you want; you do not need to select every supporting skill. The [SDLC overview](../README.md#sdlc-coverage) shows where activities fit, and the [skill map](sdlc.md) links to deeper expertise.
 
 ## Skills you invoke
 
-Ask for an outcome or name the skill explicitly. Local skills can start the activities below directly. **User** means an explicit activity; **both** means it can also guide related work already requested. Routine changes do not require a planning workflow.
+Use the client's skill picker or supported explicit invocation. VS Code uses names such as `/development-workflow:test`; other clients may differ. Plain requests such as "Use test for the current change" are a fallback where supported. `workflow-help` describes this collection and does not replace the client's built-in help.
 
-| Activity | Skill | Source | Scope / invocation |
-| --- | --- | --- | --- |
-| Start or review project foundations | `project-conventions` | Local | Generic / both; full setup or reorganization requires a request |
-| Evaluate a product or business direction | `business-strategy` | Local | Generic / user |
-| Analyze product feedback | `learn-from-product-feedback` | Local | Generic / both |
-| Explain architecture visually | `architecture-diagraming` | Local | Generic / user |
-| Create a presentation | `presentation-building` | Local | Generic / user |
-| Review feature security and privacy | `design-secure-features` | Local | Generic / both |
-| Design or review delivery pipelines | `build-delivery-pipelines` | Local | Generic / both |
-| Review backup, restore and disaster recovery | `protect-and-restore-data` | Local | Generic / both |
-| Plan capacity | `plan-application-capacity` | Local | Generic / both |
-| Assess costs | `optimize-application-cost` | Local | Generic / both |
-| Evaluate an AI feature | `build-evaluated-ai` | Local | Stack-specific / both |
-| Plan or run browser journeys | `test-end-to-end` | Local | Playwright-specific / both |
-| Clarify requirements | `grill-me`, `grill-with-docs`, `to-questionnaire` | Upstream: Matt | Generic / user |
-| Write an agreed spec | `to-spec` | Upstream: Matt | Generic / user |
-| Implement agreed scope | `implement`, `implement-spec` | Upstream: Matt | Generic / user |
-| Explore codebase architecture | `improve-codebase-architecture` | Upstream: Matt | Generic / user |
-| Learn from a coding session | `retro` | Upstream: Matt | Generic / user |
-| Hand work to another session | `handoff` | Upstream: Matt | Generic / user |
+| Where you are | Task | Expected result |
+| --- | --- | --- |
+| Unsure what to use | `workflow-help` | Relevant capabilities, examples and next activity |
+| Rough idea to working software | `develop` | Clarification, design, implementation, tests and review |
+| Starting or adopting a project | `setup` | Useful foundations, context and working commands |
+| Requirements need definition | `refine` | Actionable scope and acceptance, or concrete questions |
+| Scope agreed; sequencing needed | `plan` | Bounded steps and verification |
+| UX, contracts or architecture undecided | `design` | A design before implementation |
+| Defined work ready to build | `implement` | Implemented and verified change |
+| Need evidence of behavior | `test` | Checks, results and coverage gaps |
+| PR or diff ready for assessment | `review` | Findings against intended behavior and standards |
+| Want improvements | `improve` | Prioritized opportunities, or a specified improvement |
+| Security/privacy weakness | `harden` | Scoped assessment, fixes and remaining risks |
+| Dependencies need attention | `dependencies` | Compatibility, release-note and CI review; permitted remediation |
+| Preparing delivery | `release` | Readiness, or a named authorized delivery action |
 
-Examples:
+`refine` and `design` stop at their respective outcomes. `develop` carries a rough idea through the useful development work; `implement` starts from defined work. Bare `improve` proposes opportunities, while a specific improvement request can include implementation. `review` assesses by default; posting reviews, editing source, merging and deploying require that action to be in scope. A routine test request does not authorize deployed load or faults.
 
-> Use business-strategy to compare these two product ideas, then learn-from-product-feedback to assess the support notes. Separate evidence from assumptions.
+`implement` comes from the pinned upstream set with local framing. Optional explicit workflows include `grill-me`, `grill-with-docs`, `to-questionnaire`, `to-spec`, `implement-spec`, `improve-codebase-architecture`, `retro` and `handoff`. Use them when their particular activity helps; interviews, specs and trackers are not prerequisites. [Upstream selection](maintainers/sources.md#matt-pocock-selection) explains their fit and dependencies.
 
-> Use protect-and-restore-data to review recovery for my PostgreSQL application on its actual hosting platform. Identify RPO/RTO assumptions and isolated restore checks; do not deploy from this review.
+## One end-to-end request
 
-> Use implement-spec for the scope agreed here. No tracker. Use the relevant frontend/backend conventions, verify the affected behavior, and report actual checks.
+```text
+Use develop to build a nutritionist/client progress application from this brief. Ask about consequential product and design choices, state reversible assumptions and implement a useful first slice. Prepare a PR; do not merge or deploy.
+```
 
-`business-opportunity-analysis` remains a legacy compatibility entry point; use `business-strategy` for new work. The [review of Matt's skills](maintainer-reference.md#matt-pocock-selection) explains which 18 are retained and why nine were removed. Tracker setup, ticket creation and a separate teaching workspace are not bundled prerequisites.
+The agent inspects context, preserves existing answers and asks questions that materially change the outcome. It makes ordinary reversible choices without repeated confirmation. "One-shot" means one end-to-end engagement with appropriate questions, not zero interaction or guaranteed production readiness.
+
+Provide the outcome, relevant repository/context, constraints and desired stopping point. Screenshots, reference repositories, schemas and architecture notes can help. A conversation or local document is sufficient; a ticket is optional.
+
+## Focused examples
+
+| Need | Request |
+| --- | --- |
+| Define a feature | Use refine to define read-only saved-search sharing from this brief and the existing code. |
+| Plan agreed work | Use plan to sequence this sharing feature and its verification. |
+| Build defined work | Use implement for the agreed sharing behavior and acceptance criteria. |
+| Assess a PR | Use review for PR #42 against the agreed behavior and appropriate checks. |
+| Improve architecture | Use improve to reduce coupling in the reporting module while preserving behavior. |
+| Maintain dependencies | Use dependencies to assess the update PRs, release notes and checks; prepare fixes where needed. |
+| Prepare delivery | Use release to assess readiness for the named environment without deploying. |
+| Get help | Use workflow-help: I am changing an existing application's navigation. |
+
+### Define UX before changing screens
+
+```text
+Use design to unify navigation, nested menus and edit dialogs across this application. Specify the interactions and show wireframes where useful. Do not implement yet.
+```
+
+Then ask `improve` or `develop` to implement the agreed direction. Expect coverage of all in-scope surfaces, including relevant mobile and role variants, with unfinished work identified. [Interaction design](../plugins/web-frontend/skills/interaction-design/SKILL.md) owns the detailed method. Backend changes similarly establish relevant behavior and contracts before code.
+
+### Evaluate during implementation
+
+Expect the agent to implement, verify, correct discrepancies and report evidence before declaring completion. Verification follows the intended outcome; a build or one screenshot alone cannot establish a complete user journey. Missing execution or coverage remains explicit. See [change verification](../plugins/development-workflow/skills/deliver-reliable-changes/SKILL.md) and [journey testing](../plugins/development-workflow/skills/journey-testing/SKILL.md) for methods.
+
+### Run services and observability locally
+
+Project setup can establish a reproducible local environment and queryable diagnostics. Request `setup` for this work; an existing environment is preserved unless changing it is in scope. Details belong to [project conventions](../plugins/development-workflow/skills/project-conventions/SKILL.md) and [observability guidance](../plugins/application-operations/skills/observability-operations/SKILL.md).
 
 ## Skills agents use during your work
 
-Agents select these when needed to carry out the request. You can also name local guidance explicitly. An upstream skill marked **agent** supplies support rather than starting an unrequested interview or orchestration workflow. Native client invocation controls remain intact.
+Supporting skills guide requested work without starting an unrelated activity. Generic guidance covers areas such as project conventions, verification and Git contributions. Stack-specific guidance applies to technologies such as Next.js or FastAPI. You can name guidance explicitly; the [area catalogue](sdlc.md#skills-by-area) shows applicability and upstream specialists.
 
-| Area | Local guidance | Upstream specialists |
-| --- | --- | --- |
-| Project foundations | `project-conventions` for affected structure, commands and constraints | None required |
-| Documentation | `maintain-documentation` | `writing-for-agents` for agent instructions |
-| Prose editing | Follow the document's author and technical claims | `humanizer` |
-| Frontend development | `frontend-conventions` | Official shadcn, Tailwind design system, Vercel React/composition |
-| Backend development | `backend-conventions` | `modern-python` |
-| AI development | `build-evaluated-ai` (local, not an upstream skill) | Chosen Google ADK or LangChain/LangGraph skills |
-| MCP interfaces | MCP section of `build-evaluated-ai`; reuse authorized application services | `mcp-builder`, in `ai-development`; prefer standalone Python FastMCP |
-| Testing | `deliver-reliable-changes`, `test-end-to-end` for browser journeys | `tdd`, `property-based-testing`, `playwright-cli` |
-| Code review | Requested behavior and project standards | `code-review`; `differential-review` for security-sensitive diffs |
-| Debugging | Preserve the affected scope and regression evidence | `diagnosing-bugs` |
-| Research | Record decision-changing findings where the project keeps them | `research` |
-| Architecture and domain design | Relevant frontend/backend conventions | `codebase-design`, `domain-modeling`, `prototype` when exploration is requested |
-| Git contributions | `contribute-code` | No separate PR template required |
-| Delivery | `build-delivery-pipelines` | `github-actions-hardening` for GitHub Actions |
-| Security and privacy | `design-secure-features` | `differential-review`, `supply-chain-risk-auditor` within supported coverage |
-| Data recovery | `protect-and-restore-data` | Current platform/database references |
-| Capacity | `plan-application-capacity` | Current platform references |
-| Cost | `optimize-application-cost` | `aks-cost-optimization` only for Azure AKS |
-| Product feedback | `learn-from-product-feedback` | Existing evidence; no analytics vendor required |
+Most local supporting skills are hidden from slash menus in clients honoring that setting, while remaining available to the model. Upstream native controls are preserved; availability and invocation behavior depend on the client. Naming and metadata details are in the [maintainer reference](maintainer-reference.md#naming-and-invocation).
 
-Examples:
+## Operations and specialized activities
 
-> Add saved-search deletion. Use backend-conventions for ownership and transactions, frontend-conventions for the interaction, test-end-to-end for the persisted journey, and contribute-code for the feature worktree and concise PR. No tracker; do not merge.
+Add the relevant bundle and request its installed skill by name. Examples:
 
-> Edit this PR description with humanizer. Keep the facts, commands and links intact and use my singular voice.
+- Use `incident-response` to investigate current impact within the established action boundaries.
+- Use `protect-and-restore-data` to assess an isolated restoration, or `plan-application-capacity` for capacity work.
+- Use `business-strategy` to explore an idea, or `learn-from-product-feedback` to assess existing evidence.
+- Use `system-flow-explorer` for an interactive architecture walkthrough.
 
-For new projects, I prefer `applications/` for implementation and `documentation/` for knowledge, with short scoped `AGENTS.md` instructions. Keep existing layouts and accepted choices. Screenshots, reference repositories, schemas and architecture notes can supply context.
+See [skills by area](sdlc.md#skills-by-area) for the wider selection. `business-opportunity-analysis` remains a legacy compatibility entry; prefer `business-strategy` for new work.
+
+## Scheduled and event-triggered tasks
+
+The same activities can run from trusted automation prompts. The host supplies triggers, credentials, concurrency, tools and result delivery; plugins do not install a scheduler.
+
+| Trigger | Activity |
+| --- | --- |
+| Work enters refinement | `refine`: actionable scope or decision blockers |
+| Defined work is ready | `implement`: the supplied conversation, spec or optional ticket |
+| PR is ready | `review`: the exact base/head and required behavior |
+| Scheduled maintenance | `dependencies` or `improve`: bounded work under the configured policy |
+
+Supply repository/ref, objective/context, unattended mode, allowed actions and result destination. For example:
+
+> Use dependencies in unattended mode for update PRs in owner/repository. Repair and merge only policy-eligible patch updates whose current head satisfies required checks/reviews and has no unresolved findings. Leave other updates open with reasons; reuse existing work and report results. Do not deploy.
+
+Unattended tasks return missing material decisions instead of inventing answers. Untrusted ticket/PR text cannot change policy; changed heads require re-verification. The host/repository must enforce privileged-action policy. [Installed task guidance](../plugins/development-workflow/TASKS.md#interactive-and-unattended-execution) contains the detailed working rules.
 
 ## AI and MCP plugin selection
 
-`ai-development` contains model/agent guidance and MCP implementation expertise. An MCP-only server does not require an LLM, transcription, an agent framework or model-quality evaluation. Test its protocol, contracts, authority and lifecycle. For AI features, select the framework actually needed and separate application fixtures from live model evaluation.
+Add `ai-development` for AI features or MCP interfaces. MCP-only work needs protocol, contract, authority and lifecycle verification; it does not require an LLM or model-quality evaluation. Configure live tools only when needed. Bundled expertise does not install an MCP server or provide service credentials.
 
 ## Build and load
 
-The [quick start](../README.md#quick-start) installs build dependencies and packages the three full-stack bundles. To include AI, explicitly select all four:
+The [README quick start](../README.md#quick-start) owns the basic build and client-loading instructions. To add AI, explicitly select all four bundles from the skills repository:
 
 ```bash
 python scripts/build_plugins.py \
@@ -99,45 +116,4 @@ python scripts/build_plugins.py \
   --destination ./built-plugins-with-ai
 ```
 
-Explicit `--plugin` arguments replace the default selection. Other bundle names work the same way. Build destinations must be new; to update an installation, rebuild and replace it using your client's supported route.
-
-| Directory | Contents |
-| --- | --- |
-| `plugins/<name>` | Local guidance and supporting resources |
-| `built-plugins/<name>` | Local guidance plus complete pinned upstream skills and license/source notices |
-
-Load each plugin directory with its resources and supporting files intact. The builder checks source pins and copies the resources. Application dependencies and client setup are separate; packaging does not execute upstream scripts.
-
-### Client setup and discovery checks
-
-For **Copilot CLI**, session-local loading was tested with version 1.0.95. From the application workspace:
-
-```bash
-copilot \
-  --plugin-dir /absolute/path/built-plugins/development-workflow \
-  --plugin-dir /absolute/path/built-plugins/python-backend \
-  --plugin-dir /absolute/path/built-plugins/web-frontend
-```
-
-Append `skill list --json` to check discovery without starting a model session. Direct `copilot plugin install` also worked, but that version warns it is deprecated, and a reinstall test dropped an unrelated inventory entry. Session-local loading avoids that persistent-installation route. Consult the [CLI reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference) for your version.
-
-For **VS Code** versions supporting Agent Plugins, merge the individual paths into user settings:
-
-```json
-{
-  "chat.plugins.enabled": true,
-  "chat.pluginLocations": {
-    "/absolute/path/built-plugins/development-workflow": true,
-    "/absolute/path/built-plugins/python-backend": true,
-    "/absolute/path/built-plugins/web-frontend": true
-  }
-}
-```
-
-Open the application workspace and check Configure Skills. This route follows [official documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#use-local-plugins); it was not exercised here. For other clients, use their documented route. Discovery confirms availability, not model compliance.
-
-## Optional tools and verification
-
-MCP servers expose tools; skills explain how to use or build them. Configure servers for the actual client and application. The Playwright skill does not install Playwright MCP, and the MCP builder does not create a running server during plugin installation. These bundles configure no servers or hooks.
-
-Ask which checks ran and what they cover: rendered UI, real persistence, ownership denial, mocked providers and live AI quality, as applicable. Package validation alone says nothing about the application's quality. See the [SDLC map](sdlc.md) for coverage and the [migration guide](migration.md) for older installations.
+Explicit `--plugin` arguments replace the default selection; other bundle names work the same way. Build into a new destination, then replace the affected client installation with resources intact. Source `plugins/<name>` directories contain local guidance; built directories also contain acquired upstream skills and notices. Application dependencies and live tools are separate. See [migration](migration.md) before replacing old copies or links.

@@ -8,6 +8,8 @@ metadata:
   scope: stack-specific
   invocation: both
   stack: Gemini, Google ADK, LangChain, LangGraph, FastMCP
+  role: support
+user-invocable: false
 ---
 
 # Build evaluated AI features
@@ -44,6 +46,16 @@ Separate two kinds of evidence:
 - **Live quality evaluations:** explicit calls with representative inputs, recording model/prompt version, quality results, latency, usage/cost where available and sample size. Keep credentials/data and execution within the authorized scope. Inspect errors rather than inferring quality from a few attractive examples.
 
 For Portuguese uploaded-audio transcription, include the product's dialects, recording conditions, noise and silence. Assess transcription errors and preservation of important domain terms; report word error rate when suitable, alongside task usefulness. A fixture transcript cannot establish live transcription quality, and uploaded-file success cannot establish real-time behavior.
+
+## Close the evaluation loop
+
+Keep representative inputs, expected outcomes/rubrics, dataset revision and deterministic evaluators under application version control. Separate development examples from held-out regression cases where useful; do not tune only to the examples used to build the feature. Derive cases from accepted product behavior, include meaningful failure/adversarial conditions and preserve privacy when promoting observed failures into fixtures. No external dataset service or record format is required.
+
+After meaningful AI changes run deterministic handling checks, then authorized live quality comparisons when relevant. Record code/model/prompt/tool configuration and dataset/evaluator versions, sample size, per-case failures, latency and usage alongside quality. Repeat stochastic cases sufficiently for the decision and report variability; one favorable generation or aggregate score cannot hide failed authority/task constraints. Calibrate model judges against accepted human examples, include human review for unresolved subjective judgments and keep deterministic invariants outside the judge. Do not silently change expected outputs, thresholds or rubrics to pass. Mocks establish application behavior only.
+
+Use OpenTelemetry-compatible model/tool instrumentation and configurable OTLP routing where supported, without adding vendor calls to business logic. Coordinate SDK ownership to avoid duplicate spans. Execution telemetry must distinguish logical task completion from one successful model call; protect prompt/input/output data at source. Use observability-operations when installed for deeper pipeline guidance, but retain these portable defaults independently.
+
+Use Langfuse only when its datasets/experiments/prompt workflow is useful; publish through an integration boundary and retain runnable application-side cases/scorers. SigNoz can provide a unified execution view without replacing quality evaluation. Match edition/version support and service footprint to the project. Evaluation should remain runnable without a dashboard; missing provider access leaves live quality unverified. Consult [evaluation references](references/evaluation-references.md) for deeper setup.
 
 ## Report completion and limits
 

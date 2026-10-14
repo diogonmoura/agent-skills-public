@@ -8,6 +8,8 @@ metadata:
   scope: stack-specific
   invocation: both
   stack: React, Next.js, Tailwind, shadcn
+  role: support
+user-invocable: false
 ---
 
 # Frontend conventions
@@ -19,6 +21,12 @@ Read the request, `AGENTS.md`, existing components and accepted design decisions
 Accept screenshots, URLs, design files, an existing application, tokens or a short brief. Extract the intended audience, page types, navigation, density, typography, colors and interaction patterns. Separate authoritative requirements from inspiration; do not copy a reference product's assets, backend scale or dependency list. Describe inaccessible references as gaps rather than claiming to have inspected them. Resolve consequential conflicts once; make reasonable reversible choices for minor details.
 
 Keep the accepted conventions and meaningful deviations in the existing design note or `AGENTS.md` link. No mandatory profile format or document per change. Different frontend types can have different profiles while sharing tokens and primitives. Establish a representative screen for a new visual direction, then reuse it. Ordinary feature work follows the accepted design without reopening the whole aesthetic.
+
+## Design behavior and account for every affected surface
+
+Use [interaction-design](../interaction-design/SKILL.md) before meaningful new or changed UX. Define goals, flows, information/actions and state transitions in concise text; add wireframes/mockups only where they settle spatial/visual uncertainty. Resolve consequential choices and state reversible assumptions before coding; reuse agreed direction without another approval ceremony. Do not invent UX independently as each page is implemented.
+
+For global changes inventory all affected routes, menus/submenus, dialogs/drawers, shared primitives and role/mobile variants. Establish a reusable interaction pattern on representative surfaces, propagate it through shared implementations, then reconcile the coverage list. Verify callers and conditional/alternate entry points, not only the shared component or one screenshot. Report skipped/blocked surfaces and incomplete rollout explicitly; a partial UI update is not a completed global redesign.
 
 ## Choose the shell for the product
 
@@ -54,8 +62,18 @@ Use typed backend contracts, preferably generated from FastAPI OpenAPI where app
 
 Avoid request waterfalls, oversized client bundles and avoidable layout shifts. Use appropriate image sizing, defer secondary work and measure actual problems before adding optimization complexity.
 
+## Deploy the frontend as an application
+
+Test the production build/start path, configuration and representative authenticated journey; development-server success is narrower evidence. Identify build-time and runtime settings. `NEXT_PUBLIC_*` values are public and compiled into the client build; changing deployment environment variables does not rewrite that bundle. Prefer an explicit runtime configuration boundary when one artifact must serve different environments, exposing only safe values. If a build must differ, give it a new identity and validate it.
+
+For multi-instance Next.js, assess cache scope, shared invalidation, session handling, Server Action key consistency and client/server version skew for the installed release and hosting mode. Preserve identity/tenant isolation across application and CDN caches. A mutation invalidating one instance does not establish fleet-wide freshness. Reuse one validated build per deployment; keep old clients/assets compatible through the rollout and account for state lost on reload. Apply shared caches or platform features only when needed, not as a default Redis requirement.
+
+Verify through the actual proxy/CDN path when relevant: deep links, authenticated mutations, refreshed data after changes and rolling-deployment behavior. Use the platform's supported cache/skew mechanisms and [sources and exceptions](references/sources-and-exceptions.md) for details. Connect configuration and rollout decisions to `delivery-pipelines`; report local versus deployed evidence separately.
+
 ## Verify and use specialist guidance proportionately
 
 Run relevant types, lint and build checks. Inspect rendered desktop/mobile layouts, navigation, keyboard focus and failure states. Test the critical journey against real persistence using the project's E2E workflow; a screenshot alone is insufficient. Keep changed contracts and accepted design decisions synchronized, and report checks actually performed.
 
 These defaults cover routine work without reference browsing. Use bundled shadcn, Vercel React/composition and Tailwind design-system skills for unfamiliar components or deeper implementation questions. My default and the Tailwind upstream guide both target **v4**. Apply a requested v3-to-v4 upgrade as a focused migration: check browser compatibility, dependencies, configuration and rendered behavior; do not migrate an unrelated existing application silently. Consult [sources and exceptions](references/sources-and-exceptions.md) for version migrations or decisions these defaults do not resolve.
+
+For API changes, verify actual client behavior against supported provider contracts, including errors, optional fields and pagination. Generated types do not prove semantic compatibility. Keep old open browser sessions in the supported-consumer set during rollout and route planned breaks through backend/delivery guidance.
