@@ -159,6 +159,17 @@
         "The plan verifies signal generation and selected-backend receipt without claiming every destination was tested.",
         "Observability footprint and optional AI evaluation services are proportional; execution telemetry is distinct from model quality."
       ]
+    },
+    {
+      "id": "contextual-ui-direction",
+      "prompt": "Using the installed plugins, design and implement the main screen for a new private research-notebook app in the supplied Tauri/React/TypeScript repository. The brief calls for thoughtful reading, editing, retrieval and source context for working researchers. No brand assets or visual reference are supplied. Retain the accepted Python API and local-only authority. Derive a contextual visual direction, implement it through the selected UI system and verify the actual experience.",
+      "criteria": [
+        "Product/UX brief, visual direction and representative rendered screen precede broad implementation; no invented product research or user approval.",
+        "Tauri platform guidance retains frontend/interaction guidance and compatible shadcn/Tailwind primitives and semantic tokens.",
+        "Composition, typography, density, content and domain details support research work; an unchanged starter dashboard or palette swap does not establish contextual design.",
+        "Actual screenshots and keyboard/failure/narrow-layout operation are compared with the intended direction; discrepancies are repaired and rechecked.",
+        "Committed behavior/journey regression checks and visual review are reported separately; passing unit/build checks never imply taste or user acceptance."
+      ]
     }
   ],
   "generation_trials": [
@@ -185,7 +196,8 @@
         "Every containerizable app service has a Dockerfile/.dockerignore and an isolated reproducible local startup; native clients use actual platform artifacts.",
         "Deployment/promotion, configuration, migrations, verification and recovery are defined; unknown targets/platform prerequisites are explicit blockers.",
         "Meaningful backend/frontend tests are committed and run during increments; fixture identities have tested local/test opt-in and production rejection.",
-        "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified."
+        "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
       ]
     },
     {
@@ -260,7 +272,8 @@
         "Meaningful backend/frontend tests are committed and run during increments; fixture identities have tested local/test opt-in and production rejection.",
         "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
         "TypeScript/SPA client and Rust shell are distinguished from the Python service; no Next.js SSR or Electron replacement is imposed.",
-        "Tauri IPC/capabilities and sensitive local storage are scoped and verified; browser preview evidence is separate from native shell/runtime/packaging."
+        "Tauri IPC/capabilities and sensitive local storage are scoped and verified; browser preview evidence is separate from native shell/runtime/packaging.",
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
       ]
     },
     {
@@ -284,7 +297,8 @@
         "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
         "Accepted Expo/TypeScript is retained; web DOM/shadcn components are not treated as native widgets.",
         "Device/emulator backend addresses, secure storage, permission denial, keyboard/safe areas and lifecycle are covered.",
-        "Separate iOS and Android status, native startup/journeys and signing/store limitations are reported; backend/browser results cannot substitute."
+        "Separate iOS and Android status, native startup/journeys and signing/store limitations are reported; backend/browser results cannot substitute.",
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
       ],
       "context": {
         "platform_decision": "React Native + Expo with TypeScript, accepted by João on 15 October 2026",
@@ -315,7 +329,8 @@
         "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
         "Uses actual compatible AG-UI contracts and A2UI specification/renderer; homegrown events or a static mock UI are not protocol implementation evidence.",
         "Streaming, generated surface, user action and updated surface make a real round trip; malformed/unauthorized messages are rejected.",
-        "Protocol/renderer verification and model quality are separate; frontend receives no provider secrets."
+        "Protocol/renderer verification and model quality are separate; frontend receives no provider secrets.",
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
       ]
     },
     {
@@ -344,7 +359,8 @@
         "Product recommendations distinguish observed competitors, demand hypotheses and accepted first audience; no invented market validation or novelty claims.",
         "Architecture follows product refinement before dependent implementation, with explicit alternatives, evidence and unresolved capability/authority decisions.",
         "Existing ACP session attachment, AG-UI/A2UI, canvas collaboration and voice are distinct tested or blocked contracts.",
-        "A new mocked session, recorded transcript, diagram or attractive canvas screenshot cannot establish the defining live user experience."
+        "A new mocked session, recorded transcript, diagram or attractive canvas screenshot cannot establish the defining live user experience.",
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
       ],
       "context": {
         "source_chat_title": "Shape AI canvas product idea",

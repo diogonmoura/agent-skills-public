@@ -2,7 +2,7 @@
 
 [Maintainer guide](../maintainer-reference.md) · [Trial procedure](#generation-trials) · [Evidence](#recorded-evidence-and-limits) · [Local agy example](#local-runner-example-agy)
 
-The [evaluation cases](../../evals/development-workflows.json) contain 16 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+The [evaluation cases](../../evals/development-workflows.json) contain 17 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
 
 ## Generation trials
 
@@ -75,3 +75,7 @@ The initial local application trial demonstrated API tests and persistence/owner
 The first engineer-canvas strategy trial also presented unaccepted pivots as decisions, overstated competitor/pricing certainty and incorrectly treated the tldraw SDK as MIT-licensed. Strategy evidence and template guidance now require current sources, explicit unknowns and proposed versus user-accepted decision status. Preserve that failed output before a fresh-context rerun; changed instructions alone do not establish a successful correction.
 
 Independent validation of the first AG-UI/A2UI setup found that its private surface tree failed the published A2UI 0.9.1 envelope schema while its own format tests passed. Protocol guidance now requires published-schema and independent renderer/conformance evidence. Native runtime and live provider checks remain separate capabilities.
+
+## Visual-quality follow-up
+
+The desktop trace recorded native-client guidance reads but no observed frontend-conventions or interaction-design reads. Its manifest had no shadcn/Tailwind dependencies. Functional/native checks therefore did not establish compliance with the product/visual/UX process. The local frontend fallback also prescribed generic neutral/blue styling. Revised routing retains frontend/interaction guidance for Tauri; visual direction now derives from the brief and requires representative rendered review/repair. A new behavioral case and UI-trial criteria distinguish visual quality, usability/accessibility and functional regression evidence. These changes are not yet validated by a fresh generation; screenshot evidence from the earlier app is not a passing visual baseline.
