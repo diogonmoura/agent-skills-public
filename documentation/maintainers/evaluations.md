@@ -93,3 +93,16 @@ A later synthetic read-only plan probe loaded the 5468cb2 shared WORKFLOW policy
 ## Design handoff follow-up
 
 Figma is a preferred optional tool for substantial UI exploration and handoff; existing designs and local prototypes remain usable. Visual-direction guidance now connects product scenarios, representative designs, semantic tokens, target components and rendered reconciliation. Storybook covers actual component states and can link to design references; application/native journeys remain separate. The design-to-implementation-handoff case checks this boundary with read-only Figma access and no publication permission. This new behavioral case has not been executed; package checks do not establish compliance.
+
+## Next validation sequence
+
+Keep the failed application outputs and actor traces as baselines. Resolve one behavior class at a time through focused PRs and fresh contexts; compare actual outcomes, not skill-read counts or runner completion prose.
+
+1. Run the existing lifecycle and design-handoff cases in bounded first-slice projects. Check that accepted product scenarios, constraints, design decisions and verification expectations exist before dependent implementation. Reuse existing answers; missing outcomes should prompt the missing work rather than more mandatory documents.
+2. Use desktop repair to reproduce and correct dialog focus, failed-save draft retention and fixture/authentication boundaries. Commit regressions that fail on the original defect and pass after repair. Run affected component checks plus real private-data and persistence journeys.
+3. Validate generated foundations from a clean checkout: onboarding commands, configuration linting, containerized services, CI checks, artifact construction and release/recovery instructions. Do not publish artifacts merely to verify workflow syntax.
+4. Compare the existing reviewer with the selected licensed craft/microcopy candidates on the same representative surfaces and known defects. Measure useful findings, false positives, token preservation, contextual visual fit and read-only scope. Research-guide quality is judged on neutral tasks and coverage; actual user research remains separate.
+5. Rerun fresh desktop generation after the targeted fixes, without old code or grader diagnoses. Grade design, component tests, backend/authentication, real journey, foundations and native execution separately. Resolve harness 503 failures independently and preserve incomplete output.
+6. Continue protocol/schema/independent-renderer and real-session capability probes before canvas implementation; run iOS/Android native checks only with the required SDKs/device environment. Keep unavailable boundaries explicit.
+
+The Figma MCP declaration and Storybook guidance have package-level checks only. agy 1.3.5 validates the skills but skips the portable MCP declaration, so its result does not establish server discovery. No Figma OAuth/tool round-trip, new Community-skill behavioral trial or fresh application generation is claimed for this change.
