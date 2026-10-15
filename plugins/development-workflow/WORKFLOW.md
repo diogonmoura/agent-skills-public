@@ -26,6 +26,18 @@ Retained upstream user activities are `grill-me`, `grill-with-docs`, `to-questio
 
 Assess affected contracts and operating consequences before implementing a change; use project-conventions without repeating project setup. Deliver-reliable-changes defines proportionate acceptance evidence and separates locally verified behavior from deployment claims. Backend/frontend conventions own production migration, job and runtime details. Preserve established answers and avoid making evaluation cases or record formats prerequisites for application work.
 
+## Resolve consequential findings
+
+Apply this throughout product definition, architecture, implementation, testing, release and operation. Assess the actual changed boundaries and dependencies proportionately; a small edit does not trigger an exhaustive audit. Use relevant specialists to investigate licensing/usage, security/privacy, reliability/recovery, cost, compatibility, accessibility and other material constraints. New evidence can reopen an earlier decision.
+
+Distinguish a fact to investigate, an implementation defect to fix within accepted constraints, and a tradeoff the user must decide. Verify technical facts from appropriate primary sources, code, configuration or bounded tests. Do not ask the user to guess those facts or treat an unexplained uncertainty as permission. Correct an ordinary defect and choose reversible implementation details within the established scope without repeated approval.
+
+Ask when resolving a finding would change intended usage/distribution, budget or provider commitments, data handling/exposure, authorization, loss/recovery tolerance, service expectations, required functionality, or an accepted product/architecture decision—and the current instructions do not already settle it. A requested library or service does not imply acceptance of undisclosed obligations. Do not silently choose a weaker security/reliability outcome or change the product to fit a convenient dependency. Required safeguards and established authority remain constraints, not optional preferences to waive casually.
+
+Present the concrete finding, its evidence and effect on the requested outcome, feasible options with tradeoffs, a recommendation and the specific unresolved decision. Record proposed versus accepted status in existing project notes; a risk mentioned in a report is not an accepted risk. Pause only work depending on that decision, continue independent authorized work and carry the answer into affected requirements, design, tests and delivery. Reuse existing answers; re-ask only when new evidence materially changes their premise. In unattended work return the precise needs-decisions result instead of inventing an answer or proceeding through the blocker.
+
+Specialist skills own detection methods and technical evidence; this shared workflow owns when to ask, how to present the decision and what work may continue. No finding or skill expands authorization to purchase, accept terms, expose data, deploy, publish or contact others.
+
 ## Metadata and upstream adaptations
 
 `metadata.scope` distinguishes `generic` from `stack-specific`; `metadata.stack` names relevant technologies. `metadata.invocation` records preferred `user`, `agent` or `both` usage. These are standard string metadata labels, not a custom execution engine. Native upstream invocation controls remain intact.

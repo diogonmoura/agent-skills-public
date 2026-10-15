@@ -33,6 +33,8 @@ For a protocol, SDK, renderer, license or existing-session integration, check th
 
 ## Resolve consequential dependency constraints
 
+Use the shared [consequential finding policy](../../WORKFLOW.md#resolve-consequential-findings) for the decision and dependent-work boundary; the checks here supply architecture evidence. The same policy applies when security, reliability, cost or other findings arise later.
+
 Before committing to a critical SDK/platform, verify the actual component's current license and production/distribution terms from primary sources; an MIT starter/example does not establish the SDK's terms. Connect restrictions, cost, keys, telemetry, redistribution and hosting to the intended personal/internal/commercial use. Personal use, open-source distribution and commercial use are not interchangeable permissions. Do not accept terms or buy a license merely to unblock implementation.
 
 If the terms conflict with accepted constraints, stop dependent implementation and present a supported comparison. If intended use or willingness to accept a material cost/restriction is unknown, ask the concrete decision before proceeding. A development trial or discretionary hobby license cannot establish production suitability. Once the user rejects the dependency, reopen the affected architecture and preserve required capabilities; do not silently relabel the product or keep building on the rejected choice. Continue independent work and label any permitted evaluation spike precisely.

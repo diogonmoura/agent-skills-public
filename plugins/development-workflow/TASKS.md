@@ -24,6 +24,8 @@ Implement is acquired from the pinned upstream source with local entry-point fra
 
 ## Scope and decisions
 
+Apply [consequential finding decisions](WORKFLOW.md#resolve-consequential-findings) in every phase, not only new-product setup or architecture. Specialists establish facts and options; shared workflow governs user decisions, accepted constraints and dependent-work blockers.
+
 Read project instructions, current changes and accepted decisions. Use the supplied conversation, Markdown or a configured tracker; tickets are optional. Resolve technical facts from evidence before asking. Ask only unresolved questions affecting product outcomes, authority, material design, compatibility or irreversible consequences. State reasonable reversible assumptions and continue independently where possible. Preserve existing answers and authorization. Never invent unavailable references, test results or application inspections without the relevant evidence.
 
 For a new application, develop owns the end-to-end outcomes in [new-application flow](skills/develop/references/new-application-flow.md); setup alone covers technical foundations and cannot establish the full lifecycle. Reuse accepted decisions, resolve material feasibility/licensing constraints and keep missing outcomes visible.

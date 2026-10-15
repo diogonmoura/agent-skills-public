@@ -2,7 +2,7 @@
 
 [Maintainer guide](../maintainer-reference.md) · [Trial procedure](#generation-trials) · [Evidence](#recorded-evidence-and-limits) · [Local agy example](#local-runner-example-agy)
 
-The [evaluation cases](../../evals/development-workflows.json) contain 18 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+The [evaluation cases](../../evals/development-workflows.json) contain 19 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
 
 ## Generation trials
 
@@ -83,3 +83,5 @@ The desktop trace recorded native-client guidance reads but no observed frontend
 ## Lifecycle and licensing follow-up
 
 Most creation probes entered with prescribed features/stacks through setup and develop; they were not blind tests of business-to-product discovery. Canvas strategy/design ran but did not resolve SDK licensing or actual existing-session feasibility before implementation. Revised develop guidance owns explicit new-application outcomes, setup clarifies its narrower scope, system-design requires consequential dependency decisions and a behavioral case checks commercial SDK constraints. Repair and fresh desktop trials are distinct: repair receives the known defects; fresh generation receives the product brief and constraints without old implementation or grader diagnoses. New guidance alone does not establish compliance.
+
+Consequential-finding decisions are now owned by shared workflow guidance across all phases; system-design and operations supply evidence rather than defining separate approval policies. A cross-lifecycle case checks security/privacy and reliability choices plus an independent routine fix as a control against unnecessary questioning. These policy changes occur after the desktop trials were dispatched; their recorded source revision remains 99ea936.
