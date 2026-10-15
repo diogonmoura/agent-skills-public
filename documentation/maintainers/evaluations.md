@@ -2,7 +2,7 @@
 
 [Maintainer guide](../maintainer-reference.md) · [Trial procedure](#generation-trials) · [Evidence](#recorded-evidence-and-limits) · [Local agy example](#local-runner-example-agy)
 
-The [evaluation cases](../../evals/development-workflows.json) contain 17 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+The [evaluation cases](../../evals/development-workflows.json) contain 18 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
 
 ## Generation trials
 
@@ -79,3 +79,7 @@ Independent validation of the first AG-UI/A2UI setup found that its private surf
 ## Visual-quality follow-up
 
 The desktop trace recorded native-client guidance reads but no observed frontend-conventions or interaction-design reads. Its manifest had no shadcn/Tailwind dependencies. Functional/native checks therefore did not establish compliance with the product/visual/UX process. The local frontend fallback also prescribed generic neutral/blue styling. Revised routing retains frontend/interaction guidance for Tauri; visual direction now derives from the brief and requires representative rendered review/repair. A new behavioral case and UI-trial criteria distinguish visual quality, usability/accessibility and functional regression evidence. These changes are not yet validated by a fresh generation; screenshot evidence from the earlier app is not a passing visual baseline.
+
+## Lifecycle and licensing follow-up
+
+Most creation probes entered with prescribed features/stacks through setup and develop; they were not blind tests of business-to-product discovery. Canvas strategy/design ran but did not resolve SDK licensing or actual existing-session feasibility before implementation. Revised develop guidance owns explicit new-application outcomes, setup clarifies its narrower scope, system-design requires consequential dependency decisions and a behavioral case checks commercial SDK constraints. Repair and fresh desktop trials are distinct: repair receives the known defects; fresh generation receives the product brief and constraints without old implementation or grader diagnoses. New guidance alone does not establish compliance.

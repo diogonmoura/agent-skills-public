@@ -31,6 +31,12 @@ For desktop/mobile distinguish native shell and client responsibilities from Pyt
 
 For a protocol, SDK, renderer, license or existing-session integration, check the exact supported version and capabilities in current primary sources. Separate observed support, a proposed adapter and an unavailable capability. Pin one coherent contract; do not call alternatives such as A2UI 0.9.1/1.0 a single pin. Mark custom event names or transports as application extensions and test their boundaries rather than presenting them as standard protocol messages. Existing-session reuse needs the selected harness/adapter's supported session identity, load/resume and permission behavior; ACP compliance alone does not guarantee attachment to arbitrary active sessions. A detailed diagram or confident prose cannot replace a bounded capability/contract check.
 
+## Resolve consequential dependency constraints
+
+Before committing to a critical SDK/platform, verify the actual component's current license and production/distribution terms from primary sources; an MIT starter/example does not establish the SDK's terms. Connect restrictions, cost, keys, telemetry, redistribution and hosting to the intended personal/internal/commercial use. Personal use, open-source distribution and commercial use are not interchangeable permissions. Do not accept terms or buy a license merely to unblock implementation.
+
+If the terms conflict with accepted constraints, stop dependent implementation and present a supported comparison. If intended use or willingness to accept a material cost/restriction is unknown, ask the concrete decision before proceeding. A development trial or discretionary hobby license cannot establish production suitability. Once the user rejects the dependency, reopen the affected architecture and preserve required capabilities; do not silently relabel the product or keep building on the rejected choice. Continue independent work and label any permitted evaluation spike precisely.
+
 ## Carry the design into delivery
 
 Keep the consequential decisions in the project's existing architecture note or ADRs, with links to evidence and acceptance. Carry them into the implementation plan, interactions, setup, tests and release process. Avoid duplicating the same architecture across documents. Validate uncertain choices with a bounded spike or contract test before committing dependent work; label prototype behavior and untested claims.

@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 790" role="img" aria-labelledby="title desc">
 <title id="title">Product refinement, system design and the development lifecycle</title>
-<desc id="desc">Product refinement leads to system design, implementation planning, interaction design, implementation, testing and repair, release and deployment, then maintenance and learning. Project foundations and supporting skills apply throughout.</desc>
+<desc id="desc">Purpose and product refinement lead to system design, interaction and visual design, implementation planning, implementation, testing and repair, release and deployment, then maintenance and learning. Project foundations and supporting skills apply throughout.</desc>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#526580"/></marker></defs>
 <rect width="1440" height="790" fill="#f8fafc"/><g font-family="Arial, Helvetica, sans-serif">
 <text x="30" y="46" font-size="27" font-weight="700" fill="#15233b">From product evidence to system design and delivery</text>
 <text x="30" y="77" font-size="16" fill="#526580">Choose the relevant activity; revisit decisions when evidence changes</text>
 <rect x="30" y="106" width="1380" height="91" rx="14" fill="#e8eef9" stroke="#9aaecb"/>
-<text x="54" y="136" font-size="20" font-weight="700" fill="#15233b">Project foundations · /setup · project-conventions</text>
+<text x="54" y="136" font-size="20" font-weight="700" fill="#15233b">Project foundations · after consequential choices · /setup</text>
 <text x="54" y="166" font-size="16" fill="#354966">READMEs · configuration checks · tests · containers · CI · artifact release · deployment/recovery</text>
 <rect x="30" y="230" width="315" height="122" rx="14" fill="#e8f5ef" stroke="#9aaecb"/>
 <text x="48" y="264" font-size="20" font-weight="700" fill="#15233b">1. Product refinement</text>
@@ -19,14 +19,14 @@
 <text x="403" y="327" font-size="14" fill="#526580">Architecture and platform decisions</text>
 <path d="M700 291L732 291" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
 <rect x="740" y="230" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="758" y="264" font-size="20" font-weight="700" fill="#15233b">3. Implementation plan</text>
-<text x="758" y="295" font-size="15" fill="#354966">/plan</text>
-<text x="758" y="327" font-size="14" fill="#526580">Increments, tests and delivery</text>
+<text x="758" y="264" font-size="20" font-weight="700" fill="#15233b">3. UX and visual design</text>
+<text x="758" y="295" font-size="15" fill="#354966">/design · frontend + interactions</text>
+<text x="758" y="327" font-size="14" fill="#526580">Context, behavior and API contracts</text>
 <path d="M1055 291L1087 291" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
 <rect x="1095" y="230" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="1113" y="264" font-size="20" font-weight="700" fill="#15233b">4. Interaction design</text>
-<text x="1113" y="295" font-size="15" fill="#354966">/design · interaction-design</text>
-<text x="1113" y="327" font-size="14" fill="#526580">UI behavior and API contracts</text>
+<text x="1113" y="264" font-size="20" font-weight="700" fill="#15233b">4. Plan and foundations</text>
+<text x="1113" y="295" font-size="15" fill="#354966">/plan · /setup</text>
+<text x="1113" y="327" font-size="14" fill="#526580">Increments, tests and delivery</text>
 <path d="M1252 352L1252 422" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
 <rect x="1095" y="430" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
 <text x="1113" y="464" font-size="20" font-weight="700" fill="#15233b">5. Implementation</text>

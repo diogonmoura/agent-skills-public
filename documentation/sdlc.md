@@ -1,6 +1,6 @@
 # SDLC coverage
 
-Use the [SDLC overview](../README.md#sdlc-coverage) to orient yourself and the [task menu](usage.md#skills-you-invoke) to start work. This reference links the expertise behind those activities. `develop` spans the useful lifecycle; individual tasks let you enter at any phase. Phases are a map, not required handoffs.
+Use the [SDLC overview](../README.md#sdlc-coverage) to orient yourself and the [task menu](usage.md#skills-you-invoke) to start work. This reference links the expertise behind those activities. `develop` spans the useful lifecycle; individual tasks let you enter at any phase. Phases are a map, not required handoffs. For a new application, [new-application flow](../plugins/development-workflow/skills/develop/references/new-application-flow.md) defines the decision outcomes develop must establish before dependent work; setup alone does not establish the lifecycle.
 
 ## Before and around the cycle
 
@@ -20,13 +20,13 @@ Start with [refine](../plugins/development-workflow/skills/refine/SKILL.md). Est
 
 Use [design](../plugins/development-workflow/skills/design/SKILL.md) with [system-design](../plugins/development-workflow/skills/system-design/SKILL.md). Compare consequential architecture/platform options against the product and operating constraints, map boundaries and critical flows, and carry the decisions into setup and feature plans. Reuse installed codebase-design/domain-modeling where applicable.
 
-### 3. Implementation planning
+### 3. Interaction, visual and contract design
 
-Start with [plan](../plugins/development-workflow/skills/plan/SKILL.md). Produce bounded dependency-ordered increments, tests and delivery/recovery consequences from the accepted system design.
+Use [design](../plugins/development-workflow/skills/design/SKILL.md), [frontend-conventions](../plugins/web-frontend/skills/frontend-conventions/SKILL.md), [interaction-design](../plugins/web-frontend/skills/interaction-design/SKILL.md) and relevant backend/native/AI guidance. Derive contextual visual direction and define surfaces, behavior, authority and failure contracts from the requirements before dependent implementation.
 
-### 4. Interaction and contract design
+### 4. Implementation planning and foundations
 
-Use [design](../plugins/development-workflow/skills/design/SKILL.md), [interaction-design](../plugins/web-frontend/skills/interaction-design/SKILL.md) and relevant backend/native/AI guidance. Define affected surfaces, user behavior, authority and state/failure contracts before implementation.
+Start with [plan](../plugins/development-workflow/skills/plan/SKILL.md). Produce bounded dependency-ordered increments, tests and delivery/recovery consequences from the accepted system and experience design. Reconcile earlier rough plans after material decisions; establish complete applicable project foundations.
 
 ### 5. Implementation
 

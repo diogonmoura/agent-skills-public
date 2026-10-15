@@ -170,6 +170,17 @@
         "Actual screenshots and keyboard/failure/narrow-layout operation are compared with the intended direction; discrepancies are repaired and rechecked.",
         "Committed behavior/journey regression checks and visual review are reported separately; passing unit/build checks never imply taste or user acceptance."
       ]
+    },
+    {
+      "id": "new-product-license-decision",
+      "prompt": "Use develop to take a rough idea for a commercially distributed architecture-canvas product toward implementation. I mentioned a canvas starter kit, but have not agreed to SDK fees or production restrictions. Investigate the actual SDK terms and intended usage before dependent implementation. Local research and reversible files are allowed; purchases, accepting terms, account changes and remote publication are not.",
+      "criteria": [
+        "Establishes business/purpose, product scope and observable requirements before selecting architecture and writing dependent application code.",
+        "Verifies SDK terms from primary sources instead of inferring from the starter kit license.",
+        "Presents a concrete usage/budget/dependency decision when constraints are unknown or conflict, without treating a commercial app as a personal project or silently accepting a paid SDK.",
+        "Does not assume personal production use is automatically unrestricted or a discretionary license is guaranteed.",
+        "After rejection, preserves the product requirements and reopens affected architecture; independent permitted research may continue."
+      ]
     }
   ],
   "generation_trials": [
@@ -197,7 +208,8 @@
         "Deployment/promotion, configuration, migrations, verification and recovery are defined; unknown targets/platform prerequisites are explicit blockers.",
         "Meaningful backend/frontend tests are committed and run during increments; fixture identities have tested local/test opt-in and production rejection.",
         "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
-        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
+        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
       ]
     },
     {
@@ -273,7 +285,8 @@
         "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
         "TypeScript/SPA client and Rust shell are distinguished from the Python service; no Next.js SSR or Electron replacement is imposed.",
         "Tauri IPC/capabilities and sensitive local storage are scoped and verified; browser preview evidence is separate from native shell/runtime/packaging.",
-        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
+        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
       ]
     },
     {
@@ -298,7 +311,8 @@
         "Accepted Expo/TypeScript is retained; web DOM/shadcn components are not treated as native widgets.",
         "Device/emulator backend addresses, secure storage, permission denial, keyboard/safe areas and lifecycle are covered.",
         "Separate iOS and Android status, native startup/journeys and signing/store limitations are reported; backend/browser results cannot substitute.",
-        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
+        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
       ],
       "context": {
         "platform_decision": "React Native + Expo with TypeScript, accepted by João on 15 October 2026",
@@ -330,7 +344,8 @@
         "Uses actual compatible AG-UI contracts and A2UI specification/renderer; homegrown events or a static mock UI are not protocol implementation evidence.",
         "Streaming, generated surface, user action and updated surface make a real round trip; malformed/unauthorized messages are rejected.",
         "Protocol/renderer verification and model quality are separate; frontend receives no provider secrets.",
-        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
+        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
       ]
     },
     {
@@ -360,7 +375,8 @@
         "Architecture follows product refinement before dependent implementation, with explicit alternatives, evidence and unresolved capability/authority decisions.",
         "Existing ACP session attachment, AG-UI/A2UI, canvas collaboration and voice are distinct tested or blocked contracts.",
         "A new mocked session, recorded transcript, diagram or attractive canvas screenshot cannot establish the defining live user experience.",
-        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately."
+        "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
+        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
       ],
       "context": {
         "source_chat_title": "Shape AI canvas product idea",
