@@ -36,3 +36,5 @@ For a protocol, SDK, renderer, license or existing-session integration, check th
 Keep the consequential decisions in the project's existing architecture note or ADRs, with links to evidence and acceptance. Carry them into the implementation plan, interactions, setup, tests and release process. Avoid duplicating the same architecture across documents. Validate uncertain choices with a bounded spike or contract test before committing dependent work; label prototype behavior and untested claims.
 
 Return a recommended/proposed design, meaningful alternatives, material questions and a useful next increment. Design-only authority does not permit feature edits or deployment. Reassess the affected decision when new evidence arrives; do not force a complete redesign for each feature.
+
+Investigate harness attachment through documented interfaces and a dedicated authorized trial session. Do not search global conversation stores or credential profiles to discover capabilities. If a separate runtime cannot access the chosen existing session, record that limit and compare supported alternatives before promising attachment.
