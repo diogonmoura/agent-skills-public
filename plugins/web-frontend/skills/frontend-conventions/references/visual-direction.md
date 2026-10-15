@@ -10,6 +10,22 @@ Choose a coherent direction, considering a few genuinely different alternatives 
 
 Define the choices that materially shape the experience: information hierarchy, composition, density, type hierarchy, reading/editing measure, palette and contrast, spacing, surfaces, iconography, motion and distinctive domain details. Ground character in actual content and workflows. A research notebook may benefit from editorial reading and useful note metadata; an architecture canvas prioritizes drawing space, legible labels and quiet contextual tools. These illustrate reasoning, not mandatory themes. Avoid fake metrics, excessive decoration and domain-themed gimmicks. A recolored starter layout is insufficient evidence of contextual design.
 
+## Carry design intent into implementation
+
+For substantial new UI or redesign, prefer Figma when it is available and fits the team's workflow. Start from the accepted scenarios and UX decisions: use wireframes for navigation/layout uncertainty, then representative mockups or prototypes for visual and interaction uncertainty. Cover realistic content, important failure/empty/loading states and relevant viewport/platform variants. Reuse existing designs when they already answer the question. Small changes can use an annotated rendered prototype; an unavailable Figma connection should not block authorized work that can proceed locally.
+
+Keep requirement/scenario references, design rationale and unresolved decisions alongside the relevant frames or existing design note. Label proposed versus accepted direction without inventing user approval. A mockup does not establish behavior, accessibility or application correctness. Preserve the product's contextual visual character through the handoff.
+
+Inspect available design context through supported tools: components, variants, variables, layout rules, assets and screenshots. Map them to the target stack's real components and semantic tokens, including shadcn/Tailwind for compatible DOM applications and native equivalents for mobile. Verify connector capabilities and access before relying on them. Do not infer permission to upload private product material, publish a design/Storybook or buy a service from a request to implement locally. Apply the shared consequential-decision policy when a new data, cost or access commitment needs a user choice.
+
+Use Storybook where reusable component/state coverage warrants it. Stories exercise the actual implementation: populated/empty/loading/error, disabled/selected and relevant responsive or theme variants. Link stories to the corresponding Figma frame or existing design reference where useful. Existing Storybook components also inform design exploration and reuse; this is an iterative loop rather than a compulsory sequence of tools.
+
+Keep the mapping between design tokens, component variants and code explicit, with an authoritative owner for each. Reconcile design/code differences as fixes or recorded intentional decisions. Review interaction, accessibility and visual checks against the intended behavior before accepting new baselines. Storybook coverage complements actual route, API/persistence and native journeys; it cannot prove those integrations or establish taste.
+
+Compare the rendered target application with the reference after implementation, including behavior that static designs omit. Report missing states, intentional deviations and unverified native layouts. Carry findings through repair and recheck; the existence of a Figma file or stories is not completion evidence.
+
+References: [Figma design context and agent responsibilities](https://developers.figma.com/docs/figma-mcp-server/mcp-vs-agent/), [Storybook design integrations](https://storybook.js.org/docs/sharing/design-integrations), [Storybook testing](https://storybook.js.org/docs/writing-tests). Choose integrations according to current access, privacy and publishing requirements; linked tools are not mandatory dependencies.
+
 ## Implement through the chosen system
 
 For a new React DOM app, including a Tauri webview, use compatible Tailwind and actual shadcn primitives as the default. Record a justified exception. Preserve the selected component API/preset, semantic CSS-variable theme pairs and a coherent Tailwind theme mapping. Theme typography, spacing, radii and states as a system; compose product-specific layouts rather than replacing primitives with handwritten lookalikes or scattering literal overrides. Preserve accepted existing libraries.
