@@ -27,6 +27,10 @@ Describe system context and important service/client responsibilities, deploymen
 
 For desktop/mobile distinguish native shell and client responsibilities from Python backend services. For AI separate model/runtime orchestration, AG-UI interaction transport, A2UI rendering and MCP/ACP integrations; verify actual SDK/protocol and harness capabilities before proposing reuse. Existing-session attachment, concurrent edits and voice interruption need explicit supported contracts.
 
+## Verify consequential technical claims
+
+For a protocol, SDK, renderer, license or existing-session integration, check the exact supported version and capabilities in current primary sources. Separate observed support, a proposed adapter and an unavailable capability. Pin one coherent contract; do not call alternatives such as A2UI 0.9.1/1.0 a single pin. Mark custom event names or transports as application extensions and test their boundaries rather than presenting them as standard protocol messages. Existing-session reuse needs the selected harness/adapter's supported session identity, load/resume and permission behavior; ACP compliance alone does not guarantee attachment to arbitrary active sessions. A detailed diagram or confident prose cannot replace a bounded capability/contract check.
+
 ## Carry the design into delivery
 
 Keep the consequential decisions in the project's existing architecture note or ADRs, with links to evidence and acceptance. Carry them into the implementation plan, interactions, setup, tests and release process. Avoid duplicating the same architecture across documents. Validate uncertain choices with a bounded spike or contract test before committing dependent work; label prototype behavior and untested claims.

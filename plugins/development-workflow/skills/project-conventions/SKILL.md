@@ -30,6 +30,8 @@ During a feature or fix, trace the affected paths and identify changed contracts
 
 For shared saved searches, inspect existing ownership and all affected reads/writes before adding access grants. Preserve private defaults and define recipient permissions from the agreed scope; hiding UI controls does not enforce them. Select focused verification using `deliver-reliable-changes`, rather than invoking every installed skill.
 
+Before setup or feature writes, use [git-contributions](../git-contributions/SKILL.md) to create/reuse the separate objective worktree and verify the actual edit/command paths. Initialize an empty repository only as needed to enable that worktree. Keep the base checkout untouched by objective files.
+
 ## Establish a small, navigable repository
 
 - Put code, migrations, tests, dependencies, application configuration and scoped AGENTS.md under `applications/`. Separate `api/` and `web/` when they represent actual boundaries. Keep provider-required CI entrypoints in their required locations.
