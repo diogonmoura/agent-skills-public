@@ -41,14 +41,14 @@ Use lowercase kebab-case: short activities for tasks (`develop`, `test`, `review
 | `role` | `task` entry point or `support` guidance |
 | `invocation` | Preferred `user`, `agent` or `both` usage |
 
-Labels do not enforce permissions. Task entries use native explicit-only controls; most local support is model-available with `user-invocable: false`. Preserve upstream controls and record client limitations. [TASKS.md](../plugins/development-workflow/TASKS.md) owns execution scope; [WORKFLOW.md](../plugins/development-workflow/WORKFLOW.md) owns upstream project fit.
+Labels do not enforce permissions. Task entries use native explicit-only controls; most local support is model-available with `user-invocable: false`. Preserve upstream controls and record client limitations. [TASKS.md](../plugins/development-workflow/TASKS.md) owns execution scope; [WORKFLOW.md](../plugins/development-workflow/WORKFLOW.md) owns upstream project fit and consequential-finding decisions across phases.
 
 ## Keep guidance focused
 
 | Rule | Owner |
 | --- | --- |
 | Request and automation scope | TASKS.md |
-| Upstream project fit | WORKFLOW.md |
+| Upstream project fit and consequential user decisions | WORKFLOW.md |
 | Repository foundations | project-conventions |
 | Worktrees, commits and PRs | git-contributions |
 | Verification and completion evidence | deliver-reliable-changes |
