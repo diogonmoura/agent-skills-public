@@ -13,7 +13,7 @@ Use the client's skill picker or supported explicit invocation. VS Code uses nam
 | Starting or adopting a project | `setup` | Useful foundations, context and working commands |
 | Requirements need definition | `refine` | Actionable scope and acceptance, or concrete questions |
 | Scope agreed; sequencing needed | `plan` | Bounded steps and verification |
-| UX, contracts or architecture undecided | `design` | A design before implementation |
+| Architecture, UX or contracts undecided | `design` | System/platform decisions and interaction contracts before implementation |
 | Defined work ready to build | `implement` | Implemented and verified change |
 | Need evidence of behavior | `test` | Checks, results and coverage gaps |
 | PR or diff ready for assessment | `review` | Findings against intended behavior and standards |
@@ -117,3 +117,5 @@ python scripts/build_plugins.py \
 ```
 
 Explicit `--plugin` arguments replace the default selection; other bundle names work the same way. Build into a new destination, then replace the affected client installation with resources intact. Source `plugins/<name>` directories contain local guidance; built directories also contain acquired upstream skills and notices. Application dependencies and live tools are separate. See [migration](migration.md) before replacing old copies or links.
+
+For a new product, refine its business/product outcome, use system-design to compare architecture/platform choices, then plan and design the useful increment. Revisit the architecture decision for boundary-changing features. New setup includes authored READMEs, configuration checks, runnable tests, app containers, GitHub Actions and release/deployment procedures; unavailable target/platform execution stays explicit. Use native-client-development for TypeScript/Tauri desktop and informed iOS/Android choices, and build-evaluated-ai for AG-UI/A2UI integration when appropriate.

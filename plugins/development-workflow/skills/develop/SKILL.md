@@ -14,7 +14,7 @@ metadata:
 
 # Develop
 
-Read [task guidance](../../TASKS.md). Read [git-contributions](../git-contributions/SKILL.md) for the objective's feature worktree, [deliver-reliable-changes](../deliver-reliable-changes/SKILL.md) for verification and completion. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
+Read [task guidance](../../TASKS.md). Use [system-design](../system-design/SKILL.md) after product refinement or when the feature changes consequential architecture, before dependent planning/implementation. Read [git-contributions](../git-contributions/SKILL.md) for the objective's feature worktree, [deliver-reliable-changes](../deliver-reliable-changes/SKILL.md) for verification and completion. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
 
 Treat the rough idea as an outcome to shape, not an instruction to build every imagined feature. Inspect the repository and supplied references first. For a new product select a useful coherent first slice; for existing work preserve architecture, identity, UI and operations constraints. Use available strategy/domain guidance when it answers a real uncertainty.
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "web-frontend",
-  "version": "0.10.0",
-  "description": "Next.js, TypeScript, shadcn/ui, Vercel practices, and consistent UI/UX governance.",
+  "version": "0.11.0",
+  "description": "Web UI/UX, Next.js/shadcn, TypeScript Tauri desktop and informed iOS/Android client development.",
   "author": {
     "name": "João Aires"
   },

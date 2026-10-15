@@ -10,7 +10,7 @@ Start with **development-workflow**, **python-backend** and **web-frontend** for
 | --- | --- |
 | [development-workflow](plugins/development-workflow/) | Development activities, project conventions, testing, Git/PRs, delivery and security |
 | [python-backend](plugins/python-backend/) | Python, FastAPI, SQLAlchemy, Alembic and PostgreSQL |
-| [web-frontend](plugins/web-frontend/) | Next.js, shadcn, Tailwind and consistent UI/UX |
+| [web-frontend](plugins/web-frontend/) | Web UI/UX, Next.js/shadcn, TypeScript/Tauri desktop and iOS/Android clients |
 | [ai-development](plugins/ai-development/) | AI features, agents, evaluations and MCP interfaces |
 | [application-operations](plugins/application-operations/) | Reliability, observability, incidents, recovery, capacity and cost |
 | [business-strategy](plugins/business-strategy/) | Product ideas, strategy and feedback |
@@ -106,7 +106,7 @@ The agent should clarify consequential unknowns, define relevant behavior before
 
 ## SDLC coverage
 
-![Project foundations, discovery, seven-phase SDLC cycle, product feedback and cross-cutting skills](documentation/images/sdlc-cycle.svg)
+![Project foundations, discovery, SDLC cycle with architecture/system design, product feedback and cross-cutting skills](documentation/images/sdlc-cycle.svg)
 
 Enter where the work needs it; the cycle is not a mandatory sequence. Project foundations support development, and learning feeds later changes. [Choose an activity](documentation/usage.md#skills-you-invoke) or explore the [linked skill map](documentation/sdlc.md).
 

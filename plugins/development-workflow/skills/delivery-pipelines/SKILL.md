@@ -68,3 +68,11 @@ For application-on-runner checks, reuse the supported Compose services/configura
 
 
 For language/configuration/secret checks use the project's individual pinned tools and commands, selected by project-conventions. Keep local/hook and CI semantics aligned; CI checks the intended diff/full tree independently of developer hooks. YAML syntax checks do not replace actionlint's workflow checks, and staged Gitleaks checks do not establish clean history. Capture redacted useful failures and preserve nonzero exits. Do not add Super-Linter as a blanket dependency.
+
+## Establish new-project artifact and deployment contracts
+
+A new application setup includes usable CI, artifact-build/release workflows and a deployment/recovery procedure, even when execution is local-only. Follow project-conventions for the foundation contract and use current first-party examples in [artifact defaults](references/artifact-defaults.md). Default to GitHub Actions for new GitHub-hosted projects unless an existing provider is accepted.
+
+Use GHCR (`ghcr.io`) for Docker images. For a distributable Python package, build and validate wheel/sdist and default publication to PyPI; pip installs packages and is not a registry. Use npm for distributable JS/TS packages and the ecosystem's established registry for other package types. App-only/internal components need not become public packages. Native clients produce platform artifacts with signing/notarization/store prerequisites made explicit. Preparing release files does not authorize publishing an image, package, installer or store submission.
+
+PR CI validates code, configuration and meaningful tests and builds without privileged publication. Trusted release events publish the already-verified immutable artifacts with provenance/version identity and least-privilege credentials; reconcile reruns. Prefer supported trusted publishing/OIDC where the destination supports it. Require target inputs and readiness before deployment, promote by immutable identity, verify served behavior and retain a compatible recovery route. Do not create success-only placeholder workflows for unknown targets. Check workflow syntax and Dockerfiles, build/start images locally where available, and distinguish authored, linted, locally exercised and remotely executed stages.

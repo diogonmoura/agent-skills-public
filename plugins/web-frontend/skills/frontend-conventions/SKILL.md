@@ -16,7 +16,7 @@ user-invocable: false
 
 ## Establish the direction
 
-Read the request, `AGENTS.md`, existing components and accepted design decisions. For a new application, prefer Next.js App Router, TypeScript, Tailwind v4 and shadcn/ui. Preserve an established React/Vite or other frontend unless a migration is requested. Use the project's package manager, locked versions and component primitives; do not mix Tailwind v3/v4 or Radix/Base UI APIs casually. For new Next.js projects, use `@tailwindcss/postcss`, `@import "tailwindcss"` and CSS-first semantic tokens via `@theme`/`@theme inline`; follow the selected shadcn preset rather than creating a competing token system.
+Read the request, `AGENTS.md`, existing components and accepted design decisions. For a new web application, prefer Next.js App Router, TypeScript, Tailwind v4 and shadcn/ui. For desktop or iOS/Android use [native-client-development](../native-client-development/SKILL.md); web SSR defaults and DOM primitives do not define a native client. Preserve an established React/Vite or other frontend unless a migration is requested. Use the project's package manager, locked versions and component primitives; do not mix Tailwind v3/v4 or Radix/Base UI APIs casually. For new Next.js projects, use `@tailwindcss/postcss`, `@import "tailwindcss"` and CSS-first semantic tokens via `@theme`/`@theme inline`; follow the selected shadcn preset rather than creating a competing token system.
 
 Accept screenshots, URLs, design files, an existing application, tokens or a short brief. Extract the intended audience, page types, navigation, density, typography, colors and interaction patterns. Separate authoritative requirements from inspiration; do not copy a reference product's assets, backend scale or dependency list. Describe inaccessible references as gaps rather than claiming to have inspected them. Resolve consequential conflicts once; make reasonable reversible choices for minor details.
 
@@ -48,7 +48,7 @@ Use tables for operational comparison and cards for distinct items. Metrics need
 
 ## Make interactions dependable
 
-Use semantic controls, visible labels, keyboard access and clear focus. Use accessible primitives for menus/dialogs, return focus after closing, and never substitute tooltips or placeholders for labels. Include loading, empty, error, validation and permission states. Preserve input on recoverable failures, prevent duplicate submission and provide actionable errors. Destructive actions follow the existing confirmation or recovery convention.
+Use semantic controls, visible labels, keyboard access and clear focus. Use actual compatible shadcn/Radix/Base UI primitives for menus/dialogs, not handwritten visual lookalikes lacking semantics or focus behavior. Verify focus containment, dialog roles/labels and restoration to the invoking control after closing, and never substitute tooltips or placeholders for labels. Include loading, empty, error, validation and permission states. Preserve input on recoverable failures, prevent duplicate submission and provide actionable errors. Destructive actions follow the existing confirmation or recovery convention.
 
 Use pages for substantial editing, panels for quick inspection and dialogs for short decisions. For growing datasets, use bounded server pagination/filtering, consistent row actions and bulk actions with explicit selection scope. Put non-sensitive shareable view state in the URL. Localize dates, time zones, numbers and units deliberately.
 

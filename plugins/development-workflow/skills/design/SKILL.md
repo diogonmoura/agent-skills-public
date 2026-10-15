@@ -14,7 +14,7 @@ metadata:
 
 # Design
 
-Read [task guidance](../../TASKS.md). When data or authority boundaries change, read [security-and-privacy-design](../security-and-privacy-design/SKILL.md). Load the optional stack/domain guidance selected by task guidance only when relevant and available.
+Read [task guidance](../../TASKS.md). Use [system-design](../system-design/SKILL.md) after product refinement or when the feature changes consequential architecture, before dependent planning/implementation. When data or authority boundaries change, read [security-and-privacy-design](../security-and-privacy-design/SKILL.md). Load the optional stack/domain guidance selected by task guidance only when relevant and available.
 
 Establish audience, intended outcome and affected boundaries from repository evidence and supplied references. Select only relevant frontend/backend/domain/reliability/security guidance. For UX use interaction-design from web-frontend when available; define flows, states, information hierarchy, shared patterns and all affected surfaces before styling or implementation. Use text for behavior and wireframes/mockups for spatial or visual uncertainty, not as substitutes for each other.
 

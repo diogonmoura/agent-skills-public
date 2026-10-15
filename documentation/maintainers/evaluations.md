@@ -2,7 +2,7 @@
 
 [Maintainer guide](../maintainer-reference.md) · [Trial procedure](#generation-trials) · [Evidence](#recorded-evidence-and-limits) · [Local agy example](#local-runner-example-agy)
 
-The [evaluation cases](../../evals/development-workflows.json) contain 16 behavior prompts and three generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+The [evaluation cases](../../evals/development-workflows.json) contain 16 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
 
 ## Generation trials
 
@@ -59,3 +59,11 @@ agy -p '<phase prompt>' --output-format stream-json --print-timeout 20m
 ```
 
 Run from the target repository, capture stdout/stderr outside it, and use the installed client's conversation option for continuation. The 20-minute limit is a local choice. Check tool events and soft denials even on exit zero. Use scoped permissions and the client's sign-in flow; never put sign-in codes in prompts/traces. The recorded discovery run used workflow 0.17.0; fresh sign-in and Docker availability blocked application/Compose execution independently.
+
+## Foundation, native-client and AI trials
+
+The expanded generation set adds project-foundations, tauri-desktop-application, expo-ios-android-application, agui-a2ui-application and ai-canvas-product-to-implementation. The mobile trial shares TypeScript/Expo and a Python backend but grades iOS and Android separately. The canvas trial carries the accepted engineer audience and tldraw/existing-session direction through strategy, system design and implementation; consequential unresolved choices remain phase blockers.
+
+New application foundations are evaluated as actual artifacts and runnable commands: human READMEs, configuration checks, behavior tests, containerizable app Dockerfiles/Compose, GitHub Actions and release/deployment/recovery process. Registry defaults configure GHCR and PyPI for distributable Python packages without authorizing publication. Native runtime/signing, live model/voice and real harness attachment are recorded separately from source, browser and fixture checks.
+
+The initial local application trial demonstrated API tests and persistence/ownership, but omitted CI/containers/root onboarding, wrote directly on main, seeded test identities without an environment guard and used dialogs without focus containment/restoration. These observations motivate the revised guidance and grader criteria; keep the diagnosis out of independent actor inputs. The initial READMEs and backend tests existed, but scaffold text and API-only evidence did not establish complete setup or UI verification. Updated trial results must be recorded from execution rather than inferred from the revised instructions.
