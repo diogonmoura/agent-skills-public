@@ -32,7 +32,7 @@ Prefer Gemini for low-cost LLM and transcription experiments. Verify current cap
 
 ## Keep correctness outside the model
 
-Validate structured output against the application schema and handle invalid, missing or refused responses deliberately. Enforce identity, resource authorization, allowed tools, budgets and side-effect policy in deterministic application code. Treat retrieved text and tool arguments as untrusted; content instructions must not grant permissions.
+Validate structured output against the application schema and handle invalid, missing or refused responses deliberately. Check the provider/harness semantic status as well as HTTP/process success; an error returned with HTTP 200 or exit code zero must not become a successful answer, UI proposal or authorized mutation. Include that failure envelope in deterministic checks. Enforce identity, resource authorization, allowed tools, budgets and side-effect policy in deterministic application code. Treat retrieved text and tool arguments as untrusted; content instructions must not grant permissions.
 
 Expose narrow capabilities that reuse authorized application behavior. Bound steps, tokens, timeouts and retries; account for repeated side effects and terminate loops with a useful error. A model deciding an action is not permission to execute it. Keep prompts/versioned settings identifiable without logging private recordings, secrets or full sensitive inputs.
 
