@@ -57,7 +57,7 @@ def load(path):
 
 
 def validate(data):
-    shape(data, ("version", "title", "summary", "sources", "nodes", "messages", "flows"), ("assumptions",), "model")
+    shape(data, ("version", "title", "summary", "sources", "nodes", "messages", "flows"), ("assumptions", "exploration"), "model")
     require(type(data["version"]) is int and data["version"] == 1, "version: expected 1")
     text(data["title"], "title")
     text(data["summary"], "summary")
@@ -117,6 +117,19 @@ def validate(data):
             require(parent["external"] == node["external"], f"{node['id']}: external ownership differs from parent")
         else:
             require("parent" not in node, f"{node['id']}: root cannot have parent")
+
+    if "exploration" in data:
+        exploration = data["exploration"]
+        shape(exploration, ("depth",), ("overrides",), "exploration")
+        require(exploration["depth"] in ("context", "container", "component"), "invalid exploration depth")
+        overrides = exploration.get("overrides", {})
+        require(isinstance(overrides, dict), "exploration.overrides: expected object")
+        for ident, depth in overrides.items():
+            node = nodes.get(ident)
+            require(node is not None and node["kind"] in ("system", "container"), "depth override needs a system or container")
+            allowed = ("context", "container", "component") if node["kind"] == "system" else ("container", "component")
+            require(depth in allowed, "invalid local depth")
+            require(any(n.get("parent") == ident for n in nodes.values()), "depth override needs modeled children")
 
     def provenance(value, payload, at):
         shape(value, ("kind", "citations"), ("note", "fields"), at)
@@ -227,32 +240,50 @@ def validate(data):
     return data
 
 
-def project(data, flow_id, depth, expanded=None):
-    """Canonical IDs/labels/endpoints; roots never disappear, even on self-loops."""
+def project(data, flow_id, depth, expanded=None, overrides=None):
+    """Project global depth and local overrides without changing canonical messages.
+
+    The optional expanded argument retains the old single-container projection API.
+    New callers use overrides; component depth then expands every modeled container.
+    """
     require(depth in ("context", "container", "component"), "invalid depth")
     nodes = {n["id"]: n for n in data["nodes"]}
     messages = {m["id"]: m for m in data["messages"]}
     flow = next(f for f in data["flows"] if f["id"] == flow_id)
+    overrides = dict(overrides or {})
+    if expanded is not None and depth == "component":
+        overrides = {n["id"]: "component" if n["id"] == expanded else "container"
+                     for n in nodes.values() if n["kind"] == "container"} | overrides
+
+    def system_depth(node):
+        if node["id"] in overrides:
+            return overrides[node["id"]]
+        if depth == "context" and any(n.get("parent") == node["id"] and n["id"] in overrides for n in nodes.values()):
+            return "container"
+        return depth
+
+    def container_depth(node):
+        parent_depth = system_depth(nodes[node["parent"]])
+        return "context" if parent_depth == "context" else overrides.get(node["id"], parent_depth)
 
     def node_id(ident):
         node = nodes[ident]
-        if node["kind"] == "component" and (depth != "component" or node["parent"] != expanded):
-            node = nodes[node["parent"]]
-        if depth == "context" and node["kind"] == "container":
+        if node["kind"] == "component":
+            parent = nodes[node["parent"]]
+            if container_depth(parent) != "component":
+                node = parent
+        if node["kind"] == "container" and container_depth(node) == "context":
             node = nodes[node["parent"]]
         return node["id"]
 
     result = []
     for index, ident in enumerate(flow["messageIds"], 1):
         root = messages[ident]
-        endpoints = {}
-        for key in ("from", "to"):
-            endpoint = root.get(key + "Component", root[key]) if depth == "component" else root[key]
-            endpoints[key] = node_id(endpoint)
+        endpoints = {key: node_id(root.get(key + "Component", root[key])) for key in ("from", "to")}
         result.append({"id": ident, "parentId": ident, "number": str(index), **endpoints})
         children = [m for m in data["messages"] if m.get("parentId") == ident]
         for child_index, child in enumerate(children, 1):
-            if depth == "component" and child["within"] == expanded:
+            if container_depth(nodes[child["within"]]) == "component":
                 result.append({"id": child["id"], "parentId": ident, "number": f"{index}.{child_index}", "from": node_id(child["from"]), "to": node_id(child["to"])})
     return result
 

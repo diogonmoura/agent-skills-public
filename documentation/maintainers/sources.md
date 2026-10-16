@@ -104,7 +104,7 @@ The supplied portable operations archive contributes local guidance under this r
 | development-workflow | system-mapping and bash-engineering; delivery guidance merged into delivery-pipelines |
 | python-backend | python-automation-engineering |
 | application-operations | Reliability, telemetry, incident/runbook/postmortem, Kubernetes/JVM, vulnerabilities, credentials and housekeeping guidance; backup/recovery merged into protect-and-restore-data |
-| visual-communication | Separately supplied system-flow-explorer, including renderer, validator, examples and checks |
+| visual-communication | Separately supplied system-flow-explorer, including renderer, validator, examples and checks; local adaptations add agent-selected initial depth and independent entity expansion in sequence/C4 views |
 
 Platform boundaries and invocation labels remain explicit. Interactive postmortems and architecture explorers start only on request; static system discovery stays separate from the explorer artifact model. Numerical examples are contextual. The [SDLC map](../sdlc.md) owns the current coverage catalogue.
 

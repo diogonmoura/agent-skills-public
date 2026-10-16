@@ -24,6 +24,21 @@
       "expected_output": "Additive refinement with stable IDs/roots, correctly contained proposed validator, child-parent selection invariance, and external interactions preserved.",
       "files": ["assets/minimal.json"],
       "expectations": ["All original IDs, root payloads and per-scenario root order are preserved.", "The new validator is a proposed API component and its local child maps to modelResult.", "Component expansion retains every root and external provider interaction.", "Browser selection maps child to parent and restores the child on re-expansion."]
+    },
+    {
+      "id": 4,
+      "name": "agent-chosen-semantic-depth",
+      "prompt": "Use assets/minimal.json to make an architecture walkthrough for a reader who wants an overview first and selective detail later. Choose the initial global depth and useful local overrides yourself. Keep client details summarized initially while exposing API internals. Allow both to expand independently in sequence and C4, retain outer messages, and return HTML and JSON. Preserve evidence labels and do not invent deeper components just to fill levels.",
+      "expected_output": "An agent-selected initial presentation, independent local levels and global reset, with stable canonical identity and evidence.",
+      "files": [
+        "assets/minimal.json"
+      ],
+      "expectations": [
+        "Initial exploration settings focus the API while summarizing the client.",
+        "Local system/container controls work in both views; multiple containers can expand independently.",
+        "Collapse maps a selected child to its root and re-expansion restores it without losing outer interactions.",
+        "Only evidence-backed or explicitly proposed modeled internals are expandable."
+      ]
     }
   ]
 }
