@@ -10,7 +10,7 @@ metadata:
 
 # Investigate usability with observable tasks
 
-Use directly for a requested study/analysis or to address a material unresolved user question during authorized product/design work. A routine UI edit does not require a study. [Interaction design](../interaction-design/SKILL.md) owns the proposed flow; [interface craft](../interface-craft/SKILL.md) supplies heuristic inspection, which is a different evidence source.
+Use directly for a requested study/analysis or to address a material unresolved user question during authorized product/design work. A routine UI edit does not require a study. [Interaction design](../interaction-design/SKILL.md) owns the proposed flow; [interface quality](../interface-quality/SKILL.md) supplies heuristic inspection, which is a different evidence source.
 
 ## Frame the question and study boundary
 
