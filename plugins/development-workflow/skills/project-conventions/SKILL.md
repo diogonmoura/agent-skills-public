@@ -20,7 +20,7 @@ Read [workflow framing](../../WORKFLOW.md) for skill selection and invocation bo
 
 Read the request, existing code and accepted decisions before choosing structure. For a new project, establish a useful first slice. For an existing application, identify which foundation the requested change actually affects and update only that part; do not repeat setup or start a repository-wide reorganization during ordinary feature work. State the smallest useful user journey and its observable acceptance criteria; carry forward answers already agreed. Resolve ambiguity that changes the product or data boundary, and make reversible implementation choices without another planning ceremony. Use the conversation as scope unless a separate spec is useful; require no tickets or tracker.
 
-Prefer Python/FastAPI/PostgreSQL and Next.js/shadcn for new full-stack projects. Add AI or MCP for a concrete capability. Preserve an existing stack and layout unless changing them solves an agreed problem.
+Prefer Python/FastAPI/PostgreSQL and Next.js/shadcn for new web full-stack projects. For desktop prefer TypeScript + Tauri; for iOS/Android select a framework from product constraints, starting with React Native + Expo when TypeScript reuse fits. Use native-client-development when installed. Use system-design after product refinement and for consequential feature architecture before dependent planning/implementation. Add AI or MCP for a concrete capability. Preserve an existing stack and layout unless changing them solves an agreed problem.
 
 ## Adopt an existing project and assess the change
 
@@ -29,6 +29,8 @@ For initial adoption, discover authoritative startup/test/build/migration comman
 During a feature or fix, trace the affected paths and identify changed contracts, stored data, permissions, integrations, configuration and delivery consequences. Preserve useful legacy knowledge. Investigate contradictory code/docs and surface uncertainty that changes the outcome or risk; routine local choices can proceed. Keep this assessment inline for ordinary changes and record consequential decisions in the project's existing notes. Unrelated legacy debt remains separate unless it prevents the requested behavior.
 
 For shared saved searches, inspect existing ownership and all affected reads/writes before adding access grants. Preserve private defaults and define recipient permissions from the agreed scope; hiding UI controls does not enforce them. Select focused verification using `deliver-reliable-changes`, rather than invoking every installed skill.
+
+Before setup or feature writes, use [git-contributions](../git-contributions/SKILL.md) to create/reuse the separate objective worktree and verify the actual edit/command paths. Initialize an empty repository only as needed to enable that worktree. Keep the base checkout untouched by objective files.
 
 ## Establish a small, navigable repository
 
@@ -39,6 +41,21 @@ For shared saved searches, inspect existing ownership and all affected reads/wri
 - Add boundaries, services and infrastructure when a concrete requirement justifies them. Prefer domain-oriented code over layers with no present responsibility.
 
 Use the relevant backend/frontend/AI skills and installed upstream expertise; do not assume a reference is installed. Preserve compatible installed UI/UX guidance without redistributing private material. Capture repeated corrections as a short scoped instruction or an executable check, rather than accumulating generic rules.
+
+## Complete new-project foundations
+
+For a requested new application setup, create and validate the following applicable artifacts. A local-only execution boundary still permits preparing CI, release and deployment procedures; it does not authorize running remote publication or deployment.
+
+| Foundation | Expected artifact and evidence |
+| --- | --- |
+| Human onboarding | Authored root README linking each application/component README, purpose, architecture, prerequisites, configuration, install/start/migrate/test/build and shutdown/reset commands. Replace starter text and empty files. AGENTS.md complements these user-facing docs. |
+| Dependencies and configuration | Compatible manifests/lockfiles, safe .env examples, typed settings and actual lint/format/type/schema checks for code and configuration. Include YAML/actionlint, shell, Dockerfile and secret checks for files present; document scoped exceptions. |
+| Behavior verification | Runnable focused backend and frontend/component tests plus the first useful journey scaffold/fixtures. Setup tests prove startup/configuration boundaries; develop adds actual feature acceptance/regression tests. A build or empty test suite is insufficient. |
+| Containerized services | App-specific Dockerfiles and .dockerignore for each containerizable API/web/worker, a usable isolated Compose startup, migrations/readiness and owned data. Native clients use platform packaging; their Python services remain containerizable. |
+| CI and release | GitHub Actions that install locked tools, run code/configuration/behavior checks, build relevant artifacts and retain redacted failure evidence. Release workflows define versions, immutable artifacts and intended registries. |
+| Deployment and recovery | Document artifact promotion, required target/configuration/secrets, migrations, outcome verification and rollback/roll-forward. Implement target-specific automation when the target is agreed; an unknown target stays a blocker, not an invented cloud choice or pretend deploy job. |
+
+Use delivery-pipelines for implementation and registry defaults. Demonstrate a clean-checkout command path and inspect the actual artifacts before declaring setup complete. Keep knowledge navigable rather than producing numerous ceremonial documents. Existing projects and tiny changes retain proportionate scope.
 
 ## Establish focused quality checks
 
@@ -61,6 +78,8 @@ Desktop/mobile clients and simulators normally run on their supported host and c
 ## Include operating constraints in design
 
 Use `security-and-privacy-design` for changed data flows and authority boundaries. Identify critical latency/concurrency constraints, durable state and meaningful recovery needs early; choose simple hosting that meets them. Bring capacity, cost and data-recovery guidance into design when relevant rather than treating them as production afterthoughts. Use `delivery-pipelines` when creating CI/CD. Do not introduce platforms or complete operations frameworks merely because their skills are available.
+
+Agree the authoritative PRD/requirements, implemented architecture and target-design sources when establishing foundations. Use the project's existing work tracker or a lightweight ledger; add detail only when it answers a real decision. Keep operations observability and service-level definitions alongside runbooks, with candidate/approved/measured states explicit. Do not force a document tree or full planning ceremony on a routine fix.
 
 ## Keep foundations aligned as the project evolves
 

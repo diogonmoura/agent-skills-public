@@ -13,7 +13,7 @@ Use the client's skill picker or supported explicit invocation. VS Code uses nam
 | Starting or adopting a project | `setup` | Useful foundations, context and working commands |
 | Requirements need definition | `refine` | Actionable scope and acceptance, or concrete questions |
 | Scope agreed; sequencing needed | `plan` | Bounded steps and verification |
-| UX, contracts or architecture undecided | `design` | A design before implementation |
+| Architecture, UX or contracts undecided | `design` | System/platform decisions and interaction contracts before implementation |
 | Defined work ready to build | `implement` | Implemented and verified change |
 | Need evidence of behavior | `test` | Checks, results and coverage gaps |
 | PR or diff ready for assessment | `review` | Findings against intended behavior and standards |
@@ -117,3 +117,29 @@ python scripts/build_plugins.py \
 ```
 
 Explicit `--plugin` arguments replace the default selection; other bundle names work the same way. Build into a new destination, then replace the affected client installation with resources intact. Source `plugins/<name>` directories contain local guidance; built directories also contain acquired upstream skills and notices. Application dependencies and live tools are separate. See [migration](migration.md) before replacing old copies or links.
+
+For a new product, refine its business/product outcome, use system-design to compare architecture/platform choices, then plan and design the useful increment. Revisit the architecture decision for boundary-changing features. New setup includes authored READMEs, configuration checks, runnable tests, app containers, GitHub Actions and release/deployment procedures; unavailable target/platform execution stays explicit. Use native-client-development for TypeScript/Tauri desktop and informed iOS/Android choices, and build-evaluated-ai for AG-UI/A2UI integration when appropriate.
+
+## Optional Figma connection
+
+The web-frontend bundle declares Figma's official remote MCP endpoint in [mcp.json](../plugins/web-frontend/mcp.json). A compatible client can offer the connection; declaring it does not establish authentication, file access or write capability. Ordinary frontend work does not require a Figma account. Use the client's server enable/disable controls when Figma is not needed.
+
+Follow [Figma's client setup](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/) for supported clients and account authorization. Prefer Figma's official client plugin where available for its maintained tool guidance; avoid configuring a duplicate server if it already supplies the connection. A client may need to translate the portable declaration to its native configuration. No tokens or account identifiers belong in this repo or built bundles.
+
+Before a Figma-dependent trial, verify the client is supported, complete the user's account connection, discover the actual tools and read a supplied disposable frame plus its screenshot/variables. Test writes only in a user-authorized disposable design if that workflow requires them. Verify design read and write separately; HTTP URL configuration, plugin validation and HTTP 401 do not prove either capability. agy 1.3.5 plugin validation skips this portable mcp.json declaration (mcpServers not found). Its generic HTTP-server setup is a separate manual client configuration; that support alone does not establish Figma compatibility. Remote Figma access and OAuth through agy remain unverified. Missing access should produce a precise boundary or a local prototype where suitable, not a claim that Figma work was done.
+
+Storybook is an optional component workbench within verification. Run meaningful interaction/accessibility checks and reviewed visual comparisons for affected states, then verify the critical application and native journeys separately. See [journey testing](../plugins/development-workflow/skills/journey-testing/SKILL.md) and [community skill review](maintainers/sources.md#figma-community-review).
+
+## UI/UX expertise for people and agents
+
+The web-frontend bundle provides [interface-quality](../plugins/web-frontend/skills/interface-quality/SKILL.md), [ux-writing](../plugins/web-frontend/skills/ux-writing/SKILL.md) and [usability-research](../plugins/web-frontend/skills/usability-research/SKILL.md) as directly selectable, model-available supporting skills. Client picker/discovery behavior still needs verification. The same guidance supports design, develop, improve and review when relevant; no separate user and agent copies are maintained.
+
+Ask for a scoped result: "Review this dialog without changing it", "Improve and apply the error messages in this flow", or "Prepare a usability study for onboarding". A bare review/improvement assessment stays read-only. A specified repair can include implementation and rechecking. A research guide is a plan until actual observations exist. Ordinary UI development needs no compulsory study or Figma connection.
+
+Frontend conventions own product direction and stack; interaction-design owns flows and affected surfaces; interface-quality owns craft inspection and component/token audits; ux-writing owns task copy; usability-research owns studies and evidence synthesis. Existing test/journey guidance verifies implementation and Storybook states where adopted.
+
+## Explain and maintain project knowledge
+
+Use [documentation-writing](../plugins/development-workflow/skills/documentation-writing/SKILL.md) to write or review a useful product/engineering explanation, reference or procedure. Use [architecture-documentation](../plugins/development-workflow/skills/architecture-documentation/SKILL.md) to explain structure, runtime/lifecycle behavior, interfaces, deployment and current versus target state from evidence. Both are directly selectable and model-available supporting guidance; actual client discovery remains client-dependent.
+
+[Documentation conventions](../plugins/development-workflow/skills/documentation-conventions/SKILL.md) owns where authoritative knowledge lives and what a change affects. System-design owns architectural decisions; these methods help explain and maintain them. Existing formats and proportional scope remain authoritative; a routine edit needs no new tracker, document tree or full system audit.

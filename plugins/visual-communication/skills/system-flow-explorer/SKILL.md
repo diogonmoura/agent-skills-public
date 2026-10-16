@@ -27,7 +27,7 @@ Use this when an interactive architecture artifact is requested. For an evidence
 1. Identify the repository/service or proposed design, the audience, and the user scenarios. Infer these from the conversation; ask only about material gaps. Repository analysis and ideation are both first-class modes. A mixed design should label each implemented, proposed, and unresolved part individually.
 2. Read [analysis guidance](references/analysis.md). For repository work, inspect applicable agent guidance, entrypoints, route registration, service clients, persistence, and representative request paths. Treat documentation as a lead and check code. For brainstorming, record assumptions and open decisions explicitly.
 3. Read [the model contract](references/schema.md), then create JSON using `assets/minimal.json` as a structural example. Model actors and ownership before messages. Record paths/line ranges or supplied design citations in `sources`. Cite implemented claims. Use illustrative payload labels unless samples were actually observed; redact secrets and personal data.
-4. Add scenario roots in chronological order and optional component substeps linked by `parentId`. Preserve root IDs, payloads, and order while refining. Components belong to containers; external services/models stay in their own external systems. Flow tabs represent user scenarios only. Sequence versus C4 is a view; context/container/component is a separate depth selector.
+4. Choose the useful detail from the audience, scenario, and available evidence; the user does not need to request zoom controls. Use optional `exploration` settings for the initial global depth and local overrides. Keep simple flows shallow; model component drill-down where it helps explain behavior, without inventing internals. Add scenario roots in chronological order and optional component substeps linked by `parentId`. Preserve root IDs, payloads, and order while refining. Components belong to containers; external services/models stay in their own external systems. Flow tabs represent user scenarios only. Sequence versus C4 is a view; context/container/component is a separate depth selector.
 5. Validate and render (replace paths, run from any directory):
 
    ```sh
@@ -43,7 +43,9 @@ Use this when an interactive architecture artifact is requested. For an evidence
    node <skill>/scripts/browser_test.cjs explorer.html /absolute/path/to/frontend/node_modules
    ```
 
-   This checks selection across depth/view changes, parent preservation, external containment, raw JSON copying, navigation, and tab keyboard behavior. Do not install browser dependencies merely to render. Report browser checks as skipped if unavailable.
+   Set `PLAYWRIGHT_CHANNEL=chrome` to use an existing Chrome installation when Playwright has no bundled browser.
+
+   This checks selection across depth/view changes, global/local depth overrides, parent preservation, external containment, raw JSON copying, navigation, and tab keyboard behavior. Do not install browser dependencies merely to render. Report browser checks as skipped if unavailable.
 7. Deliver the HTML and JSON paths, evidence scope, uncertainty, and checks actually run. Describe conclusions and open decisions succinctly. For refinements, explain what changed and preserve stable IDs so selections remain meaningful.
 
 ## Modeling decisions
@@ -52,7 +54,7 @@ Use this when an interactive architecture artifact is requested. For an evidence
 - Use request/response/event directions and valid JSON payloads, including JSON strings for text. Copy always serializes the complete raw value, regardless of collapsed sections.
 - When helpful, include context lifetime, state reads/writes, persistence ownership, transforms, prompt messages, tool schemas/results, and field provenance in `examples` and `payloadProvenance`. These are optional; do not impose LLM or persistence concepts on systems without them.
 - Distinguish observed samples, illustrative examples, proposed bodies, and derived projections. Ground qualitative explanations in relevant facts/citations; matching a schema proves shape, not truth. See the reference for missing-data, failure, streaming, and cancellation coverage.
-- Expand one chosen container at component depth while keeping all other containers and every outer interaction visible. Internal substeps carry parent.child numbers and map back to their parent at shallower depths. Re-expanding restores a remembered child selection.
+- Use the global context/container/component switch as the default level. Local system/container choices override it in either view, so several containers can be expanded independently. Collapsed systems hide their internal overrides until reopened; Reset local levels clears overrides. Keep surrounding entities and every outer interaction visible. Only modeled children are expandable. Internal substeps carry parent.child numbers and map back to their parent at shallower depths. Re-expanding restores a remembered child selection.
 
 ## Resources
 

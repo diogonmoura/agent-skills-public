@@ -21,6 +21,8 @@ Identify the target repository from the supplied workspace. Read its AGENTS.md a
 
 Use one separate worktree per feature objective, including its tests/docs/configuration; reuse it throughout that objective. For a new feature, fetch the intended remote when available and create a named branch in a separate worktree. Place it beside the repository or in the workspace's designated worktree area. Use that worktree for all code, tests, migrations, docs and CI changes belonging to the objective. Keep unrelated changes out of the feature.
 
+Before writing objective files, verify the working directory and every edit/test path resolve inside the selected feature worktree. Reading this skill or naming a branch does not establish isolation. For a completely empty repository, create a minimal baseline commit if needed to enable worktrees, then create the objective worktree before foundation/feature writes. Carry its path into follow-up phases and keep the base checkout untouched except for that initialization.
+
 Adapt these example paths, branch and base to the inspected repository:
 
 ```bash

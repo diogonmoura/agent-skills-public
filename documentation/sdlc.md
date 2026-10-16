@@ -1,6 +1,6 @@
 # SDLC coverage
 
-Use the [SDLC overview](../README.md#sdlc-coverage) to orient yourself and the [task menu](usage.md#skills-you-invoke) to start work. This reference links the expertise behind those activities. `develop` spans the useful lifecycle; individual tasks let you enter at any phase. Phases are a map, not required handoffs.
+Use the [SDLC overview](../README.md#sdlc-coverage) to orient yourself and the [task menu](usage.md#skills-you-invoke) to start work. This reference links the expertise behind those activities. `develop` spans the useful lifecycle; individual tasks let you enter at any phase. Phases are a map, not required handoffs. For a new application, [new-application flow](../plugins/development-workflow/skills/develop/references/new-application-flow.md) defines the decision outcomes develop must establish before dependent work; setup alone does not establish the lifecycle.
 
 ## Before and around the cycle
 
@@ -10,49 +10,47 @@ Use the [SDLC overview](../README.md#sdlc-coverage) to orient yourself and the [
 
 ## Skills by phase
 
-### 1. Planning
+Product discovery and refinement establish the outcome. System design makes architectural decisions before dependent implementation planning; revisit it for features that change consequential boundaries. Phases can recur and do not require separate task invocations.
 
-Start with [plan](../plugins/development-workflow/skills/plan/SKILL.md). Supporting guidance: [project-conventions](../plugins/development-workflow/skills/project-conventions/SKILL.md), [reliability-design](../plugins/application-operations/skills/reliability-design/SKILL.md).
+### 1. Requirements analysis
 
-Expected outcome: Agreed scope, constraints and a useful next increment.
+Start with [refine](../plugins/development-workflow/skills/refine/SKILL.md). Establish actor authority, scope, observable acceptance and material unknowns. Business strategy supports the product decision when requested.
 
-### 2. Requirements analysis
+### 2. Architecture and system design
 
-Start with [refine](../plugins/development-workflow/skills/refine/SKILL.md). Supporting guidance: [reliability-design](../plugins/application-operations/skills/reliability-design/SKILL.md), [security-and-privacy-design](../plugins/development-workflow/skills/security-and-privacy-design/SKILL.md).
+Use [design](../plugins/development-workflow/skills/design/SKILL.md) with [system-design](../plugins/development-workflow/skills/system-design/SKILL.md). Compare consequential architecture/platform options against the product and operating constraints, map boundaries and critical flows, and carry the decisions into setup and feature plans. Reuse installed codebase-design/domain-modeling where applicable.
 
-Expected outcome: Observable acceptance and unresolved material decisions.
+### 3. Interaction, visual and contract design
 
-### 3. Design
+Use [design](../plugins/development-workflow/skills/design/SKILL.md), [frontend-conventions](../plugins/web-frontend/skills/frontend-conventions/SKILL.md), [interaction-design](../plugins/web-frontend/skills/interaction-design/SKILL.md) and relevant backend/native/AI guidance. Derive contextual visual direction and define surfaces, behavior, authority and failure contracts from the requirements before dependent implementation.
 
-Start with [design](../plugins/development-workflow/skills/design/SKILL.md). Supporting guidance: [interaction-design](../plugins/web-frontend/skills/interaction-design/SKILL.md), [frontend-conventions](../plugins/web-frontend/skills/frontend-conventions/SKILL.md), [backend-conventions](../plugins/python-backend/skills/backend-conventions/SKILL.md), [security-and-privacy-design](../plugins/development-workflow/skills/security-and-privacy-design/SKILL.md), [system-mapping](../plugins/development-workflow/skills/system-mapping/SKILL.md).
+### 4. Implementation planning and foundations
 
-Expected outcome: Relevant interactions, contracts and consequential decisions before code.
+Start with [plan](../plugins/development-workflow/skills/plan/SKILL.md). Produce bounded dependency-ordered increments, tests and delivery/recovery consequences from the accepted system and experience design. Reconcile earlier rough plans after material decisions; establish complete applicable project foundations.
 
-### 4. Implementation
+### 5. Implementation
 
-Start with [implement](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/implement) (bundled upstream). Supporting guidance: [frontend-conventions](../plugins/web-frontend/skills/frontend-conventions/SKILL.md), [backend-conventions](../plugins/python-backend/skills/backend-conventions/SKILL.md), [build-evaluated-ai](../plugins/ai-development/skills/build-evaluated-ai/SKILL.md), [git-contributions](../plugins/development-workflow/skills/git-contributions/SKILL.md).
+Start with bundled upstream implement. Use [git-contributions](../plugins/development-workflow/skills/git-contributions/SKILL.md) for the actual objective worktree and applicable frontend/backend/AI/native-client guidance. Keep source, configuration, tests and docs in that objective.
 
-Expected outcome: A scoped change following the accepted project and design.
+### 6. Testing and repair
 
-### 5. Testing
+Start with [test](../plugins/development-workflow/skills/test/SKILL.md). Use [deliver-reliable-changes](../plugins/development-workflow/skills/deliver-reliable-changes/SKILL.md), [journey-testing](../plugins/development-workflow/skills/journey-testing/SKILL.md), and performance/resilience methods when relevant. Commit meaningful tests, inspect failures, repair and recheck the real behavior.
 
-Start with [test](../plugins/development-workflow/skills/test/SKILL.md). Supporting guidance: [deliver-reliable-changes](../plugins/development-workflow/skills/deliver-reliable-changes/SKILL.md), [journey-testing](../plugins/development-workflow/skills/journey-testing/SKILL.md), [performance-testing](../plugins/development-workflow/skills/performance-testing/SKILL.md), [resilience-testing](../plugins/development-workflow/skills/resilience-testing/SKILL.md).
+### 7. Release and deployment
 
-Expected outcome: Evidence for the intended behavior, with actual boundaries and gaps.
+Start with [release](../plugins/development-workflow/skills/release/SKILL.md). Use [delivery-pipelines](../plugins/development-workflow/skills/delivery-pipelines/SKILL.md) for CI, artifacts, registry publication, promotion and recovery. Setup authors applicable delivery foundations; live release/deployment requires a named authorized action.
 
-### 6. Deployment
+### 8. Maintenance and learning
 
-Start with [release](../plugins/development-workflow/skills/release/SKILL.md). Supporting guidance: [delivery-pipelines](../plugins/development-workflow/skills/delivery-pipelines/SKILL.md), [runbook-engineering](../plugins/application-operations/skills/runbook-engineering/SKILL.md), [observability-operations](../plugins/application-operations/skills/observability-operations/SKILL.md).
+Start with improve/dependencies or the requested operations activity. Use relevant upkeep, vulnerability, credential, capacity/cost and data-recovery guidance. Feed product evidence and incident learning into the next refinement/design decision.
 
-Expected outcome: Readiness, or verification/recovery for a named authorized delivery action.
+## UI/UX methods across activities
 
-### 7. Maintenance
-
-Start with [improve](../plugins/development-workflow/skills/improve/SKILL.md) / [dependencies](../plugins/development-workflow/skills/dependencies/SKILL.md). Supporting guidance: [operational-housekeeping](../plugins/application-operations/skills/operational-housekeeping/SKILL.md), [vulnerability-management](../plugins/application-operations/skills/vulnerability-management/SKILL.md), [protect-and-restore-data](../plugins/application-operations/skills/protect-and-restore-data/SKILL.md), [plan-application-capacity](../plugins/application-operations/skills/plan-application-capacity/SKILL.md), [optimize-application-cost](../plugins/application-operations/skills/optimize-application-cost/SKILL.md).
-
-Expected outcome: Evidence-backed improvements and scoped maintenance.
+[Interface quality](../plugins/web-frontend/skills/interface-quality/SKILL.md) assesses and refines the intended experience; [UX writing](../plugins/web-frontend/skills/ux-writing/SKILL.md) connects language to real actions and states; [usability research](../plugins/web-frontend/skills/usability-research/SKILL.md) prepares studies or analyzes supplied observations. They are both directly requestable and model-available support for relevant design, development, improvement and review. Existing frontend/interaction guidance retains direction, stack and flow ownership; journey-testing retains executable verification. No study or design tool is compulsory for every UI change.
 
 ## Across phases
+
+[Documentation writing](../plugins/development-workflow/skills/documentation-writing/SKILL.md) guides authoring and reader review. [Architecture documentation](../plugins/development-workflow/skills/architecture-documentation/SKILL.md) explains structural/runtime/interface/deployment views with source evidence. They complement documentation-conventions and system-design rather than replacing their ownership.
 
 Research, explicit clarification, prose editing, documentation, Git contributions, security and operating constraints can support any relevant phase. `review` is not confined to a final gate. Design and verification can recur during implementation; a phase label does not restrict when guidance is useful.
 
@@ -71,6 +69,7 @@ Generic means reusable across stacks; stack-specific means select it only for ma
 | Documentation | Generic | [documentation-conventions](../plugins/development-workflow/skills/documentation-conventions/SKILL.md) | [writing-for-agents](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/productivity/writing-for-agents) for agent instructions |
 | Prose editing | No local skill | Follow the document's author and technical claims | [humanizer](https://github.com/blader/humanizer/tree/225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8) |
 | Frontend development | Generic + stack-specific | [frontend-conventions](../plugins/web-frontend/skills/frontend-conventions/SKILL.md), [interaction-design](../plugins/web-frontend/skills/interaction-design/SKILL.md) for prior UX design and full-surface coverage | Official shadcn, Tailwind design system, Vercel React/composition |
+| Desktop and mobile clients | Stack-specific | [native-client-development](../plugins/web-frontend/skills/native-client-development/SKILL.md) for TypeScript/Tauri and informed iOS/Android choices | Current Tauri/Expo/React Native/platform documentation |
 | Backend development | Stack-specific | [backend-conventions](../plugins/python-backend/skills/backend-conventions/SKILL.md) | [modern-python](https://github.com/trailofbits/skills/tree/82fe8226252622fa807643bdca1710901198553a/plugins/modern-python/skills/modern-python) |
 | AI development | Stack-specific | [build-evaluated-ai](../plugins/ai-development/skills/build-evaluated-ai/SKILL.md) (local, not an upstream skill) | Chosen Google ADK or LangChain/LangGraph skills |
 | MCP interfaces | Stack-specific | MCP section of [build-evaluated-ai](../plugins/ai-development/skills/build-evaluated-ai/SKILL.md); reuse authorized application services | [mcp-builder](https://github.com/anthropics/skills/tree/8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4/skills/mcp-builder), in `ai-development`; prefer standalone Python FastMCP |
@@ -80,7 +79,7 @@ Generic means reusable across stacks; stack-specific means select it only for ma
 | Code review | No local skill | Requested behavior and project standards | [code-review](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/code-review); [differential-review](https://github.com/trailofbits/skills/tree/82fe8226252622fa807643bdca1710901198553a/plugins/differential-review/skills/differential-review) for security-sensitive diffs |
 | Debugging | No local skill | Preserve the affected scope and regression evidence | [diagnosing-bugs](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/diagnosing-bugs) |
 | Research | No local skill | Record decision-changing findings where the project keeps them | [research](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/research) |
-| Architecture and domain design | No local skill | Relevant frontend/backend conventions | [codebase-design](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/codebase-design), [domain-modeling](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/domain-modeling), [prototype](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/prototype) when exploration is requested |
+| Architecture and domain design | Generic | [system-design](../plugins/development-workflow/skills/system-design/SKILL.md) | [codebase-design](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/codebase-design), [domain-modeling](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/domain-modeling), [prototype](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/engineering/prototype) when exploration is requested |
 | Git contributions | Generic | [git-contributions](../plugins/development-workflow/skills/git-contributions/SKILL.md) | No separate PR template required |
 | Delivery | Generic | [delivery-pipelines](../plugins/development-workflow/skills/delivery-pipelines/SKILL.md) | [github-actions-hardening](https://github.com/github/awesome-copilot/tree/143a3d976b3c1603cc8932984d5e1f28501cb5fc/skills/github-actions-hardening) for GitHub Actions |
 | Security and privacy | Generic | [security-and-privacy-design](../plugins/development-workflow/skills/security-and-privacy-design/SKILL.md) | [differential-review](https://github.com/trailofbits/skills/tree/82fe8226252622fa807643bdca1710901198553a/plugins/differential-review/skills/differential-review), [supply-chain-risk-auditor](https://github.com/trailofbits/skills/tree/82fe8226252622fa807643bdca1710901198553a/plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor) within supported coverage |

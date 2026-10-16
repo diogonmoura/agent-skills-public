@@ -26,6 +26,7 @@ For a full-stack claim, exercise the real frontend, API and the application's ac
 | Surface | Starting point | Boundary to verify |
 | --- | --- | --- |
 | Web | Playwright plus installed browser CLI/MCP for exploration | Actual browsers, responsive sizes, keyboard/focus and relevant role variants |
+| Tauri | Supported native/WebView automation for the actual target; component/browser checks supplement it | Packaged shell, IPC capabilities, lifecycle and OS integration; web preview is narrower evidence |
 | Electron | Playwright Electron support where compatible (experimental) | Renderer coverage does not prove native dialogs, packaging, updates or filesystem integration |
 | Native desktop | Platform-native automation or an appropriate maintained Appium driver | Named supported OS and packaged application; inspect driver maintenance/limitations |
 | Android/iOS | Maestro for suitable flows or Appium/platform-native tooling | Actual emulator/device, lifecycle, permissions, keyboard, offline and supported OS behavior |
@@ -35,6 +36,12 @@ A mobile viewport is not a native-mobile test. Maestro's desktop authoring app d
 Combine a small critical journey suite with component/state checks, visual regression, accessibility evaluation and bounded agent exploration. Use a component-state catalogue such as Storybook when the project benefits from it; it is optional. Stabilize data, rendering environment, fonts, time and animations for visual comparisons; compare against the accepted design and reviewed baselines. A changed screenshot is evidence to investigate, not permission to accept a new baseline. Automated accessibility checks complement keyboard, screen-reader and user evaluation where needed; they do not prove accessibility or usability.
 
 For exploration give the agent a user goal, acceptance criteria, target and allowed actions, rather than only a prescribed click sequence. Inspect real UI/accessibility state, relevant requests, console errors, persisted outcomes and telemetry. Screenshots aid layout judgment but cannot establish saved data, permissions or task success. Preserve useful reproductions and convert discovered regressions into checks at the appropriate boundary. Treat model visual/usability judgments as fallible findings, calibrate against accepted references and human examples, and distinguish observations from subjective suggestions. An agent's positive narrative is not a release gate.
+
+## Exercise components within the verification loop
+
+Where Storybook is adopted, derive stories from the accepted interaction/state coverage before implementation and exercise the actual shared components, including portals and required providers. Add meaningful interaction assertions, accessibility checks and reviewed visual comparisons to the existing local/CI checks using the project's version-compatible runner. A static Storybook build only proves the catalogue builds. A story rendered without assertions is not evidence that its interaction works. Do not silently treat accessibility warnings as passing required checks or require a paid publishing service to run local tests.
+
+For a modal, verify keyboard opening, initial focus, Tab/Shift+Tab containment, Escape and trigger restoration; a mounted component assertion misses those behaviors. Keep narrow failure/draft states repeatable through controlled providers. Reuse stories or fixtures in other tests where supported instead of duplicating identical coverage. Still verify the actual route/native caller, real authentication, API/database persistence and denied access in critical journeys. Keep heuristic design critique, agent exploration and observed participant usability research distinct; a discussion guide is a research plan, not evidence that users completed tasks.
 
 ## Make outcomes observable
 
@@ -48,7 +55,7 @@ For saved searches, create a named filter as user A, reopen it after reload and 
 
 ## Keep tests trustworthy
 
-Isolate users and data per test or worker and use an explicit test database. Apply migrations, establish service readiness and clean up only owned test data; do not reset an unspecified database. Use semantic locators and observable-state waits instead of fixed sleeps. Keep credentials out of committed fixtures and traces.
+Isolate users and data per test or worker and use an explicit test database. Apply migrations, establish service readiness and clean up only owned test data; do not reset an unspecified database. Use semantic locators and observable-state waits instead of fixed sleeps. Keep real credentials out of committed fixtures and traces. Synthetic test identities require explicit local/test opt-in and production rejection, with regression checks for those configuration boundaries.
 
 Match local and CI configuration. Capture failure traces/screenshots and useful service logs. Reproduce a flaky failure and diagnose state, timing or environment before changing waits; do not weaken assertions or inflate retries to hide it. Keep a small critical journey set fast enough to run routinely.
 

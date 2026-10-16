@@ -4,7 +4,7 @@
 
 ## Top level
 
-Required: `version: 1`, `title: string`, `summary: string`, `sources: []`, `nodes: []`, `messages: []`, `flows: []`. Optional `assumptions: [string]`. At least one node, message, and flow. See `assets/minimal.json` for an executable example.
+Required: `version: 1`, `title: string`, `summary: string`, `sources: []`, `nodes: []`, `messages: []`, `flows: []`. Optional `assumptions: [string]` and `exploration` settings. At least one node, message, and flow. See `assets/minimal.json` for an executable example.
 
 ## Sources
 
@@ -49,6 +49,21 @@ Optional `examples`: array of `{label, kind, value, provenance}` with optional `
 
 ## Projection and selection invariants
 
-View is `sequence` or `c4`; depth is `context`, `container`, or `component`. They are independent UI controls. Expanded container is chosen from containers with components. Context projects all nodes to person/system; container projects components to containers. Component projects only the chosen container's components individually and retains other containers/persons. Boundary rectangles name the owning system/container, including external ownership.
+View is `sequence` or `c4`; global depth is `context`, `container`, or `component`. They are independent UI controls. Component depth expands all modeled containers by default. Local overrides let several regions stay at different levels in either view. Only modeled children are expandable; component-of-component and nested message hierarchies remain outside version 1.
 
-Every root interaction survives every projection, including collapsed self-loops. Child `parentId` maps selection to a root at shallow depths. The picker, diagram, previous/next, payload, and network inspector derive from the same selected canonical message. Switching views preserves identity; switching depths remembers hidden children; switching scenarios resets selection to that scenario's first root.
+Optional initial settings, chosen by the generating agent when useful:
+
+```json
+"exploration": {
+  "depth": "container",
+  "overrides": {"api": "component"}
+}
+```
+
+`depth` is required when `exploration` is supplied; without settings the renderer starts at container depth. `overrides` is an optional object keyed by node ID. Systems with modeled containers accept context/container/component; containers with modeled components accept container/component. Unknown IDs, leaf-node overrides, and unsupported levels are invalid. A container inherits its system's level, and a system inherits the global level. A local container choice reveals its owning system at container level even when the global level is context. An explicit context override on that system hides all its internals, including saved container overrides. These reappear when the system is expanded. Changing the global level preserves local choices; Reset local levels clears them. Initial settings affect presentation only, not evidence or canonical identities.
+
+Context projects internal nodes to their system. At component depth, refined endpoints use their declared component; unrefined container endpoints remain aggregate containers. Boundary rectangles name the owning system/container, including external ownership. Local controls are available on sequence participants, C4 nodes, ownership boundaries, and in the Local detail levels panel; the panel also allows choosing inheritance again.
+
+Every root interaction survives every projection, including collapsed self-loops. Child `parentId` maps selection to a root when hidden. The picker, diagram, previous/next, payload, and network inspector derive from the same selected canonical message. Switching views preserves identity and depth choices; collapsing remembers hidden children; switching scenarios resets selection to that scenario's first root while retaining depth choices. Re-expanding restores a remembered child unless the reader has explicitly selected another message.
+
+The Python `project` helper accepts an `overrides` mapping for the same projection. Its legacy `expanded` argument retains single-container component expansion for existing callers.

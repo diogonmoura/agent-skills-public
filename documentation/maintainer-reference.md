@@ -25,10 +25,11 @@ Use this page when changing the collection. For installation and everyday use, s
 ```bash
 python scripts/validate_plugins.py
 python scripts/check_collection.py
+python scripts/validate_evaluations.py
 python -m unittest discover -s tests -v
 ```
 
-CI also builds all seven pinned bundles, checks inventories/notices/local-resource parity and duplicate names, and runs explorer smoke checks. To check a fresh all-plugin build locally, run `python scripts/check_collection.py --built <destination>`. The link checker covers maintained Markdown guides and entry points; it does not fetch external URLs or parse every preserved resource example. Render changed diagrams separately. Packaging checks do not establish application behavior.
+CI also builds all seven pinned bundles, checks inventories/notices/local-resource parity and duplicate names, and runs explorer smoke checks. To check a fresh all-plugin build locally, run `python scripts/check_collection.py --built <destination>`. The link checker covers maintained Markdown guides and entry points; it does not fetch external URLs or parse every preserved resource example. Render changed diagrams separately. Evaluation-definition checks validate structure and flow references; behavioral trials remain explicit, separately recorded runs. Packaging checks do not establish application behavior.
 
 ## Naming and invocation
 
@@ -41,14 +42,14 @@ Use lowercase kebab-case: short activities for tasks (`develop`, `test`, `review
 | `role` | `task` entry point or `support` guidance |
 | `invocation` | Preferred `user`, `agent` or `both` usage |
 
-Labels do not enforce permissions. Task entries use native explicit-only controls; most local support is model-available with `user-invocable: false`. Preserve upstream controls and record client limitations. [TASKS.md](../plugins/development-workflow/TASKS.md) owns execution scope; [WORKFLOW.md](../plugins/development-workflow/WORKFLOW.md) owns upstream project fit.
+Labels do not enforce permissions. Task entries use native explicit-only controls; most local support is model-available with `user-invocable: false`. The three UI/UX discipline skills are also directly selectable with `user-invocable: true`, using the same body for people and agents. Preserve upstream controls and record client limitations. [TASKS.md](../plugins/development-workflow/TASKS.md) owns execution scope; [WORKFLOW.md](../plugins/development-workflow/WORKFLOW.md) owns upstream project fit and consequential-finding decisions across phases.
 
 ## Keep guidance focused
 
 | Rule | Owner |
 | --- | --- |
 | Request and automation scope | TASKS.md |
-| Upstream project fit | WORKFLOW.md |
+| Upstream project fit and consequential user decisions | WORKFLOW.md |
 | Repository foundations | project-conventions |
 | Worktrees, commits and PRs | git-contributions |
 | Verification and completion evidence | deliver-reliable-changes |

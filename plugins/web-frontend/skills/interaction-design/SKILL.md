@@ -13,7 +13,7 @@ metadata:
 
 # Design interactions before implementation
 
-Use this with frontend-conventions for the actual stack/design direction. It defines behavior and coverage, not a new visual framework. Apply it automatically to relevant requested work; users do not need to remember the skill name. A typo, a tiny token adjustment or unchanged interaction needs proportionate reasoning, not a fresh full design document.
+Use this with frontend-conventions for the actual stack/design direction. It defines behavior and coverage; frontend-conventions owns product-derived visual direction, tokens and rendered visual review. Both are needed for a new interface. Apply it automatically to relevant requested work; users do not need to remember the skill name. A typo, a tiny token adjustment or unchanged interaction needs proportionate reasoning, not a fresh full design document.
 
 ## Discover the full affected experience
 
@@ -47,3 +47,5 @@ For contract boundaries coordinate backend authority, invariants, validation and
 
 
 Derive evaluation scenarios from the agreed interactions before implementation. Use component states to inspect shared patterns and route/device journeys to establish actual integration. Compare rendered surfaces against accepted references; investigate visual differences without automatically approving new baselines. Agent exploration can expose usability issues beyond scripts, but subjective/model judgments need evidence and appropriate human calibration. Feed concrete discrepancies into the repair/recheck loop, preserving the intended behavior and recording incomplete coverage.
+
+Use [interface quality](../interface-quality/SKILL.md) to assess the rendered direction, [UX writing](../ux-writing/SKILL.md) for task language and [usability research](../usability-research/SKILL.md) for requested study planning or supplied participant evidence. Responsive adaptation follows actual content/platform constraints, accepted tokens and meaningful viewport/zoom/locale tests; a single generated phone frame does not establish native or responsive-range coverage.

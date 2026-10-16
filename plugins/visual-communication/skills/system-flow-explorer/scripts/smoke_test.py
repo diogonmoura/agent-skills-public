@@ -27,6 +27,43 @@ class ModelTests(unittest.TestCase):
         items = project(self.data, "understand", "component", "api")
         self.assertIn({"id": "modelCall", "parentId": "modelCall", "number": "6", "from": "adapter", "to": "provider"}, items)
 
+    def test_independent_local_depth_and_system_collapse(self):
+        base = dict(flow_id="find", depth="container")
+        api = project(self.data, **base, overrides={"api": "component"})
+        self.assertIn("read", [m["id"] for m in api])
+        self.assertNotIn("selectDocument", [m["id"] for m in api])
+        both = project(self.data, **base, overrides={"api": "component", "client": "component"})
+        self.assertIn("read", [m["id"] for m in both])
+        self.assertIn("selectDocument", [m["id"] for m in both])
+        self.assertEqual([m["id"] for m in both if m["id"] == m["parentId"]], self.data["flows"][0]["messageIds"])
+        collapsed = project(self.data, **base, overrides={"library": "context", "api": "component"})
+        self.assertEqual([m["id"] for m in collapsed], self.data["flows"][0]["messageIds"])
+        self.assertEqual(next(m for m in collapsed if m["id"] == "lookup")["to"], "library")
+        self.assertEqual(project(self.data, "find", "context", overrides={"api": "component"}), api)
+        global_components = project(self.data, "find", "component")
+        self.assertEqual(global_components, both)
+        summarized_client = project(self.data, "find", "component", overrides={"client": "container"})
+        self.assertEqual(summarized_client, api)
+
+    def test_initial_exploration_settings_and_invalid_overrides(self):
+        self.data["exploration"] = {"depth": "context", "overrides": {"api": "component"}}
+        validate(self.data)
+        rendered = render(self.data)
+        embedded = rendered.split('<script id="flow-model" type="application/json">')[1].split('</script>')[0]
+        self.assertEqual(json.loads(embedded)["exploration"], self.data["exploration"])
+        for settings in (
+            {}, {"depth": "code"}, {"depth": "container", "unknown": True},
+            {"depth": "container", "overrides": []},
+            {"depth": "container", "overrides": {"missing": "component"}},
+            {"depth": "container", "overrides": {"reader": "context"}},
+            {"depth": "container", "overrides": {"provider": "container"}},
+            {"depth": "container", "overrides": {"api": "context"}},
+        ):
+            with self.subTest(settings=settings):
+                self.data["exploration"] = settings
+                with self.assertRaises(ModelError):
+                    validate(self.data)
+
     def test_reject_invalid_identity_hierarchy_and_transport(self):
         mutations = [
             lambda d: d["nodes"].append(copy.deepcopy(d["nodes"][0])),

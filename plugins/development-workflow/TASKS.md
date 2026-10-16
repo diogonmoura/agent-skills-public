@@ -24,9 +24,13 @@ Implement is acquired from the pinned upstream source with local entry-point fra
 
 ## Scope and decisions
 
+Apply [consequential finding decisions](WORKFLOW.md#resolve-consequential-findings) in every phase, not only new-product setup or architecture. Specialists establish facts and options; shared workflow governs user decisions, accepted constraints and dependent-work blockers.
+
 Read project instructions, current changes and accepted decisions. Use the supplied conversation, Markdown or a configured tracker; tickets are optional. Resolve technical facts from evidence before asking. Ask only unresolved questions affecting product outcomes, authority, material design, compatibility or irreversible consequences. State reasonable reversible assumptions and continue independently where possible. Preserve existing answers and authorization. Never invent unavailable references, test results or application inspections without the relevant evidence.
 
-For substantive UI work use interaction-design from web-frontend when installed: map affected routes/dialogs/shared patterns, establish interaction behavior before implementation and verify scope coverage afterward. Backend work similarly defines actor authority, invariants, state/failure and public contracts before code. Ordinary copy/minor token edits need proportionate checks, not a full design ceremony. Use frontend/backend/AI and operations specialists only when applicable/available; no task requires loading every skill.
+For a new application, develop owns the end-to-end outcomes in [new-application flow](skills/develop/references/new-application-flow.md); setup alone covers technical foundations and cannot establish the full lifecycle. Reuse accepted decisions, resolve material feasibility/licensing constraints and keep missing outcomes visible.
+
+After product refinement use system-design for consequential architecture; carry the decisions into plans for new products and boundary-changing features. For substantive UI work, including Tauri webviews, use frontend-conventions for contextual visual direction and interaction-design from web-frontend when installed: map affected routes/dialogs/shared patterns, establish interaction behavior before implementation and verify scope coverage afterward. Backend work similarly defines actor authority, invariants, state/failure and public contracts before code. Ordinary copy/minor token edits need proportionate checks, not a full design ceremony. Use frontend/backend/AI and operations specialists only when applicable/available; no task requires loading every skill.
 
 Use git-contributions for feature isolation, commits and concise PRs. An implementation objective uses its existing feature worktree or creates one; keep source/tests/docs together and preserve unrelated edits. Explicit implement includes creating the requested code, checks and commits within that flow, not only suggesting commands. If writing/refactoring is not requested, return findings/design instead. No task grants permission to send messages, publish reviews, create tracker records, merge, deploy or perform live mutations beyond the established request/policy.
 
@@ -49,7 +53,11 @@ Read the linked local guidance in the selected task. For implementation, use [gi
 
 | Changed concern | Additional guidance when installed |
 | --- | --- |
-| Frontend interactions or layout | frontend-conventions and interaction-design |
+| System/service/client boundaries or consequential architecture | system-design; architecture-documentation for evidence-backed current/target views; codebase-design/domain-modeling when relevant |
+| Product/engineering documentation | documentation-conventions for ownership/upkeep; documentation-writing for authoring and reader review |
+| Desktop or iOS/Android client | native-client-development and interaction-design |
+| Frontend interactions or layout | frontend-conventions and interaction-design; interface-quality for meaningful craft review/design, ux-writing for task copy |
+| Usability study or supplied participant observations | usability-research; distinguish study preparation, heuristic critique and actual research |
 | API, stored data or durable work | backend-conventions |
 | Model/agent or MCP behavior | build-evaluated-ai and the chosen framework/protocol specialist |
 | Signals, recovery, capacity or operating behavior | The relevant application-operations skill |

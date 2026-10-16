@@ -9,7 +9,7 @@ description: Develop, evaluate, compare, and continuously update business and pr
   strategy frameworks, or when the user wants to determine what a product or company
   should become. Treat the user's initial concept as a hypothesis, not the strategy.
 metadata:
-  version: '2.2'
+  version: '2.3'
   scope: generic
   invocation: user
   role: task
@@ -365,6 +365,10 @@ Always distinguish:
 - **Inference** — conclusion drawn from evidence
 - **Assumption** — unverified belief required by the thesis
 - **Strategic judgment** — recommendation under uncertainty
+
+Keep recommendations and user-accepted commitments distinct in every persistent artifact. Mark proposed pivots, pricing, buyers and business models as provisional until the user accepts them; a decision log cannot manufacture that acceptance. Carry only accepted commitments into system design and implementation.
+
+For decision-changing competitor, adoption, pricing, licensing or protocol-support claims, verify current primary evidence and cite the supporting page. Describe untested vendor claims as such. A missing feature in a page is not proof a competitor lacks it; examples and SDKs can have different licenses. Do not invent evidence IDs, customer research, purchase intent or certainty such as zero architectural drift to fill a strategy template. Leave unknowns explicit and label numeric scenarios as assumptions with inputs and sensitivity.
 
 Prefer primary sources where possible and match source type to claim type. Actively search for counter-evidence. Multiple pages repeating one origin are not independent confirmation.
 
