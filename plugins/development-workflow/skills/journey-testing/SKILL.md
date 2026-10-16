@@ -37,6 +37,12 @@ Combine a small critical journey suite with component/state checks, visual regre
 
 For exploration give the agent a user goal, acceptance criteria, target and allowed actions, rather than only a prescribed click sequence. Inspect real UI/accessibility state, relevant requests, console errors, persisted outcomes and telemetry. Screenshots aid layout judgment but cannot establish saved data, permissions or task success. Preserve useful reproductions and convert discovered regressions into checks at the appropriate boundary. Treat model visual/usability judgments as fallible findings, calibrate against accepted references and human examples, and distinguish observations from subjective suggestions. An agent's positive narrative is not a release gate.
 
+## Exercise components within the verification loop
+
+Where Storybook is adopted, derive stories from the accepted interaction/state coverage before implementation and exercise the actual shared components, including portals and required providers. Add meaningful interaction assertions, accessibility checks and reviewed visual comparisons to the existing local/CI checks using the project's version-compatible runner. A static Storybook build only proves the catalogue builds. A story rendered without assertions is not evidence that its interaction works. Do not silently treat accessibility warnings as passing required checks or require a paid publishing service to run local tests.
+
+For a modal, verify keyboard opening, initial focus, Tab/Shift+Tab containment, Escape and trigger restoration; a mounted component assertion misses those behaviors. Keep narrow failure/draft states repeatable through controlled providers. Reuse stories or fixtures in other tests where supported instead of duplicating identical coverage. Still verify the actual route/native caller, real authentication, API/database persistence and denied access in critical journeys. Keep heuristic design critique, agent exploration and observed participant usability research distinct; a discussion guide is a research plan, not evidence that users completed tasks.
+
 ## Make outcomes observable
 
 - Assert user-visible results and relevant persisted state, not merely successful clicks, HTTP 200 or the absence of errors.
