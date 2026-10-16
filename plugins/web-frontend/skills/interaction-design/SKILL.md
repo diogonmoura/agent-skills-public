@@ -47,3 +47,5 @@ For contract boundaries coordinate backend authority, invariants, validation and
 
 
 Derive evaluation scenarios from the agreed interactions before implementation. Use component states to inspect shared patterns and route/device journeys to establish actual integration. Compare rendered surfaces against accepted references; investigate visual differences without automatically approving new baselines. Agent exploration can expose usability issues beyond scripts, but subjective/model judgments need evidence and appropriate human calibration. Feed concrete discrepancies into the repair/recheck loop, preserving the intended behavior and recording incomplete coverage.
+
+Use [interface craft](../interface-craft/SKILL.md) to assess the rendered direction, [UX writing](../ux-writing/SKILL.md) for task language and [usability research](../usability-research/SKILL.md) for requested study planning or supplied participant evidence. Responsive adaptation follows actual content/platform constraints, accepted tokens and meaningful viewport/zoom/locale tests; a single generated phone frame does not establish native or responsive-range coverage.
