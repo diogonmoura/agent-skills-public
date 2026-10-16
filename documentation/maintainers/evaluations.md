@@ -2,7 +2,7 @@
 
 [Maintainer guide](../maintainer-reference.md) · [Trial procedure](#generation-trials) · [Evidence](#recorded-evidence-and-limits) · [Local agy example](#local-runner-example-agy)
 
-The [evaluation cases](../../evals/development-workflows.json) contain 37 behavior prompts, 12 generation trials and a nine-flow coverage map, with separate actor inputs and evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+The [evaluation cases](../../evals/development-workflows.json) contain 38 behavior prompts, 12 generation trials and a nine-flow coverage map, with separate actor inputs and evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
 
 ## Intended flows and execution levels
 
@@ -53,7 +53,19 @@ Next run fresh-desktop-from-product-idea from an empty repository without old co
 
 Keep Figma declaration/discovery/OAuth/read/write, protocol/renderer, named-session and voice/provider checks independently gated. Missing Figma tools allow useful supplied/local review but do not satisfy a live read/write claim. Never connect an account, upload private product artifacts or publish Storybook merely to pass a test without that action being authorized.
 
-These revisions are unexecuted definitions. Historical records below retain their source revisions and scope. The new skill collection has 53 local plus 37 pinned upstream skills; older 87-skill results are not retrospectively upgraded to the 90-skill revision.
+Most definitions remain unexecuted; the focused observations below identify the cases actually run. The current collection has 55 local plus 37 pinned upstream skills. Historical 87- and 90-skill results retain their original revisions and scope.
+
+## Focused UI/UX observations
+
+At merged source `58ad31c`, I ran five fresh agy 1.3.5 probes with 92 installed skills: interface-quality-direct-read-only, ux-writing-review-and-scope, usability-research-plan-only, figma-capability-boundaries and small-ui-change-proportionality. Grading found one pass (the isolated typo correction) and four partial results. The actor received tasks, contracts and capabilities; diagnoses and criteria stayed with the evaluator.
+
+The review found real browser defects but proposed an unverified contrast replacement (2.35:1 while claiming at least 3:1). Copy blurred queued and started states and omitted irreversible-deletion explanation. Research planning coached an invalid attempt and claimed a discovery percentage without evidence. The Figma fallback respected remote boundaries but chose a session scratch path outside the allowed script destination. No explicit design entry-point read was visible; this is a routing evidence gap, not proof of unavailable design guidance.
+
+The contrast applicability guidance follows [W3C’s explanation of non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html), including when a visible boundary is necessary to identify a control.
+
+The focused guidance changes address these decision points, and the corresponding criteria now check default wording, complete confirmations, neutral recovery tasks, numeric recommendations and chosen output paths. The live Figma case separately checks client-specific authentication, persisted create/read/update and cleanup. Repository checks validate the definitions; they do not execute these cases.
+
+I also completed an authenticated Figma round trip through the Codex Figma integration: created a disposable file, recorded its empty page, created a named frame with two text nodes, read design context, updated its text, inspected the updated render, removed only the recorded test nodes and confirmed their absence in a separate read. The blank disposable file remains. This verifies that connection's native writes and context reads, not agy authentication, design-system fidelity, real product design or implementation. No sharing, publication or paid upgrade occurred. Account identifiers and private file links are excluded from this repository.
 
 ## Generation trials
 
@@ -156,7 +168,7 @@ Keep the failed application outputs and actor traces as baselines. Resolve one b
 5. Rerun fresh desktop generation after the targeted fixes, without old code or grader diagnoses. Grade design, component tests, backend/authentication, real journey, foundations and native execution separately. Resolve harness 503 failures independently and preserve incomplete output.
 6. Continue protocol/schema/independent-renderer and real-session capability probes before canvas implementation; run iOS/Android native checks only with the required SDKs/device environment. Keep unavailable boundaries explicit.
 
-The Figma MCP declaration and Storybook guidance have package-level checks only. agy 1.3.5 validates the skills but skips the portable MCP declaration, so its result does not establish server discovery. No Figma OAuth/tool round-trip, new Community-skill behavioral trial or fresh application generation is claimed for this change.
+The Figma MCP declaration and Storybook guidance have package-level checks only. A later agy 1.3.5 validation recognizes the portable MCP declaration (one server); the earlier skipped-declaration observation is superseded. Declaration recognition still does not establish authenticated server discovery. No Figma OAuth/tool round-trip, new Community-skill behavioral trial or fresh application generation is claimed for this change.
 
 ## Documentation integration after lifecycle changes
 
