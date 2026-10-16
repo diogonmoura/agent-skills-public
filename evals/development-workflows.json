@@ -204,8 +204,8 @@
       ]
     },
     {
-      "id": "interface-craft-direct-read-only",
-      "prompt": "Use interface-craft to review the supplied existing note-editor flow. Preserve its accepted compact editorial design and current stack. Inspect only the supplied local preview and repository; report the most useful findings and gaps. Review only: no source edits, baseline updates, design annotations or remote writes.",
+      "id": "interface-quality-direct-read-only",
+      "prompt": "Use interface-quality to review the supplied existing note-editor flow. Preserve its accepted compact editorial design and current stack. Inspect only the supplied local preview and repository; report the most useful findings and gaps. Review only: no source edits, baseline updates, design annotations or remote writes.",
       "evaluator_setup": "Prepare a runnable local UI with a keyboard-reachable delete dialog, long note content, an icon-only control and an intentional dense token system. Retain the original focus/name/overflow behavior as grader evidence; do not name hidden defects in the actor prompt. Include one acceptable compact variant.",
       "criteria": [
         "Direct skill use inspects the named scope and distinguishes runtime findings from static inference.",
@@ -227,7 +227,7 @@
       ]
     },
     {
-      "id": "interface-craft-automatic-design",
+      "id": "interface-quality-automatic-design",
       "prompt": "Use design for a research notebook aimed at people who read, edit and retrieve long notes with source context. Work in the supplied React/Tauri project with a Python backend. Recommend a coherent first-slice experience and use a bounded local prototype if useful. No brand assets are supplied; no external services, publication or full feature implementation.",
       "evaluator_setup": "Supply realistic long notes, accepted audience/platform constraints and a local prototype capability. Do not name the new support skills in the actor prompt. Keep a separate reference rubric for product fit, state coverage and character.",
       "criteria": [
@@ -292,7 +292,7 @@
     },
     {
       "id": "component-token-audit-scope",
-      "prompt": "Use interface-craft to audit the supplied component catalogue and its page callers for duplication, naming drift and inconsistent state coverage. Preserve the accepted token scale and platform variants. Assessment only; no library repairs, annotations or publishing.",
+      "prompt": "Use interface-quality to audit the supplied component catalogue and its page callers for duplication, naming drift and inconsistent state coverage. Preserve the accepted token scale and platform variants. Assessment only; no library repairs, annotations or publishing.",
       "evaluator_setup": "Provide definition/instance/binding data and actual callers: a confirmed duplicate, an inaccessible remote library reference, an intentional mobile variant and a local override. Include an intentionally non-4/8 spacing system.",
       "criteria": [
         "Distinguishes a confirmed duplicate from missing remote-library evidence and legitimate variants.",
@@ -857,7 +857,7 @@
         "new-product-license-decision",
         "cross-lifecycle-consequential-findings",
         "consequential-answer-continuation",
-        "interface-craft-automatic-design"
+        "interface-quality-automatic-design"
       ],
       "trial_ids": [
         "fresh-desktop-from-product-idea",
@@ -881,7 +881,7 @@
       "id": "existing-ui-assess-improve-verify",
       "outcome": "Read-only assessment followed by accepted, scoped repairs, preserved design system and real verification.",
       "case_ids": [
-        "interface-craft-direct-read-only",
+        "interface-quality-direct-read-only",
         "component-token-audit-scope",
         "ux-writing-review-and-scope",
         "ux-writing-authorized-rewrite",
