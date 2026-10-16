@@ -212,7 +212,8 @@
         "Observed focus/name/clipping defects receive precise reproductions and appropriate priority.",
         "Accepted density/tokens are preserved; missing runtime access is reported as a gap, not a confirmed defect.",
         "Review leaves source, visual baselines and canvas unchanged.",
-        "Any proposed numeric fix is checked against the actual colors/state and applicable requirement; clipping alone is not evidence that copy or retrieval is impossible."
+        "Any proposed numeric fix is checked against the actual colors/state and applicable requirement; clipping alone is not evidence that copy or retrieval is impossible.",
+        "Every proposed concrete replacement pair has its own executed measurement; existing-palette calculations do not establish a replacement or AAA focus appearance."
       ],
       "evidence": [
         "Before/after source and artifact hashes",
@@ -560,7 +561,8 @@
         "Authenticated server discovery and a real file read are evidenced for the named client, independently of package/declaration validation.",
         "Create/update operations return owned IDs and persist across separate reads; design context/render evidence matches the current owned test node.",
         "Only owned test nodes are removed; post-cleanup structure matches the initial in-scope inventory.",
-        "Missing OAuth, file access, write support or rate allowance is a precise blocked boundary, not a synthetic pass or permission to acquire credentials or change an account."
+        "Missing OAuth, file access, write support or rate allowance is a precise blocked boundary, not a synthetic pass or permission to acquire credentials or change an account.",
+        "Discovery stays within supported inventory, public client docs and named resources; missing capabilities do not authorize unrelated profile/session/log inspection."
       ],
       "evidence": [
         "Client/endpoint/tool inventory and redacted authentication outcome",
