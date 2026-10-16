@@ -2,7 +2,7 @@
 
 [Maintainer guide](../maintainer-reference.md) · [Trial procedure](#generation-trials) · [Evidence](#recorded-evidence-and-limits) · [Local agy example](#local-runner-example-agy)
 
-The [evaluation cases](../../evals/development-workflows.json) contain 35 behavior prompts, 12 generation trials and a nine-flow coverage map, with separate actor inputs and evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+The [evaluation cases](../../evals/development-workflows.json) contain 37 behavior prompts, 12 generation trials and a nine-flow coverage map, with separate actor inputs and evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
 
 ## Intended flows and execution levels
 
@@ -157,3 +157,9 @@ Keep the failed application outputs and actor traces as baselines. Resolve one b
 6. Continue protocol/schema/independent-renderer and real-session capability probes before canvas implementation; run iOS/Android native checks only with the required SDKs/device environment. Keep unavailable boundaries explicit.
 
 The Figma MCP declaration and Storybook guidance have package-level checks only. agy 1.3.5 validates the skills but skips the portable MCP declaration, so its result does not establish server discovery. No Figma OAuth/tool round-trip, new Community-skill behavioral trial or fresh application generation is claimed for this change.
+
+## Documentation integration after lifecycle changes
+
+PR #8 was rebased after #11–#15. Its documentation methods retain current lifecycle, contribution, UI/UX and evaluation guidance, use discipline names and preserve the split maintainer references. Its earlier application worked case reported author/source checks, typed examples and 14 parsed/rendered Mermaid diagrams; this rebase does not rerun that application case or establish independent reader comprehension.
+
+Two new unexecuted cases assess evidence-backed writing and current/target architecture views. They require preserving authoritative contracts, distinguishing transport success from committed outcomes, and keeping configuration/proposals separate from deployed verification. Package, definition and link checks establish integration integrity only.

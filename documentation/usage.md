@@ -137,3 +137,9 @@ The web-frontend bundle provides [interface-quality](../plugins/web-frontend/ski
 Ask for a scoped result: "Review this dialog without changing it", "Improve and apply the error messages in this flow", or "Prepare a usability study for onboarding". A bare review/improvement assessment stays read-only. A specified repair can include implementation and rechecking. A research guide is a plan until actual observations exist. Ordinary UI development needs no compulsory study or Figma connection.
 
 Frontend conventions own product direction and stack; interaction-design owns flows and affected surfaces; interface-quality owns craft inspection and component/token audits; ux-writing owns task copy; usability-research owns studies and evidence synthesis. Existing test/journey guidance verifies implementation and Storybook states where adopted.
+
+## Explain and maintain project knowledge
+
+Use [documentation-writing](../plugins/development-workflow/skills/documentation-writing/SKILL.md) to write or review a useful product/engineering explanation, reference or procedure. Use [architecture-documentation](../plugins/development-workflow/skills/architecture-documentation/SKILL.md) to explain structure, runtime/lifecycle behavior, interfaces, deployment and current versus target state from evidence. Both are directly selectable and model-available supporting guidance; actual client discovery remains client-dependent.
+
+[Documentation conventions](../plugins/development-workflow/skills/documentation-conventions/SKILL.md) owns where authoritative knowledge lives and what a change affects. System-design owns architectural decisions; these methods help explain and maintain them. Existing formats and proportional scope remain authoritative; a routine edit needs no new tracker, document tree or full system audit.

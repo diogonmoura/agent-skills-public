@@ -1,5 +1,5 @@
 ---
-name: write-project-documentation
+name: documentation-writing
 description: Write and review clear, accurate, useful product and engineering
   documentation, including PRDs, requirements, architecture, decisions, feature
   specifications and operational guides. Use for new documents and substantive
@@ -7,6 +7,8 @@ description: Write and review clear, accurate, useful product and engineering
 metadata:
   scope: generic
   invocation: both
+  role: support
+user-invocable: true
 ---
 
 Read [workflow framing](../../WORKFLOW.md) for scope and invocation boundaries.

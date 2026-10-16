@@ -16,9 +16,9 @@ Read [workflow framing](../../WORKFLOW.md) for skill selection and invocation bo
 
 # Keep documentation useful
 
-For architecture baselines or substantive architecture/interface changes, read [document-software-architecture](../document-software-architecture/SKILL.md) for views, runtime/lifecycle boundaries, API analysis and source-backed verification.
+For architecture baselines or substantive architecture/interface changes, read [architecture-documentation](../architecture-documentation/SKILL.md) for views, runtime/lifecycle boundaries, API analysis and source-backed verification.
 
-When writing or revising prose, read and apply [write-project-documentation](../write-project-documentation/SKILL.md) for reader purpose, explanations, examples, precision and presentation. This skill owns document responsibilities and maintenance; the writing skill guides authoring and reader review.
+When writing or revising prose, read and apply [documentation-writing](../documentation-writing/SKILL.md) for reader purpose, explanations, examples, precision and presentation. This skill owns document responsibilities and maintenance; the writing skill guides authoring and reader review.
 
 Use `documentation/` with a short index and these areas as needed:
 
@@ -44,7 +44,7 @@ Put product objectives and metric definitions in the PRD by default. Extract ana
 
 Separate requirements and constraints from their design response. The current architecture describes implemented behaviour. Put bounded target designs in work packages; use a separate target architecture for material cross-system change and retire it when fulfilled. Link requirements, decisions, work and verification rather than maintain competing baselines.
 
-Use one progress view: the existing tracker or a small work ledger. Where several packages need identification, preserve or agree stable IDs and a small kind vocabulary (feature, fix, refactor, docs, operations, research). Numbers identify work; priorities/dependencies determine order. Distinguish implementation, verification and deployment evidence. Reviews preserve findings; actionable follow-up belongs in linked work or an explicit disposition, with closure evidence. A proposed package does not authorize implementation.
+If progress tracking is useful, keep one view in the existing tracker or project notes; no new tracker or ledger is required. Where several packages need identification, preserve or agree stable IDs and a small kind vocabulary (feature, fix, refactor, docs, operations, research). Numbers identify work; priorities/dependencies determine order. Distinguish implementation, verification and deployment evidence. Reviews preserve findings; actionable follow-up belongs in linked work or an explicit disposition, with closure evidence. A proposed package does not authorize implementation.
 
 Keep operations documentation broader than runbooks. For critical journeys, maintain useful outcome and latency/freshness indicators, denominators, time windows, target status, collection gaps, alert/runbook links and owners. Update them when journeys, dependencies or failure/retry boundaries change. Product outcomes and service reliability have different purposes. Do not equate an HTTP success, generated draft or model call with a completed user operation, or call an unapproved target a production promise. Keep telemetry minimal and exclude sensitive payloads.
 

@@ -50,6 +50,8 @@ Start with improve/dependencies or the requested operations activity. Use releva
 
 ## Across phases
 
+[Documentation writing](../plugins/development-workflow/skills/documentation-writing/SKILL.md) guides authoring and reader review. [Architecture documentation](../plugins/development-workflow/skills/architecture-documentation/SKILL.md) explains structural/runtime/interface/deployment views with source evidence. They complement documentation-conventions and system-design rather than replacing their ownership.
+
 Research, explicit clarification, prose editing, documentation, Git contributions, security and operating constraints can support any relevant phase. `review` is not confined to a final gate. Design and verification can recur during implementation; a phase label does not restrict when guidance is useful.
 
 [reliability-design](../plugins/application-operations/skills/reliability-design/SKILL.md) connects outcomes and SLIs/SLOs to design and operation. [observability-operations](../plugins/application-operations/skills/observability-operations/SKILL.md) supplies signal implementation; [documentation-conventions](../plugins/development-workflow/skills/documentation-conventions/SKILL.md) keeps affected knowledge current. Upstream research, Humanizer and clarification techniques are listed below. [grill-me](https://github.com/mattpocock/skills/tree/4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d/skills/productivity/grill-me) and other explicit workflows still require a request.

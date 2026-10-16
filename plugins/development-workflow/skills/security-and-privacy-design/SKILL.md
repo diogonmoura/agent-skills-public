@@ -21,7 +21,7 @@ Derive identity and tenant context from verified authentication; enforce authori
 
 ## Check meaningful resource operations
 
-For changed domain actions, use a small operation matrix where it clarifies the boundary: actor, exact resource, lifecycle conditions, authority, effect, transaction/history, conflict/retry and user-visible outcome. Do not assume every resource permits generic CRUD. Publishing, finalizing, amending, revoking and correcting can have different authority and retention rules. An update to an actual observation need not mutate a plan or create another planned substitution. Keep business requirements separate from API implementation choices; scope the analysis to affected resources rather than invent a universal workflow engine.
+For changed domain actions, use a small operation matrix where it clarifies the boundary: actor, exact resource, lifecycle conditions, authority, effect, transaction/history, conflict/retry and user-visible outcome. Do not assume every resource permits generic CRUD. Publishing, finalizing, amending, revoking and correcting can have different authority and retention rules. Keep intended state, observed records and authorized transitions distinct. Keep business requirements separate from API implementation choices; scope the analysis to affected resources rather than invent a universal workflow engine.
 
 ## Collect and retain deliberately
 

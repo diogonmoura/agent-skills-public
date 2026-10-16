@@ -1,5 +1,5 @@
 ---
-name: document-software-architecture
+name: architecture-documentation
 description: Explain and maintain a software system's architecture through structural
   views, runtime and lifecycle scenarios, interface analysis, deployment boundaries
   and evidence. Use for architecture documentation, system breakdowns and technical
@@ -7,9 +7,11 @@ description: Explain and maintain a software system's architecture through struc
 metadata:
   scope: generic
   invocation: both
+  role: support
+user-invocable: true
 ---
 
-Read [workflow framing](../../WORKFLOW.md) and apply [write-project-documentation](../write-project-documentation/SKILL.md) for authoring quality.
+Read [workflow framing](../../WORKFLOW.md) and apply [documentation-writing](../documentation-writing/SKILL.md) for authoring quality.
 
 # Explain architecture through useful views
 
