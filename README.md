@@ -10,7 +10,7 @@ Start with **development-workflow**, **python-backend** and **web-frontend** for
 | --- | --- |
 | [development-workflow](plugins/development-workflow/) | Development activities, project conventions, testing, Git/PRs, delivery and security |
 | [python-backend](plugins/python-backend/) | Python, FastAPI, SQLAlchemy, Alembic and PostgreSQL |
-| [web-frontend](plugins/web-frontend/) | Web UI/UX, Next.js/shadcn, TypeScript/Tauri desktop and iOS/Android clients |
+| [web-frontend](plugins/web-frontend/) | Web UI/UX, interface quality, UX writing, usability research, Next.js/shadcn, TypeScript/Tauri desktop and iOS/Android clients |
 | [ai-development](plugins/ai-development/) | AI features, agents, evaluations and MCP interfaces |
 | [application-operations](plugins/application-operations/) | Reliability, observability, incidents, recovery, capacity and cost |
 | [business-strategy](plugins/business-strategy/) | Product ideas, strategy and feedback |

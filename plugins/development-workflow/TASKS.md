@@ -55,7 +55,8 @@ Read the linked local guidance in the selected task. For implementation, use [gi
 | --- | --- |
 | System/service/client boundaries or consequential architecture | system-design; codebase-design/domain-modeling when relevant |
 | Desktop or iOS/Android client | native-client-development and interaction-design |
-| Frontend interactions or layout | frontend-conventions and interaction-design |
+| Frontend interactions or layout | frontend-conventions and interaction-design; interface-quality for meaningful craft review/design, ux-writing for task copy |
+| Usability study or supplied participant observations | usability-research; distinguish study preparation, heuristic critique and actual research |
 | API, stored data or durable work | backend-conventions |
 | Model/agent or MCP behavior | build-evaluated-ai and the chosen framework/protocol specialist |
 | Signals, recovery, capacity or operating behavior | The relevant application-operations skill |
