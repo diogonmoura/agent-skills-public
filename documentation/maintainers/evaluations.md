@@ -2,7 +2,58 @@
 
 [Maintainer guide](../maintainer-reference.md) · [Trial procedure](#generation-trials) · [Evidence](#recorded-evidence-and-limits) · [Local agy example](#local-runner-example-agy)
 
-The [evaluation cases](../../evals/development-workflows.json) contain 19 behavior prompts and eight generation trials, with separate evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+The [evaluation cases](../../evals/development-workflows.json) contain 35 behavior prompts, 12 generation trials and a nine-flow coverage map, with separate actor inputs and evaluator criteria. They assess engineering behavior, evidence accuracy and unnecessary complexity. Planning exercises and package checks do not prove a working application. These trials do not run automatically in CI.
+
+## Intended flows and execution levels
+
+The specification's flow_matrix links every scenario to an intended user outcome: product-to-design, setup versus complete application, existing UI assessment/repair, design-tool handoff, research/learning, private platform applications, AI/session integration, delivery/operations and maintenance/evidence. Existing migration, job, incident, performance, resilience and library cases remain in scope; new UI methods do not replace them.
+
+| Level | What runs | What it establishes |
+| --- | --- | --- |
+| Definition/package checks | Metadata, resource parity, evaluation structure/references, unit checks | Definitions and bundles are internally consistent; no actor behavior established. |
+| Bounded behavioral probes | Supplied artifacts or small local fixtures for one case | Scoped decision, authority, method and evidence handling at recorded revisions. |
+| Multi-phase generation/repair | Actual repository, real accepted answers, implemented checks and relevant running targets | Requested phase outcomes and verified application boundaries; retain partial/blocked results. |
+| External/native capabilities | Separately authorized live MCP, provider, named session, packaged app or device checks | Only the specific capability observed in that environment. |
+
+New fields evaluator_setup, evidence, negative_controls and capability_gates tell the evaluator how to prepare raw artifacts, inspect outcomes and avoid false passes. They are not additional instructions to paste into the actor's prompt. Do not tell a blind fresh actor which defect to find or provide grader answers; use actual raw fixtures. Repair trials intentionally receive defect reports and must be labelled separately. No executable actor harness, participant study or new application fixture is supplied by these definitions; prepare/version the required raw fixtures before a run and record any unavailable prerequisite.
+
+Run python scripts/validate_evaluations.py to check IDs, required prompts/criteria and coverage references. The existing CI unit-test command exercises this validator through test_evaluations.py; it does not run the described behavioral suite. It rejects duplicate/dangling/unmapped scenarios and missing phase/assertion definitions; it does not measure compliance or fixture quality.
+
+## Run and grade a scenario
+
+1. Pin the source/build, target repository/fixture and client configuration. Verify actual skill/tool inventory and authorized local resources. Record model identity only when exposed. Use distinct ports, database/project names and native identity, preserve unrelated services and never search global profiles/history for credentials or sessions.
+2. Prepare the case's raw artifacts and expected baseline outside the actor workspace. For a regression, establish that the original behavior fails the meaningful assertion. Supply only prompt, raw context, real capabilities, action scope and actual accepted decisions; keep criteria, negative controls, prior diagnoses and answer keys with the evaluator.
+3. Resolve genuine user decisions through an actual reply. For unattended exercises, a needs-decisions result can satisfy the decision-policy criterion while dependent implementation remains blocked. A proposal, evaluator preference or old plan is not user acceptance. Record factual handoffs and any intervention.
+4. Inspect actual diffs/commits, commands/results, rendered interactions and persisted outcomes. Grade each criterion as pass, fail, partial, blocked or not-run, with artifact references and mocked boundaries. A known defect remains a failure even if another platform is unavailable. Missing read traces make routing unknown, not necessarily incorrect; explicit reads alone do not establish correct use.
+5. Keep correctness, authentication/ownership, component behavior, visual review, usability observations, foundations, protocol conformance and native/live execution separate. Never average away a critical failure. Record actual target identity; browser viewports, filtered Jest cases and cargo check cannot establish native device/app operation.
+6. Bound execution time and cleanup to owned resources. Provider 503/errors and runner SUCCESS-with-unfinished-output require artifact inspection; preserve partial/uncommitted work and report the execution boundary. A coordinator intervention or repair continuation is a separate result, not a blind generation pass.
+
+### Checks motivated by observed failures
+
+| Previous observation | Scenario evidence required now |
+| --- | --- |
+| Generic desktop UI and skipped UX work | Product-content rationale, representative actual screen, relevant states, rendered review/repair and preserved accepted visual character. No universal palette or subjective numeric grade. |
+| Handwritten modal escaped focus despite passing tests | Actual compatible primitive, keyboard/Tab/Shift+Tab/Escape/trigger checks, meaningful failing-then-passing regression and affected caller verification. |
+| Fresh app had no frontend tests or complete delivery foundations | Committed affected component checks plus actual journey; clean onboarding, configuration/code checks, service builds/startup and CI/artifact/recovery definitions. Setup-only phases are not required to implement features. |
+| Unsigned/default fixture identity exposed private notes | Real authentication, missing/invalid credential cases, fixtures off by default, explicit local/test opt-in, production rejection and direct cross-user read/update/delete denial with unchanged data. |
+| Own-format tests passed invalid A2UI and private AG-UI events | Selected published contract/SDK validation and independent renderer/action evidence; custom event semantics use the appropriate standard extension mechanism. |
+| Provider ERROR with HTTP 200/exit zero produced a proposal | Semantic-error fixture yields controlled failure and no successful answer/proposal; transport status cannot override it. |
+| Canvas stored JSON but no visible cards or reload restoration | Actual client render, reload state, accept/reject/undo and stale/concurrent human-edit checks. |
+| CLI session continuation overclaimed ACP attachment | Bounded public-interface evidence for the named session; distinguish continuation, protocol support, actual access and fixtures. |
+| Proposed library terms/business pivots treated as accepted | General consequential-decision and continuation cases; facts versus choices, real answers and dependent-work boundaries. Canvas dependency is a candidate until verified and accepted. |
+| SUCCESS/503 completion prose overstated readiness | Per-boundary artifacts, actual contribution state, unexecuted checks and intervention/provider status. |
+
+### Run order and controls
+
+Start with definition/package checks, then direct and automatic routing/authority probes, then focused regression repairs and clean-foundation checks. Use the small documentation and small-UI cases as controls against unnecessary setup, full audits, research or external tooling. Compare craft/copy review with acceptable intentional design variants as well as known defects; count useful findings and false positives with inspected scope, not report length.
+
+Run ui-review-to-authorized-repair to exercise assessment, actual acceptance and implementation continuity; research-plan-to-evidence-synthesis uses explicitly synthetic session records and establishes analysis behavior only. Research preparation, agent exploration and automated accessibility checks do not establish participant outcomes.
+
+Next run fresh-desktop-from-product-idea from an empty repository without old code, prior diagnoses or specialist names, and desktop-known-defect-repair against the preserved defective baseline. Original setup-first new-application/native trials remain useful phase-entry controls; they are not blind full-lifecycle discovery trials. Evaluate iOS and Android separately, retaining overlapping fixture tests as fixture evidence only.
+
+Keep Figma declaration/discovery/OAuth/read/write, protocol/renderer, named-session and voice/provider checks independently gated. Missing Figma tools allow useful supplied/local review but do not satisfy a live read/write claim. Never connect an account, upload private product artifacts or publish Storybook merely to pass a test without that action being authorized.
+
+These revisions are unexecuted definitions. Historical records below retain their source revisions and scope. The new skill collection has 53 local plus 37 pinned upstream skills; older 87-skill results are not retrospectively upgraded to the 90-skill revision.
 
 ## Generation trials
 
@@ -66,7 +117,7 @@ Run from the target repository, capture stdout/stderr outside it, and use the in
 
 ## Foundation, native-client and AI trials
 
-The expanded generation set adds project-foundations, tauri-desktop-application, expo-ios-android-application, agui-a2ui-application and ai-canvas-product-to-implementation. The mobile trial shares TypeScript/Expo and a Python backend but grades iOS and Android separately. The canvas trial carries the accepted engineer audience and tldraw/existing-session direction through strategy, system design and implementation; consequential unresolved choices remain phase blockers.
+The expanded generation set adds project-foundations, tauri-desktop-application, expo-ios-android-application, agui-a2ui-application and ai-canvas-product-to-implementation. The mobile trial shares TypeScript/Expo and a Python backend but grades iOS and Android separately. The revised canvas trial carries the accepted engineer audience and existing-session goal through strategy, system design and implementation; the previously suggested canvas SDK remains a candidate until its terms/capabilities are verified and accepted. Consequential unresolved choices block dependent work.
 
 New application foundations are evaluated as actual artifacts and runnable commands: human READMEs, configuration checks, behavior tests, containerizable app Dockerfiles/Compose, GitHub Actions and release/deployment/recovery process. Registry defaults configure GHCR and PyPI for distributable Python packages without authorizing publication. Native runtime/signing, live model/voice and real harness attachment are recorded separately from source, browser and fixture checks.
 
