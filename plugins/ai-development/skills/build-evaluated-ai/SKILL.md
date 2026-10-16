@@ -32,7 +32,7 @@ Prefer Gemini for low-cost LLM and transcription experiments. Verify current cap
 
 ## Keep correctness outside the model
 
-Validate structured output against the application schema and handle invalid, missing or refused responses deliberately. Enforce identity, resource authorization, allowed tools, budgets and side-effect policy in deterministic application code. Treat retrieved text and tool arguments as untrusted; content instructions must not grant permissions.
+Validate structured output against the application schema and handle invalid, missing or refused responses deliberately. Check the provider/harness semantic status as well as HTTP/process success; an error returned with HTTP 200 or exit code zero must not become a successful answer, UI proposal or authorized mutation. Include that failure envelope in deterministic checks. Enforce identity, resource authorization, allowed tools, budgets and side-effect policy in deterministic application code. Treat retrieved text and tool arguments as untrusted; content instructions must not grant permissions.
 
 Expose narrow capabilities that reuse authorized application behavior. Bound steps, tokens, timeouts and retries; account for repeated side effects and terminate loops with a useful error. A model deciding an action is not permission to execute it. Keep prompts/versioned settings identifiable without logging private recordings, secrets or full sensitive inputs.
 
@@ -66,3 +66,11 @@ Version evaluation examples and prompts when they affect behavior. Report what i
 Use installed `mcp-builder` for protocol implementation. Prefer Python and standalone `fastmcp` (`uv add fastmcp`, `from fastmcp import FastMCP`) with a tested compatible version pinned for production. Its API differs from the MCP SDK's `mcp.server.fastmcp`; adapt Context, lifecycle, auth and transport examples against version-matched standalone documentation. Preserve an existing server until migration is in scope.
 
 Expose narrow typed tools over authorized application services. Verify discovery, contracts, missing/invalid credentials, resource ownership, side-effect policy, failure handling and transport/lifespan cleanup. MCP tooling can support AI applications without making the server itself an AI system.
+
+## Connect agent interactions and generated UI
+
+Consider AG-UI for typed agent/user interaction events, streaming messages/state/tool results and cancellation, and A2UI for declarative generated UI rendered through a client-controlled component catalog. These are complementary implementation choices, not interchangeable agent frameworks or substitutes for application authorization. Use them when the product benefits from interactive agent state or generated surfaces; preserve an accepted simpler interface.
+
+Read [interaction protocols](references/interaction-protocols.md) when selecting or implementing them. Verify installed SDK, framework adapter, transport and renderer compatibility against a pinned protocol version; do not mix A2UI message families across versions. Validate allowed components/actions, bindings and resource/tenant scope in deterministic code. Generated UI is untrusted data and cannot execute arbitrary scripts or authorize a mutation. Test malformed/unknown components, unauthorized actions, stream interruption, reconnect/cancellation, stale events and real rendered user interactions. Separate fixture-driven protocol/renderer evidence from live model output quality.
+
+For a shared canvas, preserve human edits through object identity/versioning, scoped patches, undo and explicit conflict handling. Ground spatial references in supplied selection/canvas snapshots. Voice interruption and attachment to an existing ACP harness session are distinct capability contracts; a text fixture or a new mock agent session cannot establish either. Research the actual harness's session/permission capabilities before claiming attachment or write access.

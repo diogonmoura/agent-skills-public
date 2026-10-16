@@ -5,6 +5,8 @@ Record material choices so the reasoning survives across sessions.
 ## D001 — [Decision title]
 
 - **Date:**
+- **Status:** proposed | user-accepted | rejected | reopened
+- **Acceptance/evidence:** cite the user decision or source; leave unknown when unavailable.
 - **Decision:**
 - **Previous thesis / option:**
 - **New choice:**
@@ -21,6 +23,7 @@ Record material choices so the reasoning survives across sessions.
 
 ## Rules
 
+- Keep proposed recommendations distinct from user-accepted commitments.
 - Log thesis mutations, wedge changes, market-selection changes, business-model changes, and strategic exclusions.
 - Do not log every small implementation choice.
 - Keep rejected alternatives visible; they may become attractive if assumptions change.

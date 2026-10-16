@@ -26,6 +26,7 @@ For a full-stack claim, exercise the real frontend, API and the application's ac
 | Surface | Starting point | Boundary to verify |
 | --- | --- | --- |
 | Web | Playwright plus installed browser CLI/MCP for exploration | Actual browsers, responsive sizes, keyboard/focus and relevant role variants |
+| Tauri | Supported native/WebView automation for the actual target; component/browser checks supplement it | Packaged shell, IPC capabilities, lifecycle and OS integration; web preview is narrower evidence |
 | Electron | Playwright Electron support where compatible (experimental) | Renderer coverage does not prove native dialogs, packaging, updates or filesystem integration |
 | Native desktop | Platform-native automation or an appropriate maintained Appium driver | Named supported OS and packaged application; inspect driver maintenance/limitations |
 | Android/iOS | Maestro for suitable flows or Appium/platform-native tooling | Actual emulator/device, lifecycle, permissions, keyboard, offline and supported OS behavior |
@@ -48,7 +49,7 @@ For saved searches, create a named filter as user A, reopen it after reload and 
 
 ## Keep tests trustworthy
 
-Isolate users and data per test or worker and use an explicit test database. Apply migrations, establish service readiness and clean up only owned test data; do not reset an unspecified database. Use semantic locators and observable-state waits instead of fixed sleeps. Keep credentials out of committed fixtures and traces.
+Isolate users and data per test or worker and use an explicit test database. Apply migrations, establish service readiness and clean up only owned test data; do not reset an unspecified database. Use semantic locators and observable-state waits instead of fixed sleeps. Keep real credentials out of committed fixtures and traces. Synthetic test identities require explicit local/test opt-in and production rejection, with regression checks for those configuration boundaries.
 
 Match local and CI configuration. Capture failure traces/screenshots and useful service logs. Reproduce a flaky failure and diagnose state, timing or environment before changing waits; do not weaken assertions or inflate retries to hide it. Keep a small critical journey set fast enough to run routinely.
 

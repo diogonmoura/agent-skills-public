@@ -26,7 +26,8 @@ def main():
         if args.skill not in sources:
             parser.error(f"Unknown skill: {args.skill}")
         sources = {args.skill: sources[args.skill]}
-    target = Path.home() / ".agents" / "skills"
+    # Relative symlinks are interpreted from the physical directory (e.g. macOS /var).
+    target = (Path.home() / ".agents" / "skills").resolve()
     if args.action == "sync":
         target.mkdir(parents=True, exist_ok=True)
     for name, source in sources.items():

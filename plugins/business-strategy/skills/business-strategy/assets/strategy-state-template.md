@@ -1,5 +1,6 @@
 # Strategy State
 
+Use only sections that change the current decision. Preserve unknowns; do not fill the template with invented evidence, numbers or accepted commitments. Distinguish proposed recommendations from user-accepted decisions and cite current evidence for material competitor/licensing claims.
 > Living source of truth for the current strategy. Keep this file current as evidence, assumptions, economics, options, and conclusions change. Historical decisions belong in `decision-log.md`.
 
 ## Metadata
