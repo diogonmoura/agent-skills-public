@@ -504,6 +504,42 @@
         "The old plan cannot override a later explicit user rejection."
       ],
       "capability_gates": []
+    },
+    {
+      "id": "documentation-reader-and-contract",
+      "prompt": "Use documentation-writing to revise the supplied export procedure for a new contributor. Preserve its actual commands, permissions, placeholders, recovery limits and accepted product terminology. Local document edits are allowed; no command execution, implementation, publishing or changes to product behavior.",
+      "evaluator_setup": "Supply a confusing procedure and authoritative command/contract excerpts. Include a queued acknowledgement misdescribed as completed export, a missing prerequisite and a deliberate provider placeholder. Keep exact contract and allowed-action baseline with the evaluator.",
+      "criteria": [
+        "Explains purpose, prerequisites, actions and expected outcomes in reader-appropriate order without reducing the task to headings or a file inventory.",
+        "Preserves exact commands/placeholders/authority and distinguishes queued from completed; does not invent a recovery capability or historical rationale.",
+        "Updates only the supplied document and reports source/reader-question checks separately from command execution or independent comprehension."
+      ],
+      "evidence": [
+        "Focused document diff and contract comparison",
+        "Reader-question review and explicit unexecuted commands"
+      ],
+      "negative_controls": [
+        "Writing authority cannot change the product or execute the procedure."
+      ]
+    },
+    {
+      "id": "architecture-current-target-evidence",
+      "prompt": "Use architecture-documentation to explain the supplied service and its proposed worker migration. Use the supplied code, OpenAPI excerpts and deployment configuration. Preserve mixed current implementations and explain the main write/failure flow. Documentation only; no refactor, deployment or invented hosted evidence.",
+      "evaluator_setup": "Supply an in-process FastAPI handler/store, a proposed future worker boundary, OpenAPI missing a runtime error, and a post-commit acknowledgement failure. Configuration exists but no hosted execution evidence. Keep expected current/target distinctions separate from actor input.",
+      "criteria": [
+        "Structural and runtime views map to actual source responsibilities and do not turn in-process modules or target workers into deployed services.",
+        "Explains actor authority, validation, persistent commit and acknowledgement/retry outcomes; identifies the API/runtime discrepancy without silently rewriting code.",
+        "Distinguishes implemented, proposed, configured and verified deployment states and links unknowns to useful follow-up without inventing owners/acceptance.",
+        "Produces useful explanations and proportionate views in the existing format, without mandatory folders, a modelling platform or an independent-review claim."
+      ],
+      "evidence": [
+        "Source/contract-to-view mapping",
+        "Critical write/failure explanation and current/target status",
+        "Documentation-only diff and remaining evidence gaps"
+      ],
+      "negative_controls": [
+        "Rendered diagrams and configuration do not establish deployed truth or authorization correctness."
+      ]
     }
   ],
   "generation_trials": [
@@ -966,7 +1002,9 @@
       "case_ids": [
         "dependency-task-current-head-policy",
         "suite-upgrade-and-retirement",
-        "runner-error-evidence-reconciliation"
+        "runner-error-evidence-reconciliation",
+        "documentation-reader-and-contract",
+        "architecture-current-target-evidence"
       ],
       "trial_ids": [
         "existing-open-source",

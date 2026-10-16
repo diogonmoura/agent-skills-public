@@ -34,11 +34,13 @@ Local names use short task activities and recognizable supporting topics. Upstre
 | `build-python-backend` | `backend-conventions` |
 | `design-interactions` | `interaction-design` |
 | `interface-craft` | `interface-quality` |
+| `write-scannable-documentation`, `write-project-documentation` | `documentation-writing` |
+| `document-software-architecture` | `architecture-documentation` |
 | `test-end-to-end` | `journey-testing` |
 | `test-application-performance` | `performance-testing` |
 | `test-application-resilience` | `resilience-testing` |
 | `build-delivery-pipelines` | `delivery-pipelines` |
-| `maintain-documentation` | `documentation-conventions` |
+| `documentation-conventions` | `documentation-conventions` |
 | `design-secure-features` | `security-and-privacy-design` |
 | `contribute-code` | `git-contributions` |
 | `architecture-diagraming` | `architecture-diagramming` |

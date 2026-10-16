@@ -46,3 +46,5 @@ Keep the consequential decisions in the project's existing architecture note or 
 Return a recommended/proposed design, meaningful alternatives, material questions and a useful next increment. Design-only authority does not permit feature edits or deployment. Reassess the affected decision when new evidence arrives; do not force a complete redesign for each feature.
 
 Investigate harness attachment through documented interfaces and a dedicated authorized trial session. Do not search global conversation stores or credential profiles to discover capabilities. If a separate runtime cannot access the chosen existing session, record that limit and compare supported alternatives before promising attachment.
+
+For substantive architecture explanations or current/target views, use [architecture documentation](../architecture-documentation/SKILL.md). System-design owns the design choices; architecture-documentation explains their structure, runtime, interface and evidence boundaries, without claiming a proposed design is implemented.

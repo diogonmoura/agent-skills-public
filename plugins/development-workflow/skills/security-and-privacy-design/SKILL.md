@@ -19,6 +19,10 @@ Read the feature, architecture and existing security decisions. Identify valuabl
 
 Derive identity and tenant context from verified authentication; enforce authorization on server-side reads and writes, including background jobs, exports and MCP/AI tools. Validate inputs at boundaries, use parameterized queries and appropriate browser protections, and fail closed when required security configuration is absent. Avoid fallback secrets and permissive production defaults. Keep privileges narrow and separate environments. Bound uploads, expensive queries, external calls and retries to prevent trivial abuse.
 
+## Check meaningful resource operations
+
+For changed domain actions, use a small operation matrix where it clarifies the boundary: actor, exact resource, lifecycle conditions, authority, effect, transaction/history, conflict/retry and user-visible outcome. Do not assume every resource permits generic CRUD. Publishing, finalizing, amending, revoking and correcting can have different authority and retention rules. Keep intended state, observed records and authorized transitions distinct. Keep business requirements separate from API implementation choices; scope the analysis to affected resources rather than invent a universal workflow engine.
+
 ## Collect and retain deliberately
 
 For each new personal-data field or telemetry event, identify its purpose, who needs access, where it flows and how long it is retained. Prefer minimal fields, aggregation and redaction over capturing raw messages, audio, tokens or search contents. Include providers, logs, analytics, caches, exports and backups in the data flow; check regional storage and transfer requirements against the actual service configuration. Do not equate an EU deployment region with legal compliance.

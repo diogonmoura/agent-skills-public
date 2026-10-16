@@ -79,6 +79,8 @@ Desktop/mobile clients and simulators normally run on their supported host and c
 
 Use `security-and-privacy-design` for changed data flows and authority boundaries. Identify critical latency/concurrency constraints, durable state and meaningful recovery needs early; choose simple hosting that meets them. Bring capacity, cost and data-recovery guidance into design when relevant rather than treating them as production afterthoughts. Use `delivery-pipelines` when creating CI/CD. Do not introduce platforms or complete operations frameworks merely because their skills are available.
 
+Agree the authoritative PRD/requirements, implemented architecture and target-design sources when establishing foundations. Use the project's existing work tracker or a lightweight ledger; add detail only when it answers a real decision. Keep operations observability and service-level definitions alongside runbooks, with candidate/approved/measured states explicit. Do not force a document tree or full planning ceremony on a routine fix.
+
 ## Keep foundations aligned as the project evolves
 
 Treat repository structure, dependency/runtime choices, configuration contracts, scoped instructions and delivery commands as maintained project decisions. Update affected commands, lockfiles and authoritative documentation alongside a relevant change. Resolve conflicting instructions at their proper scope; avoid copying the same rules into every component. Use `documentation-conventions` for knowledge upkeep and `delivery-pipelines` plus installed GitHub Actions hardening for delivery mechanics; this skill coordinates the project conventions rather than duplicating specialist guidance.
