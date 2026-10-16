@@ -10,7 +10,7 @@ metadata:
 
 # Write interface copy for the actual task
 
-Use the requested scope and mode: review proposes changes without editing; rewrite or implementation applies the authorized copy changes; harmonization aligns recurring terms within the named surfaces. Supporting an existing design/development task does not authorize a broader rebrand. Use [interaction design](../interaction-design/SKILL.md) for the underlying flow and [interface craft](../interface-craft/SKILL.md) for rendered fit.
+Use the requested scope and mode: review proposes changes without editing; rewrite or implementation applies the authorized copy changes; harmonization aligns recurring terms within the named surfaces. Supporting an existing design/development task does not authorize a broader rebrand. Use [interaction design](../interaction-design/SKILL.md) for the underlying flow and [interface quality](../interface-quality/SKILL.md) for rendered fit.
 
 ## Understand the action before the sentence
 

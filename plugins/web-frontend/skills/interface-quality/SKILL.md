@@ -1,6 +1,6 @@
 ---
-name: interface-craft
-description: Assess and refine interface craft across hierarchy, typography, spacing, contrast, motion and component consistency. Use for a scoped UI critique or during substantial design, implementation and improvement; preserve accepted product direction and use rendered evidence for visual claims.
+name: interface-quality
+description: Assess and refine interface quality across hierarchy, typography, spacing, contrast, motion and component consistency. Use for a scoped UI critique or during substantial design, implementation and improvement; preserve accepted product direction and use rendered evidence for visual claims.
 user-invocable: true
 metadata:
   scope: generic
@@ -8,7 +8,7 @@ metadata:
   role: support
 ---
 
-# Assess interface craft in context
+# Assess interface quality in context
 
 Use this directly for a requested critique or within authorized UI design/development/improvement. A review is read-only unless fixes are requested; findings do not authorize a redesign. Read [frontend conventions](../frontend-conventions/SKILL.md) for the accepted product-derived direction, stack and tokens, and [interaction design](../interaction-design/SKILL.md) for flows and affected surfaces. Do not start a full craft audit for a typo or tiny unchanged interaction.
 

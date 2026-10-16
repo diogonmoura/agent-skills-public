@@ -46,7 +46,7 @@ Start with improve/dependencies or the requested operations activity. Use releva
 
 ## UI/UX methods across activities
 
-[Interface craft](../plugins/web-frontend/skills/interface-craft/SKILL.md) assesses and refines the intended experience; [UX writing](../plugins/web-frontend/skills/ux-writing/SKILL.md) connects language to real actions and states; [usability research](../plugins/web-frontend/skills/usability-research/SKILL.md) prepares studies or analyzes supplied observations. They are both directly requestable and model-available support for relevant design, development, improvement and review. Existing frontend/interaction guidance retains direction, stack and flow ownership; journey-testing retains executable verification. No study or design tool is compulsory for every UI change.
+[Interface quality](../plugins/web-frontend/skills/interface-quality/SKILL.md) assesses and refines the intended experience; [UX writing](../plugins/web-frontend/skills/ux-writing/SKILL.md) connects language to real actions and states; [usability research](../plugins/web-frontend/skills/usability-research/SKILL.md) prepares studies or analyzes supplied observations. They are both directly requestable and model-available support for relevant design, development, improvement and review. Existing frontend/interaction guidance retains direction, stack and flow ownership; journey-testing retains executable verification. No study or design tool is compulsory for every UI change.
 
 ## Across phases
 

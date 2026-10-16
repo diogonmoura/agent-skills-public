@@ -33,6 +33,7 @@ Local names use short task activities and recognizable supporting topics. Upstre
 | `build-consistent-frontend` | `frontend-conventions` |
 | `build-python-backend` | `backend-conventions` |
 | `design-interactions` | `interaction-design` |
+| `interface-craft` | `interface-quality` |
 | `test-end-to-end` | `journey-testing` |
 | `test-application-performance` | `performance-testing` |
 | `test-application-resilience` | `resilience-testing` |
