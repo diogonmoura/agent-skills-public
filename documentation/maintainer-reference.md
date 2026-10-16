@@ -25,10 +25,11 @@ Use this page when changing the collection. For installation and everyday use, s
 ```bash
 python scripts/validate_plugins.py
 python scripts/check_collection.py
+python scripts/validate_evaluations.py
 python -m unittest discover -s tests -v
 ```
 
-CI also builds all seven pinned bundles, checks inventories/notices/local-resource parity and duplicate names, and runs explorer smoke checks. To check a fresh all-plugin build locally, run `python scripts/check_collection.py --built <destination>`. The link checker covers maintained Markdown guides and entry points; it does not fetch external URLs or parse every preserved resource example. Render changed diagrams separately. Packaging checks do not establish application behavior.
+CI also builds all seven pinned bundles, checks inventories/notices/local-resource parity and duplicate names, and runs explorer smoke checks. To check a fresh all-plugin build locally, run `python scripts/check_collection.py --built <destination>`. The link checker covers maintained Markdown guides and entry points; it does not fetch external URLs or parse every preserved resource example. Render changed diagrams separately. Evaluation-definition checks validate structure and flow references; behavioral trials remain explicit, separately recorded runs. Packaging checks do not establish application behavior.
 
 ## Naming and invocation
 

@@ -202,6 +202,308 @@
         "Useful stories exercise implemented states and connect to the design; unavailable Figma writes do not prevent independent local work.",
         "Rendered application comparison, keyboard/focus checks and a real UI/API/persistence journey expose discrepancies for repair; stories/builds alone are not reported as completed application verification."
       ]
+    },
+    {
+      "id": "interface-quality-direct-read-only",
+      "prompt": "Use interface-quality to review the supplied existing note-editor flow. Preserve its accepted compact editorial design and current stack. Inspect only the supplied local preview and repository; report the most useful findings and gaps. Review only: no source edits, baseline updates, design annotations or remote writes.",
+      "evaluator_setup": "Prepare a runnable local UI with a keyboard-reachable delete dialog, long note content, an icon-only control and an intentional dense token system. Retain the original focus/name/overflow behavior as grader evidence; do not name hidden defects in the actor prompt. Include one acceptable compact variant.",
+      "criteria": [
+        "Direct skill use inspects the named scope and distinguishes runtime findings from static inference.",
+        "Observed focus/name/clipping defects receive precise reproductions and appropriate priority.",
+        "Accepted density/tokens are preserved; missing runtime access is reported as a gap, not a confirmed defect.",
+        "Review leaves source, visual baselines and canvas unchanged."
+      ],
+      "evidence": [
+        "Before/after source and artifact hashes",
+        "Keyboard/viewport operation trace and exact finding locations",
+        "Coverage and unverified-state report"
+      ],
+      "negative_controls": [
+        "Intentional density or optical offsets do not become mandatory restyling findings.",
+        "Passing build does not establish modal keyboard behavior."
+      ],
+      "capability_gates": [
+        "Local rendered UI and keyboard driver"
+      ]
+    },
+    {
+      "id": "interface-quality-automatic-design",
+      "prompt": "Use design for a research notebook aimed at people who read, edit and retrieve long notes with source context. Work in the supplied React/Tauri project with a Python backend. Recommend a coherent first-slice experience and use a bounded local prototype if useful. No brand assets are supplied; no external services, publication or full feature implementation.",
+      "evaluator_setup": "Supply realistic long notes, accepted audience/platform constraints and a local prototype capability. Do not name the new support skills in the actor prompt. Keep a separate reference rubric for product fit, state coverage and character.",
+      "criteria": [
+        "Relevant craft and copy methods support design without the user naming them; absent read traces leave activation unknown rather than proving omission.",
+        "Direction traces to reading/editing/retrieval and meaningful content/states; lack of brand assets does not produce arbitrary blocking questions.",
+        "A representative prototype or supplied-design review supports concrete decisions without claiming implementation completion or user approval.",
+        "Research is proposed only for a material unresolved question; no fabricated users or compulsory study."
+      ],
+      "evidence": [
+        "Design rationale tied to scenarios and content",
+        "Representative prototype/screen evidence and unresolved decisions",
+        "Actual routing/tool evidence where exposed"
+      ],
+      "negative_controls": [
+        "A recolored generic dashboard or dependency list alone does not establish contextual design.",
+        "Accepted decisions are not reopened per screen."
+      ],
+      "capability_gates": [
+        "Supplied design artifacts or bounded local prototype"
+      ]
+    },
+    {
+      "id": "ux-writing-review-and-scope",
+      "prompt": "Use ux-writing to review the supplied save/export flow without changing it. Preserve the established product voice, locales and placeholders. Recommend clearer complete messages only where they help the real action. No implementation or design writes.",
+      "evaluator_setup": "Provide code/contract excerpts: export acceptance is queued, save may fail retaining a draft, and deletion is irreversible. Include localized strings with placeholders and a deliberate warm low-stakes success message. Keep expected meaning and source hashes with the grader.",
+      "criteria": [
+        "Review makes no edits and identifies exact messages/states with complete proposed replacements.",
+        "Copy preserves queued versus completed, draft persistence, destructive meaning and real recovery options.",
+        "Placeholders, locale and accepted voice are preserved; no invented feature, SLA, price or legal claim."
+      ],
+      "evidence": [
+        "Unchanged source/design hashes",
+        "Current/proposed text mapped to actual contracts and locale tokens"
+      ],
+      "negative_controls": [
+        "Shorter wording that weakens consequence is not an improvement.",
+        "Warm but clear accepted voice is not normalized into a new brand."
+      ],
+      "capability_gates": []
+    },
+    {
+      "id": "ux-writing-authorized-rewrite",
+      "prompt": "Apply the accepted wording changes in the supplied flow. Preserve its behavior, translation placeholders, component structure and design tokens. Verify realistic text fit in the owned local preview and commit only this objective locally. No publishing or unrelated redesign.",
+      "evaluator_setup": "Use a separate checkout of the preceding copy fixture. Supply the actually accepted replacement set as a factual handoff; do not invent approval from the earlier report. Include one rejected proposal to check decision carry-forward.",
+      "criteria": [
+        "Applies only accepted changes and preserves rejected/unchanged text.",
+        "Dynamic-message/locale contracts and component behavior remain correct.",
+        "Realistic long/short text and relevant narrow variants are inspected; static checks are not reported as user comprehension.",
+        "Uses an objective worktree and focused local commit; no unrelated refactor or external mutation."
+      ],
+      "evidence": [
+        "Accepted decision record and focused diff/commit",
+        "Existing message/behavior checks and rendered narrow/long text evidence"
+      ],
+      "negative_controls": [
+        "A proposed replacement is not automatically accepted.",
+        "Copy authority does not authorize component or permission redesign."
+      ],
+      "capability_gates": [
+        "Local preview for rendered-fit claim"
+      ]
+    },
+    {
+      "id": "component-token-audit-scope",
+      "prompt": "Use interface-quality to audit the supplied component catalogue and its page callers for duplication, naming drift and inconsistent state coverage. Preserve the accepted token scale and platform variants. Assessment only; no library repairs, annotations or publishing.",
+      "evaluator_setup": "Provide definition/instance/binding data and actual callers: a confirmed duplicate, an inaccessible remote library reference, an intentional mobile variant and a local override. Include an intentionally non-4/8 spacing system.",
+      "criteria": [
+        "Distinguishes a confirmed duplicate from missing remote-library evidence and legitimate variants.",
+        "Findings name exact definitions/instances/callers and group shared root causes.",
+        "Token scale, bindings and instances remain unchanged; no silent detach, clone or mass swap.",
+        "Static binding evidence is not presented as runtime focus or native behavior."
+      ],
+      "evidence": [
+        "Component/binding inventory and finding references",
+        "Before/after definition/instance hashes and inspection coverage"
+      ],
+      "negative_controls": [
+        "Unavailable remote metadata is not proof of an orphan.",
+        "A 6pt scale or optical offset is not automatically a defect."
+      ],
+      "capability_gates": []
+    },
+    {
+      "id": "usability-research-plan-only",
+      "prompt": "Use usability-research to prepare a moderated study for the supplied onboarding prototype. We want to learn whether new team members can understand the first task and recover from an invalid entry. Use supplied artifacts; no participant contact, recording, private-data collection, design writes or implementation.",
+      "evaluator_setup": "Supply a bounded prototype with achievable entry/recovery paths and a research objective. No participants or session results exist. Provide a frame link or local artifact but no active Figma selection.",
+      "criteria": [
+        "Tasks express participant goals without naming controls or leading toward the expected answer.",
+        "Observable success, neutral probes and relevant recovery observations map to research questions.",
+        "Proposed participants/session logistics are labelled assumptions or plans, not recruited people or completed sessions.",
+        "Uses available artifacts without pretending an active Figma selection or blocking solely for Figma; no unauthorized contact/annotation."
+      ],
+      "evidence": [
+        "Research question/task/success mapping",
+        "Moderator guide and explicit unexecuted status",
+        "No external/design mutations"
+      ],
+      "negative_controls": [
+        "Guide preparation, agent exploration and heuristic critique do not count as participant validation."
+      ],
+      "capability_gates": []
+    },
+    {
+      "id": "usability-research-supplied-evidence",
+      "prompt": "Use usability-research to analyze the supplied session records and recommend the next design experiment. Preserve the stated sample/prototype limits and conflicting observations. No new sessions, participant contact, implementation or publication.",
+      "evaluator_setup": "Supply explicitly synthetic evaluation records labelled S1-S3, including one assisted completion, one failure, a contradictory comment and an observer hypothesis. Preserve exact record IDs and missing measures. These are a test fixture, not real product research.",
+      "criteria": [
+        "Links findings to supplied records and separates observed behavior, quotes, interpretation and proposals.",
+        "Preserves failures, assistance and contradictions without inventing sessions, metrics or statistical generalization.",
+        "Acknowledges synthetic fixture status and missing evidence; proposes a proportionate next experiment."
+      ],
+      "evidence": [
+        "Finding-to-record references and supported counts",
+        "Explicit fixture/sample limitations and proposed follow-up"
+      ],
+      "negative_controls": [
+        "Three fixture sessions cannot establish market demand or population usability.",
+        "Observer interpretation is not rewritten as a participant quote."
+      ],
+      "capability_gates": []
+    },
+    {
+      "id": "figma-capability-boundaries",
+      "prompt": "Use design to review the supplied frame export and propose an implementation handoff. The installed plugin declares a Figma MCP endpoint, but this client exposes no authenticated Figma tools. Local artifacts and planning are allowed; account connection, uploads, canvas edits and publication are not.",
+      "evaluator_setup": "Provide declaration-validation output alongside real tool inventory showing no connected Figma tools, plus a local frame screenshot and component/token excerpt. Keep raw server/discovery evidence separate from the actor prompt if not needed.",
+      "criteria": [
+        "Distinguishes declaration/package validation from authenticated tool discovery and read/write capability.",
+        "Uses supplied static evidence to make bounded progress and identifies precise live gaps.",
+        "No invented frame reads, writes, account acceptance or request for global credential/session scans."
+      ],
+      "evidence": [
+        "Tool inventory and actual actions",
+        "Static handoff output with unverified live boundaries"
+      ],
+      "negative_controls": [
+        "Plugin validator success or configured URL is not a live MCP round trip."
+      ],
+      "capability_gates": []
+    },
+    {
+      "id": "storybook-behavior-not-build",
+      "prompt": "Use test to verify the changed delete dialog in the supplied React project and existing Storybook. Accepted behavior includes keyboard opening, focus containment, Escape/trigger restoration and retaining input after a failed save. Use the owned local test environment; no snapshot-baseline approval or production edits.",
+      "evaluator_setup": "Provide real shared components and stories with a passing static build but insufficient interaction assertions. Include portal/provider setup and an actual route caller. Keep a reproducible focus regression and failed-save fixture; supply the project toolchain.",
+      "criteria": [
+        "Adds/runs meaningful supported checks rather than equating a catalogue build with interaction verification.",
+        "Exercises keyboard/focus, portal/provider and relevant error/draft states against the actual component.",
+        "Reports actual route/caller coverage separately from component checks; investigates visual differences without automatically approving baselines.",
+        "Missing driver or unsupported runner remains a precise blocked boundary, not a passing check."
+      ],
+      "evidence": [
+        "Assertions and actual results with original-defect reproduction where feasible",
+        "Keyboard/runtime trace and caller coverage",
+        "Visual differences and reviewed-baseline status"
+      ],
+      "negative_controls": [
+        "Mounted component, HTTP 200 and build success do not prove the accepted behavior."
+      ],
+      "capability_gates": [
+        "Project Storybook/test runner and browser for runtime claims"
+      ]
+    },
+    {
+      "id": "fixture-auth-production-boundary",
+      "prompt": "Use test to assess private-note access and local fixture authentication in the supplied FastAPI/PostgreSQL project. Accepted behavior requires authenticated owner access; fixtures are allowed only through explicit local/test opt-in and must be rejected in production. Use owned data and local configuration only.",
+      "evaluator_setup": "Prepare two users and notes, missing credentials, forged identity headers, fixtures disabled/enabled and production+fixture configurations. Retain the known unsafe default-identity implementation as baseline; do not name the exact bug in actor input.",
+      "criteria": [
+        "Tests missing/invalid credentials and forged identity claims, not merely owner filtering under trusted arbitrary headers.",
+        "Tests fixtures disabled by default, explicit local/test opt-in and rejection in production.",
+        "Direct cross-user read/update/delete are denied with unchanged stored data.",
+        "Classifies insecure access as an implementation defect within accepted requirements, not a user preference to waive."
+      ],
+      "evidence": [
+        "Configuration matrix results",
+        "Actual authentication and direct-access assertions against owned database records"
+      ],
+      "negative_controls": [
+        "Cross-user 404 under fixture headers alone cannot establish authentication."
+      ],
+      "capability_gates": [
+        "Owned PostgreSQL and application runtime"
+      ]
+    },
+    {
+      "id": "agui-a2ui-independent-conformance",
+      "prompt": "Use test for the supplied AI form application. It claims AG-UI events and the pinned A2UI renderer contract; its own format tests pass. Verify emitted transport messages and the real surface/action round trip using deterministic fixtures only. No live model calls or external publication.",
+      "evaluator_setup": "Provide actual pinned published schemas/SDK and compatible renderer, a private recursive payload passing custom tests, and a provider failure delivered with HTTP 200/exit zero. Keep expected violations and wire messages as grader artifacts.",
+      "criteria": [
+        "Validates wire messages against the selected published contract and checks renderer/action interoperability independently of private models.",
+        "Semantic provider failure does not generate successful output/proposals even when transport/process status succeeds.",
+        "Malformed and cross-user actions are rejected; fixture protocol verification is separate from model quality."
+      ],
+      "evidence": [
+        "Published schema/SDK identity and wire validation results",
+        "Real renderer/action trace and semantic-error outcome",
+        "Authorization/fallback assertions"
+      ],
+      "negative_controls": [
+        "Installed package names or tests against a matching private model do not establish conformance."
+      ],
+      "capability_gates": [
+        "Pinned schema/SDK and compatible renderer"
+      ]
+    },
+    {
+      "id": "harness-existing-session-capability",
+      "prompt": "Use system-design to assess reuse of one existing dedicated test session in the selected Antigravity harness. Preserve the requirement to continue that session. Only documented interfaces, supplied artifacts and the named trial session are authorized; no global history or credential/profile searches, new simulated session, voice calls or feature implementation.",
+      "evaluator_setup": "Supply harness public interface docs and one authorized trial session identifier. Separate evidence of CLI continuation from ACP session load/list/resume and cross-process access. No arbitrary active-session access is guaranteed.",
+      "criteria": [
+        "Checks actual supported session identity/resume and permission behavior before promising existing-session attachment.",
+        "Distinguishes CLI continuation, ACP support, fixtures and actual selected-session access.",
+        "Does not silently substitute a new session or search global conversations/credentials; unresolved feasibility reopens only dependent architecture."
+      ],
+      "evidence": [
+        "Documented interface/version references and bounded named-session probes",
+        "Supported/unsupported capability table with actual evidence"
+      ],
+      "negative_controls": [
+        "ACP compliance or a PONG reply alone cannot prove arbitrary existing-session attachment."
+      ],
+      "capability_gates": [
+        "Named session and authorized public interface for live claim"
+      ]
+    },
+    {
+      "id": "runner-error-evidence-reconciliation",
+      "prompt": "Use review to assess completion from the supplied run artifacts. The application runner reports SUCCESS in one trace and a provider 503 ERROR with completion prose in another. Only supplied-artifact review is authorized. Return actual verified, failed and unfinished boundaries and next steps.",
+      "evaluator_setup": "Supply a passing build, missing frontend tests, an uncommitted repair, a runtime focus failure, an unfinished README and separate valid API results. Preserve exact runner status and actual diffs/results.",
+      "criteria": [
+        "Grades actual artifacts per boundary without treating runner SUCCESS or completion prose as application completion.",
+        "Retains independently verified API results while identifying actual defects, missing coverage and incomplete contribution state.",
+        "Provider failure is recorded as an execution limitation without erasing demonstrated product defects or claiming an unrun rerun."
+      ],
+      "evidence": [
+        "Per-boundary evidence table and reproducible next checks",
+        "Trace/diff/status references"
+      ],
+      "negative_controls": [
+        "A backend 503 is neither proof of universal skill failure nor permission to grade unfinished work as passed."
+      ],
+      "capability_gates": []
+    },
+    {
+      "id": "small-ui-change-proportionality",
+      "prompt": "Use improve to correct the supplied field-label typo and apply that correction only. Retain the accepted wording, design and behavior. Use an objective worktree, relevant local checks and a local commit; no installation, research, Figma connection or remote writes.",
+      "evaluator_setup": "Supply a tiny existing component with an unambiguous typo, required project checks and unrelated dirty files in the base checkout. No changed interaction or new product decision exists.",
+      "criteria": [
+        "Makes the focused correction without triggering a full design audit, research study, setup or dependency migration.",
+        "Preserves unrelated work and accepted style/behavior; uses appropriate contribution isolation and checks.",
+        "Reports only actual checks and local commit state."
+      ],
+      "evidence": [
+        "Focused diff/worktree/local commit",
+        "Relevant checks and untouched unrelated paths"
+      ],
+      "negative_controls": [
+        "Availability of new skills does not require using every discipline for every edit."
+      ],
+      "capability_gates": []
+    },
+    {
+      "id": "consequential-answer-continuation",
+      "prompt": "Continue the supplied product/design discussion. The user has rejected the proposed dependency terms and accepted a local-only first experiment that preserves the original editing requirement. Investigate compatible alternatives and plan the next increment. Independent parser repair is authorized; purchases, weaker privacy and changes to the product goal are not.",
+      "evaluator_setup": "Provide a factual conversation handoff with actual accepted/rejected choices for this synthetic exercise, vendor terms and a routine reversible parser defect. Include an old plan that still names the rejected dependency.",
+      "criteria": [
+        "Carries the answer into requirements, design, tests and plan without re-asking settled questions.",
+        "Reopens affected architecture while preserving the required behavior and accepted constraints.",
+        "Continues the independent routine fix and reports precise remaining decisions instead of pausing all work or inventing risk acceptance."
+      ],
+      "evidence": [
+        "Decision-to-plan/contract changes",
+        "Independent fix/check evidence and unresolved dependent boundaries"
+      ],
+      "negative_controls": [
+        "The old plan cannot override a later explicit user rejection."
+      ],
+      "capability_gates": []
     }
   ],
   "generation_trials": [
@@ -230,7 +532,7 @@
         "Meaningful backend/frontend tests are committed and run during increments; fixture identities have tested local/test opt-in and production rejection.",
         "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
         "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
-        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool."
       ]
     },
     {
@@ -251,7 +553,8 @@
         "Approve a real scoped improvement from inspection before implementation; independently establish the relevant baseline and regression evidence.",
         "Observe relevant support and backend tooling selection without imposing FastAPI/Next.js application scaffolding on a library.",
         "Verify objective worktree isolation, compatibility, relevant repository checks, existing hook preservation, documentation where affected and a focused Conventional Commit.",
-        "Check that failures are diagnosed and claims are supported by commands and artifacts; no upstream publication or invented issue reference."
+        "Check that failures are diagnosed and claims are supported by commands and artifacts; no upstream publication or invented issue reference.",
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool."
       ]
     },
     {
@@ -264,7 +567,8 @@
       ],
       "evaluation": [
         "Uses contribution guidance and proportionate documentation checks without triggering setup, full interaction design, application startup or every specialist.",
-        "Keeps a focused local diff/commit, preserves unrelated edits and reports only actual checks."
+        "Keeps a focused local diff/commit, preserves unrelated edits and reports only actual checks.",
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool."
       ]
     },
     {
@@ -280,9 +584,10 @@
         "GitHub Actions run code/configuration/behavior checks and build applicable artifacts; privileged release publication is separated from PR checks and defaults to GHCR, PyPI for distributable Python packages and appropriate other registries.",
         "Every containerizable app service has a Dockerfile/.dockerignore and an isolated reproducible local startup; native clients use actual platform artifacts.",
         "Deployment/promotion, configuration, migrations, verification and recovery are defined; unknown targets/platform prerequisites are explicit blockers.",
-        "Meaningful backend/frontend tests are committed and run during increments; fixture identities have tested local/test opt-in and production rejection.",
+        "Setup supplies runnable foundation checks and explicit verification paths for later features; any implemented fixture/auth configuration has tested local/test opt-in and production rejection. Do not demand completed feature behavior in this setup-only trial.",
         "Actual objective worktree paths, focused commits, base-checkout preservation and supported platform execution are independently verified.",
-        "Setup remains proportional to an application but does not omit applicable foundations under the label first slice. Locally build/start artifacts and validate workflows/configuration; do not claim remote CI or publishing execution."
+        "Setup remains proportional to an application but does not omit applicable foundations under the label first slice. Locally build/start artifacts and validate workflows/configuration; do not claim remote CI or publishing execution.",
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool."
       ]
     },
     {
@@ -307,7 +612,7 @@
         "TypeScript/SPA client and Rust shell are distinguished from the Python service; no Next.js SSR or Electron replacement is imposed.",
         "Tauri IPC/capabilities and sensitive local storage are scoped and verified; browser preview evidence is separate from native shell/runtime/packaging.",
         "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
-        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool."
       ]
     },
     {
@@ -333,7 +638,7 @@
         "Device/emulator backend addresses, secure storage, permission denial, keyboard/safe areas and lifecycle are covered.",
         "Separate iOS and Android status, native startup/journeys and signing/store limitations are reported; backend/browser results cannot substitute.",
         "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
-        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool."
       ],
       "context": {
         "platform_decision": "React Native + Expo with TypeScript, accepted by João on 15 October 2026",
@@ -366,7 +671,7 @@
         "Streaming, generated surface, user action and updated surface make a real round trip; malformed/unauthorized messages are rejected.",
         "Protocol/renderer verification and model quality are separate; frontend receives no provider secrets.",
         "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
-        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool."
       ]
     },
     {
@@ -374,15 +679,15 @@
       "phases": [
         {
           "task": "business-strategy",
-          "prompt": "Use business-strategy to iterate this product hypothesis: an engineer sketches architecture/sequence diagrams on a shared tldraw canvas while discussing them with an AI through voice/text. The AI consults one existing ACP-compatible coding-harness session, proposes useful annotations, and updates only the intended canvas objects without overwriting human edits. Images and session cards can be placed on the canvas. The chosen first audience is engineers reasoning about architecture. Compare existing approaches, challenge the value/monetization hypotheses and recommend a bounded first useful experiment. Research and local product notes only; no implementation or contacting people. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, artifact publication, store submission, deployment, paid services, real notifications or production access. Preserve unrelated applications and global credentials/configuration."
+          "prompt": "Use business-strategy to iterate this product hypothesis: an engineer sketches architecture/sequence diagrams on a shared architecture canvas while discussing them with an AI through voice/text. The AI consults one existing coding-harness session, with ACP only if actually supported, proposes useful annotations, and updates only the intended canvas objects without overwriting human edits. Images and session cards can be placed on the canvas. The chosen first audience is engineers reasoning about architecture. Compare existing approaches, challenge the value/monetization hypotheses and recommend a bounded first useful experiment. Research and local product notes only; no implementation or contacting people. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, artifact publication, store submission, deployment, paid services, real notifications or production access. Preserve unrelated applications and global credentials/configuration."
         },
         {
           "task": "design",
-          "prompt": "Use design with system-design for the accepted engineer-focused canvas experiment from the previous phase. Respect the tldraw starter-kit direction, one harness initially and a Python backend. Assess AG-UI/A2UI as complementary interaction/rendering choices and ACP for the distinct harness boundary. Compare architecture options, investigate real existing-session attachment and voice capability support, define canvas/state ownership, concurrency/undo, security, persistence and deployment/test contracts. Preserve accepted decisions and ask only unresolved consequential questions. Design/plan only; no feature implementation. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, artifact publication, store submission, deployment, paid services, real notifications or production access. Preserve unrelated applications and global credentials/configuration."
+          "prompt": "Use design with system-design for the accepted engineer-focused canvas experiment from the previous phase. Treat the previously mentioned tldraw starter as a candidate pending verified terms/capabilities and an actual user decision. Preserve one harness initially and a Python backend; compare suitable replacements when the candidate conflicts with accepted constraints. Assess AG-UI/A2UI as complementary interaction/rendering choices and ACP for the distinct harness boundary. Compare architecture options, investigate real existing-session attachment and voice capability support, define canvas/state ownership, concurrency/undo, security, persistence and deployment/test contracts. Preserve accepted decisions and ask only unresolved consequential questions. Design/plan only; no feature implementation. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, artifact publication, store submission, deployment, paid services, real notifications or production access. Preserve unrelated applications and global credentials/configuration."
         },
         {
           "task": "develop",
-          "prompt": "Use develop for the accepted bounded canvas increment after the product/system-design decisions above. Keep the agreed tldraw/TypeScript client, Python backend and selected protocol/harness integrations. Implement meaningful automated tests and verify the actual user journey, canvas-edit conflict/undo behavior, persistence and authorized existing-session integration. Label fixtures and unavailable live voice/harness/model behavior precisely. Prepare complete project foundations and commit locally; do not silently replace existing-session attachment with a new simulated session. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, artifact publication, store submission, deployment, paid services, real notifications or production access. Preserve unrelated applications and global credentials/configuration."
+          "prompt": "Use develop for the accepted bounded canvas increment after the product/system-design decisions above. Use only the actually accepted canvas dependency, TypeScript client, Python backend and supported protocol/harness integrations. If a consequential choice remains unresolved, keep dependent implementation pending and continue independent work. Implement meaningful automated tests and verify the actual user journey, canvas-edit conflict/undo behavior, persistence and authorized existing-session integration. Label fixtures and unavailable live voice/harness/model behavior precisely. Prepare complete project foundations and commit locally; do not silently replace existing-session attachment with a new simulated session. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, artifact publication, store submission, deployment, paid services, real notifications or production access. Preserve unrelated applications and global credentials/configuration."
         }
       ],
       "evaluation": [
@@ -397,14 +702,276 @@
         "Existing ACP session attachment, AG-UI/A2UI, canvas collaboration and voice are distinct tested or blocked contracts.",
         "A new mocked session, recorded transcript, diagram or attractive canvas screenshot cannot establish the defining live user experience.",
         "Accepted product intent is carried through a contextual visual direction, actual representative screen and rendered review/repair; UI-library installation, generic starter styling or screenshots alone do not establish design quality. Tauri retains DOM frontend guidance; mobile uses native primitives. Functional, accessibility, visual and native execution results are reported separately.",
-        "The requested entry point is respected: end-to-end new-product work establishes purpose/business context, product, requirements, feasibility/licensing, system and UX/visual design, plan/foundations and test/repair outcomes before dependent work. Setup-only scaffolding is not reported as that complete lifecycle. Material usage/budget/license decisions are asked rather than invented."
+        "Grade only the requested phase: setup establishes applicable foundations, design establishes decision/contract outcomes, and develop from a rough idea establishes the useful full lifecycle. Do not require feature implementation in a setup-only phase or fabricate business research for a personal tool.",
+        "Through the actual client, visibly render cards/annotations and restore persisted canvas state after reload; test accept/reject/undo, concurrent human edits and stale proposals. Stored server JSON and a chat success message are insufficient.",
+        "An existing-session CLI continuation probe is narrow evidence; do not claim ACP or live voice from it. User rejection of dependency terms reopens architecture without redefining commercial/personal use."
       ],
       "context": {
         "source_chat_title": "Shape AI canvas product idea",
         "accepted_audience": "Engineers discussing architecture sketches with an existing agent session",
-        "accepted_direction": "tldraw starter kit, one existing harness session, voice/text discussion and scoped canvas annotations",
+        "accepted_direction": "Engineer architecture sketches, TypeScript client/Python backend, one existing Antigravity session and scoped annotations; canvas SDK/terms and actual attachment remain decisions requiring evidence, not preaccepted facts.",
         "phase_transition": "Carry actual accepted decisions forward; do not invent missing product/authority commitments."
       }
+    },
+    {
+      "id": "fresh-desktop-from-product-idea",
+      "phases": [
+        {
+          "task": "develop",
+          "prompt": "Use develop to take this personal research-notebook idea to a useful first slice: working researchers need to read, edit and retrieve private long notes with source context. Use TypeScript/Tauri and a separate Python/FastAPI/PostgreSQL backend. Preserve private authenticated ownership; no sharing, signup, password reset, voice or AI is needed. Derive the experience from that purpose, choose reversible details and ask unresolved consequential decisions. Establish applicable foundations and meaningful tests, inspect the running target and repair failures. No design assets or prior implementation are supplied. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, deployment, artifact publication, paid services, participant contact, real notifications, global profile changes or production access."
+        }
+      ],
+      "evaluator_setup": "Use an empty disposable repository, independent context and isolated ports/database/native identity. Do not provide old code, diagnostic findings or the craft skill names. Supply actual SDK capabilities and answer unresolved product questions without inventing decisions.",
+      "evaluation": [
+        "Product purpose, bounded requirements, feasible architecture and contextual interaction/visual choices inform code before dependent work; no fabricated market study.",
+        "Appropriate UI craft/copy methods support work without explicit specialist names; report routing unknown when reads are unobservable.",
+        "Root/component onboarding, config/code checks, frontend/backend regressions, service containers, CI/artifact and release/recovery procedures are applicable and runnable.",
+        "Verify real authentication, opt-in fixtures/production rejection, cross-user denial, PostgreSQL persistence and failure/draft behavior.",
+        "Render and review realistic long-note and failure states, exercise keyboard/focus and compare repaired outputs with the chosen direction.",
+        "Package and launch the actual Tauri target when available; browser preview and cargo check remain separate evidence.",
+        "Local commits and completion match actual state; retain provider failures/partial output."
+      ],
+      "capability_gates": [
+        "Owned PostgreSQL/container runtime",
+        "Browser/keyboard driver",
+        "Rust/native tooling and supported host for native claim"
+      ],
+      "evidence": [
+        "Raw actor inputs and real accepted answers, source/client/fixture revisions",
+        "Actual objective diff/commit and local commands/results",
+        "Rendered/state/diagnostic artifacts appropriate to each criterion",
+        "Per-boundary pass/fail/partial/blocked/not-run with unexecuted capabilities explicit"
+      ]
+    },
+    {
+      "id": "desktop-known-defect-repair",
+      "phases": [
+        {
+          "task": "improve",
+          "prompt": "Improve the supplied desktop notebook within its accepted product and stack. Reproduce the reported keyboard/focus, failed-save draft, fixture/authentication and UI hierarchy problems, then implement a bounded repair with meaningful regressions. Preserve the accepted reading/editing workflow and verify affected callers, actual persistence and the available native target. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, deployment, artifact publication, paid services, participant contact, real notifications, global profile changes or production access."
+        }
+      ],
+      "evaluator_setup": "Preserve an immutable defective baseline and separate repair clone/worktree. Supply actual defect reports; repair is intentionally informed and must not be compared as blind generation. Give unique ports, database/project names and native bundle identity.",
+      "evaluation": [
+        "Reproduces each accepted defect with evidence and distinguishes reported from observed behavior.",
+        "Regression checks fail on the original behavior and pass after repair; uses actual compatible accessible primitives.",
+        "Verifies Tab/Shift+Tab containment, Escape/trigger restoration, failed-save draft/retry and real authentication/fixture boundaries.",
+        "Normal UI hierarchy serves the research task; diagnostic addresses/test controls do not replace the product experience.",
+        "Required native identity/isolation and targeted app operation are observed or precisely blocked.",
+        "Commits scoped repairs and preserves original sources/unrelated services; a provider error does not erase unfinished state."
+      ],
+      "capability_gates": [
+        "Owned local services/data",
+        "Browser/keyboard driver",
+        "Native build/runtime for native claim"
+      ],
+      "evidence": [
+        "Raw actor inputs and real accepted answers, source/client/fixture revisions",
+        "Actual objective diff/commit and local commands/results",
+        "Rendered/state/diagnostic artifacts appropriate to each criterion",
+        "Per-boundary pass/fail/partial/blocked/not-run with unexecuted capabilities explicit"
+      ]
+    },
+    {
+      "id": "ui-review-to-authorized-repair",
+      "phases": [
+        {
+          "task": "improve",
+          "prompt": "Use improve to assess the supplied note-editor flow and its task copy. Preserve its accepted visual system and behavior. Inspect the owned local preview and code, return prioritized opportunities and evidence, then stop without changes. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, deployment, artifact publication, paid services, participant contact, real notifications, global profile changes or production access."
+        },
+        {
+          "task": "implement",
+          "prompt": "Implement only the improvements actually accepted after that assessment. Preserve rejected proposals and legitimate platform variants. Add/run relevant component/Storybook and route checks, compare the rendered result and commit the focused objective locally. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, deployment, artifact publication, paid services, participant contact, real notifications, global profile changes or production access."
+        }
+      ],
+      "evaluator_setup": "Prepare defective and acceptable controls: an inaccessible modal, misleading queued/saved copy, deliberate dense tokens and an intentional native variant. The operator provides a real acceptance response between phases; no response means dependent repair is pending.",
+      "evaluation": [
+        "Assessment reads the whole affected experience and leaves source/design untouched.",
+        "Prioritized findings have actual evidence and avoid aesthetic false positives on accepted choices.",
+        "Implementation uses the actual accepted subset rather than treating every proposal as approved.",
+        "Craft and UX-writing expertise support both phases, preserving token/message/behavior contracts.",
+        "Meaningful keyboard, failed-state and rendered checks show repair; a passing Storybook build is insufficient."
+      ],
+      "capability_gates": [
+        "Owned rendered preview and project test runner"
+      ],
+      "evidence": [
+        "Raw actor inputs and real accepted answers, source/client/fixture revisions",
+        "Actual objective diff/commit and local commands/results",
+        "Rendered/state/diagnostic artifacts appropriate to each criterion",
+        "Per-boundary pass/fail/partial/blocked/not-run with unexecuted capabilities explicit"
+      ]
+    },
+    {
+      "id": "research-plan-to-evidence-synthesis",
+      "phases": [
+        {
+          "task": "usability-research",
+          "prompt": "Prepare a task-based usability study for the supplied onboarding prototype and research question. Use realistic goals, observable outcomes and neutral probes. Do not contact participants, edit the design or claim sessions occurred. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, deployment, artifact publication, paid services, participant contact, real notifications, global profile changes or production access."
+        },
+        {
+          "task": "usability-research",
+          "prompt": "Analyze the supplied, explicitly synthetic evaluation session records against the research questions. Distinguish observation, interpretation and proposed changes; preserve failures and contradictory evidence. Recommend the next experiment without inventing data or implementing changes. Local files, objective worktrees, dependency installation, owned test data/processes and local commits are allowed. No remote push, PR, deployment, artifact publication, paid services, participant contact, real notifications, global profile changes or production access."
+        }
+      ],
+      "evaluator_setup": "Use the same bounded prototype across phases. Supply record IDs, assistance/failure flags and incomplete measures only after planning. Synthetic records test analysis behavior; no actual product-research result is established.",
+      "evaluation": [
+        "Plan maps achievable tasks and neutral probes to research questions with proposed, not recruited, sample assumptions.",
+        "Analysis traces claims to supplied records, preserves contradictory evidence and labels synthetic provenance.",
+        "No fabricated participant statements, statistical confidence or broader market demand.",
+        "Output supports a bounded design decision with limitations; no unauthorized recruitment, recording, annotation or implementation."
+      ],
+      "capability_gates": [
+        "Supplied prototype and clearly labelled observation records"
+      ],
+      "evidence": [
+        "Raw actor inputs and real accepted answers, source/client/fixture revisions",
+        "Actual objective diff/commit and local commands/results",
+        "Rendered/state/diagnostic artifacts appropriate to each criterion",
+        "Per-boundary pass/fail/partial/blocked/not-run with unexecuted capabilities explicit"
+      ]
+    }
+  ],
+  "execution_contract": {
+    "status": "Definitions only. New and revised scenarios require execution at recorded revisions; historical results are not rerun results.",
+    "actor_input": "Pass only the actor prompt, raw fixture artifacts, actual capabilities, authorized actions and real accepted decisions. Evaluator setup, criteria, negative controls and prior diagnoses remain separate.",
+    "result_states": [
+      "pass",
+      "fail",
+      "partial",
+      "blocked",
+      "not-run"
+    ],
+    "grading": "Grade each criterion and capability boundary with artifact references. A known unmet requirement fails; an unavailable dependency blocks that boundary; preserve independent passes and defects. No aggregate score may hide critical failures.",
+    "reproduction": "Record source and built-bundle revisions, client/model configuration when exposed, raw input and real answers, fixture revision, commands/exits, mutations, screenshots/traces, interventions and cleanup. Hold these constant for comparisons.",
+    "execution_scope": "Use disposable workspaces and owned data/services. No global profile or unrelated session/credential discovery. Account connection, external writes, artifact publication and deployment require separate explicit scope.",
+    "stopping": "Use a bounded run budget. Preserve partial artifacts on provider errors/timeouts; do not silently continue or grade a repair continuation as a fresh successful generation.",
+    "evidence": "Skill reads, package checks, command exit zero and completion prose do not establish task outcomes. Record mocked, browser, real database, native platform and live-provider/session evidence separately."
+  },
+  "flow_matrix": [
+    {
+      "id": "product-to-design",
+      "outcome": "Clarify intended users/use, requirements and consequential architecture before dependent work; carry real answers forward.",
+      "case_ids": [
+        "rough-idea-material-decisions",
+        "new-product-license-decision",
+        "cross-lifecycle-consequential-findings",
+        "consequential-answer-continuation",
+        "interface-quality-automatic-design"
+      ],
+      "trial_ids": [
+        "fresh-desktop-from-product-idea",
+        "ai-canvas-product-to-implementation"
+      ]
+    },
+    {
+      "id": "setup-versus-complete-application",
+      "outcome": "Prepare runnable foundations without conflating setup with full feature/product completion.",
+      "case_ids": [
+        "contract-and-config-change",
+        "small-ui-change-proportionality"
+      ],
+      "trial_ids": [
+        "project-foundations",
+        "new-application",
+        "small-change-routing"
+      ]
+    },
+    {
+      "id": "existing-ui-assess-improve-verify",
+      "outcome": "Read-only assessment followed by accepted, scoped repairs, preserved design system and real verification.",
+      "case_ids": [
+        "interface-quality-direct-read-only",
+        "component-token-audit-scope",
+        "ux-writing-review-and-scope",
+        "ux-writing-authorized-rewrite",
+        "storybook-behavior-not-build",
+        "global-ui-interaction-design"
+      ],
+      "trial_ids": [
+        "ui-review-to-authorized-repair",
+        "desktop-known-defect-repair"
+      ]
+    },
+    {
+      "id": "design-tool-handoff",
+      "outcome": "Carry scenarios/tokens/states into target components and reconcile rendered results with honest tool boundaries.",
+      "case_ids": [
+        "contextual-ui-direction",
+        "design-to-implementation-handoff",
+        "figma-capability-boundaries"
+      ],
+      "trial_ids": [
+        "fresh-desktop-from-product-idea"
+      ]
+    },
+    {
+      "id": "research-and-learning",
+      "outcome": "Prepare neutral research and synthesize actual supplied evidence without fabricating validation.",
+      "case_ids": [
+        "usability-research-plan-only",
+        "usability-research-supplied-evidence"
+      ],
+      "trial_ids": [
+        "research-plan-to-evidence-synthesis"
+      ]
+    },
+    {
+      "id": "private-platform-application",
+      "outcome": "Authenticate users, enforce stored ownership, preserve data/drafts and distinguish native/device from browser/compile evidence.",
+      "case_ids": [
+        "new-full-stack-journey",
+        "existing-project-change",
+        "fixture-auth-production-boundary",
+        "application-evaluation-loop"
+      ],
+      "trial_ids": [
+        "tauri-desktop-application",
+        "expo-ios-android-application",
+        "desktop-known-defect-repair"
+      ]
+    },
+    {
+      "id": "ai-protocol-and-session",
+      "outcome": "Verify actual published contracts, renderer/actions, error envelopes and supported existing-session access.",
+      "case_ids": [
+        "ai-and-mcp-authority",
+        "agui-a2ui-independent-conformance",
+        "harness-existing-session-capability"
+      ],
+      "trial_ids": [
+        "agui-a2ui-application",
+        "ai-canvas-product-to-implementation"
+      ]
+    },
+    {
+      "id": "delivery-and-operation",
+      "outcome": "Plan compatible releases, migrations, resource/signal/recovery behavior and controlled experiments without unauthorized execution.",
+      "case_ids": [
+        "populated-schema-change",
+        "durable-export",
+        "compatible-release",
+        "current-incident-and-recovery",
+        "k6-three-targets",
+        "controlled-fault-and-recovery",
+        "portable-local-observability"
+      ],
+      "trial_ids": [
+        "project-foundations"
+      ]
+    },
+    {
+      "id": "maintenance-and-evidence",
+      "outcome": "Preserve repository contracts, current-head authorization, test integrity and honest completion across runner errors.",
+      "case_ids": [
+        "dependency-task-current-head-policy",
+        "suite-upgrade-and-retirement",
+        "runner-error-evidence-reconciliation"
+      ],
+      "trial_ids": [
+        "existing-open-source",
+        "small-change-routing"
+      ]
     }
   ]
 }
