@@ -2,45 +2,63 @@
 
 Use the [SDLC overview](../README.md#sdlc-coverage) to orient yourself and the [task menu](usage.md#skills-you-invoke) to start work. This reference links the expertise behind those activities. `develop` spans the useful lifecycle; individual tasks let you enter at any phase. Phases are a map, not required handoffs. For a new application, [new-application flow](../plugins/development-workflow/skills/develop/references/new-application-flow.md) defines the decision outcomes develop must establish before dependent work; setup alone does not establish the lifecycle.
 
+The circular overview names SDLC phases and their outcomes. Labels marked **Entry** identify user-facing skills; plugins are installation bundles, and supporting disciplines are linked below. A skill may support more than one phase. `plan` is detailed implementation planning after the relevant requirements and design decisions.
+
+## Different starting points
+
+![Six representative paths for a new product, existing feature, bug, assessment, operations or specialist question, with contextual methods and bounded outcomes](images/sdlc-use-cases.svg)
+
+The same cycle supports a whole product and a small change. A new product needs enough refinement, feasibility and design evidence before dependent implementation; an existing feature reuses accepted context and revisits only affected decisions. Bug repair starts with reproduction and diagnosis. A scoped review returns findings and gaps; fixes require the corresponding request. Operations can enter through an incident, recovery exercise, capacity question or routine upkeep, with outcomes verified in the named environment.
+
+Direct strategy, design, documentation and other specialist requests can end at their own useful result. They need no full development engagement. Representative task names in the map describe supported entry points, not universal client commands or automatic invocation of explicit-only workflows. People and trusted automation can request the same activities; the host supplies triggering, credentials, tools, limits and allowed actions.
+
+Implementation and verification form a repeated loop inside the broader SDLC. Product feedback, incident learning and test evidence can reopen the relevant requirement, design or increment. Local checks, real-platform behavior and deployed outcomes establish different claims; a finished diagram, successful build or passing component test cannot establish them all. Follow the [shared consequential-decision policy](../plugins/development-workflow/WORKFLOW.md#resolve-consequential-findings) when new evidence requires a user choice, and continue independent work within the existing scope.
+
 ## Before and around the cycle
 
 - Product discovery: [business-strategy](../plugins/business-strategy/skills/business-strategy/SKILL.md) helps choose a useful problem.
-- Project foundations: `setup` uses [project-conventions](../plugins/development-workflow/skills/project-conventions/SKILL.md) and relevant [delivery-pipelines](../plugins/development-workflow/skills/delivery-pipelines/SKILL.md) guidance. Establish them for a new project, then maintain affected parts as it evolves.
+- Project foundations: `setup` uses [project-conventions](../plugins/development-workflow/skills/project-conventions/SKILL.md) and relevant [delivery-pipelines](../plugins/development-workflow/skills/delivery-pipelines/SKILL.md) guidance. Establish them after sufficient product and architecture decisions for a new project, then maintain affected parts as it evolves.
 - Product feedback: [learn-from-product-feedback](../plugins/business-strategy/skills/learn-from-product-feedback/SKILL.md) examines delivered value and feeds discovery and future work. Incident learning addresses reliability and is a separate feedback source.
 
 ## Skills by phase
 
 Product discovery and refinement establish the outcome. System design makes architectural decisions before dependent implementation planning; revisit it for features that change consequential boundaries. Phases can recur and do not require separate task invocations.
 
-### 1. Requirements analysis
+### 1. Planning
+
+Establish the goals, feasibility, constraints and rough scope needed to decide whether and how to proceed. Product discovery supplies evidence for this decision. Revisit the initial plan as requirements and design become clearer; detailed implementation planning follows the decisions it depends on.
+
+### 2. Requirements analysis
 
 Start with [refine](../plugins/development-workflow/skills/refine/SKILL.md). Establish actor authority, scope, observable acceptance and material unknowns. Business strategy supports the product decision when requested.
 
-### 2. Architecture and system design
+### 3. Design
+
+#### Architecture and system design
 
 Use [design](../plugins/development-workflow/skills/design/SKILL.md) with [system-design](../plugins/development-workflow/skills/system-design/SKILL.md). Compare consequential architecture/platform options against the product and operating constraints, map boundaries and critical flows, and carry the decisions into setup and feature plans. Reuse installed codebase-design/domain-modeling where applicable.
 
-### 3. Interaction, visual and contract design
+#### Interaction, visual and contract design
 
 Use [design](../plugins/development-workflow/skills/design/SKILL.md), [frontend-conventions](../plugins/web-frontend/skills/frontend-conventions/SKILL.md), [interaction-design](../plugins/web-frontend/skills/interaction-design/SKILL.md) and relevant backend/native/AI guidance. Derive contextual visual direction and define surfaces, behavior, authority and failure contracts from the requirements before dependent implementation.
 
-### 4. Implementation planning and foundations
+#### Implementation planning and foundations
 
 Start with [plan](../plugins/development-workflow/skills/plan/SKILL.md). Produce bounded dependency-ordered increments, tests and delivery/recovery consequences from the accepted system and experience design. Reconcile earlier rough plans after material decisions; establish complete applicable project foundations.
 
-### 5. Implementation
+### 4. Implementation
 
 Start with bundled upstream implement. Use [git-contributions](../plugins/development-workflow/skills/git-contributions/SKILL.md) for the actual objective worktree and applicable frontend/backend/AI/native-client guidance. Keep source, configuration, tests and docs in that objective.
 
-### 6. Testing and repair
+### 5. Testing
 
 Start with [test](../plugins/development-workflow/skills/test/SKILL.md). Use [deliver-reliable-changes](../plugins/development-workflow/skills/deliver-reliable-changes/SKILL.md), [journey-testing](../plugins/development-workflow/skills/journey-testing/SKILL.md), and performance/resilience methods when relevant. Commit meaningful tests, inspect failures, repair and recheck the real behavior.
 
-### 7. Release and deployment
+### 6. Deployment
 
 Start with [release](../plugins/development-workflow/skills/release/SKILL.md). Use [delivery-pipelines](../plugins/development-workflow/skills/delivery-pipelines/SKILL.md) for CI, artifacts, registry publication, promotion and recovery. Setup authors applicable delivery foundations; live release/deployment requires a named authorized action.
 
-### 8. Maintenance and learning
+### 7. Maintenance
 
 Start with improve/dependencies or the requested operations activity. Use relevant upkeep, vulnerability, credential, capacity/cost and data-recovery guidance. Feed product evidence and incident learning into the next refinement/design decision.
 

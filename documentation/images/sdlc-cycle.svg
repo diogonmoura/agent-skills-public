@@ -1,55 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 790" role="img" aria-labelledby="title desc">
-<title id="title">Product refinement, system design and the development lifecycle</title>
-<desc id="desc">Purpose and product refinement lead to system design, interaction and visual design, implementation planning, implementation, testing and repair, release and deployment, then maintenance and learning. Project foundations and supporting skills apply throughout.</desc>
-<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#526580"/></marker></defs>
-<rect width="1440" height="790" fill="#f8fafc"/><g font-family="Arial, Helvetica, sans-serif">
-<text x="30" y="46" font-size="27" font-weight="700" fill="#15233b">From product evidence to system design and delivery</text>
-<text x="30" y="77" font-size="16" fill="#526580">Choose the relevant activity; revisit decisions when evidence changes</text>
-<rect x="30" y="106" width="1380" height="91" rx="14" fill="#e8eef9" stroke="#9aaecb"/>
-<text x="54" y="136" font-size="20" font-weight="700" fill="#15233b">Project foundations · after consequential choices · /setup</text>
-<text x="54" y="166" font-size="16" fill="#354966">READMEs · configuration checks · tests · containers · CI · artifact release · deployment/recovery</text>
-<rect x="30" y="230" width="315" height="122" rx="14" fill="#e8f5ef" stroke="#9aaecb"/>
-<text x="48" y="264" font-size="20" font-weight="700" fill="#15233b">1. Product refinement</text>
-<text x="48" y="295" font-size="15" fill="#354966">/refine · business-strategy</text>
-<text x="48" y="327" font-size="14" fill="#526580">Actors, scope and acceptance</text>
-<path d="M345 291L377 291" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="385" y="230" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="403" y="264" font-size="20" font-weight="700" fill="#15233b">2. System design</text>
-<text x="403" y="295" font-size="15" fill="#354966">/design · system-design</text>
-<text x="403" y="327" font-size="14" fill="#526580">Architecture and platform decisions</text>
-<path d="M700 291L732 291" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="740" y="230" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="758" y="264" font-size="20" font-weight="700" fill="#15233b">3. UX and visual design</text>
-<text x="758" y="295" font-size="15" fill="#354966">/design · frontend + interactions</text>
-<text x="758" y="327" font-size="14" fill="#526580">Context, behavior and API contracts</text>
-<path d="M1055 291L1087 291" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="1095" y="230" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="1113" y="264" font-size="20" font-weight="700" fill="#15233b">4. Plan and foundations</text>
-<text x="1113" y="295" font-size="15" fill="#354966">/plan · /setup</text>
-<text x="1113" y="327" font-size="14" fill="#526580">Increments, tests and delivery</text>
-<path d="M1252 352L1252 422" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="1095" y="430" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="1113" y="464" font-size="20" font-weight="700" fill="#15233b">5. Implementation</text>
-<text x="1113" y="495" font-size="15" fill="#354966">/develop · /implement</text>
-<text x="1113" y="527" font-size="14" fill="#526580">Feature worktree, code and tests</text>
-<path d="M1095 491L1063 491" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="740" y="430" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="758" y="464" font-size="20" font-weight="700" fill="#15233b">6. Testing and repair</text>
-<text x="758" y="495" font-size="15" fill="#354966">/test · journey-testing</text>
-<text x="758" y="527" font-size="14" fill="#526580">Run, inspect, repair and recheck</text>
-<path d="M740 491L708 491" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="385" y="430" width="315" height="122" rx="14" fill="#eef2ff" stroke="#9aaecb"/>
-<text x="403" y="464" font-size="20" font-weight="700" fill="#15233b">7. Release and deployment</text>
-<text x="403" y="495" font-size="15" fill="#354966">/release · delivery-pipelines</text>
-<text x="403" y="527" font-size="14" fill="#526580">Artifacts, promotion and recovery</text>
-<path d="M385 491L353 491" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="30" y="430" width="315" height="122" rx="14" fill="#e8f5ef" stroke="#9aaecb"/>
-<text x="48" y="464" font-size="20" font-weight="700" fill="#15233b">8. Maintenance and learning</text>
-<text x="48" y="495" font-size="15" fill="#354966">/improve · /dependencies</text>
-<text x="48" y="527" font-size="14" fill="#526580">Operations and product feedback</text>
-<path d="M187 554V604H720V636" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
-<rect x="30" y="636" width="1380" height="120" rx="14" fill="#f0edf9" stroke="#c4bddb"/>
-<text x="54" y="670" font-size="20" font-weight="700" fill="#15233b">Across the lifecycle · /develop · /review · /harden</text>
-<text x="54" y="702" font-size="16" fill="#354966">Research · domain/interfaces · security · documentation · Git · reliability · observability</text>
-<text x="54" y="733" font-size="15" fill="#526580">Product feedback and operational learning reopen refinement, architecture or the affected increment</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1360" role="img" aria-labelledby="title desc">
+<title id="title">Project foundations, the SDLC cycle and skills across the lifecycle</title>
+<desc id="desc">Establish project foundations after sufficient product and architecture decisions, then maintain them throughout the cycle. Discovery feeds planning. The SDLC cycles through planning, requirements analysis, design, implementation, testing, deployment and maintenance. Testing loops back to implementation for repair and rechecking. Design includes architecture, experience, visual direction and contracts. Detailed implementation planning follows those decisions. Live product feedback informs discovery and the next development cycle; evidence can reopen any affected decision. Labels marked Entry name user-facing skills, not plugins. Skills shown are representative; research, explicit clarification, documentation, Git, security, reliability and observability support discovery, development and feedback.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526580"/></marker><marker id="repair-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#157466"/></marker></defs>
+<rect width="1440" height="1360" fill="#f8fafc"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="40" y="48" font-size="26" font-weight="700" fill="#15233b">From product evidence to software, and back</text>
+<text x="40" y="78" font-size="15" fill="#526580">Enter at the relevant phase · Reuse accepted decisions · Follow evidence back to the affected work</text>
+<rect x="340" y="110" width="740" height="175" rx="18" fill="#e8eef9" stroke="#9aaecb"/>
+<text x="710" y="145" text-anchor="middle" font-size="20" font-weight="700" fill="#15233b">Project foundations: establish and maintain</text>
+<text x="710" y="175" text-anchor="middle" font-size="15" fill="#354966">After sufficient product and architecture decisions · Entry: setup</text>
+<text x="710" y="205" text-anchor="middle" font-size="15" fill="#354966">READMEs · local setup · linting · tests · application containers</text>
+<text x="710" y="237" text-anchor="middle" font-size="14" fill="#526580">CI/CD · artifact publication · release / deployment / recovery procedures</text>
+<text x="710" y="263" text-anchor="middle" font-size="13" fill="#526580">Maintain applicable foundations as the project evolves</text>
+<g transform="translate(0 220)">
+<rect x="20" y="110" width="240" height="820" rx="18" fill="#e8f5ef" stroke="#cbd5e1"/>
+<text x="140.0" y="147" text-anchor="middle" font-size="18" font-weight="700" fill="#15233b">Product discovery</text>
+<text x="140.0" y="166" text-anchor="middle" font-size="14" fill="#526580">Find the opportunity</text>
+<rect x="280" y="110" width="860" height="820" rx="18" fill="#eef2ff" stroke="#cbd5e1"/>
+<text x="710.0" y="147" text-anchor="middle" font-size="18" font-weight="700" fill="#15233b">Software development</text>
+<text x="710.0" y="166" text-anchor="middle" font-size="14" fill="#526580">Seven-phase SDLC cycle</text>
+<rect x="1160" y="110" width="260" height="820" rx="18" fill="#fff4e7" stroke="#cbd5e1"/>
+<text x="1290.0" y="147" text-anchor="middle" font-size="18" font-weight="700" fill="#15233b">Product feedback</text>
+<text x="1290.0" y="166" text-anchor="middle" font-size="14" fill="#526580">Learn from real use</text>
+<path d="M 809.7 278.0 Q 820.9 279.8 829.2 287.4" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 939.9 383.4 Q 977.1 449.0 972.0 524.3" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 944.7 634.3 Q 921.3 678.5 869.8 714.3" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 726.5 762.3 Q 710.0 767.2 693.5 762.3" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 550.2 714.3 Q 498.7 678.5 475.3 620.3" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 448.0 524.3 Q 442.9 449.0 480.1 383.4" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 590.8 287.4 Q 599.1 279.8 610.3 278.0" fill="none" stroke="#526580" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="710" y="495" text-anchor="middle" font-size="22" font-weight="700" fill="#15233b">Iterate on evidence</text>
+<text x="710" y="525" text-anchor="middle" font-size="14" fill="#526580">Evidence can reopen any affected decision</text>
+<text x="710" y="549" text-anchor="middle" font-size="14" fill="#526580">End-to-end engagement: develop</text>
+<rect x="605" y="182" width="210" height="96" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="710.0" y="204.0" text-anchor="middle" font-size="16" font-weight="700" fill="#15233b">1. Planning</text>
+<text x="710.0" y="228.0" text-anchor="middle" font-size="13" fill="#354966">Goals, feasibility and scope</text>
+<text x="710.0" y="247.0" text-anchor="middle" font-size="13" fill="#354966">Entry: refine</text>
+<rect x="823.9" y="287.4" width="210" height="96" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="928.9" y="309.4" text-anchor="middle" font-size="16" font-weight="700" fill="#15233b">2. Requirements analysis</text>
+<text x="928.9" y="333.4" text-anchor="middle" font-size="13" fill="#354966">Define behavior and acceptance</text>
+<text x="928.9" y="352.4" text-anchor="middle" font-size="13" fill="#354966">Entry: refine</text>
+<rect x="878" y="524.3" width="210" height="110" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="983.0" y="546.3" text-anchor="middle" font-size="16" font-weight="700" fill="#15233b">3. Design</text>
+<text x="983.0" y="570.3" text-anchor="middle" font-size="13" fill="#354966">Architecture · UX · contracts</text>
+<text x="983.0" y="589.3" text-anchor="middle" font-size="13" fill="#354966">Entry: design</text>
+<text x="983.0" y="608.3" text-anchor="middle" font-size="13" fill="#354966">Next: plan implementation</text>
+<rect x="726.5" y="714.3" width="210" height="96" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="831.5" y="736.3" text-anchor="middle" font-size="16" font-weight="700" fill="#15233b">4. Implementation</text>
+<text x="831.5" y="760.3" text-anchor="middle" font-size="13" fill="#354966">Build code, tests and docs</text>
+<text x="831.5" y="779.3" text-anchor="middle" font-size="13" fill="#354966">Entry: implement</text>
+<rect x="483.5" y="714.3" width="210" height="96" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="588.5" y="736.3" text-anchor="middle" font-size="16" font-weight="700" fill="#15233b">5. Testing</text>
+<text x="588.5" y="760.3" text-anchor="middle" font-size="13" fill="#354966">Check outcomes; repair causes</text>
+<text x="588.5" y="779.3" text-anchor="middle" font-size="13" fill="#354966">Entry: test</text>
+<rect x="332" y="524.3" width="210" height="96" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="437.0" y="546.3" text-anchor="middle" font-size="16" font-weight="700" fill="#15233b">6. Deployment</text>
+<text x="437.0" y="570.3" text-anchor="middle" font-size="13" fill="#354966">Publish, promote and verify</text>
+<text x="437.0" y="589.3" text-anchor="middle" font-size="13" fill="#354966">Entry: release</text>
+<rect x="386.1" y="287.4" width="210" height="96" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="491.1" y="309.4" text-anchor="middle" font-size="16" font-weight="700" fill="#15233b">7. Maintenance</text>
+<text x="491.1" y="333.4" text-anchor="middle" font-size="13" fill="#354966">Reliability, upkeep and recovery</text>
+<text x="491.1" y="352.4" text-anchor="middle" font-size="13" fill="#354966">Entry: improve · dependencies</text>
+<text x="491.1" y="371.4" text-anchor="middle" font-size="13" fill="#354966">Incidents: incident-response</text>
+<path d="M 674 714 C 705 660 745 660 777 714" fill="none" stroke="#157466" stroke-width="2.5" marker-end="url(#repair-arrow)"/>
+<text x="720" y="661" text-anchor="middle" font-size="13" fill="#157466">Repair and recheck</text>
+<rect x="35" y="416" width="210" height="110" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="140.0" y="444" text-anchor="middle" font-size="15" fill="#15233b" font-weight="700">Choose a useful problem</text>
+<text x="140.0" y="470" text-anchor="middle" font-size="13" fill="#15233b" font-weight="400">Entry: business-strategy</text>
+<text x="140.0" y="496" text-anchor="middle" font-size="13" fill="#15233b" font-weight="400">Understand the opportunity</text>
+<rect x="1175" y="416" width="230" height="110" rx="12" fill="white" stroke="#9aaecb"/>
+<text x="1290.0" y="444" text-anchor="middle" font-size="15" fill="#15233b" font-weight="700">Evaluate the user outcome</text>
+<text x="1290.0" y="470" text-anchor="middle" font-size="13" fill="#15233b" font-weight="400">Entry: learn-from-product-feedback</text>
+<text x="1290.0" y="496" text-anchor="middle" font-size="13" fill="#15233b" font-weight="400">Existing reports and usage</text>
+<path d="M 245 440 C 300 440 310 230 600 230" fill="none" stroke="#526580" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="380" y="207" font-size="13" fill="#526580">Agreed problem / scope</text>
+<path d="M 386 335 H 305 V 852 H 1148 V 454 H 1172" fill="none" stroke="#526580" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1125" y="839" text-anchor="end" font-size="13" fill="#526580">Operational and product evidence</text>
+<path d="M 1290 528 V 896 H 140 V 529" fill="none" stroke="#526580" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="710" y="884" text-anchor="middle" font-size="14" fill="#526580">Feedback informs discovery and the next change</text>
+</g>
+<rect x="20" y="1180" width="1400" height="170" rx="18" fill="#f0edf9" stroke="#c4bddb"/>
+<text x="720" y="1214" text-anchor="middle" font-size="19" font-weight="700" fill="#15233b">Across discovery, development and feedback</text>
+<text x="720" y="1243" text-anchor="middle" font-size="16" fill="#354966">Across phases: review · harden · Help: workflow-help</text>
+<text x="720" y="1272" text-anchor="middle" font-size="15" fill="#354966">Research · clarification · documentation · Git · Security and privacy</text>
+<text x="720" y="1301" text-anchor="middle" font-size="14" fill="#526580">Licensing / usage · reliability · observability · accessibility · capacity / cost</text>
+<text x="720" y="1330" text-anchor="middle" font-size="15" fill="#354966">Resolve consequential choices with the user; continue independent work within scope</text>
 </g></svg>

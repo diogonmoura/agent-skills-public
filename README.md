@@ -106,9 +106,11 @@ The agent should clarify consequential unknowns, define relevant behavior before
 
 ## SDLC coverage
 
-![Project foundations, discovery, SDLC cycle with architecture/system design, product feedback and cross-cutting skills](documentation/images/sdlc-cycle.svg)
+![Seven-phase SDLC: planning, requirements analysis, design, implementation, testing, deployment and maintenance; product discovery feeds the cycle, repair returns to implementation, and product feedback informs discovery](documentation/images/sdlc-cycle.svg)
 
-Enter where the work needs it; the cycle is not a mandatory sequence. Project foundations support development, and learning feeds later changes. [Choose an activity](documentation/usage.md#skills-you-invoke) or explore the [linked skill map](documentation/sdlc.md).
+`develop` spans the useful cycle. Enter at the activity the work needs, repeat implementation and verification as evidence demands, and reopen affected decisions when product or operational learning changes the context. Project foundations and relevant specialist guidance support the work throughout. The arrows show relationships, not required task invocations or permission to release or deploy.
+
+[Compare typical starting points](documentation/sdlc.md#different-starting-points), [choose an activity](documentation/usage.md#skills-you-invoke) or explore the [linked skill map](documentation/sdlc.md).
 
 ## Documentation
 
