@@ -106,7 +106,7 @@ The agent should clarify consequential unknowns, define relevant behavior before
 
 ## SDLC coverage
 
-![A circular SDLC with product refinement, architecture, experience design, planning, implementation, verification, release and operations; repair and learning feed back into the cycle](documentation/images/sdlc-cycle.svg)
+![Seven-phase SDLC: planning, requirements analysis, design, implementation, testing, deployment and maintenance; product discovery feeds the cycle, repair returns to implementation, and product feedback informs discovery](documentation/images/sdlc-cycle.svg)
 
 `develop` spans the useful cycle. Enter at the activity the work needs, repeat implementation and verification as evidence demands, and reopen affected decisions when product or operational learning changes the context. Project foundations and relevant specialist guidance support the work throughout. The arrows show relationships, not required task invocations or permission to release or deploy.
 
