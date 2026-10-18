@@ -81,6 +81,12 @@ A third subagent reviewed the raw brief and eight rendered artifacts without rea
 
 The design and review trials are partial adaptations at the design stage, not passes for the full design-to-implementation-handoff case. No application repository, existing Storybook, implementation, native runtime or persistence journey was supplied or tested. I kept private file links, account identifiers and raw tool records outside the public repository. No account changes, publication or paid upgrade occurred.
 
+## Scope of the focused corrections
+
+I removed the bundled contrast helper and its dedicated tests in favor of tool-independent measurement and recommendation verification. Figma remains an optional design surface with local HTML/CSS or SVG alternatives. Client-specific observations above are historical evidence, not prerequisites for UI work. Concrete regression scenarios remain in the evaluation definitions.
+
+The final simplification received repository checks only. At my request, no fresh behavioral evaluations were run before merging; the recorded passes remain tied to their original revisions and the design-stage gaps remain unverified.
+
 ## Generation trials
 
 The specification is harness-independent: interactive or automated execution, supported plugin/skill loading, explicit selection or plain-language requests, and conversation continuation or factual handoffs. Preserve resources and native controls; record unsupported capabilities. No particular CLI, slash syntax or trace format is required.
