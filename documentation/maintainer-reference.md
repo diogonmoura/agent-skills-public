@@ -1,6 +1,6 @@
 # Maintainer guide
 
-Use this page when changing the collection. For installation and everyday use, start with the [README](../README.md#quick-start) and [Usage](usage.md).
+Use this page when changing the collection. For installation and everyday use, start with [Installation](installation.md) and [Usage](usage.md).
 
 <a id="upstream-catalogue"></a>
 <a id="source-selection"></a>
@@ -10,6 +10,9 @@ Use this page when changing the collection. For installation and everyday use, s
 
 | Need | Reference |
 | --- | --- |
+| Understand composition, discovery and fallback | [Plugin and skill architecture](architecture.md) |
+| Inspect plugin boundaries and every skill owner | [Plugin ownership map](maintainers/sources.md#plugin-ownership) |
+| Add a framework, language or platform | [Adding stack support](maintainers/adding-stack-support.md) |
 | Check origins, licenses, adaptations or selection decisions | [Sources and compatibility](maintainers/sources.md) |
 | Run behavior trials or inspect evidence and open limits | [Evaluating the collection](maintainers/evaluations.md) |
 | Find skills by development phase | [SDLC map](sdlc.md) |
@@ -29,7 +32,7 @@ python scripts/validate_evaluations.py
 python -m unittest discover -s tests -v
 ```
 
-CI also builds all seven pinned bundles, checks inventories/notices/local-resource parity and duplicate names, and runs explorer smoke checks. To check a fresh all-plugin build locally, run `python scripts/check_collection.py --built <destination>`. The link checker covers maintained Markdown guides and entry points; it does not fetch external URLs or parse every preserved resource example. Render changed diagrams separately. Evaluation-definition checks validate structure and flow references; behavioral trials remain explicit, separately recorded runs. Packaging checks do not establish application behavior.
+CI builds all 17 pinned bundles and each independently, checks inventories/notices/local-resource parity and duplicate names, and runs explorer smoke checks. Build the complete collection with `python scripts/build_plugins.py --all --destination <new-destination>`, then run `python scripts/check_collection.py --built <destination>`. For a selected build, repeat the checker's `--plugin` arguments to identify its expected packages. The checker rejects missing/extra packages, escaping/transitively missing owned resources and missing acquisition-framing context. The link checker covers maintained Markdown guides and entry points; it does not fetch external URLs or parse every preserved resource example. Render changed diagrams separately. Evaluation-definition checks validate structure and flow references; behavioral trials remain explicit, separately recorded runs. Packaging checks do not establish application behavior.
 
 ## Naming and invocation
 
@@ -42,7 +45,26 @@ Use lowercase kebab-case: short activities for tasks (`develop`, `test`, `review
 | `role` | `task` entry point or `support` guidance |
 | `invocation` | Preferred `user`, `agent` or `both` usage |
 
-Labels do not enforce permissions. Task entries use native explicit-only controls; most local support is model-available with `user-invocable: false`. The three UI/UX discipline skills are also directly selectable with `user-invocable: true`, using the same body for people and agents. Preserve upstream controls and record client limitations. [TASKS.md](../plugins/development-workflow/TASKS.md) owns execution scope; [WORKFLOW.md](../plugins/development-workflow/WORKFLOW.md) owns upstream project fit and consequential-finding decisions across phases.
+Labels do not enforce permissions. Task entries use native explicit-only controls; most local support is model-available with `user-invocable: false`. Product-management, visual-design, backend-design and the existing UI/UX discipline skills are also directly selectable with `user-invocable: true`, using the same body for people and agents. Preserve upstream controls and record client limitations. [TASKS.md](../plugins/development/TASKS.md) owns execution scope; [WORKFLOW.md](../plugins/development/WORKFLOW.md) owns upstream project fit and consequential-finding decisions across phases.
+
+## Capability architecture
+
+| Responsibility | Owner |
+| --- | --- |
+| Engagement, stopping point and requested execution | Activity entry point and TASKS.md |
+| Product priorities, useful scope and success signal | product-management; business-strategy owns business direction |
+| Architecture / service behavior | system-design / backend-design |
+| Visual direction / interaction behavior / critique | visual-design / interaction-design / interface-quality |
+| AI application/capability/protocol design | ai-development |
+| AI testing/evaluation strategy | ai-testing |
+| AI operating decisions and quality monitoring | ai-operations |
+| Selected Python AI implementation | ai-conventions, ai-deepeval-testing and python-ai-observability |
+| Framework APIs, configuration and platform mechanics | Matching technical conventions and upstream specialists |
+| Scope, consequential decisions and completion evidence | Shared workflow and the existing verification owner |
+
+Role (task/support), applicability (generic/stack-specific) and invocation are independent dimensions. Plugins package useful capabilities and may contain multiple dimensions. Methods and adapters can use conditional references; a separate skill is justified by a coherent independently useful decision, not by a requirement to split every paragraph. Navigation describes needed capabilities and matches observed specialist descriptions, rather than hardcoding optional skill names or using a global router/metadata engine.
+
+Select only relevant expertise, reuse accepted decisions and preserve existing stack choices. Each capability retains its essential reasoning without assuming optional plugins exist. Missing guidance falls back to project evidence, general expertise and appropriate primary sources; missing execution tools have a separate evidence boundary. See [composition](architecture.md#compose-without-optional-dependencies). See [architecture decisions and product-source review](maintainers/sources.md#product-and-capability-architecture) for the rationale and boundaries.
 
 ## Keep guidance focused
 

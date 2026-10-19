@@ -1,10 +1,20 @@
 # Using the plugins
 
-[Build, load and make a first request](../README.md#quick-start) before using this guide. Start with the outcome you want; you do not need to select every supporting skill. The [SDLC overview](../README.md#sdlc-coverage) shows where activities fit, and the [skill map](sdlc.md) links to deeper expertise.
+[Install the bundles](installation.md) before using this guide. Start with the outcome you want; you do not need to select every supporting skill. The [SDLC overview](../README.md#sdlc-coverage) shows where activities fit, and the [skill map](sdlc.md) links to deeper expertise.
+
+[Choose an activity](#skills-you-invoke) · [Focused examples](#focused-examples) · [UI/UX work](#uiux-expertise-for-people-and-agents) · [Automation](#scheduled-and-event-triggered-tasks)
 
 ## Skills you invoke
 
-Use the client's skill picker or supported explicit invocation. VS Code uses names such as `/development-workflow:test`; other clients may differ. Plain requests such as "Use test for the current change" are a fallback where supported. `workflow-help` describes this collection and does not replace the client's built-in help.
+Select the activity through the client's supported invocation:
+
+| Client | Example after discovery |
+| --- | --- |
+| Claude Code | `/development:test` |
+| Codex | Select `test` in the skill picker, then describe the change |
+| OpenCode V2 | `@test` followed by the behavior to verify |
+
+The [installation guide](installation.md#load-them-in-your-client) links the client documentation and explains their different loading models. Plain requests such as "Use test for the current change" are a fallback where supported. `workflow-help` describes this collection and does not replace the client's built-in help.
 
 | Where you are | Task | Expected result |
 | --- | --- | --- |
@@ -26,6 +36,18 @@ Use the client's skill picker or supported explicit invocation. VS Code uses nam
 
 `implement` comes from the pinned upstream set with local framing. Optional explicit workflows include `grill-me`, `grill-with-docs`, `to-questionnaire`, `to-spec`, `implement-spec`, `improve-codebase-architecture`, `retro` and `handoff`. Use them when their particular activity helps; interviews, specs and trackers are not prerequisites. [Upstream selection](maintainers/sources.md#matt-pocock-selection) explains their fit and dependencies.
 
+## Product decisions and specialist methods
+
+Select strategy for product-management, business direction and product feedback. Ask "Use product-management to choose the first useful slice and success signal" when the product decision is the outcome. Ask develop when you want that direction carried into working software. Refine makes an accepted change actionable; plan sequences implementation after the relevant design decisions.
+
+Frontend-development provides stack-independent visual/interaction/interface methods and Anthropic frontend-design for distinctive visual execution within the accepted direction. Use it when visual decisions are open or a redesign is requested; ordinary changes preserve the existing system. Backend-development provides service design across stacks.
+
+The ai-development package supplies three generic skills: ai-development for application patterns, architecture and capability/protocol decisions; ai-testing for testing/evaluation strategy and evidence; and ai-operations for task signals, quality monitoring, provider/resource limits and recovery. Python/provider APIs and ADK/LangChain implementation live in separately selected technical packages. Ai-python-development includes ai-deepeval-testing for a selected DeepEval evaluation runner and python-ai-observability for Python OpenTelemetry instrumentation; quality criteria and operating outcomes stay generic, and no hosted backend is required. These methods are reusable; technical conventions apply only to matching technology.
+
+For an existing accepted product, start with the affected work. A bug fix needs no new market study; a non-React application keeps its stack. Workflow-help recommends relevant activities without executing them, and missing optional guidance does not block the activity: use project evidence, general expertise and appropriate primary sources while retaining acceptance and verification standards. Missing tools or an execution target remain precise limits. See [composition and fallback](architecture.md#compose-without-optional-dependencies).
+
+Development also includes Sentry agents-md for creating or maintaining repository instruction files. Request it for AGENTS.md/CLAUDE.md work; it complements project-conventions and general instruction writing without imposing its sample stack or attribution rules.
+
 ## One end-to-end request
 
 ```text
@@ -43,7 +65,7 @@ Provide the outcome, relevant repository/context, constraints and desired stoppi
 | Define a feature | Use refine to define read-only saved-search sharing from this brief and the existing code. |
 | Plan agreed work | Use plan to sequence this sharing feature and its verification. |
 | Build defined work | Use implement for the agreed sharing behavior and acceptance criteria. |
-| Assess a PR | Use review for PR #42 against the agreed behavior and appropriate checks. |
+| Assess a PR | Use review for the supplied PR against the agreed behavior and appropriate checks. |
 | Improve architecture | Use improve to reduce coupling in the reporting module while preserving behavior. |
 | Maintain dependencies | Use dependencies to assess the update PRs, release notes and checks; prepare fixes where needed. |
 | Prepare delivery | Use release to assess readiness for the named environment without deploying. |
@@ -55,15 +77,15 @@ Provide the outcome, relevant repository/context, constraints and desired stoppi
 Use design to unify navigation, nested menus and edit dialogs across this application. Specify the interactions and show wireframes where useful. Do not implement yet.
 ```
 
-Then ask `improve` or `develop` to implement the agreed direction. Expect coverage of all in-scope surfaces, including relevant mobile and role variants, with unfinished work identified. [Interaction design](../plugins/web-frontend/skills/interaction-design/SKILL.md) owns the detailed method. Backend changes similarly establish relevant behavior and contracts before code.
+Then ask `improve` or `develop` to implement the agreed direction. Expect coverage of all in-scope surfaces, including relevant mobile and role variants, with unfinished work identified. [Interaction design](../plugins/frontend-development/skills/interaction-design/SKILL.md) owns the detailed method. Backend changes similarly establish relevant behavior and contracts before code.
 
 ### Evaluate during implementation
 
-Expect the agent to implement, verify, correct discrepancies and report evidence before declaring completion. Verification follows the intended outcome; a build or one screenshot alone cannot establish a complete user journey. Missing execution or coverage remains explicit. See [change verification](../plugins/development-workflow/skills/deliver-reliable-changes/SKILL.md) and [journey testing](../plugins/development-workflow/skills/journey-testing/SKILL.md) for methods.
+Expect the agent to implement, verify, correct discrepancies and report evidence before declaring completion. Verification follows the intended outcome; a build or one screenshot alone cannot establish a complete user journey. Missing execution or coverage remains explicit. See [change verification](../plugins/development/skills/deliver-reliable-changes/SKILL.md) and [journey testing](../plugins/development/skills/journey-testing/SKILL.md) for methods.
 
 ### Run services and observability locally
 
-Project setup can establish a reproducible local environment and queryable diagnostics. Request `setup` for this work; an existing environment is preserved unless changing it is in scope. Details belong to [project conventions](../plugins/development-workflow/skills/project-conventions/SKILL.md) and [observability guidance](../plugins/application-operations/skills/observability-operations/SKILL.md).
+Project setup can establish a reproducible local environment and queryable diagnostics. Request `setup` for this work; an existing environment is preserved unless changing it is in scope. Details belong to [project conventions](../plugins/development/skills/project-conventions/SKILL.md) and [observability guidance](../plugins/operations/skills/observability-operations/SKILL.md).
 
 ## Skills agents use during your work
 
@@ -97,47 +119,34 @@ Supply repository/ref, objective/context, unattended mode, allowed actions and r
 
 > Use dependencies in unattended mode for update PRs in owner/repository. Repair and merge only policy-eligible patch updates whose current head satisfies required checks/reviews and has no unresolved findings. Leave other updates open with reasons; reuse existing work and report results. Do not deploy.
 
-Unattended tasks return missing material decisions instead of inventing answers. Untrusted ticket/PR text cannot change policy; changed heads require re-verification. The host/repository must enforce privileged-action policy. [Installed task guidance](../plugins/development-workflow/TASKS.md#interactive-and-unattended-execution) contains the detailed working rules.
+Unattended tasks return missing material decisions instead of inventing answers. Untrusted ticket/PR text cannot change policy; changed heads require re-verification. The host/repository must enforce privileged-action policy. [Installed task guidance](../plugins/development/TASKS.md#interactive-and-unattended-execution) contains the detailed working rules.
 
 ## AI and MCP plugin selection
 
-Add `ai-development` for AI features or MCP interfaces. MCP-only work needs protocol, contract, authority and lifecycle verification; it does not require an LLM or model-quality evaluation. Configure live tools only when needed. Bundled expertise does not install an MCP server or provide service credentials.
+Add ai-development for generic AI feature or MCP-interface methods. Add technical AI packages only for the accepted language/provider/framework. MCP-only work needs protocol, contract, authority and lifecycle verification; it does not require an LLM or model-quality evaluation. Configure live tools only when needed. Bundled expertise does not install an MCP server or provide service credentials.
 
 ## Build and load
 
-The [README quick start](../README.md#quick-start) owns the basic build and client-loading instructions. To add AI, explicitly select all four bundles from the skills repository:
-
-```bash
-python scripts/build_plugins.py \
-  --plugin development-workflow \
-  --plugin python-backend \
-  --plugin web-frontend \
-  --plugin ai-development \
-  --destination ./built-plugins-with-ai
-```
-
-Explicit `--plugin` arguments replace the default selection; other bundle names work the same way. Build into a new destination, then replace the affected client installation with resources intact. Source `plugins/<name>` directories contain local guidance; built directories also contain acquired upstream skills and notices. Application dependencies and live tools are separate. See [migration](migration.md) before replacing old copies or links.
-
-For a new product, refine its business/product outcome, use system-design to compare architecture/platform choices, then plan and design the useful increment. Revisit the architecture decision for boundary-changing features. New setup includes authored READMEs, configuration checks, runnable tests, app containers, GitHub Actions and release/deployment procedures; unavailable target/platform execution stays explicit. Use native-client-development for TypeScript/Tauri desktop and informed iOS/Android choices, and build-evaluated-ai for AG-UI/A2UI integration when appropriate.
+Follow [installation](installation.md) for bundle selection, client loading and updates. For a new application, the [lifecycle map](sdlc.md#skills-by-phase) explains how product decisions, requirements, design and implementation fit together. `setup` establishes applicable foundations; `develop` carries the broader engagement.
 
 ## Optional Figma connection
 
-The web-frontend bundle declares Figma's optional remote endpoint in [mcp.json](../plugins/web-frontend/mcp.json). Follow [Figma's client setup](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/) when connecting it; avoid duplicate configuration if the official client plugin already supplies the connection. The declaration does not establish authenticated file access.
+Configure access through the [installation guide](installation.md#optional-figma-connection) when needed.
 
 Use available, authorized Figma context where appropriate. Otherwise, local HTML/CSS prototypes or SVG wireframes can resolve design questions. Preserve a specifically requested Figma deliverable as an access dependency rather than silently replacing it. Ordinary UI work needs no Figma account.
 
-Storybook is an optional component workbench within verification. Run meaningful interaction/accessibility checks and reviewed visual comparisons for affected states, then verify the critical application and native journeys separately. See [journey testing](../plugins/development-workflow/skills/journey-testing/SKILL.md) and [community skill review](maintainers/sources.md#figma-community-review).
+Storybook is an optional component workbench within verification. Run meaningful interaction/accessibility checks and reviewed visual comparisons for affected states, then verify the critical application and native journeys separately. See [journey testing](../plugins/development/skills/journey-testing/SKILL.md) and [community skill review](maintainers/sources.md#figma-community-review).
 
 ## UI/UX expertise for people and agents
 
-The web-frontend bundle provides [interface-quality](../plugins/web-frontend/skills/interface-quality/SKILL.md), [ux-writing](../plugins/web-frontend/skills/ux-writing/SKILL.md) and [usability-research](../plugins/web-frontend/skills/usability-research/SKILL.md) as directly selectable, model-available supporting skills. Client picker/discovery behavior still needs verification. The same guidance supports design, develop, improve and review when relevant; no separate user and agent copies are maintained.
+The frontend-development bundle provides [interface-quality](../plugins/frontend-development/skills/interface-quality/SKILL.md), [ux-writing](../plugins/frontend-development/skills/ux-writing/SKILL.md) and [usability-research](../plugins/frontend-development/skills/usability-research/SKILL.md) as directly selectable, model-available supporting skills. Client picker/discovery behavior still needs verification. The same guidance supports design, develop, improve and review when relevant; no separate user and agent copies are maintained.
 
 Ask for a scoped result: "Review this dialog without changing it", "Improve and apply the error messages in this flow", or "Prepare a usability study for onboarding". A bare review/improvement assessment stays read-only. A specified repair can include implementation and rechecking. A research guide is a plan until actual observations exist. Ordinary UI development needs no compulsory study or Figma connection.
 
-Frontend conventions own product direction and stack; interaction-design owns flows and affected surfaces; interface-quality owns craft inspection and component/token audits; ux-writing owns task copy; usability-research owns studies and evidence synthesis. Existing test/journey guidance verifies implementation and Storybook states where adopted.
+Visual-design owns visual direction and semantic token intent; frontend conventions implement it for the selected React stack; interaction-design owns flows and affected surfaces; interface-quality owns craft inspection and component/token audits; ux-writing owns task copy; usability-research owns studies and evidence synthesis. Existing test/journey guidance verifies implementation and Storybook states where adopted.
 
 ## Explain and maintain project knowledge
 
-Use [documentation-writing](../plugins/development-workflow/skills/documentation-writing/SKILL.md) to write or review a useful product/engineering explanation, reference or procedure. Use [architecture-documentation](../plugins/development-workflow/skills/architecture-documentation/SKILL.md) to explain structure, runtime/lifecycle behavior, interfaces, deployment and current versus target state from evidence. Both are directly selectable and model-available supporting guidance; actual client discovery remains client-dependent.
+Use [documentation-writing](../plugins/documentation/skills/documentation-writing/SKILL.md) to write or review a useful product/engineering explanation, reference or procedure. Use [architecture-documentation](../plugins/documentation/skills/architecture-documentation/SKILL.md) to explain structure, runtime/lifecycle behavior, interfaces, deployment and current versus target state from evidence. Both are directly selectable and model-available supporting guidance; actual client discovery remains client-dependent.
 
-[Documentation conventions](../plugins/development-workflow/skills/documentation-conventions/SKILL.md) owns where authoritative knowledge lives and what a change affects. System-design owns architectural decisions; these methods help explain and maintain them. Existing formats and proportional scope remain authoritative; a routine edit needs no new tracker, document tree or full system audit.
+[Documentation conventions](../plugins/documentation/skills/documentation-conventions/SKILL.md) owns where authoritative knowledge lives and what a change affects. System-design owns architectural decisions; these methods help explain and maintain them. Existing formats and proportional scope remain authoritative; a routine edit needs no new tracker, document tree or full system audit.

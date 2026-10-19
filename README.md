@@ -2,99 +2,35 @@
 
 I use these skill bundles to build and operate applications and explore product ideas. My local skills capture conventions; bundled upstream skills add specialist techniques. Plugins follow the [Agent Plugins standard](https://agent-plugins.org/specification).
 
-Start with **development-workflow**, **python-backend** and **web-frontend** for a full-stack application. You request an activity such as `develop`, `test` or `review`; the agent uses relevant supporting skills within that work. Tickets are optional, and existing project decisions take precedence.
+Start with **development** for stack-independent development activities. Add product, interface, backend, AI, delivery or operations methods when useful, and select technical expertise explicitly. Existing project decisions take precedence; tickets are optional.
 
 ## Choose your plugins
 
-| Plugin | Use it for |
-| --- | --- |
-| [development-workflow](plugins/development-workflow/) | Development activities, project conventions, testing, Git/PRs, delivery and security |
-| [python-backend](plugins/python-backend/) | Python, FastAPI, SQLAlchemy, Alembic and PostgreSQL |
-| [web-frontend](plugins/web-frontend/) | Web UI/UX, interface quality, UX writing, usability research, Next.js/shadcn, TypeScript/Tauri desktop and iOS/Android clients |
-| [ai-development](plugins/ai-development/) | AI features, agents, evaluations and MCP interfaces |
-| [application-operations](plugins/application-operations/) | Reliability, observability, incidents, recovery, capacity and cost |
-| [business-strategy](plugins/business-strategy/) | Product ideas, strategy and feedback |
-| [visual-communication](plugins/visual-communication/) | Architecture diagrams, interactive explorers and presentations |
+| Capability | Plugins | Installation choice |
+| --- | --- | --- |
+| Workflow | [development](plugins/development/), [strategy](plugins/strategy/), [operations](plugins/operations/) | SDLC work; business/product direction; running-system work |
+| Application disciplines | [frontend-development](plugins/frontend-development/), [backend-development](plugins/backend-development/), [ai-development](plugins/ai-development/), [delivery](plugins/delivery/) | Interface methods; service behavior; AI design/testing/operations; CI/release/deployment methods |
+| Supporting capabilities | [documentation](plugins/documentation/), [visualization](plugins/visualization/) | Writing and architecture explanation; diagrams, presentations and explorers |
+| Backend/client implementation | [backend-python-development](plugins/backend-python-development/), [frontend-reactjs-development](plugins/frontend-reactjs-development/), [frontend-native-development](plugins/frontend-native-development/) | Accepted Python; React; Tauri/Expo/native implementation |
+| AI implementation | [ai-python-development](plugins/ai-python-development/), [ai-adk-development](plugins/ai-adk-development/), [ai-langchain-development](plugins/ai-langchain-development/) | Python/provider/MCP APIs; ADK; LangChain/LangGraph |
+| Selected tools/platforms | [development-tooling](plugins/development-tooling/), [operations-platforms](plugins/operations-platforms/) | Bash/testing/CI/container/diagnostics tools; JVM/Kubernetes/AKS |
+
+The first nine plugins are generic. The other eight provide technical expertise only for matching accepted choices. No plugin requires installing another; an activity retains its outcome when optional guidance is absent.
 
 ## Quick start
 
-### 1. Build the bundles
+<a id="1-build-the-bundles"></a>
+<a id="2-load-them-in-your-client"></a>
 
-With Git and Python 3.10+ available, run in a POSIX shell:
+1. [Build complete bundles and load them in your client](documentation/installation.md). The default build includes development only. Add other bundles for the work you need.
+2. Open the application repository or an empty project workspace and confirm discovery. Keep plugin resources intact; application dependencies and live tools are configured separately.
+3. Choose an activity and state the outcome and stopping point.
 
-```bash
-git clone https://github.com/joao-aires/agent-skills-public.git
-cd agent-skills-public
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements-validation.txt
-python scripts/build_plugins.py --destination ./built-plugins
-export AGENT_PLUGINS_DIR="$(pwd)/built-plugins"
-```
+<a id="3-make-a-first-request"></a>
 
-If you already have a checkout, start there instead of cloning again. The builder acquires pinned upstream skills and their resources for the three full-stack plugins. The destination must be new. [Additional bundles and rebuilds](documentation/usage.md#build-and-load) use the same builder.
+### Make a first request
 
-### 2. Load them in your client
-
-Open the target application repository or an empty project workspace, rather than developing inside this skills repository.
-
-<details>
-<summary>Copilot CLI</summary>
-
-From the application workspace, in the same terminal:
-
-```bash
-copilot \
-  --plugin-dir "$AGENT_PLUGINS_DIR/development-workflow" \
-  --plugin-dir "$AGENT_PLUGINS_DIR/python-backend" \
-  --plugin-dir "$AGENT_PLUGINS_DIR/web-frontend"
-```
-
-Append `skill list --json` to inspect discovery without starting a model session. In another terminal, set `AGENT_PLUGINS_DIR` to the absolute build directory first. Session-local loading was checked with CLI 1.0.95; see the [CLI reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference) for your version.
-
-</details>
-
-<details>
-<summary>Antigravity CLI (agy)</summary>
-
-Install the complete built bundles, then inspect discovery:
-
-```bash
-agy plugin install "$AGENT_PLUGINS_DIR/development-workflow"
-agy plugin install "$AGENT_PLUGINS_DIR/python-backend"
-agy plugin install "$AGENT_PLUGINS_DIR/web-frontend"
-agy plugin list --json
-```
-
-Installation and all 56 skills were checked with `agy` 1.3.5. Authenticate through the client's sign-in flow before model work. The [generation-trial specification](documentation/maintainers/evaluations.md#generation-trials) is harness-independent; `agy` is my local runner choice. Installation does not establish execution behavior.
-
-</details>
-
-<details>
-<summary>VS Code</summary>
-
-For versions supporting Agent Plugins, merge the individual absolute paths into user settings:
-
-```json
-{
-  "chat.plugins.enabled": true,
-  "chat.pluginLocations": {
-    "/absolute/path/built-plugins/development-workflow": true,
-    "/absolute/path/built-plugins/python-backend": true,
-    "/absolute/path/built-plugins/web-frontend": true
-  }
-}
-```
-
-Open the application workspace and inspect Configure Skills. This route follows [VS Code documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#use-local-plugins); it has not been exercised here.
-
-</details>
-
-For another client, use its documented plugin-loading route. Keep each plugin directory and its resources intact. Discovery establishes availability, not that an agent will follow every instruction. Updating an old installation? Read [migration](documentation/migration.md) first.
-
-### 3. Make a first request
-
-Choose the activity explicitly through the client's skill picker or supported invocation syntax. In VS Code, for example: `/development-workflow:develop`. Plain requests below work where explicit skill selection by name is supported.
+Choose the activity explicitly: `/development:develop` in Claude Code, `develop` through Codex's skill picker, or `@develop` in OpenCode V2. See [client setup and compatibility](documentation/installation.md#load-them-in-your-client) first. Plain requests below work where explicit skill selection by name is supported.
 
 | Starting point | Example request |
 | --- | --- |
@@ -104,9 +40,15 @@ Choose the activity explicitly through the client's skill picker or supported in
 
 The agent should clarify consequential unknowns, define relevant behavior before coding, verify the result and report evidence or gaps. It proceeds within the requested scope; merge and deployment are separate actions. Use `workflow-help` when unsure where to start.
 
+## How the guidance fits together
+
+Request the activity and stopping point. The agent seeks relevant expertise by capability and applies technical guidance only to the accepted stack. Specialists improve the work when available; without them, the activity still owns its outcome and uses project evidence, general expertise and appropriate primary sources. Missing execution tools remain a distinct verification limit.
+
+Plugins package capabilities; they are not dependency layers. Read [architecture and composition](documentation/architecture.md) for selection, fallback and the independent package boundaries.
+
 ## SDLC coverage
 
-![Seven-phase SDLC: planning, requirements analysis, design, implementation, testing, deployment and maintenance; product discovery feeds the cycle, repair returns to implementation, and product feedback informs discovery](documentation/images/sdlc-cycle.svg)
+![Seven-phase SDLC: planning, requirements analysis, design, implementation, testing, deployment and maintenance; product discovery feeds the cycle, repair returns to implementation, and product feedback informs discovery, supported by a maintained project baseline, shared methods and matching stack expertise](documentation/images/sdlc-cycle.svg)
 
 `develop` spans the useful cycle. Enter at the activity the work needs, repeat implementation and verification as evidence demands, and reopen affected decisions when product or operational learning changes the context. Project foundations and relevant specialist guidance support the work throughout. The arrows show relationships, not required task invocations or permission to release or deploy.
 
@@ -116,7 +58,9 @@ The agent should clarify consequential unknowns, define relevant behavior before
 
 | Guide | Question it answers |
 | --- | --- |
+| [Installation](documentation/installation.md) | How do I build, load and check the bundles? |
 | [Usage](documentation/usage.md) | What should I invoke, provide and expect? |
+| [Architecture](documentation/architecture.md) | How do skills compose, and what happens when expertise is absent? |
 | [SDLC coverage](documentation/sdlc.md) | Which skills support each phase and area? |
 | [Migration](documentation/migration.md) | How do I update an existing installation? |
 | [Maintainer reference](documentation/maintainer-reference.md) | How do I change, validate and evaluate the collection? |
@@ -125,4 +69,4 @@ The bundles contain guidance and resources, without generated applications, conf
 
 ## Contributing
 
-Keep guidance concise and project-independent. Run `python scripts/validate_plugins.py`, `python scripts/check_collection.py` and `python -m unittest discover -s tests -v` after changes. Local material is MIT; upstream resources retain their own licenses. See [AGENTS.md](AGENTS.md) and the [maintainer checks](documentation/maintainer-reference.md#maintaining-the-collection).
+Keep guidance concise and project-independent. Run `python scripts/validate_plugins.py`, `python scripts/check_collection.py` and `python -m unittest discover -s tests -v` after changes. Local material is MIT; upstream resources retain their own licenses. See [AGENTS.md](AGENTS.md), the [maintainer checks](documentation/maintainer-reference.md#maintaining-the-collection) and [adding support for a tech stack](documentation/maintainers/adding-stack-support.md).

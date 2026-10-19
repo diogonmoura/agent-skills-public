@@ -1,31 +1,36 @@
 # Migrating existing installations
 
-Existing applications can keep their layout, accepted stack and tracker choices. Update the installed guidance and any explicit skill references using the steps below.
+Use this guide to replace an older installation or update saved skill references. Application layout, accepted technology and tracker choices do not need to change.
 
 ## Update your installation
 
-1. Preserve custom edits and inspect the origin of existing copies or links.
-2. Update the checkout, then [build the desired bundles](../README.md#quick-start) into a new destination. Source directories include local skills only; built bundles also contain upstream resources and notices.
-3. Replace affected plugins through your client's supported route, keeping their resources intact. For manually copied skills, replace complete directories.
-4. Update saved prompts, project instructions and automation references using the name table below. Inspect and remove obsolete copies/managed links from this checkout; preserve unrelated installations.
-5. Check client discovery and try a relevant explicit activity. Building packages alone does not install plugins or configure live tools.
+1. Preserve custom edits and identify the origin of existing copies or links.
+2. [Build the desired plugins](installation.md#select-additional-bundles) into a new destination. Built packages include local and pinned upstream skills, resources and notices; source directories omit acquisitions.
+3. Replace complete affected packages through the client's supported route. Remove superseded copies to avoid duplicate names; do not overlay new files onto old directories.
+4. Update saved prompts, project instructions, automations and private resource links using the maps below and the [current ownership catalogue](maintainers/sources.md#plugin-ownership).
+5. Confirm the selected skills are discoverable in the application workspace. Discovery establishes availability; correct agent behavior needs separate verification.
 
-For the legacy skills-only helper, run `./scripts/sync-skills.sh status`, then `./scripts/sync-skills.sh sync`. It repairs unchanged-name links from this checkout's old `skills/` paths in `~/.agents/skills`, including broken links, while preserving unrelated paths. It adds available local skills only. Keep the checkout in place. The helper does not migrate renamed basenames or update copied directories/other checkouts; inspect and clean up those old entries manually.
+Building does not install or remove client plugins, configure tools or connect accounts. Preserve unrelated installations and settings. For current selection flags and client setup, use [Installation](installation.md).
 
-## Original directory layout
+## Plugin package split
 
-The original skills moved into activity plugins with their resources intact:
+Choose replacements for the capabilities you use. Plugin-qualified invocations change with their owning package: for example, `/development-workflow:test` becomes `/development:test` where supported. Most skill names remain the same; use [Local skill naming](#local-skill-naming) for renames.
 
-| Previous directory | Current directory |
+| Previous bundle | Replacement choices |
 | --- | --- |
-| `skills/business-strategy/` | [plugins/business-strategy/skills/business-strategy/](../plugins/business-strategy/skills/business-strategy/) |
-| `skills/business-opportunity-analysis/` | [plugins/business-strategy/skills/business-opportunity-analysis/](../plugins/business-strategy/skills/business-opportunity-analysis/) |
-| `skills/architecture-diagraming/` | [plugins/visual-communication/skills/architecture-diagramming/](../plugins/visual-communication/skills/architecture-diagramming/) |
-| `skills/presentation-building/` | [plugins/visual-communication/skills/presentation-building/](../plugins/visual-communication/skills/presentation-building/) |
+| development-workflow | development; backend-development, delivery, documentation and development-tooling for their respective capabilities |
+| business-strategy | strategy |
+| application-operations | operations; operations-platforms for JVM, Kubernetes and AKS expertise |
+| web-frontend | frontend-development; frontend-reactjs-development or frontend-native-development for matching implementations |
+| python-backend | backend-python-development |
+| ai-development with combined methods and implementation | ai-development for generic methods; ai-python-development, ai-adk-development or ai-langchain-development for selected implementations |
+| visual-communication | visualization |
+
+The ai-development plugin keeps its package name but contains only generic methods. Replace its complete directory to remove stale technical skills. The default build contains development alone; select additional capabilities explicitly.
 
 ## Local skill naming
 
-Local names use short task activities and recognizable supporting topics. Upstream names remain unchanged; duplicate aliases are not bundled.
+Update saved references to renamed local skills. Upstream names remain unchanged, and duplicate aliases are not shipped. These are guidance names, not instructions to rename application code or change test frameworks.
 
 | Previous local name | Current name |
 | --- | --- |
@@ -39,22 +44,33 @@ Local names use short task activities and recognizable supporting topics. Upstre
 | `test-end-to-end` | `journey-testing` |
 | `test-application-performance` | `performance-testing` |
 | `test-application-resilience` | `resilience-testing` |
+| `build-evaluated-ai` | `ai-development` |
 | `build-delivery-pipelines` | `delivery-pipelines` |
-| `documentation-conventions` | `documentation-conventions` |
 | `design-secure-features` | `security-and-privacy-design` |
 | `contribute-code` | `git-contributions` |
 | `architecture-diagraming` | `architecture-diagramming` |
 | Standalone `backup-recovery` | `protect-and-restore-data` |
 | Standalone `cicd-release-management` | `delivery-pipelines` |
 
-The architecture rename corrects spelling. These changes do not require renaming application files or changing test frameworks.
+## AI implementation names and resource paths
 
-## Bundle and invocation changes
+The generic ai-development package contains ai-development, ai-testing and ai-operations. For the specific implementations, use ai-deepeval-testing and python-ai-observability in ai-python-development. Requests for the generic names select the disciplines rather than a Python SDK integration.
 
-- MCP builder belongs to `ai-development`, even for MCP-only work. It does not require an LLM.
-- The workflow bundle retains 18 reviewed Matt skills and excludes nine from its earlier broad import. See [selection decisions](maintainers/sources.md#matt-pocock-selection) before removing excluded copies.
-- Portable operations guidance is distributed across workflow, Python and operations bundles. `system-flow-explorer`, including its renderer/example/checks, belongs to visual communication. Operations and visual communication must be explicitly selected when building beyond the default three bundles.
-- `develop` handles end-to-end work; focused tasks handle individual activities. `implement` remains the upstream skill with local framing. `interaction-design` belongs to web-frontend.
-- Most local supporting skills use `user-invocable: false` in clients honoring it; request tasks or explicitly name supporting guidance where supported. Upstream native controls are preserved. No universal `/help` or task aliases are installed.
+| Previous package/path | Current package/path |
+| --- | --- |
+| `ai-python-development/skills/ai-testing` | `ai-python-development/skills/ai-deepeval-testing` |
+| `ai-python-development/skills/ai-operations` | `ai-python-development/skills/python-ai-observability` |
+| `ai-development/skills/build-evaluated-ai/references/evaluation-references.md` or `ai-development/skills/ai-development/references/evaluation-references.md` | `ai-development/skills/ai-testing/references/evaluation-references.md` |
 
-The bundles configure no monitoring services, fault injectors, credentials, schedulers, MCP servers or browser/device dependencies. Host tools and permissions remain separate from installing guidance. See [Usage](usage.md) for the current activities.
+For other moved resources, locate the owning skill in the [catalogue](maintainers/sources.md#plugin-ownership) and update private links to its current package. Selected quality-tool, local-environment, workflow/registry, telemetry-backend and browser-driver references belong to development-tooling; generic methods no longer contain those implementation instructions.
+
+## Legacy links
+
+The legacy helper supports local symlink installations from this checkout:
+
+```bash
+./scripts/sync-skills.sh status
+./scripts/sync-skills.sh sync
+```
+
+It repairs managed unchanged-name links, including broken links to old `skills/` or package paths, while preserving unrelated entries. It adds local skills only, requires the checkout to remain in place and does not migrate renamed basenames, copied directories or other checkouts. Inspect and clean up those entries manually. New installations should use complete built plugins.
