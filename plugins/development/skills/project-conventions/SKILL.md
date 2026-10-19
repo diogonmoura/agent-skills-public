@@ -18,7 +18,12 @@ Read [workflow framing](../../WORKFLOW.md) for skill selection and invocation bo
 
 ## Match the requested change
 
-Read the request, existing code and accepted decisions before choosing structure. For a new project, establish a useful first slice. For an existing application, identify which foundation the requested change actually affects and update only that part; do not repeat setup or start a repository-wide reorganization during ordinary feature work. State the smallest useful user journey and its observable acceptance criteria; carry forward answers already agreed. Resolve ambiguity that changes the product or data boundary, and make reversible implementation choices without another planning ceremony. Use the conversation as scope unless a separate spec is useful; require no tickets or tracker.
+Read the request, existing code and accepted decisions before choosing structure.
+
+- For a new project, establish a useful first slice. For an existing application, identify which foundation the requested change actually affects and update only that part; do not repeat setup or start a repository-wide reorganization during ordinary feature work.
+- State the smallest useful user journey and its observable acceptance criteria; carry forward answers already agreed.
+- Resolve ambiguity that changes the product or data boundary, and make reversible implementation choices without another planning ceremony.
+- Use the conversation as scope unless a separate spec is useful; require no tickets or tracker.
 
 Use system-design after product refinement and for consequential feature architecture before dependent planning/implementation. Derive platform, runtime and service choices from accepted requirements and operating constraints; reuse an existing stack and layout unless changing them solves an agreed problem. Add AI or a protocol interface for a concrete capability. Select matching technical guidance only when available; its installation is not acceptance of that technology.
 
@@ -26,7 +31,12 @@ Use system-design after product refinement and for consequential feature archite
 
 For initial adoption, discover authoritative startup/test/build/migration commands, architecture and consumers, identity/tenant rules, deployment targets, critical journeys and operating constraints. Reuse existing instructions and evidence; add only missing useful pointers. Installing the plugins grants no authority to restructure or modernize the application.
 
-During a feature or fix, trace the affected paths and identify changed contracts, stored data, permissions, integrations, configuration and delivery consequences. Preserve useful legacy knowledge. Investigate contradictory code/docs and surface uncertainty that changes the outcome or risk; routine local choices can proceed. Keep this assessment inline for ordinary changes and record consequential decisions in the project's existing notes. Unrelated legacy debt remains separate unless it prevents the requested behavior.
+During a feature or fix, trace the affected paths and identify changed contracts, stored data, permissions, integrations, configuration and delivery consequences.
+
+- Preserve useful legacy knowledge.
+- Investigate contradictory code/docs and surface uncertainty that changes the outcome or risk; routine local choices can proceed.
+- Keep this assessment inline for ordinary changes and record consequential decisions in the project's existing notes.
+- Unrelated legacy debt remains separate unless it prevents the requested behavior.
 
 Select verification through [deliver-reliable-changes](../deliver-reliable-changes/SKILL.md) and establish the objective workspace through [Git contributions](../git-contributions/SKILL.md) before foundation/feature writes. Those skills own the verification loop and worktree mechanics.
 
@@ -65,9 +75,18 @@ Local hooks provide fast feedback on intended staged changes; CI independently e
 
 Use the selected runtime and development-service mechanism for only the dependencies the useful slice needs. Keep application-specific configuration beside its owner and provide documented root entry commands where useful. Preserve a working environment; no container engine or hosted service is required merely to satisfy this method.
 
-Provide startup, initialization/migrations, representative non-sensitive seed data, actual readiness, shutdown and safe reset commands. Isolate project identities, ports, credentials and data per feature worktree/test run. Use explicit owned test stores and appropriate development persistence. Never reset an unspecified or shared database; destructive cleanup needs the established target/action scope.
+Provide startup, initialization/migrations, representative non-sensitive seed data, actual readiness, shutdown and safe reset commands.
 
-Make useful diagnostics queryable without introducing a monitoring vendor. Preserve an accepted backend; use available observability expertise for signal contracts and guidance for the selected development tools for selected service/backend configuration. Keep readiness and received telemetry as separate evidence. Control external effects through fixtures or explicitly opted-in sandboxes. Native clients and simulators require their supported host and actual platform checks; backend execution cannot establish client behavior.
+- Isolate project identities, ports, credentials and data per feature worktree/test run.
+- Use explicit owned test stores and appropriate development persistence.
+- Never reset an unspecified or shared database; destructive cleanup needs the established target/action scope.
+
+Make useful diagnostics queryable without introducing a monitoring vendor.
+
+- Preserve an accepted backend; use available observability expertise for signal contracts and guidance for the selected development tools for selected service/backend configuration.
+- Keep readiness and received telemetry as separate evidence.
+- Control external effects through fixtures or explicitly opted-in sandboxes.
+- Native clients and simulators require their supported host and actual platform checks; backend execution cannot establish client behavior.
 
 ## Include operating constraints in design
 
@@ -87,6 +106,16 @@ Verify the first slice through its real entrypoint, user-visible outcome and per
 
 ## Maintain configuration and supported dependencies
 
-Treat application settings and flags as behavioral interfaces. Use typed/validated inputs, explicit precedence and a small set of useful defaults; reject invalid required settings/combinations without silently weakening authority. Distinguish build, startup and dynamic settings. Track the effective non-secret configuration revision and source of truth; inspect authorized effective values without dumping secrets or personal data. Configuration-only changes need proportionate tests and recovery just as code changes do.
+Treat application settings and flags as behavioral interfaces.
 
-Maintain the supported runtime/dependency set and update process alongside lockfiles. Routine upgrades need release-note/deprecation review, coherent coupled versions, meaningful tests and a recovery route even without a vulnerability. Keep changes focused; major upgrades are deliberate migrations, not silent modernization. Use vulnerability prioritization and remediation expertise for security-driven priority when available. Flag unsupported/EOL choices with evidence rather than replacing them unasked.
+- Use typed/validated inputs, explicit precedence and a small set of useful defaults; reject invalid required settings/combinations without silently weakening authority.
+- Distinguish build, startup and dynamic settings.
+- Track the effective non-secret configuration revision and source of truth; inspect authorized effective values without dumping secrets or personal data.
+- Configuration-only changes need proportionate tests and recovery just as code changes do.
+
+Maintain the supported runtime/dependency set and update process alongside lockfiles.
+
+- Routine upgrades need release-note/deprecation review, coherent coupled versions, meaningful tests and a recovery route even without a vulnerability.
+- Keep changes focused; major upgrades are deliberate migrations, not silent modernization.
+- Use vulnerability prioritization and remediation expertise for security-driven priority when available.
+- Flag unsupported/EOL choices with evidence rather than replacing them unasked.

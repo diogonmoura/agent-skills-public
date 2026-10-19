@@ -20,7 +20,11 @@ Choose a method that can answer the question: task observation for completion/re
 
 ## Observe without coaching
 
-Give participants realistic goals and observable end states while leaving them to discover the interaction. Separate moderator setup, participant instructions and neutral follow-up probes. Recovery tasks can start from naturally occurring failures or a moderator-prepared failed state; instructions should preserve the original goal without teaching an invalid attempt or its correction. Instructional/comprehension exercises answer a different question and need their own interpretation.
+Give participants realistic goals and observable end states while leaving them to discover the interaction.
+
+- Separate moderator setup, participant instructions and neutral follow-up probes.
+- Recovery tasks can start from naturally occurring failures or a moderator-prepared failed state; instructions should preserve the original goal without teaching an invalid attempt or its correction.
+- Instructional/comprehension exercises answer a different question and need their own interpretation.
 
 Prepare a concise moderator guide with purpose, think-aloud invitation, observations and neutral probes. Distinguish independent completion, assistance, errors/hesitation and subsequent interpretation. Check task feasibility in the prototype and trace tasks to research questions. Ratings require a stated question/scale and an interpretation justified by the method.
 
@@ -28,6 +32,9 @@ Use synthetic data where possible. Recruitment, contact, recording, private-data
 
 ## Synthesize the evidence supplied
 
-Separate observed behavior, participant statements, interpretation and proposed changes. Link findings to actual tasks/sessions/artifacts, protect identities, group repeated causes and preserve contradictory cases. Counts and quotes require supplied evidence.
+Separate observed behavior, participant statements, interpretation and proposed changes.
+
+- Link findings to actual tasks/sessions/artifacts, protect identities, group repeated causes and preserve contradictory cases.
+- Counts and quotes require supplied evidence.
 
 Explain sample/prototype limitations and prioritize effects on the intended task. Recommend a bounded repair or next test and carry accepted findings into requirements/design. Return the study as prepared and unexecuted when no sessions occurred. Static critique, automated checks, agent exploration and simulated personas are different evidence sources; distinguish them from participant research and verify implemented repairs through the existing test loop.

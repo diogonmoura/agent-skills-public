@@ -28,7 +28,11 @@ For Kubernetes, recover declarative application/infrastructure configuration and
 
 ## Prove restoration safely
 
-Restore into an isolated target with explicit source, recovery point and destination. Avoid overwriting production or letting restored workers send emails, payments or duplicate external side effects. Check access, schema, representative data and an application read/write journey; measure elapsed recovery time and actual data loss. Recovering a file is not the same as recovering the service.
+Restore into an isolated target with explicit source, recovery point and destination.
+
+- Avoid overwriting production or letting restored workers send emails, payments or duplicate external side effects.
+- Check access, schema, representative data and an application read/write journey; measure elapsed recovery time and actual data loss.
+- Recovering a file is not the same as recovering the service.
 
 Record a concise runbook covering rebuild, restore, configuration, verification, cutover and return to normal backups. Include DNS/connection changes, incompatible migrations and the point at which further writes make reversal unsafe. Keep application rollback/roll-forward in CI/CD; data restoration is a separate recovery operation with its own consequences.
 
@@ -53,7 +57,12 @@ For another platform, search its first-party documentation and record relevant r
 
 Audit job failures, newest usable recovery point, coverage, access/key availability, retention behavior and the latest integrity-tested restoration. Carry unresolved findings forward with their original dates. Green backup jobs alone do not meet recovery objectives.
 
-Before rebuilding, inventory surviving resources; an old bootstrap procedure is not authority to delete a surviving datastore. Define ordered infrastructure, identities, storage, data and application recovery with idempotent preconditions. For in-place recovery, isolate writers, consumers and scheduled jobs and control reconcilers before restoring. Recheck the exact destination and recovery point; validate schema, relationships, invariants and representative data before resuming writers or cutover. Account for queued/in-flight work, duplicate external effects and reconciliation ownership.
+Before rebuilding, inventory surviving resources; an old bootstrap procedure is not authority to delete a surviving datastore.
+
+- Define ordered infrastructure, identities, storage, data and application recovery with idempotent preconditions.
+- For in-place recovery, isolate writers, consumers and scheduled jobs and control reconcilers before restoring.
+- Recheck the exact destination and recovery point; validate schema, relationships, invariants and representative data before resuming writers or cutover.
+- Account for queued/in-flight work, duplicate external effects and reconciliation ownership.
 
 Record actual RPO/RTO, residual loss, temporary controls and return to normal backups. Rehearsal, in-place restoration and traffic cutover have different consequences; use the authority already granted for the task and target. With no execution access, deliver a plan and mark live checks outstanding. `incident-response` coordinates an outage; this skill owns restoration and data-integrity proof.
 

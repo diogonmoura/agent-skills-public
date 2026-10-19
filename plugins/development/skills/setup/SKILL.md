@@ -18,6 +18,13 @@ Read [task guidance](../../TASKS.md). Read [git-contributions](../git-contributi
 
 Setup is technical foundation work, not a substitute for product discovery. Before architecture-dependent writes, establish the intended usage, bounded journey and material platform/licensing/budget constraints. For a rough idea needing end-to-end development, use the outcomes in [new-application flow](../develop/references/new-application-flow.md) within the requested scope; a setup-only request does not authorize feature implementation or an unsolicited full business study.
 
-Use project-conventions to discover the repository, accepted stack, commands, identity model, environments and critical journey. In a new project establish only useful foundations for the requested first slice; in an existing one identify missing context without restructuring it. Ask about consequential product/platform choices, then record commands and accepted constraints in existing instructions/docs. Verify available startup/migration/test paths and identify missing prerequisites. Setup is not a claim that an application feature is complete. Use develop when the request is to build the application end to end.
+## Establish useful foundations
+
+Use project-conventions to discover the repository, accepted stack, commands, identity model, environments and critical journey.
+
+- In a new project establish only useful foundations for the requested first slice; in an existing one identify missing context without restructuring it.
+- Ask about consequential product/platform choices, then record commands and accepted constraints in existing instructions/docs.
+- Verify available startup/migration/test paths and identify missing prerequisites.
+- Setup is not a claim that an application feature is complete. Use develop when the request is to build the application end to end.
 
 For a new application, satisfy the [applicable foundation contract](../project-conventions/SKILL.md#complete-new-project-foundations): inspect the authored onboarding, checks/tests, packaging and delivery artifacts and run their available command paths. Identify unresolved targets or unavailable tools explicitly. Existing-project adoption preserves working foundations and focuses on the requested gaps.

@@ -19,15 +19,31 @@ Identify the authorized cluster/database, version, hosting model, topology and o
 
 ## Establish recoverability
 
-Choose logical backup, physical backup/WAL recovery, managed snapshots/PITR or a combination from the recovery unit, downtime, retention and failure model. Include roles/global objects, extensions, encryption/access, dependencies and recovery configuration. A replica shares many failure and deletion modes and is not an independent backup. Continuous recovery depends on a usable base and the required WAL chain; monitor retention and restoreability, not just successful job completion.
+Choose logical backup, physical backup/WAL recovery, managed snapshots/PITR or a combination from the recovery unit, downtime, retention and failure model.
 
-Exercise recovery on an authorized isolated target. Verify a known recovery point, application compatibility, representative records/invariants and access, then measure actual recovery time and attainable data loss. Keep restored deletion/retention obligations and traffic cutover explicit. Distinguish a documented procedure, successful backup and successful restore; none automatically establishes full application recovery.
+- Include roles/global objects, extensions, encryption/access, dependencies and recovery configuration.
+- A replica shares many failure and deletion modes and is not an independent backup.
+- Continuous recovery depends on a usable base and the required WAL chain; monitor retention and restoreability, not just successful job completion.
+
+Exercise recovery on an authorized isolated target.
+
+- Verify a known recovery point, application compatibility, representative records/invariants and access, then measure actual recovery time and attainable data loss.
+- Keep restored deletion/retention obligations and traffic cutover explicit.
+- Distinguish a documented procedure, successful backup and successful restore; none automatically establishes full application recovery.
 
 ## Maintain health without hiding risk
 
-Assess connections, long transactions, disk/WAL growth, vacuum/freeze, replication slots and lag against workload and retention. Slots can retain WAL; replicas can lag or conflict with recovery. Investigate cause and consequences before dropping slots, cancelling work or changing durability. Define primary/failover authority and fencing against split-brain; promotion alone does not prove clients moved or application writes are correct.
+Assess connections, long transactions, disk/WAL growth, vacuum/freeze, replication slots and lag against workload and retention.
 
-For minor/major upgrades, check supported server/extension/driver combinations, storage needs and tooling. Compare in-place, logical replication or dump/restore strategies against downtime and reversibility. Rehearse meaningful data and query/role compatibility, validate the new target, and define cutover, stale-writer prevention and forward recovery. Avoid claiming binary rollback after new writes unless that path is demonstrated.
+- Slots can retain WAL; replicas can lag or conflict with recovery.
+- Investigate cause and consequences before dropping slots, cancelling work or changing durability.
+- Define primary/failover authority and fencing against split-brain; promotion alone does not prove clients moved or application writes are correct.
+
+For minor/major upgrades, check supported server/extension/driver combinations, storage needs and tooling.
+
+- Compare in-place, logical replication or dump/restore strategies against downtime and reversibility.
+- Rehearse meaningful data and query/role compatibility, validate the new target, and define cutover, stale-writer prevention and forward recovery.
+- Avoid claiming binary rollback after new writes unless that path is demonstrated.
 
 ## Execute and report within scope
 

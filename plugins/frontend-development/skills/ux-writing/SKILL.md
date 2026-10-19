@@ -16,7 +16,11 @@ Make the action, current state and consequences understandable in the product's 
 
 Read the whole affected flow, adjacent states and established vocabulary. Identify the reader's goal, what the system permits and knows, the stakes and the available next action. Separate UI text from sample data and annotations. Resolve technical facts from contracts/code; ask about unresolved product decisions that change meaning.
 
-Match every recommended message, including the preferred default, to authoritative state and supported behavior. Distinguish an acknowledged request, work in progress and confirmed outcome. Recovery, notification, timing and download promises require a real contract. Preserve material consequences of consent, payment, security, sharing and deletion; a copy change cannot redefine permissions or recovery.
+Match every recommended message, including the preferred default, to authoritative state and supported behavior.
+
+- Distinguish an acknowledged request, work in progress and confirmed outcome.
+- Recovery, notification, timing and download promises require a real contract.
+- Preserve material consequences of consent, payment, security, sharing and deletion; a copy change cannot redefine permissions or recovery.
 
 ## Make decisions and recovery clear
 
@@ -28,6 +32,10 @@ Preserve interpolation, escaping, numeric meaning, pluralization, locale convent
 
 ## Verify the complete recommendation
 
-For review, give the location/state, current and proposed complete text, reason and assumptions. Group systemic terminology issues once. For authorized edits, preserve intended bindings/structure and compare the affected flow, dynamic states, accessible labels and realistic narrow/locale wrapping. Use code/runtime evidence where available to check semantic accuracy.
+For review, give the location/state, current and proposed complete text, reason and assumptions.
+
+- Group systemic terminology issues once.
+- For authorized edits, preserve intended bindings/structure and compare the affected flow, dynamic states, accessible labels and realistic narrow/locale wrapping.
+- Use code/runtime evidence where available to check semantic accuracy.
 
 Report inspected surfaces and unresolved meaning, localization or comprehension gaps. A clearer sentence or agent critique does not establish participant usability findings.

@@ -36,7 +36,10 @@ Use `documentation/` with a short index and these areas as needed:
 
 Preserve existing documentation conventions. Start with documents that answer real questions, not an empty folder checklist. Use C4 context/containers for system boundaries; add component detail only when useful. Use arc42 as an optional architecture outline and MADR for lightweight ADRs.
 
-Keep a PRD focused on problem, users, outcomes, scope and acceptance criteria; keep the roadmap about priorities rather than duplicating implementation tasks. Record an ADR for a consequential choice with alternatives and tradeoffs. Keep routine reversible choices in the current plan or change description. Link the decision log to ADRs; supersede historical decisions rather than rewriting history.
+- Keep a PRD focused on problem, users, outcomes, scope and acceptance criteria; keep the roadmap about priorities rather than duplicating implementation tasks.
+- Record an ADR for a consequential choice with alternatives and tradeoffs.
+- Keep routine reversible choices in the current plan or change description.
+- Link the decision log to ADRs; supersede historical decisions rather than rewriting history.
 
 ## Keep responsibilities separate
 
@@ -44,9 +47,21 @@ Put product objectives and metric definitions in the PRD by default. Extract ana
 
 Separate requirements and constraints from their design response. The current architecture describes implemented behaviour. Put bounded target designs in work packages; use a separate target architecture for material cross-system change and retire it when fulfilled. Link requirements, decisions, work and verification rather than maintain competing baselines.
 
-If progress tracking is useful, keep one view in the existing tracker or project notes; no new tracker or ledger is required. Where several packages need identification, preserve or agree stable IDs and a small kind vocabulary (feature, fix, refactor, docs, operations, research). Numbers identify work; priorities/dependencies determine order. Distinguish implementation, verification and deployment evidence. Reviews preserve findings; actionable follow-up belongs in linked work or an explicit disposition, with closure evidence. A proposed package does not authorize implementation.
+If progress tracking is useful, keep one view in the existing tracker or project notes; no new tracker or ledger is required.
 
-Keep operations documentation broader than runbooks. For critical journeys, maintain useful outcome and latency/freshness indicators, denominators, time windows, target status, collection gaps, alert/runbook links and owners. Update them when journeys, dependencies or failure/retry boundaries change. Product outcomes and service reliability have different purposes. Do not equate an HTTP success, generated draft or model call with a completed user operation, or call an unapproved target a production promise. Keep telemetry minimal and exclude sensitive payloads.
+- Where several packages need identification, preserve or agree stable IDs and a small kind vocabulary (feature, fix, refactor, docs, operations, research).
+- Numbers identify work; priorities/dependencies determine order.
+- Distinguish implementation, verification and deployment evidence.
+- Reviews preserve findings; actionable follow-up belongs in linked work or an explicit disposition, with closure evidence.
+- A proposed package does not authorize implementation.
+
+Keep operations documentation broader than runbooks.
+
+- For critical journeys, maintain useful outcome and latency/freshness indicators, denominators, time windows, target status, collection gaps, alert/runbook links and owners.
+- Update them when journeys, dependencies or failure/retry boundaries change.
+- Product outcomes and service reliability have different purposes.
+- Do not equate an HTTP success, generated draft or model call with a completed user operation, or call an unapproved target a production promise.
+- Keep telemetry minimal and exclude sensitive payloads.
 
 ## Synchronize the affected knowledge
 

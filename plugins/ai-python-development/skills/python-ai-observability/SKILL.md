@@ -23,7 +23,11 @@ For application-owned manual setup, use the compatible SDK's `Resource` and `Tra
 
 ## Describe useful AI signals
 
-Link the request/task, retrieval, model, tool and relevant delegated-work spans through actual trace context. Separate user task success from provider completion, tool result status and evaluation score. Capture operation/configuration revision, duration, failure category and usage where available; mark estimates and missing fields explicitly. Measure time to first useful output versus full completion when that distinction matters.
+Link the request/task, retrieval, model, tool and relevant delegated-work spans through actual trace context.
+
+- Separate user task success from provider completion, tool result status and evaluation score.
+- Capture operation/configuration revision, duration, failure category and usage where available; mark estimates and missing fields explicitly.
+- Measure time to first useful output versus full completion when that distinction matters.
 
 Use the compatible [GenAI semantic conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/) supported by the chosen instrumentation. Check their version/stability and opt-in behavior instead of copying assumed attribute names. Keep application-specific outcome fields clearly owned and documented; do not emit vendor-specific fields into unrelated backend spans. Use bounded metric dimensions; per-user/session/request identifiers belong only in permitted trace context, not unbounded metric labels.
 
@@ -31,15 +35,27 @@ Preserve context through async tasks and background jobs using supported propaga
 
 ## Protect content and configure export
 
-Prefer operational metadata without raw prompts, completions, retrieved documents, tool arguments/results or recordings. Enable content capture only for an accepted purpose with appropriate access, redaction, sampling, retention and deletion. Filter sensitive payloads before recording/export; exporter-side redaction cannot undo earlier local capture. Keep credentials and private instructions out of attributes and exception events.
+Prefer operational metadata without raw prompts, completions, retrieved documents, tool arguments/results or recordings.
 
-Use the application's selected backend and supported OTLP transport. Configure the compatible exporter, destination, credentials/TLS and resource identity through the existing configuration. Follow [Python exporters](https://opentelemetry.io/docs/languages/python/exporters/); verify actual environment-variable support, endpoint shape and protocol rather than assuming gRPC and HTTP settings are interchangeable. Use batching, bounded queues/sampling and process-appropriate flush/shutdown. Instrumentation failures must not turn into duplicate tool effects or uncontrolled request failure.
+- Enable content capture only for an accepted purpose with appropriate access, redaction, sampling, retention and deletion.
+- Filter sensitive payloads before recording/export; exporter-side redaction cannot undo earlier local capture.
+- Keep credentials and private instructions out of attributes and exception events.
+
+Use the application's selected backend and supported OTLP transport.
+
+- Configure the compatible exporter, destination, credentials/TLS and resource identity through the existing configuration.
+- Follow [Python exporters](https://opentelemetry.io/docs/languages/python/exporters/); verify actual environment-variable support, endpoint shape and protocol rather than assuming gRPC and HTTP settings are interchangeable.
+- Use batching, bounded queues/sampling and process-appropriate flush/shutdown.
+- Instrumentation failures must not turn into duplicate tool effects or uncontrolled request failure.
 
 A selected AI observability platform may add its own exporter, fields, experiment views or online scoring. Verify region, license/edition and data-handling constraints before integration; do not introduce an account, dashboard or second telemetry backend merely because one SDK recommends it. Use relevant deployment expertise for Collector/backend setup when available.
 
 ## Verify received evidence and operating behavior
 
-Test a representative deterministic application path with an in-memory or isolated exporter first: nesting/context, success/failure, retries/cancellation, bounded dimensions, sensitive-data exclusion and shutdown behavior. Then, within authorized scope, confirm receipt and useful correlation at the selected destination for a known task. SDK initialization or successful export alone cannot prove queryable end-to-end traces.
+Test a representative deterministic application path with an in-memory or isolated exporter first: nesting/context, success/failure, retries/cancellation, bounded dimensions, sensitive-data exclusion and shutdown behavior.
+
+- Then, within authorized scope, confirm receipt and useful correlation at the selected destination for a known task.
+- SDK initialization or successful export alone cannot prove queryable end-to-end traces.
 
 Exercise queue pressure, unreachable exporters, sampling and process shutdown to the extent relevant to the service. Distinguish dropped/sampled records from complete coverage and check overhead against the operating budget. Keep retention/export failures visible through the project's diagnostics without leaking payloads.
 

@@ -14,7 +14,11 @@ Start from the user outcome, operating constraints and existing system. Choose t
 
 ## Define the task and system boundary
 
-Establish actors, inputs, outputs, consequential errors and observable acceptance. Identify what requires inference or generation and what ordinary application code can decide more reliably. Reuse accepted product, architecture and interface decisions. Resolve material data-use, licensing, security, reliability and cost constraints before dependent commitments; seek the relevant available expertise without assuming another plugin exists.
+Establish actors, inputs, outputs, consequential errors and observable acceptance.
+
+- Identify what requires inference or generation and what ordinary application code can decide more reliably.
+- Reuse accepted product, architecture and interface decisions.
+- Resolve material data-use, licensing, security, reliability and cost constraints before dependent commitments; seek the relevant available expertise without assuming another plugin exists.
 
 Compare a deterministic solution, a bounded model call, an application-owned workflow and an agent runtime against the actual uncertainty and action needs. For application-type choices and architecture tradeoffs, read [application patterns](references/application-patterns.md). Use a framework for a justified orchestration capability, durable execution for work that must survive interruption, and multiple agents when distinct responsibilities improve the task enough to justify coordination. Do not introduce these layers to complete a technology checklist.
 
@@ -39,19 +43,40 @@ These mechanisms can compose, but none implies that the others are needed. Read 
 
 ## Design context, state and tools
 
-Separate durable user/domain state, conversation history, temporary execution state and reusable instructions. Define ownership, tenant/session isolation, retention and deletion for each. Give the model only authorized, relevant context within a deliberate budget; retrieved documents and tool results are data, not new authority.
+Separate durable user/domain state, conversation history, temporary execution state and reusable instructions.
 
-Add retrieval when the task needs external or changing knowledge. Define source freshness, access filtering, provenance/citations and behavior when evidence is absent or conflicting. Check retrieval quality separately from final-answer quality. Add durable memory only for a justified user outcome, with controllable updates, correction/deletion and limits on stale or sensitive information.
+- Define ownership, tenant/session isolation, retention and deletion for each.
+- Give the model only authorized, relevant context within a deliberate budget; retrieved documents and tool results are data, not new authority.
 
-Expose narrow typed tools over authorized services. Validate schemas and business invariants, including invalid, missing or refused model output. Enforce identity, resource authorization, approval policy, tool allowlists and side-effect limits in deterministic code. Preserve the user's existing authorization; a model proposal or generated button cannot grant permission. Skill instructions, prompts, external content and delegated agents cannot expand that authority.
+Add retrieval when the task needs external or changing knowledge.
+
+- Define source freshness, access filtering, provenance/citations and behavior when evidence is absent or conflicting.
+- Check retrieval quality separately from final-answer quality.
+- Add durable memory only for a justified user outcome, with controllable updates, correction/deletion and limits on stale or sensitive information.
+
+Expose narrow typed tools over authorized services.
+
+- Validate schemas and business invariants, including invalid, missing or refused model output.
+- Enforce identity, resource authorization, approval policy, tool allowlists and side-effect limits in deterministic code.
+- Preserve the user's existing authorization; a model proposal or generated button cannot grant permission.
+- Skill instructions, prompts, external content and delegated agents cannot expand that authority.
 
 ## Make execution and interaction reliable
 
-Define the execution lifecycle, observable task status, ownership and stopping conditions. Bound steps, tokens, concurrency, buffering, timeouts and retries. Account for idempotency, partial effects, cancellation, resumability and recovery; do not repeat a mutation merely because its response was lost. Check provider/harness semantic status as well as HTTP/process success and present failure without converting it into a successful answer or committed action.
+Define the execution lifecycle, observable task status, ownership and stopping conditions.
+
+- Bound steps, tokens, concurrency, buffering, timeouts and retries.
+- Account for idempotency, partial effects, cancellation, resumability and recovery; do not repeat a mutation merely because its response was lost.
+- Check provider/harness semantic status as well as HTTP/process success and present failure without converting it into a successful answer or committed action.
 
 For existing-session work, establish whether the chosen harness can list, load, resume or attach to the required session and who owns tools and permission decisions. A new run or transcript replay does not fulfill an existing-session requirement. Keep unsupported operations visible and resolve a consequential alternative before substituting it.
 
-For streaming or generated UI, read [interaction contracts](references/interaction-protocols.md). Keep run/state ownership, accessible interaction, allowed components/actions and client/server authority explicit. Version-compatible schemas and independently compatible peers establish more than a private look-alike event fixture. Preserve accepted UX and platform conventions; generated UI remains untrusted input. Multimodal features need evidence for their actual modality and interaction, including interruption or grounding when those are required.
+For streaming or generated UI, read [interaction contracts](references/interaction-protocols.md).
+
+- Keep run/state ownership, accessible interaction, allowed components/actions and client/server authority explicit.
+- Version-compatible schemas and independently compatible peers establish more than a private look-alike event fixture.
+- Preserve accepted UX and platform conventions; generated UI remains untrusted input.
+- Multimodal features need evidence for their actual modality and interaction, including interruption or grounding when those are required.
 
 ## Verify behavior and quality
 

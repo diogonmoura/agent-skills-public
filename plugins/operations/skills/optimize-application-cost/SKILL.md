@@ -16,15 +16,26 @@ Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallba
 
 ## Attribute the real bill
 
-Identify the environment, provider, region, currency, billing period and application/team ownership. Use current invoices, price sheets and usage where available; separate estimates from billed amounts and allocated cost from cash savings. Use EUR and relevant European regions for this user's estimates unless the project specifies otherwise. Keep exchange-rate date, taxes/discount assumptions and commitments explicit; do not invent price conversions or reuse stale rates.
+Identify the environment, provider, region, currency, billing period and application/team ownership.
+
+- Use current invoices, price sheets and usage where available; separate estimates from billed amounts and allocated cost from cash savings.
+- Use EUR and relevant European regions for this user's estimates unless the project specifies otherwise.
+- Keep exchange-rate date, taxes/discount assumptions and commitments explicit; do not invent price conversions or reuse stale rates.
 
 Include compute, databases, storage/backup retention, network egress and load balancers, logs/telemetry, build artifacts, CI minutes and third-party/AI usage. Shared cluster/system costs and idle capacity should remain visible. Track a useful unit such as cost per active user, completed job or request alongside total spend; lower unit cost can still produce a larger bill with growth.
 
 ## Optimize against constraints
 
-Read capacity, recovery, latency and privacy requirements before proposing savings. Prioritize unused resources, oversized allocations, unnecessary data movement/retention and expensive hot paths. For Kubernetes, compare requests and actual usage over representative periods, then check node packing, scheduling constraints and whether released capacity will reduce billable nodes. Reducing pod requests alone does not guarantee a lower bill.
+Read capacity, recovery, latency and privacy requirements before proposing savings.
 
-Include managed database/storage sizing and backup needs; do not cut restore coverage or resilience to make a chart look better. Consider interruptible/spot capacity only for workloads that tolerate interruption. Commitments/reservations need stable demand and a break-even assessment; do not buy them merely because a published discount looks attractive. Scaling to zero needs acceptable startup latency and supported infrastructure.
+- Prioritize unused resources, oversized allocations, unnecessary data movement/retention and expensive hot paths.
+- For Kubernetes, compare requests and actual usage over representative periods, then check node packing, scheduling constraints and whether released capacity will reduce billable nodes.
+- Reducing pod requests alone does not guarantee a lower bill.
+
+- Include managed database/storage sizing and backup needs; do not cut restore coverage or resilience to make a chart look better.
+- Consider interruptible/spot capacity only for workloads that tolerate interruption.
+- Commitments/reservations need stable demand and a break-even assessment; do not buy them merely because a published discount looks attractive.
+- Scaling to zero needs acceptable startup latency and supported infrastructure.
 
 For AI, examine model choice, token/audio volume, caching, batching, retry limits and rate controls against the actual quality requirements. Free tiers are account/model-dependent experiments, not a production cost guarantee. Keep budgets, growth scenarios and reasonable anomaly signals proportionate; a small application need not acquire a full FinOps platform.
 

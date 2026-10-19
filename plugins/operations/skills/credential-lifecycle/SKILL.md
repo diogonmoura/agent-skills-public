@@ -18,7 +18,10 @@ Maintain one authoritative credential record and a complete map of its consumers
 
 ## Modes and architecture
 
-In interactive work, explain identity/delivery tradeoffs and resolve ownership and cutover decisions. For setup, implement least-privilege identity and secret delivery in the chosen stack; during feature work review new consumers, privileges and reload behavior. For recurring reviews inspect metadata, expiry, secret references and audit findings; prepare policy-bounded changes without exporting values. Rotate/revoke automatically only when the job explicitly authorizes the affected consumers and verified provider procedure.
+- In interactive work, explain identity/delivery tradeoffs and resolve ownership and cutover decisions.
+- For setup, implement least-privilege identity and secret delivery in the chosen stack; during feature work review new consumers, privileges and reload behavior.
+- For recurring reviews inspect metadata, expiry, secret references and audit findings; prepare policy-bounded changes without exporting values.
+- Rotate/revoke automatically only when the job explicitly authorizes the affected consumers and verified provider procedure.
 
 Consult [references/secrets-architecture.md](references/secrets-architecture.md) for industry-grounded design, runtime/CI delivery, rotation and recovery for deeper implementation details when needed.
 

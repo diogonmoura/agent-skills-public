@@ -60,7 +60,17 @@ Optional initial settings, chosen by the generating agent when useful:
 }
 ```
 
-`depth` is required when `exploration` is supplied; without settings the renderer starts at container depth. `overrides` is an optional object keyed by node ID. Systems with modeled containers accept context/container/component; containers with modeled components accept container/component. Unknown IDs, leaf-node overrides, and unsupported levels are invalid. A container inherits its system's level, and a system inherits the global level. A local container choice reveals its owning system at container level even when the global level is context. An explicit context override on that system hides all its internals, including saved container overrides. These reappear when the system is expanded. Changing the global level preserves local choices; Reset local levels clears them. Initial settings affect presentation only, not evidence or canonical identities.
+`depth` is required when `exploration` is supplied; without settings the renderer starts at container depth.
+
+- `overrides` is an optional object keyed by node ID.
+- Systems with modeled containers accept context/container/component; containers with modeled components accept container/component.
+- Unknown IDs, leaf-node overrides, and unsupported levels are invalid.
+- A container inherits its system's level, and a system inherits the global level.
+- A local container choice reveals its owning system at container level even when the global level is context.
+- An explicit context override on that system hides all its internals, including saved container overrides.
+- These reappear when the system is expanded.
+- Changing the global level preserves local choices; Reset local levels clears them.
+- Initial settings affect presentation only, not evidence or canonical identities.
 
 Context projects internal nodes to their system. At component depth, refined endpoints use their declared component; unrefined container endpoints remain aggregate containers. Boundary rectangles name the owning system/container, including external ownership. Local controls are available on sequence participants, C4 nodes, ownership boundaries, and in the Local detail levels panel; the panel also allows choosing inheritance again.
 

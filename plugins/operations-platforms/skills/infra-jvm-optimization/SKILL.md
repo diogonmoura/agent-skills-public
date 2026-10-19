@@ -39,7 +39,11 @@ Consult [references/optimization-guide.md](references/optimization-guide.md). Di
 
 ## Guard against misleading optimization
 
-GC choice depends on CPU/heap/pause needs and JDK; Serial/G1/ZGC are not ranked universally. Heap caps do not bound process RSS. Scaling replicas may worsen database pressure or a memory leak. Aggregated external metrics with `AverageValue` need adapter/unit verification. Hard spread constraints can leave replicas Pending.
+- GC choice depends on CPU/heap/pause needs and JDK; Serial/G1/ZGC are not ranked universally.
+- Heap caps do not bound process RSS.
+- Scaling replicas may worsen database pressure or a memory leak.
+- Aggregated external metrics with `AverageValue` need adapter/unit verification.
+- Hard spread constraints can leave replicas Pending.
 
 ## Completion evidence
 

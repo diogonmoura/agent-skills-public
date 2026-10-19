@@ -16,7 +16,15 @@ user-invocable: false
 
 ## Establish the direction
 
-Read the request, `AGENTS.md`, existing components and accepted design decisions. For a new web application, prefer Next.js App Router, TypeScript, Tailwind v4 and shadcn/ui. For desktop or iOS/Android also use native-platform implementation and driver expertise. A Tauri React/Vite DOM interface still follows this visual/interaction process and the compatible Tailwind/shadcn conventions; only web SSR defaults are inapplicable. React Native uses native components, not DOM primitives. Preserve an established React/Vite or other frontend unless a migration is requested. Use the project's package manager, locked versions and component primitives; do not mix Tailwind v3/v4 or Radix/Base UI APIs casually. For new Next.js projects, use `@tailwindcss/postcss`, `@import "tailwindcss"` and CSS-first semantic tokens via `@theme`/`@theme inline`; follow the selected shadcn preset rather than creating a competing token system.
+Read the request, `AGENTS.md`, existing components and accepted design decisions.
+
+- For a new web application, prefer Next.js App Router, TypeScript, Tailwind v4 and shadcn/ui.
+- For desktop or iOS/Android also use native-platform implementation and driver expertise.
+- A Tauri React/Vite DOM interface still follows this visual/interaction process and the compatible Tailwind/shadcn conventions; only web SSR defaults are inapplicable.
+- React Native uses native components, not DOM primitives.
+- Preserve an established React/Vite or other frontend unless a migration is requested.
+- Use the project's package manager, locked versions and component primitives; do not mix Tailwind v3/v4 or Radix/Base UI APIs casually.
+- For new Next.js projects, use `@tailwindcss/postcss`, `@import "tailwindcss"` and CSS-first semantic tokens via `@theme`/`@theme inline`; follow the selected shadcn preset rather than creating a competing token system.
 
 Use visual design expertise for product-derived direction, accepted references and semantic token intent, and interaction design expertise for behavior. These generic methods apply beyond React; this skill owns the compatible React/Next.js implementation. Record meaningful stack deviations in the existing project note.
 
@@ -34,15 +42,27 @@ Compose the product's layouts from those primitives. Add dark mode when required
 
 ## Make interactions dependable
 
-Use semantic controls, visible labels, keyboard access and clear focus. Use actual compatible shadcn/Radix/Base UI primitives for menus/dialogs, not handwritten visual lookalikes lacking semantics or focus behavior. Verify focus containment, dialog roles/labels and restoration to the invoking control after closing, and never substitute tooltips or placeholders for labels. Include loading, empty, error, validation and permission states. Preserve input on recoverable failures, prevent duplicate submission and provide actionable errors. Destructive actions follow the existing confirmation or recovery convention.
+Use semantic controls, visible labels, keyboard access and clear focus.
 
-Use pages for substantial editing, panels for quick inspection and dialogs for short decisions. For growing datasets, use bounded server pagination/filtering, consistent row actions and bulk actions with explicit selection scope. Put non-sensitive shareable view state in the URL. Localize dates, time zones, numbers and units deliberately.
+- Use actual compatible shadcn/Radix/Base UI primitives for menus/dialogs, not handwritten visual lookalikes lacking semantics or focus behavior.
+- Verify focus containment, dialog roles/labels and restoration to the invoking control after closing, and never substitute tooltips or placeholders for labels.
+- Include loading, empty, error, validation and permission states.
+- Preserve input on recoverable failures, prevent duplicate submission and provide actionable errors.
+- Destructive actions follow the existing confirmation or recovery convention.
+
+- Use pages for substantial editing, panels for quick inspection and dialogs for short decisions.
+- For growing datasets, use bounded server pagination/filtering, consistent row actions and bulk actions with explicit selection scope.
+- Put non-sensitive shareable view state in the URL.
+- Localize dates, time zones, numbers and units deliberately.
 
 Prefer React Hook Form with Zod for complex forms, TanStack Table for complex tables and a chart library such as Recharts when charts serve the task. Do not add these dependencies for a simple field or static list. Client validation helps users; the backend validates and enforces all business rules.
 
 ## Keep React and API boundaries clear
 
-Organize by feature with shared primitives; avoid a bespoke application framework. In Next.js, default to Server Components for server data and small Client Components for interaction. Keep secrets on the server and authorize every server action/endpoint. Call hooks consistently, keep state close to its owner and avoid effects that merely derive state.
+- Organize by feature with shared primitives; avoid a bespoke application framework.
+- In Next.js, default to Server Components for server data and small Client Components for interaction.
+- Keep secrets on the server and authorize every server action/endpoint.
+- Call hooks consistently, keep state close to its owner and avoid effects that merely derive state.
 
 Use typed backend contracts, preferably generated from FastAPI OpenAPI where applicable. Choose a coherent fetching/cache strategy: use TanStack Query when interactive remote state warrants it, rather than duplicating Server Component requests. Scope private caches by identity/tenant, invalidate affected data after mutations and handle optimistic-update failures.
 
@@ -50,13 +70,25 @@ Avoid request waterfalls, oversized client bundles and avoidable layout shifts. 
 
 ## Deploy the frontend as an application
 
-Test the production build/start path, configuration and representative authenticated journey; development-server success is narrower evidence. Identify build-time and runtime settings. `NEXT_PUBLIC_*` values are public and compiled into the client build; changing deployment environment variables does not rewrite that bundle. Prefer an explicit runtime configuration boundary when one artifact must serve different environments, exposing only safe values. If a build must differ, give it a new identity and validate it.
+Test the production build/start path, configuration and representative authenticated journey; development-server success is narrower evidence.
+
+- Identify build-time and runtime settings.
+- `NEXT_PUBLIC_*` values are public and compiled into the client build; changing deployment environment variables does not rewrite that bundle.
+- Prefer an explicit runtime configuration boundary when one artifact must serve different environments, exposing only safe values.
+- If a build must differ, give it a new identity and validate it.
 
 When deploying multiple instances or changing hosting, read [production hosting and configuration](references/sources-and-exceptions.md#production-hosting-and-configuration) for cache scope/invalidation, identity isolation, version skew and proxy behavior. Verify the actual served path and affected outcome; local startup cannot establish fleet-wide behavior. Seek available delivery expertise for promotion and recovery mechanics.
 
 ## Verify and use specialist guidance proportionately
 
-For new compatible React projects, use TypeScript and ESLint with the project formatter; preserve existing accepted tools and configure their actual commands. Run relevant types, lint and build checks. Evaluate rendered visual quality against the product-derived direction separately from functional, accessibility and journey checks. Inspect actual target layouts with realistic content, navigation, keyboard focus and failure states; repair visible discrepancies and recheck before completion. A screenshot baseline cannot establish taste, and an automated accessibility check cannot establish usability. Test the critical journey against real persistence using the project's E2E workflow; a screenshot alone is insufficient. Keep changed contracts and accepted design decisions synchronized, and report checks actually performed.
+For new compatible React projects, use TypeScript and ESLint with the project formatter; preserve existing accepted tools and configure their actual commands.
+
+- Run relevant types, lint and build checks.
+- Evaluate rendered visual quality against the product-derived direction separately from functional, accessibility and journey checks.
+- Inspect actual target layouts with realistic content, navigation, keyboard focus and failure states; repair visible discrepancies and recheck before completion.
+- A screenshot baseline cannot establish taste, and an automated accessibility check cannot establish usability.
+- Test the critical journey against real persistence using the project's E2E workflow; a screenshot alone is insufficient.
+- Keep changed contracts and accepted design decisions synchronized, and report checks actually performed.
 
 These defaults cover routine work without reference browsing. Use bundled shadcn, Vercel React/composition and Tailwind design-system skills for unfamiliar components or deeper implementation questions. My default and the Tailwind upstream guide both target **v4**. Apply a requested v3-to-v4 upgrade as a focused migration: check browser compatibility, dependencies, configuration and rendered behavior; do not migrate an unrelated existing application silently. Consult [sources and exceptions](references/sources-and-exceptions.md) for version migrations or decisions these defaults do not resolve.
 

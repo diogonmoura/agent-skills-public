@@ -18,18 +18,41 @@ Identify the audience, their recurring tasks, the decisions this surface should 
 
 ## Establish context and hierarchy
 
-Make organization/workspace, time range, environment and relevant resource scope recognizable before consequential actions. Design navigation from the domain and frequency of work; show the current location and preserve context through drill-downs. Prioritize the primary task, exceptions and next actions before adding overview metrics. A metric earns space by helping this audience decide or act; use realistic content and data distributions when comparing layouts.
+Make organization/workspace, time range, environment and relevant resource scope recognizable before consequential actions.
+
+- Design navigation from the domain and frequency of work; show the current location and preserve context through drill-downs.
+- Prioritize the primary task, exceptions and next actions before adding overview metrics.
+- A metric earns space by helping this audience decide or act; use realistic content and data distributions when comparing layouts.
 
 Derive hierarchy, typography, density, color and interaction language from the product's purpose and accepted design system. Seek available interface craft, interaction, accessibility and writing expertise by capability. When absent, make and inspect a coherent direction with project evidence and appropriate references. Use the accepted stack's components/tokens; the skill does not require a framework, design tool or chart library.
 
 ## Make data and actions interpretable
 
-Define units, denominators, aggregation, time zone, comparison period, freshness and missing-data meaning for consequential metrics. Distinguish zero, unavailable, stale and incomplete results. Choose a chart, table or direct value according to the question; permit accessible interpretation without relying only on color or hover. Connect summaries to the records or task that explains them where useful.
+Define units, denominators, aggregation, time zone, comparison period, freshness and missing-data meaning for consequential metrics.
 
-For operational tables, define search/filter/sort/pagination behavior and scope. Make selection across pages and bulk-action impact explicit. Support detail/recovery without losing useful list state. Availability and entitlements should produce understandable routes, while enforcement remains on the server. Avoid exposing restricted records in aggregates, counts, exports or hidden UI payloads.
+- Distinguish zero, unavailable, stale and incomplete results.
+- Choose a chart, table or direct value according to the question; permit accessible interpretation without relying only on color or hover.
+- Connect summaries to the records or task that explains them where useful.
+
+For operational tables, define search/filter/sort/pagination behavior and scope.
+
+- Make selection across pages and bulk-action impact explicit.
+- Support detail/recovery without losing useful list state.
+- Availability and entitlements should produce understandable routes, while enforcement remains on the server.
+- Avoid exposing restricted records in aggregates, counts, exports or hidden UI payloads.
 
 ## Cover the actual journey
 
-Design first-use, loading, useful empty, filtered-empty, partial/stale, denied, failed, pending and completed states where the journey encounters them. Provide appropriate recovery and distinguish accepted work from completed effects. Destructive or privileged actions need understandable scope and consequences, not a confirmation dialog on every click. Customer billing/identity/support actions should use clear domain language and preserve tenant context.
+Design first-use, loading, useful empty, filtered-empty, partial/stale, denied, failed, pending and completed states where the journey encounters them.
 
-Verify realistic content, keyboard/focus, accessible names, zoom, responsive layouts and the primary task under relevant success/failure states. If implementing, inspect the rendered target rather than treating a component story or screenshot as full functional evidence. Check server isolation and persisted outcomes separately. Return the design rationale, affected states and actual evidence at the requested stopping point.
+- Provide appropriate recovery and distinguish accepted work from completed effects.
+- Destructive or privileged actions need understandable scope and consequences, not a confirmation dialog on every click.
+- Customer billing/identity/support actions should use clear domain language and preserve tenant context.
+
+## Verify the design at the requested boundary
+
+Verify realistic content, keyboard/focus, accessible names, zoom, responsive layouts and the primary task under relevant success/failure states.
+
+- If implementing, inspect the rendered target rather than treating a component story or screenshot as full functional evidence.
+- Check server isolation and persisted outcomes separately.
+- Return the design rationale, affected states and actual evidence at the requested stopping point.

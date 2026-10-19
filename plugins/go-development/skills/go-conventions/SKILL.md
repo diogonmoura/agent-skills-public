@@ -19,7 +19,11 @@ Read go.mod/go.work, supported toolchain/targets, package boundaries, commands a
 
 ## Keep package and dependency boundaries useful
 
-Let domain responsibilities and actual consumers shape packages and interfaces. Prefer small consumer-driven interfaces where substitution or external boundaries need them; avoid an interface or constructor pattern for every type. Respect zero-value semantics and document ownership/lifecycle where non-obvious. Keep application wiring, process policy and side effects explicit; libraries should not unexpectedly start work, terminate the process or select global configuration/logging.
+Let domain responsibilities and actual consumers shape packages and interfaces.
+
+- Prefer small consumer-driven interfaces where substitution or external boundaries need them; avoid an interface or constructor pattern for every type.
+- Respect zero-value semantics and document ownership/lifecycle where non-obvious.
+- Keep application wiring, process policy and side effects explicit; libraries should not unexpectedly start work, terminate the process or select global configuration/logging.
 
 Use the project's module/toolchain policy and reproducible dependency commands. Review direct/transitive changes, supported versions and advisories before adding packages. Standard-library capabilities are a useful starting point, but an accepted maintained framework need not be removed. Configuration and feature flags should express actual operational decisions rather than hide invalid required settings behind permissive defaults.
 
@@ -27,11 +31,19 @@ Use the project's module/toolchain policy and reproducible dependency commands. 
 
 Return useful errors and preserve inspectable identity/type where callers depend on it. Choose wrapping, public error exposure and logging at the responsible boundary; avoid lost errors or repeated noisy reports. Match errors.Is/As and other APIs to supported Go versions. Expected domain failures and programmer invariants need different handling; recovered panics do not prove the service remains correct.
 
-Make every started goroutine's ownership, completion and shutdown behavior clear. Propagate appropriate context/deadlines through context-aware APIs; cancellation is cooperative and does not undo committed work. Choose channels, mutexes or atomics from ownership and contention rather than style alone. Read [lifecycle and failure reasoning](references/lifecycle-and-errors.md) when changing concurrent work, network/DB resources or shutdown.
+Make every started goroutine's ownership, completion and shutdown behavior clear.
+
+- Propagate appropriate context/deadlines through context-aware APIs; cancellation is cooperative and does not undo committed work.
+- Choose channels, mutexes or atomics from ownership and contention rather than style alone.
+- Read [lifecycle and failure reasoning](references/lifecycle-and-errors.md) when changing concurrent work, network/DB resources or shutdown.
 
 ## Verify real behavior
 
-Format with the accepted tooling; run relevant builds, vet/static checks and behavioral tests using the project's commands. Use race detection for affected concurrency when the target/toolchain supports it, reporting unavailable coverage. Test failure/cancellation and public contracts alongside successful paths. Table-driven, property/fuzz, integration and consumer tests are techniques selected for the property; no fixed coverage percentage or test filename scheme establishes correctness.
+Format with the accepted tooling; run relevant builds, vet/static checks and behavioral tests using the project's commands.
+
+- Use race detection for affected concurrency when the target/toolchain supports it, reporting unavailable coverage.
+- Test failure/cancellation and public contracts alongside successful paths.
+- Table-driven, property/fuzz, integration and consumer tests are techniques selected for the property; no fixed coverage percentage or test filename scheme establishes correctness.
 
 Read [verification and performance](references/verification-and-performance.md) when choosing test boundaries, diagnosing cost or making performance claims. Match production entrypoint/configuration, shutdown and platform/architecture to the claimed result. A cross-compile does not exercise the target runtime. Seek available service/data/security/delivery expertise for the actual boundaries; its absence does not select another stack or remove required evidence.
 

@@ -18,12 +18,20 @@ Establish the proposed release/customer cohort, promises, supported journeys, en
 
 ## Trace commitments to evidence
 
-For consequential journeys, connect intended behavior to actual implementation, verification and operating ownership. Include applicable onboarding, tenant/access isolation, commercial state, useful dashboard/admin behavior, recovery, support and offboarding. Identify whether evidence is inspected configuration, a passing component check, a persisted integration journey, a production observation or a proposed procedure. Avoid converting an absent specialist or an unexecuted check into a pass.
+For consequential journeys, connect intended behavior to actual implementation, verification and operating ownership.
+
+- Include applicable onboarding, tenant/access isolation, commercial state, useful dashboard/admin behavior, recovery, support and offboarding.
+- Identify whether evidence is inspected configuration, a passing component check, a persisted integration journey, a production observation or a proposed procedure.
+- Avoid converting an absent specialist or an unexecuted check into a pass.
 
 Assess provider dependencies, abuse/quotas, privacy/licensing obligations, artifact/configuration identity, migration/cutover and rollback/forward recovery where they affect the cohort. Seek matching specialists when available; use project evidence and primary sources otherwise. Do not create new customer promises merely because a reference project includes a feature.
 
 ## Make gaps actionable
 
-Separate defects within accepted constraints, unresolved consequential decisions and missing execution/access. For each material gap, explain the affected promise, evidence, consequence and smallest useful next action. Prioritize by impact and likelihood, exposure and recovery, rather than number of checked boxes. Proposed acceptance of risk remains proposed until the authorized owner decides.
+Separate defects within accepted constraints, unresolved consequential decisions and missing execution/access.
+
+- For each material gap, explain the affected promise, evidence, consequence and smallest useful next action.
+- Prioritize by impact and likelihood, exposure and recovery, rather than number of checked boxes.
+- Proposed acceptance of risk remains proposed until the authorized owner decides.
 
 Give a scoped verdict: supported for the stated cohort, supported with explicitly accepted limits, or not yet supported by evidence. State blockers and remaining uncertainty honestly; readiness is not certification or permission to deploy. Carry material learning into existing product/design/operating records without requiring a new tracker or document ceremony. Execute fixes only within the requested scope.

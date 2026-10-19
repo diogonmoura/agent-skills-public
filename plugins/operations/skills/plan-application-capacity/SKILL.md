@@ -16,7 +16,11 @@ Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallba
 
 ## Start from demand and service behavior
 
-Identify critical journeys, expected sustained and peak demand, growth, seasonal/burst behavior and acceptable latency. Use measured traffic/service times and resource profiles where available; distinguish observations, forecasts and assumptions. Inspect tail latency, queues, saturation, throttling, memory peaks and database limits instead of sizing from average CPU alone. No telemetry means an estimate requiring validation, not an invented measurement.
+Identify critical journeys, expected sustained and peak demand, growth, seasonal/burst behavior and acceptable latency.
+
+- Use measured traffic/service times and resource profiles where available; distinguish observations, forecasts and assumptions.
+- Inspect tail latency, queues, saturation, throttling, memory peaks and database limits instead of sizing from average CPU alone.
+- No telemetry means an estimate requiring validation, not an invented measurement.
 
 Relate arrival rate and time in the system to in-flight work, with clear units and assumptions; steady-state queueing estimates do not describe overload or bursts automatically. Include fan-out, retries, long-running AI/audio work and slow providers. Decide where concurrency is bounded and where work is queued/rejected; avoid unbounded parallelism as a latency optimization.
 
@@ -30,7 +34,12 @@ Estimate a normal, peak and degraded scenario, with headroom for rollout and the
 
 Set requests from representative per-container usage and scheduling needs; choose limits deliberately, considering CPU throttling and memory OOM risk. Include sidecars, ephemeral storage, node/system overhead and placement constraints. Avoid a universal percentage buffer or CPU-limit rule. Memory working-set averages can hide fatal peaks.
 
-Distinguish HPA workload scaling, VPA sizing recommendations and node autoscaling. Check metric availability, request-based utilization semantics, startup/warmup and stabilization. Avoid competing controllers acting on the same resource without an understood policy. Check whether quotas, node-pool bounds, topology, disruption budgets and storage/network constraints permit the proposed replicas during peaks and rollout. Autoscaling cannot create cloud quota or fix an overloaded database.
+Distinguish HPA workload scaling, VPA sizing recommendations and node autoscaling.
+
+- Check metric availability, request-based utilization semantics, startup/warmup and stabilization.
+- Avoid competing controllers acting on the same resource without an understood policy.
+- Check whether quotas, node-pool bounds, topology, disruption budgets and storage/network constraints permit the proposed replicas during peaks and rollout.
+- Autoscaling cannot create cloud quota or fix an overloaded database.
 
 Use [Kubernetes resource guidance](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) and [HPA guidance](https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/) matching the cluster version. Then search first-party guidance for EKS, GKE, AKS or the actual host, database and queue; node-provisioning and managed-service limits differ. AKS cost-optimization guidance is relevant only for that platform; it is not an infrastructure default. Treat its suggested ratios/minima as examples to validate against workload evidence and current provider documentation.
 

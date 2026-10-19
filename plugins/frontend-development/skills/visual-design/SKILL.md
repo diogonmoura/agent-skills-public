@@ -14,13 +14,21 @@ Define how the product's purpose becomes hierarchy, composition, typography, col
 
 ## Resolve the visual decision
 
-Read the brief, realistic content, working environment, platform constraints and accepted references. Distinguish requirements from inspiration and proposed choices. Compare coherent alternatives when direction is still open; recommend one with a reason grounded in the task. Missing brand assets permit a reversible proposal rather than invented research or a blocked engagement.
+Read the brief, realistic content, working environment, platform constraints and accepted references.
+
+- Distinguish requirements from inspiration and proposed choices.
+- Compare coherent alternatives when direction is still open; recommend one with a reason grounded in the task.
+- Missing brand assets permit a reversible proposal rather than invented research or a blocked engagement.
 
 Establish semantic tokens and shared patterns for the decisions that matter. When visual choices are open, use available visual-execution craft for subject-grounded composition, typography, restraint and self-critique; accepted identity and the actual brief remain authoritative. Character should come from actual content and use, not decorative domain motifs or a recolored starter. Use [visual direction and review](references/visual-direction.md) for substantial new work, redesign or handoff; it connects scenarios, representative artifacts, tokens and rendered reconciliation without selecting a framework.
 
 ## Materialize and reconcile
 
-Reuse accepted designs. Choose available, authorized Figma work, local HTML/CSS prototypes or SVG wireframes according to the uncertainty. An explicitly required format remains part of the deliverable. Inspect a representative difficult state with realistic content before propagating the direction; include relevant layouts and content growth.
+Reuse accepted designs.
+
+- Choose available, authorized Figma work, local HTML/CSS prototypes or SVG wireframes according to the uncertainty.
+- An explicitly required format remains part of the deliverable.
+- Inspect a representative difficult state with realistic content before propagating the direction; include relevant layouts and content growth.
 
 Keep design rationale, accepted/proposed status, meaningful states and component/token intent in the existing design record. Technical guidance maps that intent to the chosen platform's real components; a generic design decision does not select React, Tailwind or a native framework.
 

@@ -16,7 +16,11 @@ Help choose a worthwhile user problem and a bounded response, with evidence that
 
 ## Establish the problem and evidence
 
-Read existing product decisions, supplied research, feedback and actual behavior. Identify the intended users, their job and current workaround, the difficulty or unmet outcome, and the intended personal, internal or commercial use. Separate observed facts, interpretations and untested demand or solution assumptions. Reuse answers already established.
+Read existing product decisions, supplied research, feedback and actual behavior.
+
+- Identify the intended users, their job and current workaround, the difficulty or unmet outcome, and the intended personal, internal or commercial use.
+- Separate observed facts, interpretations and untested demand or solution assumptions.
+- Reuse answers already established.
 
 Question the proposed feature when a simpler product, process or existing tool could achieve the outcome. Investigate decision-changing technical facts; ask about unresolved user priorities, usage or commitments. Use [business strategy](../business-strategy/SKILL.md) for competitive position, value capture and business viability when those are the actual question. Product direction works within accepted strategy and can supply evidence that reopens it.
 
@@ -24,13 +28,21 @@ Question the proposed feature when a simpler product, process or existing tool c
 
 Compare plausible responses by the importance and frequency of the problem, strength of evidence, expected benefit, cost of learning or delivery, risk and dependencies. Use a scoring framework only when its inputs and precision help the decision. Explain what is deferred and why; a feature request is evidence of a need, not an automatic backlog commitment.
 
-Choose a coherent experience that lets the intended user achieve a meaningful result. Describe the main journey, scope/non-goals and the important assumptions. Keep must-have behavior separate from ideas and later options. Ask for a consequential product choice when alternatives change the accepted outcome; choose reversible details within scope without another approval ceremony.
+Choose a coherent experience that lets the intended user achieve a meaningful result.
+
+- Describe the main journey, scope/non-goals and the important assumptions.
+- Keep must-have behavior separate from ideas and later options.
+- Ask for a consequential product choice when alternatives change the accepted outcome; choose reversible details within scope without another approval ceremony.
 
 Sequence around outcomes and uncertainties. Distinguish committed work, the next candidate and later possibilities; dates need an actual capacity or external commitment basis. An evidence gap can justify a small prototype or investigation instead of a production feature. Do not invent research findings, customers, forecasts or delivery promises.
 
 ## Define success and a way to learn
 
-Choose an observable user outcome and, where useful, a measure with its population, time window, data source and interpretation. Identify failure or harm signals as well as the desired improvement. Separate proposed targets from accepted commitments and existing measurements. Small populations may support qualitative observation better than a statistically unsupported experiment.
+Choose an observable user outcome and, where useful, a measure with its population, time window, data source and interpretation.
+
+- Identify failure or harm signals as well as the desired improvement.
+- Separate proposed targets from accepted commitments and existing measurements.
+- Small populations may support qualitative observation better than a statistically unsupported experiment.
 
 Prioritize the assumptions whose failure would change the decision and choose the least costly credible way to investigate them. Use installed usability research expertise for participant methods; use [product feedback](../learn-from-product-feedback/SKILL.md) for evidence synthesis. Preparing a study is not conducting it. Contact, recording, telemetry changes and live experiments need the corresponding authorized scope.
 

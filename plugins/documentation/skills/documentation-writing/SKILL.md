@@ -48,7 +48,14 @@ Use descriptive sentence-case headings for independently useful topics, with a s
 
 Lead a paragraph with its point, then develop the explanation. Split when the subject changes; do not remove necessary context to meet a word limit. Name the actor and action, use familiar language, and retain precise domain terms. Avoid unexplained shorthand, vague pronouns, decorative emphasis and unsupported adjectives such as “secure” or “seamless”.
 
-Use bullets for parallel facts, numbers for dependent steps and compact tables for comparisons with consistent columns. Keep conditions and exceptions attached to their rule. Diagrams should show relationships or sequences that prose alone obscures; explain their meaning and provide a text equivalent where needed. Link with descriptive labels. Never rely solely on colour or visual layout to convey a boundary.
+Choose presentation from the meaning:
+
+- Use bullets for parallel facts, with conditions and exceptions attached to their rule.
+- Use numbers for dependent steps; numbering should not invent an execution order.
+- Use compact tables for alternatives compared on consistent dimensions.
+- Use diagrams for relationships or sequences that prose alone obscures. Explain their meaning and provide a text equivalent where needed.
+
+Link with descriptive labels. Never rely solely on colour or visual layout to convey a boundary. When writing or restructuring skills and repository instructions, read [structured instructions](references/structured-instructions.md) for conditional guidance, examples and a meaning-preservation review. Keep paragraphs where they explain context or causality; a skill does not need every presentation format.
 
 ## Preserve precision and trust
 

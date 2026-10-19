@@ -43,6 +43,12 @@ For speech, evaluate the product's languages/dialects, recording conditions and 
 
 Keep representative inputs, expected outcomes/rubrics, dataset revision and deterministic evaluators under application version control. Separate development examples from held-out regression cases where useful; do not tune only to the examples used to build the feature. Derive cases from accepted product behavior, include meaningful failure/adversarial conditions and preserve privacy when promoting observed failures into fixtures. No external dataset service or record format is required.
 
-After meaningful AI changes run deterministic handling checks, then authorized live quality comparisons when relevant. Record code/model/prompt/tool configuration and dataset/evaluator versions, sample size, per-case failures, latency and usage alongside quality. Repeat stochastic cases sufficiently for the decision and report variability; one favorable generation or aggregate score cannot hide failed authority/task constraints. Calibrate model judges against accepted human examples, include human review for unresolved subjective judgments and keep deterministic invariants outside the judge. Do not silently change expected outputs, thresholds or rubrics to pass. Mocks establish application behavior only.
+After meaningful AI changes run deterministic handling checks, then authorized live quality comparisons when relevant.
+
+- Record code/model/prompt/tool configuration and dataset/evaluator versions, sample size, per-case failures, latency and usage alongside quality.
+- Repeat stochastic cases sufficiently for the decision and report variability; one favorable generation or aggregate score cannot hide failed authority/task constraints.
+- Calibrate model judges against accepted human examples, include human review for unresolved subjective judgments and keep deterministic invariants outside the judge.
+- Do not silently change expected outputs, thresholds or rubrics to pass.
+- Mocks establish application behavior only.
 
 Keep evaluation runnable without a dashboard. Instrument logical task and tool outcomes where useful, protect sensitive data and use available matching technical guidance for SDK/observability integration. Missing provider access leaves live quality unverified.

@@ -23,13 +23,29 @@ For a cross-cutting change, trace shared primitives, caller overrides and altern
 
 ## Specify the interaction before coding
 
-For each reusable interaction pattern, define user goal, visible information hierarchy, primary/secondary actions, navigation/deep-link/back behavior, state ownership and success/failure transitions. Cover relevant loading, empty, validation, disabled/permission, error/retry, unsaved edits/cancel, duplicate submission and destructive/recovery behavior. Include async progress, stale responses and persistence/reload where the flow depends on them. Do not invent user research or business rules.
+For each reusable interaction pattern, define user goal, visible information hierarchy, primary/secondary actions, navigation/deep-link/back behavior, state ownership and success/failure transitions.
 
-Specify keyboard/focus behavior, dialog open/close and focus return, labels, announcements and responsive changes. Across supported platforms, account for touch and safe areas, Back/deep links, permission denial, offline/reconnection and foreground/background lifecycle. Preserve human drafts through errors and lifecycle transitions; scope supported behavior from the accepted product rather than inventing offline parity. Choose page versus drawer versus dialog from task complexity and continuity, not a different preference per screen. Distinguish navigational submenus from sibling page tabs and context actions. Define shared behavior/tokens and intentional contextual variants; consistency does not mean ignoring different user goals or mobile constraints.
+- Cover relevant loading, empty, validation, disabled/permission, error/retry, unsaved edits/cancel, duplicate submission and destructive/recovery behavior.
+- Include async progress, stale responses and persistence/reload where the flow depends on them.
+- Do not invent user research or business rules.
+
+Specify keyboard/focus behavior, dialog open/close and focus return, labels, announcements and responsive changes.
+
+- Across supported platforms, account for touch and safe areas, Back/deep links, permission denial, offline/reconnection and foreground/background lifecycle.
+- Preserve human drafts through errors and lifecycle transitions; scope supported behavior from the accepted product rather than inventing offline parity.
+- Choose page versus drawer versus dialog from task complexity and continuity, not a different preference per screen.
+- Distinguish navigational submenus from sibling page tabs and context actions.
+- Define shared behavior/tokens and intentional contextual variants; consistency does not mean ignoring different user goals or mobile constraints.
 
 Write a short behavioral description or state/transition table before implementation. Add low-fidelity wireframes/wireflows for layout/navigation uncertainty or representative mockups for a new visual direction. Existing text/visual references can be reused; do not require text plus wireframe plus mockup for every change. A mockup shows appearance, not persistence, authorization or complete interaction behavior.
 
-Ask only unresolved high-impact design/product questions. State reversible visual assumptions and proceed where the direction is established. If a material decision is genuinely required, wait for it before dependent implementation; continue independent work. Do not demand fresh approval per screen or re-open previously agreed direction. Unattended work records blocking decisions instead of inventing stakeholder answers. The design can live in the conversation or an existing project note, without a compulsory format.
+Ask only unresolved high-impact design/product questions.
+
+- State reversible visual assumptions and proceed where the direction is established.
+- If a material decision is genuinely required, wait for it before dependent implementation; continue independent work.
+- Do not demand fresh approval per screen or re-open previously agreed direction.
+- Unattended work records blocking decisions instead of inventing stakeholder answers.
+- The design can live in the conversation or an existing project note, without a compulsory format.
 
 ## Validate a pattern, then apply it consistently
 

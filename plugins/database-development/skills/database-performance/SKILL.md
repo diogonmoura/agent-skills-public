@@ -17,14 +17,27 @@ Establish the affected user operation, target, data distribution, load/concurren
 
 ## Diagnose before prescribing
 
-Use available aggregate workload evidence to find consequential operations, considering frequency, total cost and tail behavior. Inspect representative plans, cardinalities, waits and resource pressure with matching technical expertise. Separate cold/warm behavior and tenant/data-size slices where they affect the conclusion. Estimated plan costs are not wall-clock measurements, and a scan or a particular join type is not inherently a defect.
+Use available aggregate workload evidence to find consequential operations, considering frequency, total cost and tail behavior.
 
-Treat production diagnostics as workload with an impact. Confirm the target, access and permitted load; use existing traces or non-executing plans when sufficient. An execution plan that runs the statement can change data or impose substantial load. A rollback does not reverse every external effect. Keep sensitive query parameters and records out of reports.
+- Inspect representative plans, cardinalities, waits and resource pressure with matching technical expertise.
+- Separate cold/warm behavior and tenant/data-size slices where they affect the conclusion.
+- Estimated plan costs are not wall-clock measurements, and a scan or a particular join type is not inherently a defect.
+
+Treat production diagnostics as workload with an impact.
+
+- Confirm the target, access and permitted load; use existing traces or non-executing plans when sufficient.
+- An execution plan that runs the statement can change data or impose substantial load.
+- A rollback does not reverse every external effect.
+- Keep sensitive query parameters and records out of reports.
 
 ## Compare changes against the full contract
 
 Form a testable bottleneck hypothesis. Consider the query/access pattern, data representation, indexes/statistics, connection behavior and resource limits before adding infrastructure. Choose discriminating changes and record enough conditions to attribute the outcome. An index can improve reads while worsening write latency, storage and maintenance; caches and replicas introduce staleness and failure behavior.
 
-Measure before/after correctness, latency distribution, throughput and relevant write/resource/recovery costs under comparable representative conditions. Repeat enough to distinguish improvement from noise; report sample size, test duration, concurrency and differences in cache/data/configuration. Synthetic evidence establishes only the exercised workload. Preserve a rollback or forward recovery route appropriate to the change.
+Measure before/after correctness, latency distribution, throughput and relevant write/resource/recovery costs under comparable representative conditions.
+
+- Repeat enough to distinguish improvement from noise; report sample size, test duration, concurrency and differences in cache/data/configuration.
+- Synthetic evidence establishes only the exercised workload.
+- Preserve a rollback or forward recovery route appropriate to the change.
 
 Return the supported diagnosis, chosen tradeoff, actual measurements and remaining uncertainty. Use accepted operating signals to detect regression when deployment is separately authorized. Missing specialist guidance does not justify skipping measurement or selecting a different engine.
