@@ -216,15 +216,19 @@ The original governance skills connect applicability, system/control decisions a
 
 [TypeScript conventions source notes](../../plugins/typescript-development/skills/typescript-conventions/references/sources.md) record the reviewed Jeffallan, Wshobson and Microsoft candidates. No upstream fills the cross-runtime foundation without scope mismatch; the original skill retains a narrow boundary and first-party conditional references. Advanced-type tutorials and compiler-maintenance workflows are not acquired. Existing client packages remain independently useful.
 
+## Go source selection
+
+The [Go source review](../../plugins/go-development/skills/go-conventions/references/sources.md) records inspected Samber, madflojo, cxuu and JetBrains candidates. Their topic coverage informs an original concise foundation, but mandatory orchestration/tool installation, broad house rules or linked-group scope do not fit unchanged acquisition. No Go upstream skill or setup script is imported. Conditional primary references cover the accepted toolchain.
+
 ## Plugin ownership
 
-The collection has 23 independent packages and 116 skills: 77 local and 39 acquired. Development is the default build; 13 generic packages contain no stack-specific skills, and 10 technical packages are explicitly selected. Source commit/tree pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
+The collection has 24 independent packages and 117 skills: 78 local and 39 acquired. Development is the default build; 13 generic packages contain no stack-specific skills, and 11 technical packages are explicitly selected. Source commit/tree pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
 
 A plugin represents a useful installation choice. Workflow, application discipline and supporting capability describe its purpose; generic versus technical describes its applicability. These groups do not impose an execution order or dependencies. Installing a technical package makes expertise available without accepting its technology for a project. Keep accepted choices, select matching guidance from actual inventory and retain useful outcomes when optional specialists are absent.
 
 ### Package boundaries
 
-The collection has 13 generic capability packages and 10 optional technical packages. I group specialist tools and operating platforms into two explicit optional packages rather than create a plugin for every tool. Split a package only when independent installation is useful.
+The collection has 13 generic capability packages and 11 optional technical packages. I group specialist tools and operating platforms into two explicit optional packages rather than create a plugin for every tool. Split a package only when independent installation is useful.
 
 | Plugin | Applicability | Skills | Responsibility |
 | --- | --- | --- | --- |
@@ -250,6 +254,7 @@ The collection has 13 generic capability packages and 10 optional technical pack
 | `saas-development` | Generic | 3 | Tenant/customer and commercial lifecycle, SaaS dashboard design and scoped readiness. |
 | `governance` | Generic | 3 | Applicability, accountable controls and GDPR/SOC 2 readiness evidence. |
 | `typescript-development` | Technical | 1 | Runtime/module/package contracts and TypeScript implementation verification without React. |
+| `go-development` | Technical | 1 | Go module/package, lifecycle, error and verification contracts for services, libraries and CLIs. |
 
 Generic means no required language, framework, provider or platform selection. Comparing technologies, naming optional standards and explaining compatibility remain useful. Concrete implementation and preferred-tool setup belong to technical guidance. Classification must follow the body and its references, not just the metadata label.
 
@@ -288,7 +293,7 @@ Concrete preferences belong in explicitly selected technical guidance or project
 Each row has one owner. Local links lead to source; upstream links lead to the exact acquired revision. Preserve every skill's complete resources, licenses, native controls and scope. The dispositions record the separation of method outcomes from technical implementation; each package is checked independently.
 
 <details>
-<summary>All 116 skills and their current owners</summary>
+<summary>All 117 skills and their current owners</summary>
 
 | Skill | Origin | Plugin |
 | --- | --- | --- |
@@ -408,6 +413,7 @@ Each row has one owner. Local links lead to source; upstream links lead to the e
 | [gdpr-readiness](../../plugins/governance/skills/gdpr-readiness/SKILL.md) | Local | `governance` |
 | [soc2-readiness](../../plugins/governance/skills/soc2-readiness/SKILL.md) | Local | `governance` |
 | [typescript-conventions](../../plugins/typescript-development/skills/typescript-conventions/SKILL.md) | Local | `typescript-development` |
+| [go-conventions](../../plugins/go-development/skills/go-conventions/SKILL.md) | Local | `go-development` |
 
 </details>
 
@@ -421,7 +427,7 @@ Figma remains optional tooling declared by frontend-development; the React techn
 
 ### Verification coverage
 
-The assignment covers 77 local skills and 39 distinct acquired skills exactly once, with no omissions or duplicate owners.
+The assignment covers 78 local skills and 39 distinct acquired skills exactly once, with no omissions or duplicate owners.
 
 All packages build together with `--all` and independently with explicit selection. Package checks verify inventories, local-resource parity, notices, required framing, and transitive owned Markdown links staying inside their bundle. CI also checks the default development-only build. These checks do not establish agent behavior; behavioral evaluations remain deferred.
 
