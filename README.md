@@ -16,6 +16,7 @@ Start with **development** for stack-independent development activities. Add pro
 | Selected tools/platforms | [development-tooling](plugins/development-tooling/), [operations-platforms](plugins/operations-platforms/) | Bash/testing/CI/container/diagnostics tools; JVM/Kubernetes/AKS |
 | Database engineering | [database-development](plugins/database-development/) | Data contracts, consistency, schema evolution and evidence-led performance methods. |
 | PostgreSQL implementation | [database-postgresql-development](plugins/database-postgresql-development/) | PostgreSQL development, diagnostics and operating mechanics. |
+| Security engineering | [security](plugins/security/) | Identity/access and security/privacy design with contextual implementation selection. |
 
 The collection has 10 generic plugins and 9 technical plugins. Technical expertise applies only to matching accepted choices. No plugin requires installing another; an activity retains its outcome when optional guidance is absent.
 

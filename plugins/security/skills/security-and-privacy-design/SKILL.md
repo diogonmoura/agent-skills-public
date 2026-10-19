@@ -33,7 +33,7 @@ Treat model output and tool arguments as untrusted. Keep authorization outside t
 
 ## Reuse specialists for the actual question
 
-Use installed `differential-review` for security-sensitive changes and compatible dependency supply-chain auditing expertise for dependency risk. The auditor supports particular lockfiles; check its declared coverage, especially for pnpm/yarn, and use ecosystem-native tools when unsupported. An unassessable result is not a clean bill of health. Neither skill replaces feature threat modeling or privacy decisions. Choose further specialist tools only when their scope matches the application and the user request.
+Use available security-sensitive differential-review expertise for affected changes and compatible dependency supply-chain auditing expertise for dependency risk. The auditor supports particular lockfiles; check its declared coverage, especially for pnpm/yarn, and use ecosystem-native tools when unsupported. An unassessable result is not a clean bill of health. Neither skill replaces feature threat modeling or privacy decisions. Choose further specialist tools only when their scope matches the application and the user request.
 
 ## Keep improvements connected to delivery
 
