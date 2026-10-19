@@ -159,7 +159,7 @@ For structural verification of the default build:
 python scripts/check_collection.py --built ./built-plugins --plugin development
 ```
 
-For a selected multi-plugin build, repeat the checker's `--plugin` arguments to match it. With no checker selection, `--built` expects all 17 packages. These checks establish resources/inventory, not client discovery or agent adherence.
+For a selected multi-plugin build, repeat the checker's `--plugin` arguments to match it. With no checker selection, `--built` expects all 19 packages. These checks establish resources/inventory, not client discovery or agent adherence.
 
 ## Verify installation and update
 
