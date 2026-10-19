@@ -2,17 +2,19 @@
 
 [Current status](#current-status) · [Run a scenario](#run-and-grade-a-scenario) · [Generation trials](#generation-trials) · [Evidence limits](#recorded-evidence-and-limits) · [Maintainer guide](../maintainer-reference.md)
 
-The [evaluation specification](../../evals/development-workflows.json) contains 38 behavior cases, 12 generation trials and a nine-flow coverage map. It separates actor inputs from evaluator criteria. Definition checks run in CI; behavioral trials require their own fixtures, capabilities and execution.
+The [evaluation specification](../../evals/development-workflows.json) contains 47 behavior cases, 12 generation trials and a ten-flow coverage map. It separates actor inputs from evaluator criteria. Definition checks run in CI; behavioral trials require their own fixtures, capabilities and execution.
 
 ## Current status
 
-The collection contains 17 plugins with 64 local and 39 acquired skills. Repository checks validate metadata, maintained links, acquisition pins, resource closure, complete inventories and independent builds. They do not establish correct discovery, routing, cross-stack transfer, live integration or application behavior.
+The [ownership catalogue](sources.md#plugin-ownership) records the current package and skill inventory. Repository checks validate metadata, maintained links, acquisition pins, resource closure, complete inventories and independent builds. They do not establish correct discovery, routing, cross-stack transfer, live integration or application behavior.
+
+A [bounded planning/assessment record](../../evals/results/capability-expansion/results.json) covers nine synthetic cases at its recorded source revision, including a workflow-only fallback case. Independent actors received source guidance; the author graded their outputs against criteria withheld from them. All nine met those scoped criteria. This establishes neither installed-client discovery nor application/runtime behavior; the record retains inputs, outputs and per-criterion observations.
 
 The current collection has not received a complete behavioral rerun. Earlier trials used different inventories and configurations; their results cannot be transferred to the current guidance. See [recorded evidence and limits](#recorded-evidence-and-limits) for the boundaries of those observations and [architecture](../architecture.md) for the supported composition model.
 
 ## Intended flows and execution levels
 
-The specification's flow_matrix connects cases to user outcomes: product-to-design, project setup versus complete applications, UI assessment/repair, design-tool handoff, research, native/private-data applications, AI/session integration, delivery/operations and maintenance. Migration, jobs, incidents, performance, resilience and libraries are also represented.
+The specification's flow_matrix connects cases to user outcomes: product-to-design, project setup versus complete applications, UI assessment/repair, design-tool handoff, research, native/private-data applications, AI/session integration, delivery/operations and maintenance. Migration, jobs, incidents, performance, resilience and libraries are also represented. Cross-cutting cases assess identity/access lifecycle, SaaS dashboards and commercial recovery, GDPR/SOC 2 evidence, PostgreSQL, TypeScript and Go contracts, plus absent-specialist fallback.
 
 | Level | Evidence produced | Boundary |
 | --- | --- | --- |
