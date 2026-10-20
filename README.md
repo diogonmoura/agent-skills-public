@@ -19,6 +19,7 @@ Start with **development** for stack-independent development activities. Add pro
 | Security engineering | [security](plugins/security/) | Identity/access and security/privacy design with contextual implementation selection. |
 | SaaS applications | [saas-development](plugins/saas-development/) | Tenant/customer and commercial lifecycle, SaaS dashboard design and scoped readiness. |
 | Governance and assurance | [governance](plugins/governance/) | Applicability, accountable controls and GDPR/SOC 2 readiness evidence. |
+| TypeScript implementation | [typescript-development](plugins/typescript-development/) | Runtime/module/package contracts and TypeScript implementation verification without React. |
 
 The collection has 10 generic plugins and 9 technical plugins. Technical expertise applies only to matching accepted choices. No plugin requires installing another; an activity retains its outcome when optional guidance is absent.
 
