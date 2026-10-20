@@ -24,7 +24,7 @@ if (artifact || discovery.result.artifacts.some(a => a.status === 'update-availa
     // Provenance changes are part of the owning package's distribution contract.
     const { readFileSync } = await import('node:fs');
     const manifest = JSON.parse(readFileSync('agent-depot.json', 'utf8'));
-    const plugins = new Set(report.result.changes.map(c => manifest.metadata.packaging[c.artifact]?.plugin).filter(Boolean));
+    const plugins = new Set(report.result.changes.map(c => manifest.artifacts[c.artifact]?.metadata?.packaging?.plugin).filter(Boolean));
     for (const plugin of plugins) {
       if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(plugin)) throw new Error('Invalid owning plugin');
       const path = `plugins/${plugin}/plugin.json`;

@@ -6,7 +6,7 @@
 
 For authoring principles and rule ownership, see [keeping guidance focused](../maintainer-reference.md#keep-guidance-focused).
 
-The [manifest](../../agent-depot.json) declares repositories, accepted artifact commits, destinations and consumer packaging metadata. The [Depot lockfile](../../agent-depot.lock.json) records file integrity and provenance. Checkouts contain complete, unmodified acquired skills in their plugin folders. Build bundles to apply the collection’s adaptations and generate notices before loading them in a client. I select sources for provenance, maintenance, licensing and fit with these workflows. Popularity is supporting evidence, not proof of correctness.
+The [manifest](../../agent-depot.json) declares repositories, accepted artifact commits, destinations and consumer packaging metadata within each artifact. The [Depot lockfile](../../agent-depot.lock.json) records file integrity and provenance. Checkouts contain complete, unmodified acquired skills in their plugin folders. Build bundles to apply the collection’s adaptations and generate notices before loading them in a client. I select sources for provenance, maintenance, licensing and fit with these workflows. Popularity is supporting evidence, not proof of correctness.
 
 | Plugin | Source | Selected skills |
 | --- | --- | --- |

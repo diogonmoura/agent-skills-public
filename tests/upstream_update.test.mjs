@@ -38,10 +38,9 @@ function fixture(t) {
     schemaVersion: 2,
     sources: { chosen: { repository: upstream }, unrelated: { repository: unavailable } },
     artifacts: {
-      chosen: { source: 'chosen', commit: first, kind: 'skill', path: '.', destination: 'plugins/example/skills/example' },
-      unrelated: { source: 'unrelated', commit: first, kind: 'skill', path: '.', destination: 'plugins/other/skills/example' }
-    },
-    metadata: { packaging: { chosen: { plugin: 'example' }, unrelated: { plugin: 'other' } } }
+      chosen: { source: 'chosen', commit: first, kind: 'skill', path: '.', destination: 'plugins/example/skills/example', metadata: { packaging: { plugin: 'example' } } },
+      unrelated: { source: 'unrelated', commit: first, kind: 'skill', path: '.', destination: 'plugins/other/skills/example', metadata: { packaging: { plugin: 'other' } } }
+    }
   };
   writeFileSync(join(consumer, 'agent-depot.json'), JSON.stringify(manifest));
   const cli = (...args) => {

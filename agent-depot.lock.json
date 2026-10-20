@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "manifestHash": "aef7b40a7acabe8373cfc11104dd3cfe407db19fef8d94604c2199dbb36f627b",
+  "manifestHash": "15697bb74b92eed256e65395e353ba88b235add8d8b79df2b49720101dcce902",
   "sources": {
     "vercel-labs-agent-skills": {
       "repository": "https://github.com/vercel-labs/agent-skills.git"
@@ -49,6 +49,24 @@
       "kind": "skill",
       "path": "skills/composition-patterns",
       "destination": "plugins/frontend-reactjs-development/skills/vercel-composition-patterns",
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT (skill frontmatter)",
+          "license_path": null,
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "AGENTS.md": {
           "sha256": "89e3ddd58fcf99a53a50e25dfd21b8cde1be5f10b7df6bacd3dfa6796932f516",
@@ -125,6 +143,24 @@
       "kind": "skill",
       "path": "skills/react-best-practices",
       "destination": "plugins/frontend-reactjs-development/skills/vercel-react-best-practices",
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT (skill frontmatter)",
+          "license_path": null,
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "AGENTS.md": {
           "sha256": "fc93e7421177bbf869cce892bc60a6c83a4517d974bc3bf65c4e2c1e58a6ccf6",
@@ -455,6 +491,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT",
+          "license_path": "LICENSE.md",
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "deba6c5152d9835892fa7dffeb1fedbb689ddac7e59e14e57ec5eaf9463309e4",
@@ -545,6 +599,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Playwright CLI",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "9bba755285a4c9ad72a4a41b9c7baef6fb516d329c0b44ed0573715f4479b906",
@@ -619,6 +690,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "GitHub Actions",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "31a8e7483d978e6267941edefebbe42aaa946bb3d43c9095aa3db343d4a8ff06",
@@ -673,6 +761,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "backend-python-development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "backend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Python",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "ef774b925eb1d1fc12e4f5ddc3f5ad925ecd795315827447228c70cc44c6170c",
@@ -759,6 +865,22 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "README.md": {
           "sha256": "ffbe30eec09cc64fb1eae836b07ca1d82939bda3f1e6f0dceadcdd78793a3112",
@@ -825,6 +947,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "inline-adversarial-review",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "f9af6a8193fc1a9f8ca3c54bb8d19095a5f20c9472ca6d014488bbde50b67da0",
@@ -883,6 +1022,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-python-development",
+          "license": "Apache-2.0",
+          "license_path": "skills/mcp-builder/LICENSE.txt",
+          "adaptations": [
+            "ai-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Python, standalone FastMCP, MCP",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "LICENSE.txt": {
           "sha256": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
@@ -953,6 +1110,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-adk-development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Google ADK",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "5690ecc21fa48c0c502b8a6b517190e1fc45a9305fafc94cdc80fde16c7981cc",
@@ -1055,6 +1229,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-adk-development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Google ADK",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "44901394ad6efdce484bca41eb1492fa4c7ac0b456d95a0fa2668bdf086a0851",
@@ -1145,6 +1336,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangChain",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "00dc50a19d6eec308e3c4a5b8ca237fdddeb00195e7e29d009049f5d0566f5c2",
@@ -1179,6 +1387,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangGraph",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "193bea142c9df04abc44917fb96c0be53ec9b5c77f56670004d3c03c117fb990",
@@ -1221,6 +1446,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangGraph",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "0a9a4f36e6d7895a273ce0882655e57023d2d992d4fde8e033e2936ac1df789e",
@@ -1255,6 +1497,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangChain, LangGraph",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "e099bf710d55bac77bdb3aa3e0b76e3da249f0ba910f37ba6a87c524d14dd8bf",
@@ -1289,6 +1548,25 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "47f4e52c21694def9c7c11cbfbf891ca35eac7a93e395797515be3c8a409ae50",
@@ -1327,6 +1605,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "DEEPENING.md": {
           "sha256": "f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1",
@@ -1373,6 +1669,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "9168404abda0967a5d32977e3498cd95fda6807018852f3de736a78357c82b40",
@@ -1415,6 +1729,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "ADR-FORMAT.md": {
           "sha256": "944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0",
@@ -1461,6 +1793,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "7de372c13488f1ee96cc11cd8907b56b6809cc93eef776eeddd37de6b6cbe3fe",
@@ -1499,6 +1848,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "implementation-entrypoint"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "6d3fd9e83b8f36e5213854779db49b256a457a7ebb4a503e53fa7dcff696adc3",
@@ -1537,6 +1904,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "7a22dd2e60b8fcece478ced9d2533582adf3520d695acd3ab715341535c9e56d",
@@ -1575,6 +1960,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "HTML-REPORT.md": {
           "sha256": "581e8bb5a521e46bbda8ca7e19b15948bed882187108092ebb90c62513b77528",
@@ -1617,6 +2019,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "LOGIC.md": {
           "sha256": "f61c7d249e786a79ef289018901c348271e1798dd0b0bc5607b5c6f4d4a01ab9",
@@ -1663,6 +2083,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "985569f15739c713d6784887c3d186d4ef9ac85bec5ad9c068d25bf0739928e4",
@@ -1701,6 +2139,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "33fbc28568e3146f20fd908b12998bc0ab30aa4f4c87288199a40793efa94696",
@@ -1739,6 +2194,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "93ea419b76e9caaf26153b828e984f7c3fb136f4caa67b14af95f32ea965a1cc",
@@ -1785,6 +2258,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "43ad9cf318e5e7d3d1fa360253a37021796dc87a0c2e595ad262661a10f85088",
@@ -1823,6 +2314,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637",
@@ -1861,6 +2369,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "10ff989e7498b23b5acb49d5048f11dcd906757d2f79c5cdf8a00001381296f2",
@@ -1899,6 +2425,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "7c62de979fdc7ac32fb5ddb2146156c917f80ee070d30fadc9d40343c4b6ed25",
@@ -1937,6 +2480,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "b5eb929842ee0e93d867c5e906d183d350f2f2d149eaeaa86967d94d8eda1d3b",
@@ -1975,6 +2535,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL-MECHANICS.md": {
           "sha256": "c768e6307c7c10728c401c213f2c4ba71c542127eeb7ad2956aabd15a0fa0059",
@@ -2017,6 +2595,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Supported dependency lockfile ecosystems",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "a1254b7f8d3a1731a9a7e1f9cd6c67b59cf84ed6ef7c7fb455db9a14c528ceb4",
@@ -2099,6 +2694,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "operations-platforms",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Azure AKS",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "5fa57d0d4681e071b81433d8963b6e82936f4c1d8dac7e6b4c0757eaa62896c4",
@@ -2157,6 +2769,24 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "b6577edb7b7f71a6954f68b80c7eea1748ccdf31862759f864bce558fb2bcf83",
@@ -2199,6 +2829,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "documentation",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "composition-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         ".claude-plugin/marketplace.json": {
           "sha256": "e539740285b660d2288a38b6d9b237396c6769828c671c46b9f91e760db6cc29",
@@ -2285,6 +2932,23 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "instruction-authoring-framing",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "both",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "SKILL.md": {
           "sha256": "8a91ada35068f43ef7ee03e38937863bac4f407878b06f0a4f1ddb4af24bec7e",
@@ -2327,6 +2991,22 @@
           "destination": "UPSTREAM-LICENSE.txt"
         }
       ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-development",
+          "license": "Apache-2.0",
+          "license_path": "skills/frontend-design/LICENSE.txt",
+          "adaptations": [
+            "visual-design-framing",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "both",
+            "role": "support"
+          }
+        }
+      },
       "files": {
         "LICENSE.txt": {
           "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",

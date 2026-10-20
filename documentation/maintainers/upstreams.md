@@ -8,7 +8,7 @@ Use Agent Depot to acquire and update third-party skills. Their unmodified files
 | --- | --- |
 | [agent-depot.json](../../agent-depot.json) `sources` | Declare each upstream repository once |
 | Manifest `artifacts` | Pin each skill’s accepted commit, upstream root, local destination and external license/resource mappings |
-| Manifest `metadata.packaging` | Record this collection’s plugin owner, license attribution, allowlisted adaptations and usage labels by artifact ID |
+| Each artifact’s `metadata.packaging` | Record that skill’s plugin owner, license attribution, allowlisted adaptations and usage labels beside its pin and destination |
 | [agent-depot.lock.json](../../agent-depot.lock.json) | Record accepted declarations, file hashes, executable modes and inspection |
 | [tooling/agent-depot.json](../../tooling/agent-depot.json) | Pin the maintenance CLI source revision, independently of acquired skills |
 
@@ -36,7 +36,7 @@ To update the CLI pin, review its command and persisted-format compatibility, ch
 
 1. Review the upstream method, required resources, redistribution terms and its fit with the owning plugin. Reuse an existing repository source ID where applicable.
 2. Declare the artifact in `agent-depot.json` with a full accepted commit and the destination `plugins/<owner>/skills/<upstream-name>`. Add an explicit resource mapping for a required external license, usually to `UPSTREAM-LICENSE.txt`. Preserve every resource inside the selected skill root.
-3. Add the artifact’s `metadata.packaging` entry. Preserve complete groups of mutually required skills; declare new adaptations only with focused packaging tests.
+3. Add `metadata.packaging` inside the artifact object; use the fields below. Preserve complete groups of mutually required skills; declare new adaptations only with focused packaging tests.
 4. In an established collection, prepare and apply a plan. `lock` followed by `sync` is for initial acquisition, not a way to bypass reviewed changes to accepted snapshots.
 
 ```bash
@@ -47,6 +47,22 @@ node .agent-depot/tool/dist/cli.js verify
 ```
 
 Use a new plan filename each time. Add a `-text` rule for the managed destination in `.gitattributes` so Git preserves upstream bytes across platforms. Update catalogue entries, ownership and package versions when distributed content changes. Commit the declaration, lock, snapshots, attributes and consumer changes together.
+
+## Packaging annotations
+
+Each artifact owns its packaging annotations. These fields are this collection's contract, not a schema interpreted by Agent Depot:
+
+| Field inside `artifacts.<id>.metadata.packaging` | Meaning |
+| --- | --- |
+| `plugin` | Owning plugin; must match the destination |
+| `license` | Nonempty attribution used in generated notices |
+| `license_path` | Upstream license location, or `null` when the skill frontmatter provides it |
+| `adaptations` | Names of the builder's allowlisted output transformations |
+| `labels` | String-valued usage labels applied to generated skills |
+
+Keep unrelated artifact annotations alongside `packaging`, and reserve root `metadata` for repository-wide information. The builder validates the packaging fields it consumes and ignores unrelated annotations; Agent Depot preserves both without interpreting their semantics. Do not maintain a second root packaging map.
+
+For a metadata-only change, edit the artifact, prepare a plan, inspect its `metadataChange` before/after values, then apply it and run verification and packaging checks. Verified snapshots are reused without fetching or rewriting their files; accepted commits and content digests stay unchanged. Tracking discovery for other unchanged artifacts can still need upstream access, so select the edited artifact when appropriate. Metadata can alter labels, adaptations and notices in the distributed plugin: inspect the effective output and bump its version if that output changes. Moving existing annotations without changing output does not require a package version bump.
 
 ## Review an update
 

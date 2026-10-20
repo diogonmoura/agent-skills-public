@@ -17,9 +17,8 @@ def load_sources(root, selected=None, verify=True):
         raise ValueError('Expected Agent Depot schema version 2')
     if manifest['sources'] != lock['sources'] or set(manifest['artifacts']) != set(lock['artifacts']):
         raise ValueError('Depot declarations differ from lock; use Agent Depot plan/update')
-    packaging = manifest.get('metadata', {}).get('packaging', {})
-    if set(packaging) != set(manifest['artifacts']):
-        raise ValueError('Each managed skill must have exactly one packaging record')
+    if 'packaging' in manifest.get('metadata', {}):
+        raise ValueError('Packaging records belong in each artifact metadata.packaging')
     result = []
     destinations = set()
     for artifact_id, artifact in manifest['artifacts'].items():
@@ -27,10 +26,24 @@ def load_sources(root, selected=None, verify=True):
         declaration = {k: v for k, v in accepted.items() if k not in {'files', 'digest', 'inspection'}}
         if declaration != artifact:
             raise ValueError('Depot artifact differs from lock: ' + artifact_id)
-        metadata = packaging[artifact_id]
-        plugin = metadata['plugin']
-        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', plugin):
+        annotations = artifact.get('metadata', {})
+        metadata = annotations.get('packaging') if isinstance(annotations, dict) else None
+        if not isinstance(metadata, dict):
+            raise ValueError('Each managed skill needs an artifact metadata.packaging record: ' + artifact_id)
+        plugin = metadata.get('plugin')
+        if not isinstance(plugin, str) or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', plugin):
             raise ValueError('Invalid owning plugin')
+        if not isinstance(metadata.get('license'), str) or not metadata['license'].strip():
+            raise ValueError('Packaging license attribution is required: ' + artifact_id)
+        license_path = metadata.get('license_path')
+        if license_path is not None and (not isinstance(license_path, str) or not license_path):
+            raise ValueError('Invalid packaging license path: ' + artifact_id)
+        adaptations = metadata.get('adaptations', [])
+        if not isinstance(adaptations, list) or any(not isinstance(a, str) for a in adaptations):
+            raise ValueError('Packaging adaptations must be a list of names: ' + artifact_id)
+        labels = metadata.get('labels', {})
+        if not isinstance(labels, dict) or any(not isinstance(v, str) for v in labels.values()):
+            raise ValueError('Packaging labels must map strings to strings: ' + artifact_id)
         destination = Path(artifact['destination'])
         if (artifact['kind'] != 'skill' or len(destination.parts) != 4 or
                 destination.parts[:3] != ('plugins', plugin, 'skills') or

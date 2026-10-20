@@ -7,7 +7,7 @@ import stat
 
 
 def write_depot(root, sources=()):
-    manifest = {'schemaVersion': 2, 'sources': {}, 'artifacts': {}, 'metadata': {'packaging': {}}}
+    manifest = {'schemaVersion': 2, 'sources': {}, 'artifacts': {}}
     locked = {}
     for index, source in enumerate(sources):
         source_id = 'fixture-' + str(index)
@@ -23,7 +23,7 @@ def write_depot(root, sources=()):
         declaration = dict(source=source_id, commit=source['commit'], kind='skill', path=source['path'], destination=destination)
         manifest['sources'][source_id] = {'repository': source['repository']}
         manifest['artifacts'][artifact_id] = declaration
-        manifest['metadata']['packaging'][artifact_id] = {k: source[k] for k in ('plugin', 'license', 'license_path', 'adaptations', 'labels') if k in source}
+        declaration['metadata'] = dict(packaging={k: source[k] for k in ('plugin', 'license', 'license_path', 'adaptations', 'labels') if k in source})
         files = {p.relative_to(target).as_posix(): dict(sha256=hashlib.sha256(p.read_bytes()).hexdigest(), mode='100755' if p.stat().st_mode & stat.S_IXUSR else '100644') for p in target.rglob('*') if p.is_file()}
         locked[artifact_id] = dict(declaration, files=files, digest='fixture', inspection={})
     (root / 'agent-depot.json').write_text(json.dumps(manifest))

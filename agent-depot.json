@@ -47,14 +47,50 @@
       "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
       "kind": "skill",
       "path": "skills/composition-patterns",
-      "destination": "plugins/frontend-reactjs-development/skills/vercel-composition-patterns"
+      "destination": "plugins/frontend-reactjs-development/skills/vercel-composition-patterns",
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT (skill frontmatter)",
+          "license_path": null,
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      }
     },
     "frontend-reactjs-development--vercel-react-best-practices": {
       "source": "vercel-labs-agent-skills",
       "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
       "kind": "skill",
       "path": "skills/react-best-practices",
-      "destination": "plugins/frontend-reactjs-development/skills/vercel-react-best-practices"
+      "destination": "plugins/frontend-reactjs-development/skills/vercel-react-best-practices",
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT (skill frontmatter)",
+          "license_path": null,
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      }
     },
     "frontend-reactjs-development--shadcn": {
       "source": "shadcn-ui-ui",
@@ -67,7 +103,25 @@
           "path": "LICENSE.md",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT",
+          "license_path": "LICENSE.md",
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      }
     },
     "development-tooling--playwright-cli": {
       "source": "microsoft-playwright-cli",
@@ -80,7 +134,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Playwright CLI",
+            "role": "support"
+          }
+        }
+      }
     },
     "development-tooling--github-actions-hardening": {
       "source": "github-awesome-copilot",
@@ -93,7 +164,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "GitHub Actions",
+            "role": "support"
+          }
+        }
+      }
     },
     "backend-python-development--modern-python": {
       "source": "trailofbits-skills",
@@ -106,7 +194,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "backend-python-development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "backend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Python",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--property-based-testing": {
       "source": "trailofbits-skills",
@@ -119,7 +225,23 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--differential-review": {
       "source": "trailofbits-skills",
@@ -132,7 +254,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "inline-adversarial-review",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "ai-python-development--mcp-builder": {
       "source": "anthropics-skills",
@@ -145,7 +284,25 @@
           "path": "skills/mcp-builder/LICENSE.txt",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-python-development",
+          "license": "Apache-2.0",
+          "license_path": "skills/mcp-builder/LICENSE.txt",
+          "adaptations": [
+            "ai-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Python, standalone FastMCP, MCP",
+            "role": "support"
+          }
+        }
+      }
     },
     "ai-adk-development--adk-agent-builder": {
       "source": "google-adk-python",
@@ -158,7 +315,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-adk-development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Google ADK",
+            "role": "support"
+          }
+        }
+      }
     },
     "ai-adk-development--adk-architecture": {
       "source": "google-adk-python",
@@ -171,7 +345,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-adk-development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Google ADK",
+            "role": "support"
+          }
+        }
+      }
     },
     "ai-langchain-development--langchain-fundamentals": {
       "source": "langchain-ai-langchain-skills",
@@ -184,7 +375,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangChain",
+            "role": "support"
+          }
+        }
+      }
     },
     "ai-langchain-development--langgraph-fundamentals": {
       "source": "langchain-ai-langchain-skills",
@@ -197,7 +405,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangGraph",
+            "role": "support"
+          }
+        }
+      }
     },
     "ai-langchain-development--langgraph-persistence": {
       "source": "langchain-ai-langchain-skills",
@@ -210,7 +435,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangGraph",
+            "role": "support"
+          }
+        }
+      }
     },
     "ai-langchain-development--langchain-dependencies": {
       "source": "langchain-ai-langchain-skills",
@@ -223,7 +465,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangChain, LangGraph",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--code-review": {
       "source": "mattpocock-skills",
@@ -236,7 +495,26 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--codebase-design": {
       "source": "mattpocock-skills",
@@ -249,7 +527,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--diagnosing-bugs": {
       "source": "mattpocock-skills",
@@ -262,7 +558,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--domain-modeling": {
       "source": "mattpocock-skills",
@@ -275,7 +589,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--grill-with-docs": {
       "source": "mattpocock-skills",
@@ -288,7 +620,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--implement": {
       "source": "mattpocock-skills",
@@ -301,7 +650,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "implementation-entrypoint"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--implement-spec": {
       "source": "mattpocock-skills",
@@ -314,7 +681,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--improve-codebase-architecture": {
       "source": "mattpocock-skills",
@@ -327,7 +712,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--prototype": {
       "source": "mattpocock-skills",
@@ -340,7 +742,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--research": {
       "source": "mattpocock-skills",
@@ -353,7 +773,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--retro": {
       "source": "mattpocock-skills",
@@ -366,7 +804,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--tdd": {
       "source": "mattpocock-skills",
@@ -379,7 +834,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--to-spec": {
       "source": "mattpocock-skills",
@@ -392,7 +865,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--grill-me": {
       "source": "mattpocock-skills",
@@ -405,7 +896,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--grilling": {
       "source": "mattpocock-skills",
@@ -418,7 +926,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--handoff": {
       "source": "mattpocock-skills",
@@ -431,7 +957,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--to-questionnaire": {
       "source": "mattpocock-skills",
@@ -444,7 +987,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      }
     },
     "development--writing-for-agents": {
       "source": "mattpocock-skills",
@@ -457,7 +1017,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development-tooling--supply-chain-risk-auditor": {
       "source": "trailofbits-skills",
@@ -470,7 +1048,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Supported dependency lockfile ecosystems",
+            "role": "support"
+          }
+        }
+      }
     },
     "operations-platforms--aks-cost-optimization": {
       "source": "azure-aks-skills",
@@ -483,7 +1078,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "operations-platforms",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Azure AKS",
+            "role": "support"
+          }
+        }
+      }
     },
     "frontend-reactjs-development--tailwind-design-system": {
       "source": "wshobson-agents",
@@ -496,7 +1108,25 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      }
     },
     "documentation--humanizer": {
       "source": "blader-humanizer",
@@ -509,7 +1139,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "documentation",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "composition-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      }
     },
     "development--agents-md": {
       "source": "getsentry-skills",
@@ -522,7 +1169,24 @@
           "path": "LICENSE",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "instruction-authoring-framing",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "both",
+            "role": "support"
+          }
+        }
+      }
     },
     "frontend-development--frontend-design": {
       "source": "anthropics-skills",
@@ -535,611 +1199,21 @@
           "path": "skills/frontend-design/LICENSE.txt",
           "destination": "UPSTREAM-LICENSE.txt"
         }
-      ]
-    }
-  },
-  "metadata": {
-    "packaging": {
-      "frontend-reactjs-development--vercel-composition-patterns": {
-        "plugin": "frontend-reactjs-development",
-        "license": "MIT (skill frontmatter)",
-        "license_path": null,
-        "adaptations": [
-          "frontend-framing",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "React, Next.js, Tailwind, shadcn",
-          "role": "support"
-        }
-      },
-      "frontend-reactjs-development--vercel-react-best-practices": {
-        "plugin": "frontend-reactjs-development",
-        "license": "MIT (skill frontmatter)",
-        "license_path": null,
-        "adaptations": [
-          "frontend-framing",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "React, Next.js, Tailwind, shadcn",
-          "role": "support"
-        }
-      },
-      "frontend-reactjs-development--shadcn": {
-        "plugin": "frontend-reactjs-development",
-        "license": "MIT",
-        "license_path": "LICENSE.md",
-        "adaptations": [
-          "frontend-framing",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "React, Next.js, Tailwind, shadcn",
-          "role": "support"
-        }
-      },
-      "development-tooling--playwright-cli": {
-        "plugin": "development-tooling",
-        "license": "Apache-2.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "Playwright CLI",
-          "role": "support"
-        }
-      },
-      "development-tooling--github-actions-hardening": {
-        "plugin": "development-tooling",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "GitHub Actions",
-          "role": "support"
-        }
-      },
-      "backend-python-development--modern-python": {
-        "plugin": "backend-python-development",
-        "license": "CC-BY-SA-4.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "backend-framing",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "Python",
-          "role": "support"
-        }
-      },
-      "development--property-based-testing": {
-        "plugin": "development",
-        "license": "CC-BY-SA-4.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--differential-review": {
-        "plugin": "development",
-        "license": "CC-BY-SA-4.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "inline-adversarial-review",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "ai-python-development--mcp-builder": {
-        "plugin": "ai-python-development",
-        "license": "Apache-2.0",
-        "license_path": "skills/mcp-builder/LICENSE.txt",
-        "adaptations": [
-          "ai-framing",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "Python, standalone FastMCP, MCP",
-          "role": "support"
-        }
-      },
-      "ai-adk-development--adk-agent-builder": {
-        "plugin": "ai-adk-development",
-        "license": "Apache-2.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "Google ADK",
-          "role": "support"
-        }
-      },
-      "ai-adk-development--adk-architecture": {
-        "plugin": "ai-adk-development",
-        "license": "Apache-2.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "Google ADK",
-          "role": "support"
-        }
-      },
-      "ai-langchain-development--langchain-fundamentals": {
-        "plugin": "ai-langchain-development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "LangChain",
-          "role": "support"
-        }
-      },
-      "ai-langchain-development--langgraph-fundamentals": {
-        "plugin": "ai-langchain-development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "LangGraph",
-          "role": "support"
-        }
-      },
-      "ai-langchain-development--langgraph-persistence": {
-        "plugin": "ai-langchain-development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "LangGraph",
-          "role": "support"
-        }
-      },
-      "ai-langchain-development--langchain-dependencies": {
-        "plugin": "ai-langchain-development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "LangChain, LangGraph",
-          "role": "support"
-        }
-      },
-      "development--code-review": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "tracker-neutral",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--codebase-design": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--diagnosing-bugs": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--domain-modeling": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--grill-with-docs": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--implement": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "implementation-entrypoint"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--implement-spec": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "tracker-neutral"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--improve-codebase-architecture": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--prototype": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--research": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--retro": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--tdd": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--to-spec": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "tracker-neutral"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--grill-me": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--grilling": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--handoff": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--to-questionnaire": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "user",
-          "role": "task"
-        }
-      },
-      "development--writing-for-agents": {
-        "plugin": "development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "documentation-paths",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development-tooling--supply-chain-risk-auditor": {
-        "plugin": "development-tooling",
-        "license": "CC-BY-SA-4.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "Supported dependency lockfile ecosystems",
-          "role": "support"
-        }
-      },
-      "operations-platforms--aks-cost-optimization": {
-        "plugin": "operations-platforms",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "Azure AKS",
-          "role": "support"
-        }
-      },
-      "frontend-reactjs-development--tailwind-design-system": {
-        "plugin": "frontend-reactjs-development",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "frontend-framing",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "stack-specific",
-          "invocation": "agent",
-          "stack": "React, Next.js, Tailwind, shadcn",
-          "role": "support"
-        }
-      },
-      "documentation--humanizer": {
-        "plugin": "documentation",
-        "license": "MIT",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "composition-framing",
-          "usage-labels",
-          "support-visibility"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "agent",
-          "role": "support"
-        }
-      },
-      "development--agents-md": {
-        "plugin": "development",
-        "license": "Apache-2.0",
-        "license_path": "LICENSE",
-        "adaptations": [
-          "workflow-framing",
-          "instruction-authoring-framing",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "both",
-          "role": "support"
-        }
-      },
-      "frontend-development--frontend-design": {
-        "plugin": "frontend-development",
-        "license": "Apache-2.0",
-        "license_path": "skills/frontend-design/LICENSE.txt",
-        "adaptations": [
-          "visual-design-framing",
-          "usage-labels"
-        ],
-        "labels": {
-          "scope": "generic",
-          "invocation": "both",
-          "role": "support"
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-development",
+          "license": "Apache-2.0",
+          "license_path": "skills/frontend-design/LICENSE.txt",
+          "adaptations": [
+            "visual-design-framing",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "both",
+            "role": "support"
+          }
         }
       }
     }
