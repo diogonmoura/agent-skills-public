@@ -114,6 +114,8 @@ Generic means reusable across stacks; stack-specific means select it only for ma
 
 | Area | Local applicability | Local guidance | Upstream techniques or contextual tools |
 | --- | --- | --- | --- |
+| Database engineering | Generic | [database-design](../plugins/database-development/skills/database-design/SKILL.md), [database-performance](../plugins/database-development/skills/database-performance/SKILL.md) | Data contracts, consistency, schema evolution and evidence-led performance methods. |
+| PostgreSQL implementation | Stack-specific | [postgresql-development](../plugins/database-postgresql-development/skills/postgresql-development/SKILL.md), [postgresql-operations](../plugins/database-postgresql-development/skills/postgresql-operations/SKILL.md), [postgresql-performance](../plugins/database-postgresql-development/skills/postgresql-performance/SKILL.md) | PostgreSQL development, diagnostics and operating mechanics. |
 | Product direction | Generic | [product-management](../plugins/strategy/skills/product-management/SKILL.md) | Existing research and feedback; no tracker required |
 | Business strategy | Generic | [business-strategy](../plugins/strategy/skills/business-strategy/SKILL.md) | Preserved strategy references |
 | Project foundations | Generic | [project-conventions](../plugins/development/skills/project-conventions/SKILL.md) for affected structure, commands and constraints | None required |

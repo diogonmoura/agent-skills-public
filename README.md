@@ -14,8 +14,10 @@ Start with **development** for stack-independent development activities. Add pro
 | Backend/client implementation | [backend-python-development](plugins/backend-python-development/), [frontend-reactjs-development](plugins/frontend-reactjs-development/), [frontend-native-development](plugins/frontend-native-development/) | Accepted Python; React; Tauri/Expo/native implementation |
 | AI implementation | [ai-python-development](plugins/ai-python-development/), [ai-adk-development](plugins/ai-adk-development/), [ai-langchain-development](plugins/ai-langchain-development/) | Python/provider/MCP APIs; ADK; LangChain/LangGraph |
 | Selected tools/platforms | [development-tooling](plugins/development-tooling/), [operations-platforms](plugins/operations-platforms/) | Bash/testing/CI/container/diagnostics tools; JVM/Kubernetes/AKS |
+| Database engineering | [database-development](plugins/database-development/) | Data contracts, consistency, schema evolution and evidence-led performance methods. |
+| PostgreSQL implementation | [database-postgresql-development](plugins/database-postgresql-development/) | PostgreSQL development, diagnostics and operating mechanics. |
 
-The first nine plugins are generic. The other eight provide technical expertise only for matching accepted choices. No plugin requires installing another; an activity retains its outcome when optional guidance is absent.
+The collection has 10 generic plugins and 9 technical plugins. Technical expertise applies only to matching accepted choices. No plugin requires installing another; an activity retains its outcome when optional guidance is absent.
 
 ## Quick start
 

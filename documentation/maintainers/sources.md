@@ -196,15 +196,19 @@ Independently installable bundles retain concise essential defaults and discover
 
 <a id="target-plugin-ownership"></a>
 
+## Database guidance sources
+
+Database methods are original and engine-independent. The three original PostgreSQL skills retain reviewed Neon, Supabase and Microsoft skill references through string metadata and a [package-local source reference](../../plugins/database-postgresql-development/references/sources.md). No PostgreSQL skills are acquired, and no database MCP server is declared. Primary version-matched PostgreSQL documentation controls implementation.
+
 ## Plugin ownership
 
-The collection has 17 independent packages and 103 skills: 64 local and 39 acquired. Development is the default build; nine generic packages contain no stack-specific skills, and eight technical packages are explicitly selected. Source commit/tree pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
+The collection has 19 independent packages and 108 skills: 69 local and 39 acquired. Development is the default build; 10 generic packages contain no stack-specific skills, and 9 technical packages are explicitly selected. Source commit/tree pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
 
 A plugin represents a useful installation choice. Workflow, application discipline and supporting capability describe its purpose; generic versus technical describes its applicability. These groups do not impose an execution order or dependencies. Installing a technical package makes expertise available without accepting its technology for a project. Keep accepted choices, select matching guidance from actual inventory and retain useful outcomes when optional specialists are absent.
 
 ### Package boundaries
 
-The collection has nine generic capability packages and eight optional technical packages. I group specialist tools and operating platforms into two explicit optional packages rather than create a plugin for every tool. Split a package only when independent installation is useful.
+The collection has 10 generic capability packages and 9 optional technical packages. I group specialist tools and operating platforms into two explicit optional packages rather than create a plugin for every tool. Split a package only when independent installation is useful.
 
 | Plugin | Applicability | Skills | Responsibility |
 | --- | --- | --- | --- |
@@ -225,6 +229,8 @@ The collection has nine generic capability packages and eight optional technical
 | `ai-python-development` | Technical | 4 | Python provider/FastMCP adapters, DeepEval evaluation suites and OpenTelemetry AI instrumentation; no required agent framework or hosted backend. |
 | `development-tooling` | Technical | 6 | Optional Bash, browser/load testing, delivery/configuration tooling and lockfile audit implementations. |
 | `operations-platforms` | Technical | 3 | Optional JVM, Kubernetes and AKS expertise; match each skill independently to the actual platform. |
+| `database-development` | Generic | 2 | Data contracts, consistency, schema evolution and evidence-led performance methods. |
+| `database-postgresql-development` | Technical | 3 | PostgreSQL development, diagnostics and operating mechanics. |
 
 Generic means no required language, framework, provider or platform selection. Comparing technologies, naming optional standards and explaining compatibility remain useful. Concrete implementation and preferred-tool setup belong to technical guidance. Classification must follow the body and its references, not just the metadata label.
 
@@ -263,7 +269,7 @@ Concrete preferences belong in explicitly selected technical guidance or project
 Each row has one owner. Local links lead to source; upstream links lead to the exact acquired revision. Preserve every skill's complete resources, licenses, native controls and scope. The dispositions record the separation of method outcomes from technical implementation; each package is checked independently.
 
 <details>
-<summary>All 103 skills and their current owners</summary>
+<summary>All 108 skills and their current owners</summary>
 
 | Skill | Origin | Plugin |
 | --- | --- | --- |
@@ -370,6 +376,11 @@ Each row has one owner. Local links lead to source; upstream links lead to the e
 | [aks-cost-optimization](https://github.com/Azure/AKS-Skills/tree/20bf35201a79b324d2ca3e00e5c82020ff362024/skills/aks-cost-optimization) | Upstream | `operations-platforms` |
 | [infra-jvm-optimization](../../plugins/operations-platforms/skills/infra-jvm-optimization/SKILL.md) | Local | `operations-platforms` |
 | [kubernetes-resource-engineering](../../plugins/operations-platforms/skills/kubernetes-resource-engineering/SKILL.md) | Local | `operations-platforms` |
+| [database-design](../../plugins/database-development/skills/database-design/SKILL.md) | Local | `database-development` |
+| [database-performance](../../plugins/database-development/skills/database-performance/SKILL.md) | Local | `database-development` |
+| [postgresql-development](../../plugins/database-postgresql-development/skills/postgresql-development/SKILL.md) | Local | `database-postgresql-development` |
+| [postgresql-operations](../../plugins/database-postgresql-development/skills/postgresql-operations/SKILL.md) | Local | `database-postgresql-development` |
+| [postgresql-performance](../../plugins/database-postgresql-development/skills/postgresql-performance/SKILL.md) | Local | `database-postgresql-development` |
 
 </details>
 
@@ -383,7 +394,7 @@ Figma remains optional tooling declared by frontend-development; the React techn
 
 ### Verification coverage
 
-The assignment covers 64 local skills and 39 distinct acquired skills exactly once, with no omissions or duplicate owners.
+The assignment covers 69 local skills and 39 distinct acquired skills exactly once, with no omissions or duplicate owners.
 
 All packages build together with `--all` and independently with explicit selection. Package checks verify inventories, local-resource parity, notices, required framing, and transitive owned Markdown links staying inside their bundle. CI also checks the default development-only build. These checks do not establish agent behavior; behavioral evaluations remain deferred.
 
