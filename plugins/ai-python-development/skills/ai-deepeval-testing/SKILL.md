@@ -21,7 +21,17 @@ Map the accepted evaluation levels to supported DeepEval APIs. Use output cases 
 
 ## Map actual artifacts to test cases
 
-Keep input scenarios/goldens, expected outcomes/rubrics and test results distinct. Use `LLMTestCase` for single-turn input/output evidence and `ConversationalTestCase` for supported multi-turn evaluation. `EvaluationDataset` and `Golden` can organize rerunnable inputs. Populate cases from the actual application run, including relevant retrieved context and tool evidence supported by the installed API; invented outputs establish only a fixture.
+Keep input scenarios/goldens, expected outcomes/rubrics and test results distinct.
+
+| Evidence or input | Compatible DeepEval representation |
+| --- | --- |
+| Single-turn input/output | `LLMTestCase` |
+| Supported multi-turn evaluation | `ConversationalTestCase` |
+| Rerunnable input collection | `EvaluationDataset` and `Golden` where appropriate |
+
+Choose the interaction being evaluated, then collect its actual inputs and results. At application level, this may be the user's request and final response; at a component level, it is the input and output of that component. Keep the case at a consistent scope so the metric is judging the behavior intended by the test.
+
+Supply the fields the chosen metric needs from the real run. Distinguish evidence that should have been available from evidence the retriever actually returned, and expected tool behavior from the tools actually used. Otherwise a grounded-answer score or tool score can be based on a reconstructed ideal rather than the execution being assessed. Match the field requirements to the installed API and metric documentation. Invented outputs establish only a fixture.
 
 Adapt curated cases and held-out regressions to the selected dataset API without replacing the authoritative case source. Synthetic generation and conversation simulation are optional, credentialed execution paths; preserve agreed scope and review generated goldens before using them as acceptance evidence.
 
@@ -29,7 +39,11 @@ Select metrics for the property: task correctness/usefulness, retrieval/groundin
 
 ## Control execution and data movement
 
-Configure the evaluated application model and evaluation judge separately. Many metrics and synthetic/simulation paths make model calls even when the application's output was recorded; inspect defaults before running. Set agreed providers, limits, concurrency, timeouts/retries and credentials through the project's configuration. Missing access leaves that quality boundary unverified, not passing.
+Configure the evaluated application model and evaluation judge separately.
+
+- Many metrics and synthetic/simulation paths make model calls even when the application's output was recorded; inspect defaults before running.
+- Set agreed providers, limits, concurrency, timeouts/retries and credentials through the project's configuration.
+- Missing access leaves that quality boundary unverified, not passing.
 
 Keep local results reproducible without requiring a hosted dashboard. Confident AI reporting, hosted datasets/traces and online evaluation are separate selected integrations with account, retention, region and data-sharing decisions. Check the library's reporting/storage configuration and active credentials before execution; do not log in or upload cases merely to run a local suite. Redact private inputs at source and in failure artifacts.
 
@@ -37,7 +51,12 @@ Keep local results reproducible without requiring a hosted dashboard. Confident 
 
 Use DeepEval's supported `evaluate()` route for evaluation scripts or `assert_test()` with `deepeval test run <existing-eval-path>` for a committed pytest-style evaluation suite. Follow the [CI guide](https://deepeval.com/docs/evaluation-unit-testing-in-ci-cd) for the installed version; do not treat ordinary pytest collection as proof that the DeepEval run completed.
 
-Separate fast deterministic tests from credentialed quality jobs. Define when each suite runs, its limits and required gates, and preserve exact application/prompt/model/judge/dataset/metric revisions. Run live jobs only in trusted contexts with authorized data and secrets. Keep per-case failures, reasons, denominators, variability and latency/usage evidence. Verify exit status and result completeness; skipped/error/flaky results must remain visible and cannot silently bypass a required criterion.
+Separate fast deterministic tests from credentialed quality jobs.
+
+- Define when each suite runs, its limits and required gates, and preserve exact application/prompt/model/judge/dataset/metric revisions.
+- Run live jobs only in trusted contexts with authorized data and secrets.
+- Keep per-case failures, reasons, denominators, variability and latency/usage evidence.
+- Verify exit status and result completeness; skipped/error/flaky results must remain visible and cannot silently bypass a required criterion.
 
 After a change, run the relevant deterministic suite and authorized quality comparison. Inspect representative failures and make scoped repairs without weakening criteria, thresholds or holdouts to pass. Report fixture versus live evidence, executed levels and remaining gaps. Instrumentation and a passing metric do not establish protocol interoperability, persisted user outcomes or production quality.
 

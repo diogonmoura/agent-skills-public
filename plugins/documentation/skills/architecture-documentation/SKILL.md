@@ -27,15 +27,33 @@ For a whole-system review, use arc42 as a coverage check: drivers/constraints, c
 
 Use C4 context and containers for the baseline, then selected component views where detail resolves ambiguity or risk. A container is an application/data store, not necessarily a Docker container. A component view zooms into one container; a code diagram is rarely needed for routine architectural explanation.
 
-For each meaningful building block, explain responsibility, interface, dependencies, state/ownership and code location. Describe the actual decomposition, including mixed legacy handlers, coupling and incomplete abstractions. Do not present a desired service layer as implemented or turn in-process libraries into imaginary services.
+Explain each meaningful building block in relation to the work it performs. State which part of the user or system outcome it owns, how another component invokes it, what state it controls, and why it depends on its neighbors. Link the code location so a contributor can follow the explanation into the implementation.
 
-Each diagram declares type/scope/status and uses understandable element types, responsibilities, technologies and directed relationships. Label communication protocols and optional boundaries; add a legend where notation needs one. Explain what readers should infer and what the view does not establish. Keep a text equivalent for important relationships.
+Describe the actual decomposition, including mixed legacy handlers, coupling and incomplete abstractions. When a responsibility is spread across components, show that fact and its consequence instead of drawing a cleaner desired layer as though it exists. Keep in-process libraries distinct from independently running services.
+
+Each diagram declares type/scope/status and uses understandable element types, responsibilities, technologies and directed relationships.
+
+- Label communication protocols and optional boundaries; add a legend where notation needs one.
+- Explain what readers should infer and what the view does not establish.
+- Keep a text equivalent for important relationships.
 
 ## Explain runtime, lifecycle and data boundaries
 
-Choose representative architectural scenarios: important user work, critical external interfaces, startup/release and failure/recovery. Use sequences for interaction/ordering, state diagrams for lifecycle and data-flow views for information movement. Do not create a diagram per endpoint.
+Choose representative scenarios: important user work, critical external interfaces, startup/release and failure/recovery. Select the view for its explanatory job:
 
-Trace actor/context through authorization, validation, transaction, persistence, events and user-visible outcome. Include stale version, revoked authority, retry, partial batch and post-commit acknowledgement failure when relevant. Distinguish draft, intent and actual record; distinguish successful transport/model output from committed business state. Map participants to the structural views and source code.
+| Question | View |
+| --- | --- |
+| How do participants interact and in what order? | Sequence |
+| How does an entity move through its lifecycle? | State diagram |
+| Where does information move? | Data-flow view |
+
+A diagram per endpoint is unnecessary.
+
+Trace actor/context through authorization, validation, transaction, persistence, events and user-visible outcome.
+
+- Include stale version, revoked authority, retry, partial batch and post-commit acknowledgement failure when relevant.
+- Distinguish draft, intent and actual record; distinguish successful transport/model output from committed business state.
+- Map participants to the structural views and source code.
 
 Explain who owns local drafts, session/cache state, persistent records and generated projections; document lifetime, freshness, reconciliation and scaling consequences. Use the canonical physical schema for database facts; a conceptual domain diagram is complementary, not a replacement.
 
@@ -43,7 +61,10 @@ Explain who owns local drafts, session/cache state, persistent records and gener
 
 For important interface families, cover resource identity, operations/lifecycle, actor/tenant scope, request/response schemas, validation, side effects, errors, concurrency, idempotency, pagination, time/units, events and compatibility. Use specific contracts/examples for critical workflows and link generated reference for exhaustive syntax.
 
-Inspect the generated OpenAPI or equivalent contract against code: declared responses/media types/errors may omit runtime behaviour. Streaming requires event ordering, correlation, completion/error and replay/cancellation semantics beyond an HTTP success code. Tool interfaces require capability/authority analysis; an automatically generated database/API tool is not automatically safe to expose.
+Inspect the generated OpenAPI or equivalent contract against code: declared responses/media types/errors may omit runtime behaviour.
+
+- Streaming requires event ordering, correlation, completion/error and replay/cancellation semantics beyond an HTTP success code.
+- Tool interfaces require capability/authority analysis; an automatically generated database/API tool is not automatically safe to expose.
 
 Separate existing conventions from recommended changes. HTTP/OpenAPI and relevant standards inform assessment without forcing global renames, generic CRUD, a new error format or an unapproved architecture. Identify consumers and migration implications before proposing compatibility changes.
 
@@ -55,7 +76,10 @@ Connect requirements to design mechanisms and verification. Explain tradeoffs an
 
 ## Validate and maintain
 
-Check source mappings, exact interfaces/examples, cross-view names and current/target consistency. Parse/render diagrams with the project's available tooling; inspect readability as well as syntax. Generated schemas and link checks cannot prove architectural truth, full authorization or provider behaviour.
+Check source mappings, exact interfaces/examples, cross-view names and current/target consistency.
+
+- Parse/render diagrams with the project's available tooling; inspect readability as well as syntax.
+- Generated schemas and link checks cannot prove architectural truth, full authorization or provider behaviour.
 
 Test reader questions: can a contributor trace a critical operation, identify authority/state/commit boundaries, explain a failure/retry and locate its evidence? Use proportionate checks; independent evaluation only when authorized. Route actionable gaps into existing identified work or record an explicit disposition, without creating a competing hidden backlog.
 

@@ -13,6 +13,30 @@ metadata:
 
 # Plan
 
-Read [task guidance](../../TASKS.md). Use [system-design](../system-design/SKILL.md) after product refinement or when the feature changes consequential architecture, before dependent planning/implementation. Read [project-conventions](../project-conventions/SKILL.md) for existing constraints, [deliver-reliable-changes](../deliver-reliable-changes/SKILL.md) for acceptance and verification. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
+Read [task guidance](../../TASKS.md). Reuse existing plans and commands; scale the plan to the agreed work.
 
-Establish the agreed outcome and evidence; refine material gaps before assuming scope. Inspect affected architecture/contracts, using service-contract design expertise for changed service behavior, and use relevant technical conventions to choose small dependency-ordered increments. Include UI/behavior design before implementation where interactions change, migration/consumer compatibility, focused tests and delivery/recovery consequences. Reuse existing plans and commands. Return the executable next steps, assumptions and blockers; do not require a tracker, a document per slice or parallel agents. Planning alone does not implement or deploy the work.
+## Establish the planning basis
+
+- Agree on the outcome and completion evidence. Refine material gaps before assuming scope.
+- Inspect affected architecture and contracts. Use [system-design](../system-design/SKILL.md) after product refinement or when the feature changes consequential architecture, before dependent planning or implementation.
+- Read [project conventions](../project-conventions/SKILL.md) for existing constraints and [delivery guidance](../deliver-reliable-changes/SKILL.md) for acceptance and verification.
+- Load optional stack/domain guidance selected by task guidance only when relevant and available. Use service-contract design expertise for changed service behavior.
+
+## Order the work by its dependencies
+
+Start from a useful observable result and work backward to its prerequisites. A good increment joins enough of the application to prove something meaningful: a caller can exercise the operation, the necessary data changes occur, and a check can distinguish success from failure. Organizing the plan only by folders or technical layers can postpone discovery that those parts do not work together.
+
+Put uncertain or constraining work early enough that it can change the remaining plan. For each increment, name the behavior it delivers, the important prerequisite and the evidence needed before moving on. Reuse the project's technical conventions to choose implementation detail. Include the consequences that apply:
+
+| Affected concern | Include in the plan |
+| --- | --- |
+| UI or interaction behavior | UI/behavior design before dependent implementation |
+| Persistence or consumers | Migration and compatibility work |
+| Acceptance and regression risk | Focused tests and their evidence |
+| Delivery and failure | Release and recovery consequences |
+
+## Return an executable plan
+
+Return steps in the order they can actually be carried out. Make it clear which work is ready, which depends on a decision, and which can proceed independently. For changes to persisted data or deployed consumers, explain the order in which old and new versions can coexist and when cleanup becomes safe.
+
+Keep the plan easy to revise when implementation produces new evidence. The reader should be able to start the next step and recognize when it is done without requiring a separate planning ceremony. A tracker, a document per slice and parallel agents are optional. Planning alone does not implement or deploy the work.

@@ -18,15 +18,33 @@ Use local k6 execution by default; no Grafana Cloud account, MCP or distributed 
 
 ## Define the claim and workload
 
-Read critical journeys, architecture, accepted targets and operating constraints. Use installed journey and actual-platform verification expertise for workload/evidence methods when useful; retain an explicit demand, outcome and execution boundary without it. Use reliability expertise, capacity and demand-modeling expertise and observability expertise when available for outcome contracts, demand and trustworthy signals. Choose representative authenticated reads/writes, data volumes, cache conditions and traffic mix; avoid measuring only an unauthenticated health endpoint. For async work, distinguish admission from completion and track accepted jobs that miss their deadline. HTTP duration alone does not establish user-journey latency or browser rendering performance; retain Playwright for browser correctness and use browser-performance evidence when that is the claim.
+Read critical journeys, architecture, accepted targets and operating constraints.
+
+- Use installed journey and actual-platform verification expertise for workload/evidence methods when useful; retain an explicit demand, outcome and execution boundary without it.
+- Use reliability expertise, capacity and demand-modeling expertise and observability expertise when available for outcome contracts, demand and trustworthy signals.
+- Choose representative authenticated reads/writes, data volumes, cache conditions and traffic mix; avoid measuring only an unauthenticated health endpoint.
+- For async work, distinguish admission from completion and track accepted jobs that miss their deadline.
+- HTTP duration alone does not establish user-journey latency or browser rendering performance; retain Playwright for browser correctness and use browser-performance evidence when that is the claim.
 
 Record intended arrival rate or concurrency, duration, warmup, thresholds, target and resources. Derive acceptance from user needs or an accepted comparable baseline. Label provisional values and seek unresolved product decisions; do not invent production commitments. Keep a short low-load smoke profile for script correctness, a bounded regression/load profile and longer stress/spike/soak profiles only when justified. A short smoke pass is not a capacity result.
 
 ## Implement meaningful k6 scenarios
 
-Choose virtual-user executors for a fixed concurrent population or arrival-rate executors for independent incoming demand. Iterations can contain multiple requests: distinguish iteration rate from request rate. Size the load generator and VU allocation; inspect achieved throughput and `dropped_iterations`. A test that did not generate its intended load cannot establish that the application sustained it. In a closed model, slower responses can reduce offered traffic; account for that when interpreting overload.
+| Workload model | Executor choice and interpretation |
+| --- | --- |
+| Fixed concurrent population | Virtual-user executors. In a closed model, slower responses can reduce offered traffic; account for that when interpreting overload. |
+| Independent incoming demand | Arrival-rate executors. |
 
-Check semantic outcomes as well as expected status codes. Set explicit thresholds for relevant checks, error rate and journey/operation latency; `check()` failures alone do not make the CLI fail. Use bounded metric tags, separate important operations and explicit units. Keep scripts compatible with the pinned k6 runtime and lock or vendor remote modules. Inject credentials through protected environment/configuration and sanitize reports; never commit tokens or log full authenticated payloads.
+Choose the executor according to how demand arrives. A fixed concurrent population waits for its own work, so a slower application can reduce the rate the test offers. An arrival-rate model attempts to maintain incoming demand independently of that response time, provided the generator has enough capacity. Interpret the result according to that distinction before calling it a capacity limit.
+
+Iterations may contain multiple requests; distinguish iteration rate from request rate. Size the generator and VU allocation and inspect achieved throughput and `dropped_iterations`. Compare intended demand with what the generator actually offered, then examine application latency and failure under that achieved load. Unachieved intended load cannot establish application capacity.
+
+Check semantic outcomes as well as expected status codes.
+
+- Set explicit thresholds for relevant checks, error rate and journey/operation latency; `check()` failures alone do not make the CLI fail.
+- Use bounded metric tags, separate important operations and explicit units.
+- Keep scripts compatible with the pinned k6 runtime and lock or vendor remote modules.
+- Inject credentials through protected environment/configuration and sanitize reports; never commit tokens or log full authenticated payloads.
 
 ## Support three execution targets
 
@@ -44,13 +62,23 @@ Use delivery expertise for workflow conventions and security. Prefer `performanc
 
 Run small runner checks on relevant PR changes where stable and affordable. Put deployed-target checks after deployment or behind explicit/manual or project-approved scheduled triggers; installing this skill does not create a schedule. Bind the target/profile to the environment, serialize shared-environment tests and prevent untrusted PR code from receiving environment credentials. Pin k6 and any setup actions/images to reviewed versions/SHAs/digests.
 
-Preserve k6's failing exit status through wrappers/pipes; do not mask failures with retries, `continue-on-error` or artifact upload success. Required checks must report explicitly when skipped or unavailable. Upload sanitized summaries and relevant logs on failure as well as success. Always attempt teardown via workflow cleanup/finally, including failures; k6 teardown alone cannot guarantee cleanup after process termination. Remove only owned test data/resources.
+Preserve k6's failing exit status through wrappers/pipes; do not mask failures with retries, `continue-on-error` or artifact upload success.
+
+- Required checks must report explicitly when skipped or unavailable.
+- Upload sanitized summaries and relevant logs on failure as well as success.
+- Always attempt teardown via workflow cleanup/finally, including failures; k6 teardown alone cannot guarantee cleanup after process termination.
+- Remove only owned test data/resources.
 
 ## Run, interpret and recover
 
 Agree the deployed target's scope, duration, load ceiling, side effects, shared users, external costs and stop conditions within existing task authority. Use dedicated identities/test data and route email/payment/AI side effects to controlled fixtures or permitted sandboxes. Production testing and fault injection require their own explicit scope. Heavy load on a shared non-production environment is still a consequential operation.
 
-Compare equivalent revisions, resources, datasets, cache state, profiles and generator conditions. Collect offered/achieved load, sample counts, latency distribution, failures, drops and relevant application/database/queue saturation. Attribute uncertainty instead of blaming the service when the generator or shared environment is constrained. Diagnose regressions; never relax thresholds merely to obtain a green check. For overload profiles verify service/queue recovery after load stops, without expanding into an unrequested chaos exercise.
+Compare equivalent revisions, resources, datasets, cache state, profiles and generator conditions.
+
+- Collect offered/achieved load, sample counts, latency distribution, failures, drops and relevant application/database/queue saturation.
+- Attribute uncertainty instead of blaming the service when the generator or shared environment is constrained.
+- Diagnose regressions; never relax thresholds merely to obtain a green check.
+- For overload profiles verify service/queue recovery after load stops, without expanding into an unrequested chaos exercise.
 
 Report script/profile revision, target/deployed revision, workload, thresholds, measured outcomes, fixture/live boundaries and cleanup/recovery evidence. Separate authored scripts, locally executed tests, runner checks and deployed-target checks; state blocked execution. Consult [k6 details and CI decisions](references/k6-and-ci.md) for specific unanswered questions.
 

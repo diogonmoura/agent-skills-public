@@ -14,23 +14,55 @@ Start from the accepted user task, architecture and consequential failure modes.
 
 ## Define acceptance and evidence levels
 
-Separate deterministic invariants from uncertain model quality. Authorization, resource isolation, schema validity, side effects and recovery need application assertions even when a model judge gives an answer a high score. Define useful quality criteria for the task, including grounding, ambiguity, refusal and relevant safety constraints. State provisional thresholds and their uncertainty when acceptance is unresolved; do not invent product commitments.
+| Property | Acceptance method |
+| --- | --- |
+| Deterministic invariants | Assert authorization, resource isolation, schema validity, side effects and recovery in the application, even when a model judge scores the answer highly. |
+| Uncertain model quality | Define task-specific criteria for grounding, ambiguity, refusal and relevant safety constraints; choose suitable measures and graders. |
+
+State provisional thresholds and uncertainty when acceptance is unresolved; do not invent product commitments.
 
 Read [evaluation methods](references/evaluation-references.md) when choosing levels, cases or graders. Assess model/retrieval components, protocol/runtime integration, agent trajectories, conversations, multimodal interaction and complete user journeys where the architecture needs them. Use actual compatible peers and persistent service state for integration and outcome claims. A component score, simulated user or recorded output establishes a narrower boundary than a live end-to-end interaction.
 
 ## Build representative cases and suitable measures
 
-Derive cases from accepted behavior, meaningful user/data slices and privacy-reviewed observed failures. Cover normal tasks, ambiguity, missing/conflicting evidence, invalid input, provider/tool failure and relevant adversarial conditions. Keep inputs, expected outcomes/rubrics and actual results distinct. Preserve versioned datasets and useful held-out regressions; synthetic generation is an optional source requiring review, not a replacement for task evidence.
+### Select cases
 
-Choose exact assertions, reference-based or semantic measures, domain-specific metrics, calibrated model judges and human assessment according to the property. Separate retrieval quality from answer usefulness and task outcome from optional implementation details such as tool order. Calibrate subjective judges against accepted human examples, preserve disagreement and use human review where the decision remains subjective. Keep expected results, thresholds and rubrics stable while repairing behavior.
+Derive cases from the task the application promises to perform. Include inputs on which different implementations could make consequentially different choices, and specify what would make each result useful or unacceptable. A case should reveal something about the capability; a large collection of interchangeable easy prompts can give a high score while leaving the difficult behavior unexamined.
 
-Record the evaluated application/model/prompt/context/tool configuration and dataset/evaluator revisions. Compare candidates on the same relevant inputs and execution conditions. Retain denominators, case-level failures, important slice results, sample size and appropriate variability; repeat stochastic cases enough for the decision. An average must not hide failed authority or consequential task criteria. Include latency and usage/cost when they affect acceptance, with unavailable or estimated values labelled.
+Use meaningful user/data slices and privacy-reviewed observed failures to identify variation. Keep cases used while developing the behavior separate from held-out cases used to assess whether the improvement generalizes.
+
+- Cover normal tasks, ambiguity, missing/conflicting evidence, invalid input, provider/tool failure and relevant adversarial conditions.
+- Keep inputs, expected outcomes/rubrics and actual results distinct.
+- Preserve versioned datasets and useful held-out regressions; synthetic generation is an optional source requiring review, not a replacement for task evidence.
+
+### Select measures
+
+Choose a measure that can observe the property in question. Use exact assertions for facts the application can determine, such as whether an operation was authorized or a required field is present. Use reference-based or semantic measures when more than one wording can satisfy an answer. Use domain-specific metrics when the task has an established notion of quality. Human assessment remains important when usefulness or taste cannot yet be expressed reliably by a grader.
+
+When using a model judge, define the criteria it should apply and compare its judgments with accepted human assessments, including borderline and unacceptable results. Inspect disagreement before relying on an aggregate score. A fluent explanation from a judge is not evidence that its decision is calibrated.
+
+- Separate retrieval quality from answer usefulness and task outcome from optional implementation details such as tool order.
+- Calibrate subjective judges against accepted human examples, preserve disagreement and use human review where the decision remains subjective.
+- Keep expected results, thresholds and rubrics stable while repairing behavior.
+
+### Compare candidates
+
+Record the evaluated application/model/prompt/context/tool configuration and dataset/evaluator revisions.
+
+- Compare candidates on the same relevant inputs and execution conditions.
+- Retain denominators, case-level failures, important slice results, sample size and appropriate variability; repeat stochastic cases enough for the decision.
+- An average must not hide failed authority or consequential task criteria.
+- Include latency and usage/cost when they affect acceptance, with unavailable or estimated values labelled.
 
 ## Implement and run proportionate checks
 
 Seek available expertise for the selected evaluator, test drivers and runtime; without it, use project evidence and primary documentation while retaining the same criteria. A Python evaluator can test a non-Python application. No SDK, hosted dataset service, dashboard or particular record format is required by this method.
 
-Keep cheap deterministic checks routinely runnable. Use bounded quality experiments during behavior changes, broader held-out comparisons for consequential model/prompt/retrieval/tool changes and authorized online sampling for operating feedback. Define when each level runs and which conditions gate delivery rather than requiring every expensive suite on every commit. Protect credentials, evaluation inputs and resulting artifacts in trusted execution contexts.
+Keep cheap deterministic checks routinely runnable.
+
+- Use bounded quality experiments during behavior changes, broader held-out comparisons for consequential model/prompt/retrieval/tool changes and authorized online sampling for operating feedback.
+- Define when each level runs and which conditions gate delivery rather than requiring every expensive suite on every commit.
+- Protect credentials, evaluation inputs and resulting artifacts in trusted execution contexts.
 
 Report execution failures, skips, missing access and incomplete cases explicitly. Recorded application outputs may still require live judge calls; fixtures, simulated users, live providers and production samples have different permissions and evidence. Do not turn an unavailable judge or unexecuted suite into a pass. A passing evaluation does not replace protocol compatibility, accessibility, authorization or persisted journey checks.
 

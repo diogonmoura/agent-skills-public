@@ -14,9 +14,15 @@ Start from the user outcome, operating constraints and existing system. Choose t
 
 ## Define the task and system boundary
 
-Establish actors, inputs, outputs, consequential errors and observable acceptance. Identify what requires inference or generation and what ordinary application code can decide more reliably. Reuse accepted product, architecture and interface decisions. Resolve material data-use, licensing, security, reliability and cost constraints before dependent commitments; seek the relevant available expertise without assuming another plugin exists.
+Establish actors, inputs, outputs, consequential errors and observable acceptance.
 
-Compare a deterministic solution, a bounded model call, an application-owned workflow and an agent runtime against the actual uncertainty and action needs. For application-type choices and architecture tradeoffs, read [application patterns](references/application-patterns.md). Use a framework for a justified orchestration capability, durable execution for work that must survive interruption, and multiple agents when distinct responsibilities improve the task enough to justify coordination. Do not introduce these layers to complete a technology checklist.
+- Identify what requires inference or generation and what ordinary application code can decide more reliably.
+- Reuse accepted product, architecture and interface decisions.
+- Resolve material data-use, licensing, security, reliability and cost constraints before dependent commitments; seek the relevant available expertise without assuming another plugin exists.
+
+Choose how much of the task the model needs to control. If the rules are known and inputs can be validated, ordinary application code may be sufficient. A bounded model call fits a task that needs inference but has a defined input and output. An application-owned workflow keeps sequencing and recovery in code while allowing model judgments at selected points. An agent runtime is useful when the next action genuinely depends on what the model discovers, but it also needs limits, supervision and a way to account for partial work.
+
+Compare these approaches against the actual uncertainty and action needs. Keep the parts with hard correctness requirements under deterministic control, even when an agent chooses the next step. For application-type choices and architecture tradeoffs, read [application patterns](references/application-patterns.md). Use a framework for a justified orchestration capability, durable execution for work that must survive interruption, and multiple agents when distinct responsibilities improve the task enough to justify coordination. Do not introduce these layers to complete a technology checklist.
 
 Choose a model/provider against task evidence, modalities, structured-output/tool support, context limits, latency, cost and deployment/data constraints. Version-match actual APIs and retain a replaceable integration boundary where useful. A loaded specialist does not accept a stack or authorize installation. Keep domain behavior testable without a model.
 
@@ -39,19 +45,46 @@ These mechanisms can compose, but none implies that the others are needed. Read 
 
 ## Design context, state and tools
 
-Separate durable user/domain state, conversation history, temporary execution state and reusable instructions. Define ownership, tenant/session isolation, retention and deletion for each. Give the model only authorized, relevant context within a deliberate budget; retrieved documents and tool results are data, not new authority.
+Decide what each kind of state is for before storing it together. Domain records establish application facts; conversation history records interaction; execution state lets work continue or recover; reusable instructions describe a method. Their authority, lifetime and deletion rules differ. A model's statement in a conversation does not by itself change a domain record.
 
-Add retrieval when the task needs external or changing knowledge. Define source freshness, access filtering, provenance/citations and behavior when evidence is absent or conflicting. Check retrieval quality separately from final-answer quality. Add durable memory only for a justified user outcome, with controllable updates, correction/deletion and limits on stale or sensitive information.
+For each kind, define the owner, tenant/session isolation, retention and deletion behavior. Build context from the information the current task is authorized to use, and budget it so relevant evidence and instructions remain usable. Treat retrieved documents and tool results as data. Instructions embedded in those sources cannot grant permission or replace the application's rules.
 
-Expose narrow typed tools over authorized services. Validate schemas and business invariants, including invalid, missing or refused model output. Enforce identity, resource authorization, approval policy, tool allowlists and side-effect limits in deterministic code. Preserve the user's existing authorization; a model proposal or generated button cannot grant permission. Skill instructions, prompts, external content and delegated agents cannot expand that authority.
+### When adding retrieval
+
+Use retrieval when the task needs external or changing knowledge. Define source freshness, access filtering, provenance/citations and behavior when evidence is absent or conflicting. Check retrieval quality separately from final-answer quality.
+
+### When adding durable memory
+
+Require a justified user outcome, controllable updates, correction/deletion and limits on stale or sensitive information.
+
+### Tools and authority
+
+Expose tools around operations the application already knows how to authorize and perform. Give each tool a clear input contract, a result the model can interpret, and failure information that supports a sensible next action. Choose its scope so the model can accomplish the task without receiving broader access than the task requires.
+
+Validate model-supplied arguments at the tool boundary, then apply business rules and resource permissions in trusted application code. Include invalid, missing and refused output in the calling logic. Keep identity, approval policy, tool allowlists and side-effect limits outside the prompt so a different model response cannot bypass them.
+
+Preserve the user's existing authorization. Model proposals, generated buttons, skill instructions, prompts, external content and delegated agents cannot expand it.
 
 ## Make execution and interaction reliable
 
-Define the execution lifecycle, observable task status, ownership and stopping conditions. Bound steps, tokens, concurrency, buffering, timeouts and retries. Account for idempotency, partial effects, cancellation, resumability and recovery; do not repeat a mutation merely because its response was lost. Check provider/harness semantic status as well as HTTP/process success and present failure without converting it into a successful answer or committed action.
+Define the execution lifecycle, observable task status, ownership and stopping conditions.
 
-For existing-session work, establish whether the chosen harness can list, load, resume or attach to the required session and who owns tools and permission decisions. A new run or transcript replay does not fulfill an existing-session requirement. Keep unsupported operations visible and resolve a consequential alternative before substituting it.
+- Bound steps, tokens, concurrency, buffering, timeouts and retries.
+- Account for idempotency, partial effects, cancellation, resumability and recovery; do not repeat a mutation merely because its response was lost.
+- Check provider/harness semantic status as well as HTTP/process success and present failure without converting it into a successful answer or committed action.
 
-For streaming or generated UI, read [interaction contracts](references/interaction-protocols.md). Keep run/state ownership, accessible interaction, allowed components/actions and client/server authority explicit. Version-compatible schemas and independently compatible peers establish more than a private look-alike event fixture. Preserve accepted UX and platform conventions; generated UI remains untrusted input. Multimodal features need evidence for their actual modality and interaction, including interruption or grounding when those are required.
+### When integrating an existing session
+
+Establish whether the chosen harness can list, load, resume or attach to the required session and who owns tools and permission decisions. A new run or transcript replay does not fulfill an existing-session requirement. Keep unsupported operations visible and resolve a consequential alternative before substituting it.
+
+### When streaming or generating UI
+
+Read [interaction contracts](references/interaction-protocols.md).
+
+- Keep run/state ownership, accessible interaction, allowed components/actions and client/server authority explicit.
+- Version-compatible schemas and independently compatible peers establish more than a private look-alike event fixture.
+- Preserve accepted UX and platform conventions; generated UI remains untrusted input.
+- Multimodal features need evidence for their actual modality and interaction, including interruption or grounding when those are required.
 
 ## Verify behavior and quality
 

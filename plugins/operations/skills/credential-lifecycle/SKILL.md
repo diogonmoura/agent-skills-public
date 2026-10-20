@@ -14,13 +14,23 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Maintain one authoritative credential record and a complete map of its consumers. Credential values belong in protected stores, not the report.
+Treat a credential as access that is issued, distributed, used and eventually removed. Map each consumer from the authoritative store through synchronization and reload to actual use. That path determines whether a rotation has reached every consumer and when revoking the old access becomes safe.
+
+Maintain one authoritative credential record with that consumer map and the metadata needed to manage ownership, privileges and expiry. Credential values belong in protected stores, not the report. A changed secret reference or completed synchronization job does not establish that a running consumer uses the replacement.
 
 ## Modes and architecture
 
-In interactive work, explain identity/delivery tradeoffs and resolve ownership and cutover decisions. For setup, implement least-privilege identity and secret delivery in the chosen stack; during feature work review new consumers, privileges and reload behavior. For recurring reviews inspect metadata, expiry, secret references and audit findings; prepare policy-bounded changes without exporting values. Rotate/revoke automatically only when the job explicitly authorizes the affected consumers and verified provider procedure.
+| Mode | Work |
+| --- | --- |
+| Interactive | Explain identity/delivery tradeoffs and resolve ownership and cutover decisions. |
+| Setup | Implement least-privilege identity and secret delivery in the chosen stack. |
+| Feature | Review new consumers, privileges and reload behavior. |
+| Recurring review | Inspect metadata, expiry, secret references and audit findings; prepare policy-bounded changes without exporting values. |
 
-Consult [references/secrets-architecture.md](references/secrets-architecture.md) for industry-grounded design, runtime/CI delivery, rotation and recovery for deeper implementation details when needed.
+Automatic rotation/revocation requires explicit job authority for the affected consumers and a verified provider procedure.
+
+Consult [the secrets architecture reference](references/secrets-architecture.md) for deeper identity design, runtime/CI delivery, rotation and recovery decisions.
+
 
 ## Discover and document
 
@@ -32,12 +42,16 @@ Use [references/credential-record.md](references/credential-record.md) for metad
 
 - Issue purpose-bound least-privilege credentials. Separate runtime pull/read access from build push/write or administrative access.
 - Prefer a supported scoped workload/app identity or short-lived token over a shared long-lived human credential for automation.
+- Prefer short-lived workload federation/dynamic leases where supported; validate issuer, audience and subject/target restrictions. Removing a workload does not necessarily revoke an issued credential.
+### Records and renewal
+
 - Include system, scope/tenant, purpose, and environment in names where confusion is possible.
 - Maintain one authoritative record shared through appropriate permission boundaries; avoid duplicate copies masquerading as sources of truth.
 - Document automatically rotated credentials and the mechanism even when their values are managed elsewhere.
 - Record expiry and renewal lead time, with an owner and deputy. For certificates inspect chain, validity, key/store format, and dependent trust configuration.
+### Protect values
+
 - Protect values during CLI/API handling. Do not print them, put them in tickets, enable shell tracing around them, or treat base64 as encryption.
-- Prefer short-lived workload federation/dynamic leases where supported; validate issuer, audience and subject/target restrictions. Removing a workload does not necessarily revoke an issued credential.
 - Generate secrets with a cryptographically suitable provider, encrypt transport/storage, audit metadata-only access and test manager outage/break-glass recovery.
 - Keep secrets out of source, images/build layers/arguments, Terraform state outputs and unrestricted artifacts. Kubernetes Secret encoding alone is not encryption or adequate access control.
 

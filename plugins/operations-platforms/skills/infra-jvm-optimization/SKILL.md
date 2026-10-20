@@ -13,7 +13,9 @@ metadata:
 
 # Infrastructure and JVM optimization
 
-Optimize cost or throughput subject to user outcomes and stability. A smaller pod or lower heap chart alone is not proof of improvement.
+Treat the JVM, application concurrency and hosting resources as one system. Establish where the workload spends time and memory, then form a hypothesis about the limiting resource. A heap setting can change collection behavior without bounding the process's total memory; a replica increase can move pressure to a shared database. Examine the outcome at the user and dependency level as well as the tuned component.
+
+Choose a small experiment that can distinguish the hypothesis from other causes and compare it with the baseline under representative conditions. Optimize cost or throughput subject to user outcomes and stability. A smaller pod or lower heap chart alone is not proof of improvement.
 
 Use JVM flags and ergonomics only for a Java/JVM workload. For Python, Node.js or another runtime, use capacity and demand-modeling expertise and that runtime's current guidance; do not introduce Java or Kubernetes to use this skill.
 
@@ -23,7 +25,7 @@ Use JVM flags and ergonomics only for a Java/JVM workload. For Python, Node.js o
 - **Setup/feature:** configure and test runtime/infra together, including probes, graceful shutdown, pools and load-sensitive behavior.
 - **Recurring review:** audit rendered settings and metrics against the previous baseline, identify inconsistencies, prepare measured bounded changes, and track experiments. Do not auto-promote unbenchmarked collector/resource changes to production.
 
-Consult [references/optimization-guide.md](references/optimization-guide.md). Discover runtime/JDK version, architecture/libc, container launch flags, application/consumer/job roles, deployment overrides, autoscaler metric semantics, resource limits and normal/peak behavior. Inspect effective rendered configuration, not only base YAML or comments for deeper implementation details when needed.
+Discover runtime/JDK version, architecture/libc, container launch flags, application/consumer/job roles, deployment overrides, autoscaler metric semantics, resource limits and normal/peak behavior. Inspect effective rendered configuration rather than only base YAML or comments. Consult [the optimization guide](references/optimization-guide.md) for deeper implementation details.
 
 ## Workflow
 
@@ -39,7 +41,11 @@ Consult [references/optimization-guide.md](references/optimization-guide.md). Di
 
 ## Guard against misleading optimization
 
-GC choice depends on CPU/heap/pause needs and JDK; Serial/G1/ZGC are not ranked universally. Heap caps do not bound process RSS. Scaling replicas may worsen database pressure or a memory leak. Aggregated external metrics with `AverageValue` need adapter/unit verification. Hard spread constraints can leave replicas Pending.
+- GC choice depends on CPU/heap/pause needs and JDK; Serial/G1/ZGC are not ranked universally.
+- Heap caps do not bound process RSS.
+- Scaling replicas may worsen database pressure or a memory leak.
+- Aggregated external metrics with `AverageValue` need adapter/unit verification.
+- Hard spread constraints can leave replicas Pending.
 
 ## Completion evidence
 

@@ -44,6 +44,12 @@ On exposure promptly invalidate/replace access and investigate its scope/use. De
 
 Plan for manager/network outage, startup dependency and bootstrap credentials. Test protected break-glass and restore paths that do not depend on retrieving a credential from the failed system itself. Limit cached credentials by lease/policy rather than let unavailable managers create unbounded secret reuse.
 
-**Acceptance cases:** replace shared static CI access with scoped federation; rotate a secret whose mounted consumer does not reload; handle compromised credentials without exposing values; retain decrypt keys required by backups; rehearse secrets-manager outage access.
+## Illustrative acceptance cases
+
+- Replace shared static CI access with scoped federation.
+- Rotate a secret whose mounted consumer does not reload.
+- Handle compromised credentials without exposing values.
+- Retain decrypt keys required by backups.
+- Rehearse secrets-manager outage access.
 
 Primary reference: [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html).

@@ -16,7 +16,16 @@ Create a responsive, self-contained HTML diagram when that is the requested arti
 
 Identify the audience, question, scope and source evidence. Distinguish implemented architecture, observed deployment, proposed design and unknowns. Trace important relationships to supplied context or source; use current-system mapping expertise or evidence-backed architecture explanation expertise when available for deeper discovery and semantic coverage. Keep technology lists and invented components from standing in for an explanation.
 
-Choose context/container/component views for structure, sequences for order, state views for lifecycle or data flows for information movement. Keep labels, directed relationships and boundaries consistent. Explain notation where needed and provide text for important meaning.
+| Reader's question | Suitable view |
+| --- | --- |
+| What is the structure? | Context/container/component |
+| What happens in what order? | Sequence |
+| How does state change? | State/lifecycle |
+| Where does information move? | Data flow |
+
+Choose the smallest view that answers the question, then decide what each element and connection means before arranging it. A structural view needs responsibilities and directed dependencies; a sequence needs participants, ordering and consequential branches; a lifecycle needs valid states and transitions. Mixing those meanings in one unlabeled connector makes an attractive diagram difficult to interpret.
+
+Keep labels, directed relationships and boundaries consistent. Give a relationship a verb or message that explains what crosses it. Use grouping to express an actual boundary or ownership, and provide text for important meaning. Add another view when it answers a different useful question rather than overloading one picture with every detail.
 
 ## Use the HTML guide selectively
 

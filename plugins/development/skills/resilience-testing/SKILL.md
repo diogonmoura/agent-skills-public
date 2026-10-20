@@ -17,9 +17,23 @@ Verify the promised user outcome when a relevant dependency or component fails, 
 
 ## Define the hypothesis and boundary
 
-Read the journey, dependency/worker contracts, accepted deadlines and recovery expectations. Use reliability, observability and recovery guidance when available. State baseline behavior, one failure condition, expected degraded outcome, unaffected paths and the observation that would disprove the hypothesis. Derive limits from accepted requirements; label provisional values. Do not inject faults solely because a tool supports them or prescribe every scenario for a small feature.
+Read the journey and identify a dependency whose failure could prevent or corrupt its outcome. Decide which state of failure matters: unavailable before work starts, interrupted while work is in progress, or unreachable after work may already have completed. Those conditions require different observations and can expose different recovery behavior.
 
-Examples: a slow provider produces a bounded error while unrelated reads work; a restarted worker resumes accepted work without repeating a business effect; loss of database access fails mutations without corrupting data and normal operation returns afterward. HTTP success, pod readiness and a green alert alone do not prove these outcomes.
+Read the dependency/worker contracts, accepted deadlines and recovery expectations. Explain what the application should tell the caller, what work may remain unfinished, and how that work will be accounted for after recovery. Use reliability, observability and recovery guidance when available.
+
+- State baseline behavior, one failure condition, expected degraded outcome, unaffected paths and the observation that would disprove the hypothesis.
+- Derive limits from accepted requirements; label provisional values.
+- Do not inject faults solely because a tool supports them or prescribe every scenario for a small feature.
+
+Examples illustrate different failure boundaries:
+
+| Failure | Outcome to establish |
+| --- | --- |
+| Slow provider | A bounded error while unrelated reads work. |
+| Worker restart | Accepted work resumes without repeating a business effect. |
+| Loss of database access | Mutations fail without corrupting data and normal operation returns afterward. |
+
+HTTP success, pod readiness and a green alert alone do not prove these outcomes.
 
 ## Choose the least intrusive method
 
@@ -35,15 +49,37 @@ Match the injection point to the claim. Raising an exception is not the same as 
 
 Routine fixture tests stay within the existing local test scope. A live or shared-environment experiment needs an established target/action policy specifying selected resources, duration, affected users/dependencies, data ownership and side-effect constraints. Preserve authority already granted; do not treat installing this skill as permission to terminate resources. Production experiments require explicit production scope and are not the default.
 
-Check baseline health and observability before injection. Define measurable stop conditions, a reachable stop mechanism, bounded fault lifetime and the expected recovery procedure. Preserve data and control email/payment/model effects. If the target identity, observation or restoration path is missing, return a plan with that blocker rather than execute blindly. Do not initiate an incident or contact responders without the requested authority.
+### Before injection
 
-Introduce one controlled fault first. Record actual target/action/time and prove the fault took effect; failure to inject is not a successful resilience result. Observe the original journey, unrelated operations and relevant queues/pools/resources. Check timeouts, backpressure, bounded retries, duplicate effects, cancellation/deadlines and user-visible errors as applicable. Avoid retry storms, indefinite requests and resource leaks; do not add a circuit breaker unless it solves an evidenced requirement.
+Check baseline health and observability before injection.
+
+- Define measurable stop conditions, a reachable stop mechanism, bounded fault lifetime and the expected recovery procedure.
+- Preserve data and control email/payment/model effects.
+- If the target identity, observation or restoration path is missing, return a plan with that blocker rather than execute blindly.
+- Do not initiate an incident or contact responders without the requested authority.
+
+### During the fault
+
+Introduce one controlled fault first.
+
+- Record actual target/action/time and prove the fault took effect; failure to inject is not a successful resilience result.
+- Observe the original journey, unrelated operations and relevant queues/pools/resources.
+- Check timeouts, backpressure, bounded retries, duplicate effects, cancellation/deadlines and user-visible errors as applicable.
+- Avoid retry storms, indefinite requests and resource leaks; do not add a circuit breaker unless it solves an evidenced requirement.
 
 ## Remove the fault and verify recovery
 
-Always attempt restoration through test/workflow cleanup independent of success. Arrange a bounded expiry or external cleanup path when termination could skip teardown. Restore only the resources/settings this experiment changed, preserving concurrent legitimate changes. Do not reset shared data or silently disable unrelated protections.
+Always attempt restoration through test/workflow cleanup independent of success.
 
-Verify the actual journey returns, accepted work is accounted for, queues drain appropriately and temporary controls are removed. Review persistent invariants and duplicate/stale effects after recovery. Data loss or an ambiguous external effect remains explicit even when service responsiveness returns. Keep leftover faults or failed cleanup as a blocking result with a concrete handoff; aborting the test does not prove recovery.
+- Arrange a bounded expiry or external cleanup path when termination could skip teardown.
+- Restore only the resources/settings this experiment changed, preserving concurrent legitimate changes.
+- Do not reset shared data or silently disable unrelated protections.
+
+Verify the actual journey returns, accepted work is accounted for, queues drain appropriately and temporary controls are removed.
+
+- Review persistent invariants and duplicate/stale effects after recovery.
+- Data loss or an ambiguous external effect remains explicit even when service responsiveness returns.
+- Keep leftover faults or failed cleanup as a blocking result with a concrete handoff; aborting the test does not prove recovery.
 
 ## Keep automation and evidence honest
 

@@ -18,7 +18,9 @@ compatibility: Python 3.10+ standard library for validation and rendering. Optio
 
 # System flow explorer
 
-Produce one self-contained HTML file backed by a canonical JSON model. Use the bundled renderer rather than generating scenario-specific JavaScript. Deliver the source JSON alongside the HTML for refinement.
+Build an explanation a reader can explore without losing the user scenario. Choose a task the system supports and follow its messages, state changes and external interactions. Structural views show who owns that work; sequence views show how it unfolds. Depth changes reveal detail within the same explanation rather than creating a different story at each level.
+
+Produce one self-contained HTML file backed by a canonical JSON model. Use the bundled renderer rather than generating scenario-specific JavaScript. Deliver the source JSON alongside the HTML so later refinement can preserve the identities and evidence behind the views.
 
 Use this when an interactive architecture artifact is requested. For an evidence inventory or topology review without an explorer, use current-system mapping expertise when available; for a compact static diagram, use `architecture-diagramming`. Reuse their evidence rather than repeat discovery. The renderer is an optional documentation artifact, not application scaffolding.
 
@@ -27,7 +29,12 @@ Use this when an interactive architecture artifact is requested. For an evidence
 1. Identify the repository/service or proposed design, the audience, and the user scenarios. Infer these from the conversation; ask only about material gaps. Repository analysis and ideation are both first-class modes. A mixed design should label each implemented, proposed, and unresolved part individually.
 2. Read [analysis guidance](references/analysis.md). For repository work, inspect applicable agent guidance, entrypoints, route registration, service clients, persistence, and representative request paths. Treat documentation as a lead and check code. For brainstorming, record assumptions and open decisions explicitly.
 3. Read [the model contract](references/schema.md), then create JSON using `assets/minimal.json` as a structural example. Model actors and ownership before messages. Record paths/line ranges or supplied design citations in `sources`. Cite implemented claims. Use illustrative payload labels unless samples were actually observed; redact secrets and personal data.
-4. Choose the useful detail from the audience, scenario, and available evidence; the user does not need to request zoom controls. Use optional `exploration` settings for the initial global depth and local overrides. Keep simple flows shallow; model component drill-down where it helps explain behavior, without inventing internals. Add scenario roots in chronological order and optional component substeps linked by `parentId`. Preserve root IDs, payloads, and order while refining. Components belong to containers; external services/models stay in their own external systems. Flow tabs represent user scenarios only. Sequence versus C4 is a view; context/container/component is a separate depth selector.
+4. Choose useful detail from the audience, scenario and evidence; zoom controls need no separate request. Use optional `exploration` settings for initial global depth and local overrides.
+
+   - Keep simple flows shallow; model component drill-down when it explains behavior without invented internals.
+   - Add scenario roots chronologically and optional component substeps linked by `parentId`. Preserve root IDs, payloads and order while refining.
+   - Put components in containers and external services/models in their own external systems.
+   - Use flow tabs for user scenarios. Sequence versus C4 is a view; context/container/component is a separate depth selector.
 5. Validate and render (replace paths, run from any directory):
 
    ```sh

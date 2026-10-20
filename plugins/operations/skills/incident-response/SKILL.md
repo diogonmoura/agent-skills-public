@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Reduce user harm while building a reliable record of decisions and evidence. Do not delay a supported mitigation to finish a perfect diagnosis.
+Reduce current user harm and preserve enough evidence to make the next decision. Establish what is failing now, who is affected, and which parts still work. Compare that impact with available signals so an old alert or a broken telemetry path does not define the incident by itself.
+
+Run stabilization and investigation together. Choose a mitigation for the effect it is expected to have, observe whether that effect occurred, and revise the hypothesis when it did not. Record the target, time and result so another responder can understand what changed. Do not delay a supported mitigation to finish a perfect diagnosis.
 
 ## Modes
 

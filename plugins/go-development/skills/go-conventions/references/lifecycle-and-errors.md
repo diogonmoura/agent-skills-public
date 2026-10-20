@@ -4,11 +4,21 @@ Read for concurrent work, resource-owning components, clients or service shutdow
 
 ## Establish ownership before coordination
 
-For each goroutine/resource, identify its owner, start/stop contract, completion signal and work that can remain blocked. Prefer synchronous boundaries when the caller can introduce concurrency. Bound fan-out, queue/pool sizes and retry/deadline budgets from workload and service commitments. Decide who closes a channel and when no sender remains; a cancellation branch elsewhere does not make an unguarded send cancellable.
+Identify the owner of each goroutine and resource: who starts it, who can stop it and who observes completion. Prefer a synchronous API when the caller can introduce concurrency itself. When the component owns background work, expose a lifecycle that lets its caller wait for shutdown rather than assuming a cancellation signal means work has ended.
 
-Use context-aware HTTP/database calls and release request-scoped resources on all relevant paths. Pass context per operation where it represents that call's lifetime. If background work legitimately outlives a request, give it an explicit service-owned bounded lifecycle and a durability decision; detaching cancellation alone does not make a durable job. A timeout may leave an external result ambiguous and require reconciliation.
+Follow each blocking point through early termination. A sender needs a path when its receiver stops; a receiver needs a path when no more input will arrive; an external call needs a supported timeout or cancellation mechanism. A cancellation branch elsewhere does not make an unguarded send cancellable. Decide who closes a channel and how that owner knows no sender remains.
 
-Choose a mutex for coordinated shared invariants, atomics for suitably independent state, and channels when communication/ownership transfer clarifies the contract. Document actual concurrency guarantees, including whether returned mutable values remain shared. Test closed channels, cancellation while blocked, concurrent shutdown and partial startup where those are permitted states; avoid copying a sample lifecycle without its preconditions.
+Bound fan-out, queue/pool sizes and retry/deadline budgets from the workload and service commitments. A concurrency bound should account for the resources each operation holds, not just the number of goroutines that can be started. Use context-aware HTTP/database calls and release request-scoped resources on all relevant paths.
+
+Pass context per operation where it represents that call's lifetime. If work legitimately outlives a request, give it an explicit service-owned bounded lifecycle and decide whether it must survive process loss. Detaching cancellation alone does not make a durable job. If a timeout leaves an external result uncertain, preserve the logical operation identity and reconcile before repeating a consequential effect.
+
+| Coordination need | Candidate |
+| --- | --- |
+| Coordinated shared invariants | Mutex |
+| Suitably independent state | Atomics |
+| Communication or ownership transfer that clarifies the contract | Channels |
+
+Document actual concurrency guarantees, including whether returned mutable values remain shared. Test closed channels, cancellation while blocked, concurrent shutdown and partial startup where permitted; preserve a sample lifecycle's preconditions.
 
 ## Shut down against the actual server contract
 

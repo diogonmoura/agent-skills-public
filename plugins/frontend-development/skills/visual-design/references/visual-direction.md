@@ -12,7 +12,15 @@ Define the choices that materially shape the experience: information hierarchy, 
 
 ## Carry design intent into implementation
 
-Reuse accepted designs. Use Figma when it is available, appropriate and authorized; otherwise use HTML/CSS for responsive or interactive prototypes, or SVG for static wireframes and flows. Choose the artifact that resolves the design uncertainty and inspect its rendered result with realistic content, important states and relevant layouts. If the requested deliverable specifically requires Figma, report missing access rather than silently substituting another format.
+Reuse accepted designs. Select an artifact for the uncertainty and available access:
+
+| Artifact | Appropriate use |
+| --- | --- |
+| Figma | Design work when available, appropriate and authorized. |
+| HTML/CSS | Responsive or interactive prototypes when a local approach fits. |
+| SVG | Static wireframes and flows. |
+
+Inspect the rendered result with realistic content, important states and relevant layouts. If the requested deliverable requires Figma, report missing access rather than silently substituting another format.
 
 Keep scenario references, design rationale and unresolved decisions with the design or existing project note. Distinguish proposed and accepted direction. Map the design's tokens, components and variants to the target implementation, including native equivalents where needed. A mockup establishes appearance, not runtime behavior or application correctness.
 

@@ -16,6 +16,25 @@ metadata:
 
 Read [task guidance](../../TASKS.md). Read [deliver-reliable-changes](../deliver-reliable-changes/SKILL.md) for completion evidence and scope. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
 
-Pin target/base/head from the PR or current repository context; ask only if ambiguity changes the diff. Use the agreed request/spec/ticket when present, without requiring a tracker or inventing requirements. Review scope, correctness, contracts, UX coverage, data/authority, reliability and delivery consequences with relevant specialists. For affected UI use interface assessment expertise and interface-language expertise when installed; distinguish rendered/runtime evidence from static inspection. Use usability research expertise only for relevant supplied observations or a requested research plan, not to fabricate validation. Use code-review or security techniques only as supported by the client's invocation controls; review inline if delegation is unavailable.
+## Establish and assess the review target
 
-Inspect existing checks and run appropriate authorized local tests when useful, including actual affected user journeys. Do not claim all tests passed from CI status alone. Return severity, concrete location/scenario, impact and an actionable fix; distinguish missing evidence from proven defects. Leave source unchanged by default, apart from owned test/runtime artifacts. Post review comments, apply fixes, approve or merge only when requested or covered by trusted job policy. A changed head invalidates earlier review/test conclusions.
+Pin target/base/head from the PR or current repository context; ask only if ambiguity changes the diff.
+
+- Use the agreed request/spec/ticket when present, without requiring a tracker or inventing requirements.
+- Follow the changed behavior from its caller to its result. Read enough surrounding code to understand existing callers, stored state and error handling, then check whether the new behavior agrees with them.
+- Examine consequential assumptions: which actor is trusted, which changes happen together, what a retry means, and which consumers may still use the previous behavior. Use relevant specialists to deepen concerns that the diff actually changes.
+- For affected UI use interface assessment expertise and interface-language expertise when installed; distinguish rendered/runtime evidence from static inspection.
+- Use usability research expertise only for relevant supplied observations or a requested research plan, not to fabricate validation.
+- Use code-review or security techniques only as supported by the client's invocation controls; review inline if delegation is unavailable.
+
+## Verify and report findings
+
+Inspect existing checks and run appropriate authorized local tests when useful, including actual affected journeys. CI status alone does not establish that all tests passed.
+
+For each finding, provide:
+
+- Severity and concrete location/scenario.
+- User or system impact.
+- An actionable fix.
+
+Support a defect with a concrete path through the changed code and the condition that makes it fail. Explain why the result violates an accepted requirement or existing behavior. When the concern depends on an assumption you could not verify, state that assumption and the evidence needed to resolve it. Distinguish missing evidence from a proven defect. Leave source unchanged by default, apart from owned test/runtime artifacts. Posting comments, applying fixes, approving or merging requires the request or trusted job policy. A changed head invalidates earlier review/test conclusions.

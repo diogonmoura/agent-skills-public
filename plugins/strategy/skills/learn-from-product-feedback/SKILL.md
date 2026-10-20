@@ -18,19 +18,36 @@ Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallba
 
 Start with the intended user outcome and the decision this evidence should inform: improve an interaction, investigate a problem, continue an experiment, change scope or stop. Read the product's assumptions and existing feedback. A shipped feature is an output; whether people can achieve the intended outcome is the question. Keep the activity small enough to change a real decision.
 
-Use available evidence before adding tools: support reports, user-provided interviews, usability observations, reviews and existing usage data. Identify source, period, segment and collection limitations. Analyze only data the project is authorized to access. Sending questionnaires, contacting users, adding tracking or running experiments requires a request that includes that activity.
+Use available evidence before adding tools: support reports, user-provided interviews, usability observations, reviews and existing usage data.
+
+- Identify source, period, segment and collection limitations.
+- Analyze only data the project is authorized to access.
+- Sending questionnaires, contacting users, adding tracking or running experiments requires a request that includes that activity.
 
 ## Combine what users say and do
 
-Qualitative feedback explains context and friction; quantitative usage helps indicate prevalence and outcomes. Group repeated reports by underlying problem, preserve representative evidence, deduplicate repeated contacts and distinguish people/accounts from mentions. Do not treat the loudest customer or an AI-generated sentiment score as a representative population.
+| Evidence | Helps explain | Interpretation limit |
+| --- | --- | --- |
+| Qualitative feedback | Context and friction | The loudest customer or an AI-generated sentiment score does not establish a representative population. |
+| Quantitative usage | Prevalence and outcomes | Check missing events, definitions and selection bias before interpreting the population. |
 
-Choose a small number of meaningful measures when data exists: reaching the intended outcome, drop-off between relevant steps, repeat use or retention. State denominator, time window, segment and event definitions. Check missing events and selection bias before interpreting a funnel. Counts of page views or feature clicks alone do not prove usefulness.
+Group repeated reports by underlying problem, preserve representative evidence, deduplicate repeated contacts and distinguish people/accounts from mentions.
+
+Choose a small number of meaningful measures when data exists: reaching the intended outcome, drop-off between relevant steps, repeat use or retention.
+
+- State denominator, time window, segment and event definitions.
+- Check missing events and selection bias before interpreting a funnel.
+- Counts of page views or feature clicks alone do not prove usefulness.
 
 For a saved-search feature, ask whether users can save and later reuse a search. Compare available save/reopen behavior with reports of confusing names, missing searches or poor discoverability. If only a few users exist, examining their journeys and asking focused usability questions can be more useful than proposing an underpowered A/B test.
 
 ## Turn evidence into a small next step
 
-Separate observations from interpretations and hypotheses. Prioritize by severity, relevance to the intended users, evidence and cost of learning/fixing; do not invent numeric scoring where it adds no clarity. Explain conflicting evidence and uncertainty. A feature request may reveal a problem better solved another way.
+For each important pattern, keep the underlying observation visible, explain your interpretation, and identify what remains a hypothesis. Look for the point in the journey where the user could no longer achieve the intended result. The same symptom can have different causes, so compare the reports with available behavior before recommending a feature.
+
+Prioritize problems by severity, relevance to the intended users, strength of evidence and the cost of learning or fixing them. Explain conflicting evidence rather than averaging it away: different segments may have different needs, and a satisfied frequent user may never encounter the obstacle that prevents a new user from starting. Use numeric scoring only when its inputs add clarity.
+
+Recommend a response to the underlying difficulty. A feature request may reveal a problem better solved by clearer interaction, different defaults, better reliability or a narrower product promise.
 
 Recommend a bounded response with an observable outcome and a way to assess it later. Bring accepted work into requirements/planning, using the conversation or Markdown when sufficient; no ticket requirement. Use [product management](../product-management/SKILL.md) for product reprioritization and the next useful slice; refinement owns detailed engineering requirements. Keep the roadmap, assumptions and decision log aligned without turning every comment into backlog work. Close the loop by checking the outcome after the change; contact/report back to users only when requested.
 

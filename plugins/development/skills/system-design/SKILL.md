@@ -19,17 +19,44 @@ Read the product context and repository evidence. Use [system-mapping](../system
 
 ## Make decisions the user can assess
 
-Identify the useful journey, actors, data ownership, consumers and external dependencies. Establish constraints that affect the design: supported clients, offline behavior, synchronization, latency/concurrency, budget, deployment environment, recovery and team capabilities. Mark unmeasured demand and unknown platform support explicitly.
+### Establish constraints
 
-Compare plausible options against those constraints. Explain the recommendation, rejected alternatives, consequences and what evidence would reopen the choice. Start with the simplest system that meets the accepted outcome; add service splits, queues, shared caches or additional frameworks for a demonstrated responsibility. Use installed codebase-design for interfaces/test seams and domain-modeling for complex domain concepts. A named pattern or popular framework does not establish suitability.
+Start with the journey the system must support and follow the information needed to complete it. Identify who supplies that information, which component owns the durable record, which consumers use it, and which external systems can affect completion. This reveals where trust, consistency and failure need explicit treatment.
 
-Describe system context and important service/client responsibilities, deployment boundaries and the critical request/event sequence. Specify contracts, authority checks, persistence/transaction ownership, retries/idempotency, failure/cancellation, compatibility and configuration. Include test seams, diagnostic signals, artifact/release strategy and recovery. Use the relevant backend, frontend/native-client, AI and operations guidance when installed. Architecture diagrams or a flow explorer clarify a decision when requested or useful; a drawing alone is not a design.
+Translate quality goals into conditions that influence the design. Identify what must remain available when a dependency fails, which data may be lost, how quickly the user needs a response, and whether work continues after the client disconnects. Include supported clients, offline behavior, synchronization, expected concurrency, budget, deployment environment and the team's operating capabilities where relevant. Distinguish accepted requirements from provisional estimates; unmeasured demand and unknown platform support remain open inputs.
 
-For desktop/mobile distinguish native shell and client responsibilities from backend services in the accepted stack. For AI separate model/runtime orchestration, AG-UI interaction transport, A2UI rendering and MCP/ACP integrations; verify actual SDK/protocol and harness capabilities before proposing reuse. Existing-session attachment, concurrent edits and voice interruption need explicit supported contracts.
+### Compare plausible options
+
+Compare options that differ in a consequential responsibility, such as where state is owned, when work completes, or who operates a dependency. Explain how each option serves the journey under normal operation and under the failures that matter. Include the cost of deployment, diagnosis and recovery, not only implementation convenience.
+
+Recommend the simplest option that satisfies the accepted constraints. A service split should clarify independent ownership or operation; a queue should have a reason for deferring work and a policy for unfinished work; a cache should have an acceptable freshness and failure behavior. Describe what the chosen option makes easier, what it makes harder, and what evidence would cause the decision to be revisited. A named pattern or popular framework does not establish suitability.
+
+Use installed codebase-design for interfaces/test seams and domain-modeling for complex domain concepts.
+
+### Describe the selected boundaries
+
+Cover the affected design:
+
+- System context, service/client responsibilities, deployment boundaries and critical request/event sequence.
+- Contracts, authority checks, persistence/transaction ownership, retries/idempotency, failure/cancellation, compatibility and configuration.
+- Test seams, diagnostic signals, artifact/release strategy and recovery.
+
+Use relevant backend, frontend/native-client, AI and operations guidance when installed. Diagrams or a flow explorer can clarify a decision; a drawing alone is not a design.
+
+| When the application includes | Make these boundaries explicit |
+| --- | --- |
+| Desktop or mobile clients | Native shell/client responsibilities versus backend services in the accepted stack. |
+| AI capabilities | Model/runtime orchestration, AG-UI interaction transport, A2UI rendering and MCP/ACP integrations; verify actual SDK/protocol and harness capabilities before proposing reuse. |
+| Existing-session attachment, concurrent edits or voice interruption | The supported contracts for those operations. |
+
 
 ## Verify consequential technical claims
 
-For a critical dependency or integration, verify a coherent version, required capabilities, interoperability, operating limits and usage terms against current primary sources. Distinguish demonstrated support, vendor claims, proposed adapters and unavailable behavior. Test uncertain contract boundaries with a bounded authorized spike before committing dependent work. Examples, starter kits and protocol labels establish only the capabilities/terms they actually cover; verify the component and intended use separately.
+For a critical dependency or integration, verify a coherent version, required capabilities, interoperability, operating limits and usage terms against current primary sources.
+
+- Distinguish demonstrated support, vendor claims, proposed adapters and unavailable behavior.
+- Test uncertain contract boundaries with a bounded authorized spike before committing dependent work.
+- Examples, starter kits and protocol labels establish only the capabilities/terms they actually cover; verify the component and intended use separately.
 
 Use supported interfaces and the named disposable target for capability checks, following [integration discovery boundaries](../../WORKFLOW.md#working-boundaries). A proposed adapter or demo cannot establish access to an existing runtime/session. Carry unresolved support into the alternatives comparison.
 
@@ -37,7 +64,10 @@ Use supported interfaces and the named disposable target for capability checks, 
 
 Use the shared [consequential finding policy](../../WORKFLOW.md#resolve-consequential-findings) to decide when a finding requires the user and which work depends on it. Architecture evidence should connect actual licensing/distribution terms, security/privacy, reliability, cost and platform support to intended personal, internal or commercial use. Keep these checks proportionate to the critical dependency and changed boundary.
 
-Where a fact or restriction changes an accepted constraint, present supported alternatives and the concrete decision. Continue independent work while dependent work waits. Preserve the required user capability when reopening architecture; a different technical solution can satisfy it without silently changing the product or accepting new terms/costs. Label evaluation spikes separately from production commitments.
+- Where a fact or restriction changes an accepted constraint, present supported alternatives and the concrete decision.
+- Continue independent work while dependent work waits.
+- Preserve the required user capability when reopening architecture; a different technical solution can satisfy it without silently changing the product or accepting new terms/costs.
+- Label evaluation spikes separately from production commitments.
 
 Use service-contract design expertise for service state, authority and consumer contracts inside the chosen boundaries. Use installed interaction design expertise and visual design expertise for experience decisions, and AI contract and evaluation expertise for AI/protocol authority and evaluation. Select technical guidance from the accepted stack and actual inventory; an architecture method does not choose a framework by implication.
 

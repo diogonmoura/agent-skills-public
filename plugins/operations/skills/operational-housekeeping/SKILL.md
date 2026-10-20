@@ -14,11 +14,18 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Turn recurring maintenance into a finite, evidence-backed review with owners and follow-up work.
+Review the operating conditions that drift between feature changes: capacity, retention, expiry, ownership and procedures. For each check, establish which decision its result can trigger and the evidence needed to make that decision. A check with no useful response creates recurring reporting work without improving the system.
+
+Compare the current observation with the previous finding and local policy. Preserve unresolved age, exceptions and ownership so a repeated run follows work through rather than rediscovering it as new. Keep the review finite and return accountable findings; deeper remediation can be a separate scoped action.
 
 ## Modes and general purpose
 
-In interactive work, explain review findings and resolve local policy/ownership decisions. For setup build a risk-based review register and automate stable checks. During features/maintenance update capacity, retention, ownership and procedure requirements affected by the change. In recurring review runs consume the last reviewed revision/register, collect current evidence, update stable findings and prepare bounded remedies. Cleanup/resource mutations need a configured target/action policy; otherwise return candidates and patches rather than deleting anything.
+- In interactive work, explain review findings and resolve local policy/ownership decisions.
+- For setup build a risk-based review register and automate stable checks.
+- During features/maintenance update capacity, retention, ownership and procedure requirements affected by the change.
+- In recurring review runs consume the last reviewed revision/register, collect current evidence, update stable findings and prepare bounded remedies.
+
+Cleanup/resource mutations need a configured target/action policy; otherwise return candidates and patches rather than deleting anything.
 
 The general value is preventing operational debt and reducing toil, not reproducing a project's calendar. Prefer event-driven checks after configuration/releases/ownership changes, backed by periodic review for drift. Retire checks with no decision value and measure whether automation reduced manual effort without weakening outcomes.
 

@@ -1,8 +1,6 @@
 # Evaluation evidence
 
-Keep datasets, expected outcomes and deterministic evaluators runnable in the application without a hosted service. Identify code/model/prompt/tool, dataset and evaluator revisions. Retain per-case failures, denominators, sample size, variability and relevant latency/usage boundaries. A dashboard is a view of evidence, not its source of authority.
-
-Calibrate subjective grading against accepted human examples. Keep authorization, schema, side-effect and failure invariants deterministic even when a model judge rates quality highly. Observed execution signals explain what ran and how it failed; they cannot establish answer usefulness on their own. Use available observability methods for signal contracts and selected technical guidance for SDK/backend setup.
+Use this reference when choosing evaluation levels, cases or graders. Begin with the property the application needs to demonstrate and select evidence that can actually observe it. Keep datasets, expected outcomes and deterministic evaluators runnable in the application without a hosted service; a dashboard can help inspect results without becoming their source of authority.
 
 ## Evaluate the relevant levels
 
@@ -18,31 +16,47 @@ Derive levels from the architecture and the user's outcome; a simple bounded fea
 | End-to-end product journey | Can a user complete the accepted task through the real interface with correct persisted state, access control and understandable failures? | A final answer, trace or aggregate metric alone is insufficient |
 | Operating/online quality | Do privacy-approved samples, feedback and incidents reveal drift or regressions after release? | Sampled telemetry is not complete coverage or a substitute for held-out release evidence |
 
-Use cheap deterministic checks routinely. Run bounded quality experiments when behavior changes, broader held-out comparisons for consequential model/prompt/retrieval/tool changes, and appropriately sampled online evaluation when authorized. Avoid requiring every expensive layer on every commit. Keep simulated, offline-recorded, live-provider and production evidence labelled separately.
+Choose a level to answer a question. Component evaluation helps locate a weakness; the product journey checks whether the composed system serves the user. Protocol evidence establishes exchange with compatible peers; it does not establish that a generated answer is useful. Keep those interpretations in the result so a strong score at one level is not used to conceal a gap at another.
 
-Score outcome correctness/usefulness separately from safety, authority, grounding, latency and cost. Choose exact assertions, reference/semantic measures, domain-specific checks, calibrated model judges or human assessment according to the property. Do not turn optional tool order, wording or a preferred implementation into the expected answer. Confidence/sample size, case-level failures and important user slices matter alongside averages; rare consequential failures may need explicit acceptance gates.
+## Make acceptance specific enough to judge
 
-Technical evaluation frameworks implement this model; they do not define the product's acceptance or replace deterministic service/protocol tests. Seek available implementation expertise for the selected evaluation library. Operational instrumentation supplies execution evidence and context for failures; scoring usefulness is a separate activity even when one platform supports both.
+Describe the successful outcome in terms of the task. Identify consequential factual requirements, permitted uncertainty, grounding, failure/refusal behavior and actions the system may take. Separate these properties so a fluent or relevant answer cannot compensate for an unauthorized effect or a materially false claim.
+
+Choose exact assertions for application facts and invariants. Use reference-based or semantic measures when several expressions can satisfy the same result. For a subjective rubric, describe the distinctions the grader needs to make and which evidence it may use. Calibrate a model judge against accepted human assessments, including borderline results and failures, and inspect disagreements before treating its scores as a gate. Keep unresolved subjective acceptance with human review.
+
+Give rare consequential failures explicit acceptance conditions when an average would hide them. Keep representative inputs, expected outcomes/rubrics, dataset revisions and deterministic evaluators under application version control.
+
+Set thresholds before comparing candidates. Where quality targets are not settled, state provisional targets and their uncertainty rather than inventing a product commitment. Do not silently change expected outcomes, rubrics or thresholds while repairing a failed result.
+
+## Build cases that discriminate useful behavior
+
+Select representative user tasks and data slices, then include the variation that could change the result: ambiguity, missing or conflicting evidence, malformed input, provider/tool failure and relevant adversarial conditions. Preserve the inputs separately from expected outcomes and actual execution results. Keep enough context to understand why a case matters, without collecting unnecessary personal data.
+
+Use development cases to inspect and improve the behavior. Retain held-out cases to assess whether the change generalizes beyond the material used to build it. Review synthetic cases for task fit and correctness before using them as evidence. Promote useful observed failures into privacy-preserving regressions, retaining the principle they test rather than copying private content.
+
+## Run a comparison the decision can support
+
+Identify the application, model, prompt, retrieval/context and tool configuration, along with dataset and evaluator revisions. Compare candidates on the same relevant inputs and conditions. Inspect case-level failures and important slices alongside the aggregate so a gain on common easy tasks does not hide a consequential regression.
+
+Retain denominators, sample size and variability. Repeat stochastic cases enough to support the decision; one favorable generation does not establish reliability. Include measured latency and usage/cost where they affect acceptance, labelling estimates and missing values. Inspect execution failures and skipped cases before interpreting quality scores.
+
+Keep execution modes explicit:
+
+- Deterministic fixtures establish how the application handles supplied outcomes, failures and authority conditions. Run cheap checks routinely in CI.
+- Recorded outputs establish the behavior of the recorded application run. Scoring them can still require live judge calls.
+- Live provider comparisons establish quality under the evaluated configuration and inputs, within the authorized data, credential and cost scope.
+- Authorized production samples provide operating evidence for their observed population. Sampling and traffic changes limit comparisons with offline results.
+
+Run bounded quality experiments during behavior changes and broader held-out comparisons for consequential model/prompt/retrieval/tool changes. Avoid requiring every expensive level on every commit. Missing provider or judge access leaves the relevant quality boundary unverified.
 
 ## Speech evaluation
 
-Select representative languages/dialects, recording devices/conditions, noise, silence and domain vocabulary from the actual product. For Portuguese, include the intended Portuguese variants rather than assuming one dialect represents all speakers. Assess recognition errors and preservation of consequential terms; use word error rate when suitable alongside task usefulness. A fixture transcript cannot establish live quality. Uploaded-audio success cannot establish streaming latency, turn-taking or interruption.
+Select representative languages/dialects, recording devices/conditions, noise, silence and domain vocabulary from the actual product. For Portuguese, include the intended Portuguese variants rather than assuming one dialect represents all speakers. Assess recognition errors and preservation of consequential terms; use word error rate when suitable alongside task usefulness.
 
-## Define and run a useful evaluation
-
-Select a small representative case set from the product task: normal inputs, ambiguity, malformed input, provider failure and relevant adversarial cases. Define acceptance thresholds before comparing candidates. Use agreed criteria; if quality targets are not specified, state provisional targets and uncertainty rather than silently inventing a product commitment.
-
-Separate two kinds of evidence:
-
-- **Deterministic application checks:** fixtures for contracts, authorization, invalid output, retries, limits and failure presentation. Run these routinely in CI; mocks prove application handling, not model quality.
-- **Live quality evaluations:** explicit calls with representative inputs, recording model/prompt version, quality results, latency, usage/cost where available and sample size. Keep credentials/data and execution within the authorized scope. Inspect errors rather than inferring quality from a few attractive examples.
-
-For speech, evaluate the product's languages/dialects, recording conditions and important domain terms. Match the method to the capability: uploaded-file transcription and streaming/interruption require different evidence. Use the speech measures above when relevant.
+Match the observation to the interaction being promised. A fixture transcript cannot establish live recognition quality. Uploaded-audio success cannot establish streaming latency, turn-taking or interruption; those need the actual media/client/provider path and meaningful user-task observations.
 
 ## Close the evaluation loop
 
-Keep representative inputs, expected outcomes/rubrics, dataset revision and deterministic evaluators under application version control. Separate development examples from held-out regression cases where useful; do not tune only to the examples used to build the feature. Derive cases from accepted product behavior, include meaningful failure/adversarial conditions and preserve privacy when promoting observed failures into fixtures. No external dataset service or record format is required.
+Classify failures by the part of the system that could explain them before selecting a repair. Compare the changed candidate against the accepted criteria and held-out cases, retaining useful regression evidence. Technical frameworks implement this method; they do not define the product's acceptance or replace deterministic service, protocol, accessibility and persistence checks.
 
-After meaningful AI changes run deterministic handling checks, then authorized live quality comparisons when relevant. Record code/model/prompt/tool configuration and dataset/evaluator versions, sample size, per-case failures, latency and usage alongside quality. Repeat stochastic cases sufficiently for the decision and report variability; one favorable generation or aggregate score cannot hide failed authority/task constraints. Calibrate model judges against accepted human examples, include human review for unresolved subjective judgments and keep deterministic invariants outside the judge. Do not silently change expected outputs, thresholds or rubrics to pass. Mocks establish application behavior only.
-
-Keep evaluation runnable without a dashboard. Instrument logical task and tool outcomes where useful, protect sensitive data and use available matching technical guidance for SDK/observability integration. Missing provider access leaves live quality unverified.
+Use execution signals to understand what ran, how it failed and which configuration was active. Use separate evaluation evidence to judge whether the result was correct and useful. Keep their identities linked where helpful without introducing a hosted dataset or observability service as a dependency of domain logic.

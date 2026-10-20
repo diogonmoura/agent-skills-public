@@ -16,6 +16,26 @@ metadata:
 
 Read [task guidance](../../TASKS.md). Read [deliver-reliable-changes](../deliver-reliable-changes/SKILL.md) for baseline and verification, [git-contributions](../git-contributions/SKILL.md) for implementation when requested. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
 
-A bare request surveys the relevant codebase/history and surfaces a short list of opportunities with evidence, likely value, scope, risks and verification. Name relevant aspects such as architecture, performance, reliability, UX consistency, tests and developer experience. No finding or no worthwhile change is valid. Return proposals rather than rewriting unrelated areas or creating tickets automatically.
+## Assess opportunities
 
-A specific requested improvement can authorize bounded implementation within established scope. Establish a baseline, diagnose the cause, define desired outcomes, make focused changes and compare results; do not force another approval for routine choices already authorized. For UX changes use interaction design expertise before changing screens and track all affected surfaces. When installed, use interface assessment expertise for evidence-based craft review and interface-language expertise for relevant task copy; use usability research expertise for a requested study or analysis of actual observations. Keep a bare improvement assessment read-only and use the same expertise during authorized repairs. For architecture examine responsibilities, dependency direction, ownership, coupling/change hotspots, seams and testability; use codebase-design/domain-modeling when useful without forcing deep-module vocabulary, HTML reports or interviews. Preserve behavior through incremental refactoring and regression checks; more abstractions are not inherently better. Tracker proposals/creation and live experiments follow the task's explicit scope.
+Use the relevant codebase and history to find a problem that matters in practice. Look for changes that repeatedly touch unrelated modules, expensive operations in an important journey, failures that are difficult to diagnose, inconsistent interactions, or slow and unreliable development checks. Follow the evidence far enough to distinguish a cause from a disliked coding style.
+
+For each worthwhile opportunity, explain who is affected, what evidence shows the problem, and how a bounded change could improve it. State how improvement would be measured and what behavior needs protection. Compare likely value with implementation and maintenance cost; no finding or no worthwhile change is valid. A bare request returns a short prioritized set of proposals rather than rewriting unrelated areas or creating tickets automatically.
+
+## Implement an authorized improvement
+
+A specific requested improvement can authorize bounded implementation. Keep a bare improvement assessment read-only; do not force another approval for routine choices already authorized.
+
+1. Establish a baseline, diagnose the cause and define the desired outcome.
+2. Make focused changes within scope. Preserve behavior through incremental refactoring and regression checks.
+3. Compare results with the baseline and report the evidence.
+
+Choose the relevant analysis without imposing another process:
+
+| Concern | Examine and use |
+| --- | --- |
+| UX | Establish interaction intent before changing screens; account for all affected surfaces. Use available interface assessment and interface-language expertise for craft and task copy. |
+| Usability evidence | Use available research expertise for a requested study or actual observations. |
+| Architecture | Examine responsibilities, dependency direction, ownership, coupling/change hotspots, seams and testability. Use codebase-design/domain-modeling where useful, without forcing deep-module vocabulary, HTML reports or interviews. |
+
+More abstractions are not inherently better. Tracker proposals/creation and live experiments follow the task's explicit scope.

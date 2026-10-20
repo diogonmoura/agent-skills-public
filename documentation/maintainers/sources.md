@@ -163,13 +163,26 @@ Figma's [official MCP guide](https://developers.figma.com/docs/figma-mcp-server/
 
 Interface-quality, ux-writing and usability-research are original local guidance under this repository's license. Their responsibilities include evidence-based inspection, contextual design, scoped copy changes, component/token preservation, neutral research tasks and honest observation status. These local methods do not copy Community skill text, scripts or private installed content.
 
-The Community candidates above remain references. The MIT better-interface repository delegates to a six-skill group and differs from the canvas-writing Community version; acquiring that group would add overlapping ownership and dependency/control adaptation. The Apache-2.0 Balise source remains reference-only. I chose concise local owners with shared user/agent access and host-independent evidence boundaries, retaining Figma as an optional surface. This is a scope decision, not a claim that local guidance outperforms those sources. A controlled behavioral comparison has not run.
+The Community candidates above remain references. The MIT better-interface repository delegates to a six-skill group and differs from the canvas-writing Community version; acquiring that group would add overlapping ownership and dependency/control adaptation. The Apache-2.0 Balise source remains reference-only. I chose focused local owners with shared user/agent access and host-independent evidence boundaries, retaining Figma as an optional surface. This is a scope decision, not a claim that local guidance outperforms those sources. A controlled behavioral comparison has not run.
 
 ## Documentation methods
 
 I use documentation-writing for authoring quality and architecture-documentation for useful structural, runtime, interface and deployment explanations. Documentation-conventions owns authoritative records and upkeep; system-design owns design choices. These are original local skills; no upstream resources or invocation controls are imported.
 
 The source review compares [Anthropic doc-coauthoring](https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/doc-coauthoring/SKILL.md) and [GitHub documentation-writer](https://github.com/github/awesome-copilot/blob/8bc0f5715b2ddc7901a62fddf144ded30d56de8b/skills/documentation-writer/SKILL.md). Context gathering, reader questions, accuracy and terminology fit; mandatory collaboration/outline approvals do not fit routine authorized upkeep. Diátaxis and Google technical writing inform the authoring method; C4, arc42 and OpenAPI inform architecture coverage. References remain with the skills and do not establish complete standards conformance.
+
+### Skill-writing references
+
+The [Anthropic skills collection](https://github.com/anthropics/skills/tree/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills) provides several useful forms of instruction, rather than one template to reproduce:
+
+| Reference | Useful authoring quality |
+| --- | --- |
+| [frontend-design](https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/SKILL.md) | Connects choices in composition, typography and content to the subject and brief. |
+| [mcp-builder](https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/SKILL.md) | Describes a technical method and routes implementation detail to relevant resources. |
+| [webapp-testing](https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/webapp-testing/SKILL.md) | Makes the path from inspection to action concrete and exposes reusable execution helpers. |
+| [doc-coauthoring](https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/doc-coauthoring/SKILL.md) | Explains what each stage achieves and checks whether a reader can use the result. |
+
+These references inform original authoring; this review does not acquire more upstream skills or change existing pins. Adopt a writing technique when it clarifies the local method, while retaining the collection's scope, optional composition and proportional execution. Client-specific tools, rigid collaboration counts and technical defaults need their own applicability assessment. Readability and meaningful depth require author judgment and reader feedback; resemblance to an upstream format does not establish effectiveness.
 
 ## Product and capability architecture
 
