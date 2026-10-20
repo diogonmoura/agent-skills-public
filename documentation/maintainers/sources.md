@@ -204,15 +204,19 @@ Database methods are original and engine-independent. The three original Postgre
 
 Original identity/access guidance uses inspected Keycloak, Better Auth, Ory Kratos and OpenFGA paths plus current protocol/OWASP references. The [package source review](../../plugins/security/skills/security-auth-development/references/sources.md) records revisions, applicability and limitations. No identity framework or external connection is installed. Security/privacy design moves to security; development retains essential reasoning and capability-based selection.
 
+## SaaS research sources
+
+The original SaaS methods use selected public Next.js SaaS starter and Wasp Open SaaS schema, administration, dashboard and payment paths. The [package source review](../../plugins/saas-development/references/sources.md) pins inspected revisions and separates useful concerns from starter simplifications. No application code, visual theme or framework choice is imported. Dashboard methods remain generic; the actual component framework is selected separately.
+
 ## Plugin ownership
 
-The collection has 20 independent packages and 109 skills: 70 local and 39 acquired. Development is the default build; 11 generic packages contain no stack-specific skills, and 9 technical packages are explicitly selected. Source commit/tree pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
+The collection has 21 independent packages and 112 skills: 73 local and 39 acquired. Development is the default build; 12 generic packages contain no stack-specific skills, and 9 technical packages are explicitly selected. Source commit/tree pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
 
 A plugin represents a useful installation choice. Workflow, application discipline and supporting capability describe its purpose; generic versus technical describes its applicability. These groups do not impose an execution order or dependencies. Installing a technical package makes expertise available without accepting its technology for a project. Keep accepted choices, select matching guidance from actual inventory and retain useful outcomes when optional specialists are absent.
 
 ### Package boundaries
 
-The collection has 11 generic capability packages and 9 optional technical packages. I group specialist tools and operating platforms into two explicit optional packages rather than create a plugin for every tool. Split a package only when independent installation is useful.
+The collection has 12 generic capability packages and 9 optional technical packages. I group specialist tools and operating platforms into two explicit optional packages rather than create a plugin for every tool. Split a package only when independent installation is useful.
 
 | Plugin | Applicability | Skills | Responsibility |
 | --- | --- | --- | --- |
@@ -235,6 +239,7 @@ The collection has 11 generic capability packages and 9 optional technical packa
 | `operations-platforms` | Technical | 3 | Optional JVM, Kubernetes and AKS expertise; match each skill independently to the actual platform. |
 | `database-development` | Generic | 2 | Data contracts, consistency, schema evolution and evidence-led performance methods. |
 | `database-postgresql-development` | Technical | 3 | PostgreSQL development, diagnostics and operating mechanics. |
+| `saas-development` | Generic | 3 | Tenant/customer and commercial lifecycle, SaaS dashboard design and scoped readiness. |
 
 Generic means no required language, framework, provider or platform selection. Comparing technologies, naming optional standards and explaining compatibility remain useful. Concrete implementation and preferred-tool setup belong to technical guidance. Classification must follow the body and its references, not just the metadata label.
 
@@ -273,7 +278,7 @@ Concrete preferences belong in explicitly selected technical guidance or project
 Each row has one owner. Local links lead to source; upstream links lead to the exact acquired revision. Preserve every skill's complete resources, licenses, native controls and scope. The dispositions record the separation of method outcomes from technical implementation; each package is checked independently.
 
 <details>
-<summary>All 109 skills and their current owners</summary>
+<summary>All 112 skills and their current owners</summary>
 
 | Skill | Origin | Plugin |
 | --- | --- | --- |
@@ -386,6 +391,9 @@ Each row has one owner. Local links lead to source; upstream links lead to the e
 | [postgresql-operations](../../plugins/database-postgresql-development/skills/postgresql-operations/SKILL.md) | Local | `database-postgresql-development` |
 | [postgresql-performance](../../plugins/database-postgresql-development/skills/postgresql-performance/SKILL.md) | Local | `database-postgresql-development` |
 | [security-auth-development](../../plugins/security/skills/security-auth-development/SKILL.md) | Local | `security` |
+| [saas-dashboard-design](../../plugins/saas-development/skills/saas-dashboard-design/SKILL.md) | Local | `saas-development` |
+| [saas-design](../../plugins/saas-development/skills/saas-design/SKILL.md) | Local | `saas-development` |
+| [saas-readiness](../../plugins/saas-development/skills/saas-readiness/SKILL.md) | Local | `saas-development` |
 
 </details>
 
@@ -399,7 +407,7 @@ Figma remains optional tooling declared by frontend-development; the React techn
 
 ### Verification coverage
 
-The assignment covers 70 local skills and 39 distinct acquired skills exactly once, with no omissions or duplicate owners.
+The assignment covers 73 local skills and 39 distinct acquired skills exactly once, with no omissions or duplicate owners.
 
 All packages build together with `--all` and independently with explicit selection. Package checks verify inventories, local-resource parity, notices, required framing, and transitive owned Markdown links staying inside their bundle. CI also checks the default development-only build. These checks do not establish agent behavior; behavioral evaluations remain deferred.
 

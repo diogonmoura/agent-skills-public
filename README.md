@@ -17,6 +17,7 @@ Start with **development** for stack-independent development activities. Add pro
 | Database engineering | [database-development](plugins/database-development/) | Data contracts, consistency, schema evolution and evidence-led performance methods. |
 | PostgreSQL implementation | [database-postgresql-development](plugins/database-postgresql-development/) | PostgreSQL development, diagnostics and operating mechanics. |
 | Security engineering | [security](plugins/security/) | Identity/access and security/privacy design with contextual implementation selection. |
+| SaaS applications | [saas-development](plugins/saas-development/) | Tenant/customer and commercial lifecycle, SaaS dashboard design and scoped readiness. |
 
 The collection has 10 generic plugins and 9 technical plugins. Technical expertise applies only to matching accepted choices. No plugin requires installing another; an activity retains its outcome when optional guidance is absent.
 
