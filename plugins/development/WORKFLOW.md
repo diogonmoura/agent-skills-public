@@ -46,6 +46,10 @@ Keep chosen outputs and discovery inside the supplied scope, including during re
 
 Establish integration capabilities through supported inventory, public documentation and the named authorized resource. Treat missing tools/authentication as a reported limit. Diagnostics require their own permitted scope; client profiles, unrelated conversations/logs and credential stores are not implied discovery sources.
 
+## Protect changed boundaries
+
+For affected identities, data and valuable actions, establish verified actor/resource authority, tenant boundaries, minimal data use and relevant failure/abuse cases. Enforce permissions at trusted boundaries, keep secrets out of public clients and logs, and verify relevant allowed/denied operations and sensitive-data handling. Available security/privacy expertise deepens this work; its absence does not remove these outcomes. Match the depth to the change and preserve accepted constraints.
+
 ## Resolve consequential findings
 
 Apply this throughout product definition, architecture, implementation, testing, release and operation. Assess the actual changed boundaries and dependencies proportionately; a small edit does not trigger an exhaustive audit. Use relevant specialists to investigate licensing/usage, security/privacy, reliability/recovery, cost, compatibility, accessibility and other material constraints. New evidence can reopen an earlier decision.

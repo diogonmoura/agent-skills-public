@@ -74,3 +74,7 @@ The legacy helper supports local symlink installations from this checkout:
 ```
 
 It repairs managed unchanged-name links, including broken links to old `skills/` or package paths, while preserving unrelated entries. It adds local skills only, requires the checkout to remain in place and does not migrate renamed basenames, copied directories or other checkouts. Inspect and clean up those entries manually. New installations should use complete built plugins.
+
+## Security package ownership
+
+Security/privacy design now belongs to the independently selected `security` package, alongside identity/access guidance. To retain specialist depth, include that package when rebuilding. Replace the previous development installation rather than overlaying files so its former security skill is removed; otherwise two copies may be discovered. The skill name is unchanged. Development retains essential boundary/verification reasoning and selects optional expertise by capability. No identity provider, account or live credential configuration is migrated.
