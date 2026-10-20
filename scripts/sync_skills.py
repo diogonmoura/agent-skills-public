@@ -4,6 +4,11 @@ import argparse
 import os
 from pathlib import Path
 
+try:
+    from upstream_sources import load_sources
+except ModuleNotFoundError:
+    from scripts.upstream_sources import load_sources
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -27,7 +32,8 @@ def main():
     args = parser.parse_args()
     if args.action not in {"sync", "status", "remove"}:
         args.skill, args.action = args.action, "sync"
-    sources = {path.parent.name: path.parent for path in sorted((ROOT / "plugins").glob("*/skills/*/SKILL.md"))}
+    acquired = {ROOT / source['destination'] for source in load_sources(ROOT, verify=False)}
+    sources = {path.parent.name: path.parent for path in sorted((ROOT / "plugins").glob("*/skills/*/SKILL.md")) if path.parent not in acquired}
     if args.skill != "all":
         if args.skill not in sources:
             parser.error(f"Unknown skill: {args.skill}")

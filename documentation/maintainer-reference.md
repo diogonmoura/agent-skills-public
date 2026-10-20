@@ -13,6 +13,7 @@ Use this page when changing the collection. For installation and everyday use, s
 | Understand composition, discovery and fallback | [Plugin and skill architecture](architecture.md) |
 | Inspect plugin boundaries and every skill owner | [Plugin ownership map](maintainers/sources.md#plugin-ownership) |
 | Add a framework, language or platform | [Adding stack support](maintainers/adding-stack-support.md) |
+| Acquire, verify or update committed snapshots | [Upstream maintenance](maintainers/upstreams.md) |
 | Check origins, licenses, adaptations or selection decisions | [Sources and compatibility](maintainers/sources.md) |
 | Run behavior trials or inspect evidence and open limits | [Evaluating the collection](maintainers/evaluations.md) |
 | Find skills by development phase | [SDLC map](sdlc.md) |
@@ -21,7 +22,7 @@ Use this page when changing the collection. For installation and everyday use, s
 ## Maintaining the collection
 
 1. Edit the owning skill under `plugins/<bundle>/skills/<name>/`, keeping its resources intact. Put specialist methods/diagrams beside that skill and user-facing usage in the reader guides.
-2. For upstream changes, review source/license changes and update full commit/tree pins in [upstream.lock.json](../upstream.lock.json). Preserve dependency groups, native controls and licenses; record adaptations in notices. Never acquire private installed content or execute upstream setup during packaging.
+2. For upstream changes, follow [maintaining upstream snapshots](maintainers/upstreams.md). Agent Depot owns acquisition and snapshot integrity; consumer metadata owns adaptations and attribution. Preserve dependency groups, native controls and licenses. Never acquire private installed content or execute upstream setup during packaging.
 3. Update affected links, catalogue entries and migration notes. Bump the plugin version when packaged content changes. Add focused regression coverage for packaging behavior changes.
 4. Run the checks below. Build into a fresh destination; replace client installations with complete bundles rather than overwriting local edits.
 

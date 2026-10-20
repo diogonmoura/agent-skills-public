@@ -1,3 +1,4 @@
+from depot_fixture import write_depot
 import importlib.util
 from pathlib import Path
 import shutil
@@ -20,6 +21,7 @@ class CollectionTests(unittest.TestCase):
     def test_broken_heading_and_stale_name_fail_but_fenced_examples_do_not(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
+            write_depot(root)
             self.fixture(root)
             self.assertFalse(collection.check_links(root)[0])
             (root / "README.md").write_text("[Start](documentation/usage.md#missing)\nUse `old-name`.\n```md\n[Example](missing.md)\n```\n")
@@ -42,7 +44,7 @@ class CollectionTests(unittest.TestCase):
             (source / "plugin.json").write_text('{}')
             (skill / "SKILL.md").write_text('Local')
             (skill / "resource.txt").write_text('Keep this resource')
-            (root / "upstream.lock.json").write_text('{"sources": []}')
+            write_depot(root)
             built = root / "built"
             shutil.copytree(root / "plugins", built)
             (built / "example/UPSTREAM-NOTICES.json").write_text('[]')
@@ -62,7 +64,7 @@ class CollectionTests(unittest.TestCase):
                 skill.mkdir(parents=True)
                 (skill.parent.parent / 'plugin.json').write_text('{}')
                 (skill / 'SKILL.md').write_text('# Self-contained method\n')
-            (root / 'upstream.lock.json').write_text('{"sources": []}')
+            write_depot(root)
             built = root / 'built'
             shutil.copytree(root / 'plugins/workflow', built / 'workflow')
             (built / 'workflow/UPSTREAM-NOTICES.json').write_text('[]')

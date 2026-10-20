@@ -44,4 +44,12 @@ def validate_skill_metadata(skill):
         raise ValueError(f'Invalid invocation flag: {skill}')
     if not isinstance(metadata.get('user-invocable', True), bool):
         raise ValueError(f'Invalid user-invocable flag: {skill}')
+    client_metadata = skill.parent / 'agents/openai.yaml'
+    if client_metadata.exists():
+        settings = yaml.safe_load(client_metadata.read_text())
+        if not isinstance(settings, dict) or not isinstance(settings.get('policy', {}), dict):
+            raise ValueError(f'Invalid client invocation metadata: {skill}')
+        implicit = settings.get('policy', {}).get('allow_implicit_invocation', True)
+        if not isinstance(implicit, bool) or (metadata.get('disable-model-invocation', False) and implicit):
+            raise ValueError(f'Conflicting invocation metadata: {skill}')
     return metadata

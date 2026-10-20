@@ -78,3 +78,9 @@ It repairs managed unchanged-name links, including broken links to old `skills/`
 ## Security package ownership
 
 Security/privacy design now belongs to the independently selected `security` package, alongside identity/access guidance. To retain specialist depth, include that package when rebuilding. Replace the previous development installation rather than overlaying files so its former security skill is removed; otherwise two copies may be discovered. The skill name is unchanged. Development retains essential boundary/verification reasoning and selects optional expertise by capability. No identity provider, account or live credential configuration is migrated.
+
+## Committed upstream snapshots
+
+Upstream skills are committed inside their owning plugin folders. The build command stays the same and uses those snapshots without fetching repositories; its old `--cache` option is removed. Snapshot acquisition and updates now use Agent Depot, with explicit artifact commits and destinations in `agent-depot.json` and file identities in `agent-depot.lock.json`. These replace `upstream.lock.json`. See [upstream maintenance](maintainers/upstreams.md) before changing a managed folder.
+
+Continue loading complete built bundles, since raw acquired skills do not yet contain the collection’s adaptations or generated notices. The legacy skills-only helper continues to expose authored skills only. Rebuild bundles when updating; avoid overlaying them onto edited client installations.
