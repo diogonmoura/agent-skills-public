@@ -23,7 +23,9 @@ Identify the audience, question, scope and source evidence. Distinguish implemen
 | How does state change? | State/lifecycle |
 | Where does information move? | Data flow |
 
-Keep labels, directed relationships and boundaries consistent. Explain notation where needed and provide text for important meaning.
+Choose the smallest view that answers the question, then decide what each element and connection means before arranging it. A structural view needs responsibilities and directed dependencies; a sequence needs participants, ordering and consequential branches; a lifecycle needs valid states and transitions. Mixing those meanings in one unlabeled connector makes an attractive diagram difficult to interpret.
+
+Keep labels, directed relationships and boundaries consistent. Give a relationship a verb or message that explains what crosses it. Use grouping to express an actual boundary or ownership, and provide text for important meaning. Add another view when it answers a different useful question rather than overloading one picture with every detail.
 
 ## Use the HTML guide selectively
 

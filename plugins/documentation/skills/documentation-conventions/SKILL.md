@@ -45,7 +45,9 @@ Preserve existing documentation conventions. Start with documents that answer re
 
 Put product objectives and metric definitions in the PRD by default. Extract analytics engineering when event schemas, collection, privacy or data-quality rules need their own contract; keep targets in one place and do not install tracking merely to complete documentation.
 
-Separate requirements and constraints from their design response. The current architecture describes implemented behaviour. Put bounded target designs in work packages; use a separate target architecture for material cross-system change and retire it when fulfilled. Link requirements, decisions, work and verification rather than maintain competing baselines.
+Give each record a purpose a reader can recognize. Requirements explain the outcome and constraints; a design explains how the system will meet them; the current architecture explains implemented behaviour. Keep those statuses explicit so a proposal is not mistaken for a supported capability.
+
+Put bounded target designs in the relevant work description. Use a separate target architecture when a material cross-system change needs a durable view, and retire or reconcile it when fulfilled. Link requirements, decisions, work and verification so the reader can follow a choice into its implementation and evidence without maintaining competing baselines.
 
 ### Work tracking
 

@@ -28,7 +28,9 @@ Use available pg_stat_statements, activity/wait statistics, locks, pool telemetr
 
 Rollback cannot undo sequence consumption or external function effects. Use a suitable bounded target and privacy-safe inputs; match available EXPLAIN options to the server version.
 
-Compare estimated versus actual cardinality, loops, filtering, buffers and spills. A sequential scan may be optimal; an index-only scan still depends on visibility information. Statistics, skew, parameter-sensitive/prepared plans, expression shape, sort/pagination and result volume can matter more than a missing index. Diagnose one supported hypothesis rather than turning every plan node into a defect.
+Read the plan as an explanation of how the database obtains and combines rows. Compare estimated and actual row counts, then inspect how often expensive nodes run and how much work they discard. A poor estimate can change a join choice or multiply work deeper in the plan; buffer activity and spills help distinguish access cost from CPU and memory pressure.
+
+Interpret those observations against representative parameters and data. A sequential scan may be optimal; an index-only scan still depends on visibility information. Statistics, skew, parameter-sensitive/prepared plans, expression shape, sort/pagination and result volume can matter more than a missing index. Form one supported hypothesis and choose a change that can confirm or refute it, rather than treating every plan node as a defect.
 
 ## Choose changes with explicit costs
 

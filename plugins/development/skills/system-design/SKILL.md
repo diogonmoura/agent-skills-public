@@ -21,11 +21,15 @@ Read the product context and repository evidence. Use [system-mapping](../system
 
 ### Establish constraints
 
-Identify the useful journey, actors, data ownership, consumers and external dependencies. Establish supported clients, offline behavior, synchronization, latency/concurrency, budget, deployment environment, recovery and team capabilities. Mark unmeasured demand and unknown platform support explicitly.
+Start with the journey the system must support and follow the information needed to complete it. Identify who supplies that information, which component owns the durable record, which consumers use it, and which external systems can affect completion. This reveals where trust, consistency and failure need explicit treatment.
+
+Translate quality goals into conditions that influence the design. Identify what must remain available when a dependency fails, which data may be lost, how quickly the user needs a response, and whether work continues after the client disconnects. Include supported clients, offline behavior, synchronization, expected concurrency, budget, deployment environment and the team's operating capabilities where relevant. Distinguish accepted requirements from provisional estimates; unmeasured demand and unknown platform support remain open inputs.
 
 ### Compare plausible options
 
-Compare against those constraints and explain the recommendation, rejected alternatives, consequences and evidence that would reopen the choice. Start with the simplest system that meets the accepted outcome; add service splits, queues, shared caches or frameworks for a demonstrated responsibility. A named pattern or popular framework does not establish suitability.
+Compare options that differ in a consequential responsibility, such as where state is owned, when work completes, or who operates a dependency. Explain how each option serves the journey under normal operation and under the failures that matter. Include the cost of deployment, diagnosis and recovery, not only implementation convenience.
+
+Recommend the simplest option that satisfies the accepted constraints. A service split should clarify independent ownership or operation; a queue should have a reason for deferring work and a policy for unfinished work; a cache should have an acceptable freshness and failure behavior. Describe what the chosen option makes easier, what it makes harder, and what evidence would cause the decision to be revisited. A named pattern or popular framework does not establish suitability.
 
 Use installed codebase-design for interfaces/test seams and domain-modeling for complex domain concepts.
 

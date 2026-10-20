@@ -18,7 +18,9 @@ Read [task guidance](../../TASKS.md). Read [deliver-reliable-changes](../deliver
 
 ## Assess opportunities
 
-A bare request surveys the relevant codebase/history and surfaces a short list of opportunities with evidence, likely value, scope, risks and verification. Name relevant aspects such as architecture, performance, reliability, UX consistency, tests and developer experience. No finding or no worthwhile change is valid. Return proposals rather than rewriting unrelated areas or creating tickets automatically.
+Use the relevant codebase and history to find a problem that matters in practice. Look for changes that repeatedly touch unrelated modules, expensive operations in an important journey, failures that are difficult to diagnose, inconsistent interactions, or slow and unreliable development checks. Follow the evidence far enough to distinguish a cause from a disliked coding style.
+
+For each worthwhile opportunity, explain who is affected, what evidence shows the problem, and how a bounded change could improve it. State how improvement would be measured and what behavior needs protection. Compare likely value with implementation and maintenance cost; no finding or no worthwhile change is valid. A bare request returns a short prioritized set of proposals rather than rewriting unrelated areas or creating tickets automatically.
 
 ## Implement an authorized improvement
 

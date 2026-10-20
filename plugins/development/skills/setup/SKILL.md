@@ -27,6 +27,8 @@ Use project-conventions to discover the repository, accepted stack, commands, id
 | New project | Establish useful foundations for the requested first slice. Satisfy the [applicable foundation contract](../project-conventions/SKILL.md#complete-new-project-foundations), including authored onboarding, checks/tests, packaging and delivery artifacts. |
 | Existing project | Preserve working foundations, identify missing context and address the requested gaps without restructuring the application. |
 
-Ask about consequential product/platform choices, then record commands and accepted constraints in existing instructions/docs. Verify available startup, migration and test paths and run the available foundation command paths. Name unresolved targets, missing prerequisites and unavailable tools.
+Connect the foundations into a usable development path. A contributor should be able to obtain the required configuration, install dependencies, start the application and run its checks using the documented commands. Where persistence is part of the slice, include how the local data store is prepared and how schema changes are applied. Use sample configuration that explains required values without containing secrets.
+
+Ask about consequential product/platform choices, then record the accepted choices and working commands in existing instructions/docs. Run the available startup, migration and test paths far enough to expose missing dependencies or mismatched configuration. Distinguish artifacts prepared for a future target from a path actually exercised on that target. Name unresolved targets, missing prerequisites and unavailable tools.
 
 Setup does not establish that an application feature is complete. Use develop when the request is to build the application end to end.

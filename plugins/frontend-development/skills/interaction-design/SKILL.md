@@ -33,9 +33,11 @@ For each reusable pattern, establish the relevant contract before implementation
 | Supported platforms | Touch/safe areas, Back/deep links, permission denial, offline/reconnection and foreground/background lifecycle. Preserve drafts across errors and lifecycle transitions; scope offline behavior to the accepted product. |
 | Shared patterns | Page/drawer/dialog choice from task complexity and continuity, navigational submenus versus sibling tabs/context actions, shared behavior/tokens and justified contextual variants. |
 
-Consistency accommodates different user goals and mobile constraints. Establish business rules from evidence; do not invent research or product decisions.
+Describe how the interaction unfolds. Start from the user's entry point, explain what they can do in each meaningful state, and follow the action through completion, cancellation or failure. Decide which state belongs to the URL, the local draft, the server or a background process. That ownership determines whether Back, reload, a repeated action or a late response should preserve, discard or refresh the user's work.
 
-Write a short behavioral description or state/transition table. Add wireframes/wireflows for layout/navigation uncertainty or representative mockups for a new visual direction; reuse adequate existing references. A mockup establishes appearance, not persistence, authorization or complete behavior. Text, wireframe and mockup are not all required for every change.
+Choose a page, drawer or dialog according to the task's need for space, continuity and navigation. Shared controls should behave consistently, while different user goals and mobile constraints can justify explicit variants. Establish business rules from evidence; do not invent research or product decisions.
+
+Capture the result in a short behavioral description or state/transition table. Add wireframes/wireflows for layout/navigation uncertainty or representative mockups for a new visual direction; reuse adequate existing references. A mockup establishes appearance, not persistence, authorization or complete behavior. Text, wireframe and mockup are not all required for every change.
 
 Ask only unresolved high-impact questions. State reversible assumptions and proceed where direction is established. Wait for a genuinely required decision before dependent implementation while continuing independent work; reuse agreed direction without fresh approval per screen. Unattended work records blockers. The design can live in the conversation or existing notes.
 

@@ -25,7 +25,9 @@ For a defect, reproduce the relevant failure before repairing it. Use diagnosing
 - Identify the state, authority, consumer and operating boundaries affected by the change.
 - For substantial UI work, establish interaction direction and surface coverage with interaction design expertise; for backend work establish shared behavior before propagating it across entry points.
 
-Define observable scenarios and expected outcomes before dependent implementation. Keep material criteria stable; a changed requirement needs a justified decision rather than an adjusted expectation to make a failing run pass. Keep consequential assumptions and unavailable capabilities explicit.
+Describe what will be different when the work succeeds. Specify the starting condition, the action and the result the user or another consumer can observe. Include stored changes and denied actions where they matter, so the check can detect an implementation that appears successful while leaving the application in the wrong state.
+
+Use those scenarios to guide implementation and verification. Keep material criteria stable; change them only when the underlying requirement has changed for a reason. Investigate a mismatch before adjusting the expected result. Record consequential assumptions and unavailable capabilities so a later report cannot turn an unexecuted check into a success claim.
 
 ## Match evidence to the claim
 
@@ -55,7 +57,7 @@ Keep meaningful regression tests with the feature as behavior is implemented. Fo
 2. Inspect outcomes, diagnostics and relevant state against the accepted criteria.
 3. Diagnose discrepancies, repair the shared cause and recheck before dependent work. Add coverage for an observed failure at the smallest boundary that captures its cause.
 
-Manual exploration complements committed tests.
+Read the test results and inspect the behavior they are meant to establish. A passing assertion can still exercise the wrong route, use a privileged test identity or bypass persistence. Check important effects through an observation that does not merely repeat the implementation's own success response. Manual exploration complements committed tests by exposing unexpected interaction and configuration problems; preserve useful reproductions as regression coverage.
 
 Use isolated test data/stores and controlled providers. Journey-testing owns fixture identity, driver and platform details. Mocks demonstrate application handling; live integrations and native clients require their own evidence. Keep expensive load/fault/live-model checks at risk-appropriate milestones, rather than repeating every suite after each edit.
 

@@ -14,7 +14,7 @@ user-invocable: true
 
 # Define the hosted product's contracts
 
-Start with the intended users, paying/customer entities, delivery model and existing decisions. Distinguish a user account, organization/workspace, tenant isolation boundary, billing customer and deployment; these may map differently. Preserve an adequate accepted design and keep depth proportional to the requested feature. Read [lifecycle decisions](references/lifecycle.md) for commercial or tenant transitions and [research sources](../../references/sources.md) for inspected project patterns and their limits.
+Start with who uses the product, who pays for it and which groups share resources. Define the user account, organization/workspace, tenant isolation boundary, billing customer and deployment separately before deciding how they relate. A single person may belong to several organizations; a customer may pay for more than one workspace; a deployment may serve many tenants. The application needs explicit ownership and access rules for the relationships it actually supports. Preserve an adequate accepted design and keep depth proportional to the requested feature. Read [lifecycle decisions](references/lifecycle.md) for commercial or tenant transitions and [research sources](../../references/sources.md) for inspected project patterns and their limits.
 
 ## Establish the tenancy and authority model
 
@@ -36,13 +36,11 @@ Establish what the plan promises, what is metered and which entity owns usage an
 
 ### Payment and integration failure boundaries
 
-Treat webhook delivery, local commits, remote actions and user redirects as separate failure boundaries.
+Decide which system owns each commercial fact and how the application learns that it changed. A provider can confirm a payment while the local entitlement update is still pending. A user redirect can arrive before that update, and a delivered event can be repeated or arrive after a more recent state change. The design must explain what access the application permits during those conditions.
 
-- Verify authenticity and actual account/environment mapping.
-- Persist enough intent/progress to retry or reconcile safely; event deduplication alone does not prove completed business effects.
-- Define ordering/conflict handling and bounded recovery when provider/local state diverge.
+Verify the event's authenticity and actual account/environment mapping before using it. Record enough durable progress to distinguish receiving an event from completing its business effects. If local state changes and remote work cannot commit together, define how interrupted work is found and resumed without repeating a consequential effect. Event deduplication alone does not establish that the intended work finished.
 
-A successful checkout redirect is not authoritative proof of paid access.
+Resolve out-of-order or conflicting information against the source responsible for the fact. Give reconciliation a bounded retry policy and an operator or customer recovery path when it cannot settle the result. A successful checkout redirect is not authoritative proof of paid access.
 
 ## Design the operating product
 

@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Make the application's behavior observable with trustworthy, affordable and protected telemetry. Journey definitions, SLO targets and alert policy belong to `reliability-design`; this skill implements their signal contracts.
+Make it possible to answer a concrete question about the application's behavior. Start from the operation to diagnose and identify which events, timings and relationships would distinguish its likely failure modes. Give those signals consistent meaning across the application and collection pipeline so a query does not combine different populations or units.
+
+A signal contract describes what is emitted, when it is emitted, how it is identified and what it means when it is absent. Journey definitions, SLO targets and alert policy belong to `reliability-design`; this skill implements their signal contracts with trustworthy, affordable and protected telemetry.
 
 ## Modes and discovery
 

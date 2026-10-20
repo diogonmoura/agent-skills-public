@@ -21,11 +21,15 @@ Read the intended journey, existing contracts and accepted decisions.
 - Client controls and model proposals cannot grant server authority.
 - Use authority and data-flow assessment expertise for changed trust/data boundaries.
 
-Define relevant state transitions, public inputs/outputs, validation and failure semantics. Separate accepted intent, durable progress and completed effects. Identify what callers can retry, cancel, recover or observe. Ask about unresolved product choices that change these consequences; investigate implementation facts and choose reversible details within accepted constraints.
+Describe each consequential operation from the caller's point of view. Establish what input is accepted, which current state permits it, what change becomes durable, and what the response promises. An accepted request may mean only that work has been recorded; completion means the promised effect has occurred. Make that distinction visible to callers when work is asynchronous.
+
+Follow what happens if the caller times out, sends the same request again, cancels, or checks progress later. Decide which identity belongs to the logical operation and which belongs to an individual attempt. This lets retries and status checks refer to the same work. Ask about unresolved product choices that change these consequences; investigate implementation facts and choose reversible details within accepted constraints.
 
 ## Preserve state under concurrency and failure
 
-Choose the atomic business operation and its commit boundary. Related changes must preserve invariants together; enforce durable uniqueness or other constraints where races matter. Keep slow remote calls outside long local transactions when possible. A remote effect and a local commit are separate failure boundaries.
+Identify the facts that must remain true when requests overlap. Decide which stored changes form one business operation and protect them with the datastore's transaction and constraint mechanisms. A check performed before a write can become stale before the write occurs; verify that the invariant is still enforced when two callers act together.
+
+Keep slow remote calls outside long local transactions when possible. A remote action can succeed even if the local process fails before recording its result, so a local rollback cannot be treated as proof that no external effect occurred. Specify how the application identifies that operation, detects an uncertain result and reconciles it before repeating a consequential effect.
 
 For work that must survive process loss, retain accepted intent, a stable logical identity, progress and a recovery route.
 

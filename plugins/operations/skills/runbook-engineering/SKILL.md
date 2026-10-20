@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Write the procedure a responder can use under pressure. A complete-looking template without established diagnostic knowledge creates false confidence.
+Write for a responder who needs to choose the next action under pressure. Give them a starting condition they can recognize, a check whose result distinguishes plausible causes, and a next decision for each relevant observation. Explain what the check establishes so someone can recognize when the evidence does not fit the documented branch.
+
+Keep operational knowledge close to its action: the exact target, prerequisites, expected effect, stop condition and independent recovery check. Where that knowledge is missing, mark the gap and provide a reachable escalation path. A complete-looking template without established diagnostic knowledge creates false confidence.
 
 ## Modes and inputs
 

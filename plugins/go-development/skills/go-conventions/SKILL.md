@@ -35,7 +35,9 @@ Return useful errors and preserve inspectable identity/type where callers depend
 
 ### Concurrency
 
-Make every started goroutine's ownership, completion and shutdown behavior clear.
+Before starting concurrent work, identify who starts it, who can stop it, and who waits for it to finish. Follow every blocking receive, send and external call through success, error and cancellation. If the consumer stops early, the producer still needs a way to unblock and release its resources.
+
+Treat cancellation as a signal that cooperating work must observe. Propagating a context helps only when the blocking operation uses it or has another shutdown path. Decide who closes a channel and when all senders are finished; closing it does not establish that the workers have exited. Bound concurrency according to the work and available resources, and make completion observable to the owner.
 
 - Propagate appropriate context/deadlines through context-aware APIs; cancellation is cooperative and does not undo committed work.
 - Choose channels, mutexes or atomics from ownership and contention rather than style alone.

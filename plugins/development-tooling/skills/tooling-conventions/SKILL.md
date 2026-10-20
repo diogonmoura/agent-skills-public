@@ -32,7 +32,9 @@ Read only the relevant reference. Language-specific checks and packaging follow 
 
 ## Verify the actual integration
 
-Pin compatible tool versions and dependencies, align local/CI command semantics, and validate configuration with its real parser/linter and an appropriate execution boundary.
+Connect the selected tool to the project's existing commands and execution environment. Establish its inputs, the configuration it actually reads, the outputs another step consumes, and the status that should stop the workflow. Check differences between local, container and runner execution, especially working directories, network addresses, environment variables and owned data.
+
+Pin compatible tool versions and dependencies, align local/CI command semantics, and validate configuration with its real parser/linter and an appropriate execution boundary. A command that starts successfully still needs a representative execution to show that those pieces agree.
 
 Inspect startup, representative behavior, emitted/received signals, failure status and cleanup where those are the claim. A YAML parse, image build, healthy collector or static component catalogue establishes only that stage.
 

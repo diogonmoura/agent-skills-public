@@ -25,7 +25,9 @@ Investigate relevant facts before asking the user to settle a tradeoff.
 - Consult primary material for substantive interpretation using the [source guide](../../references/sources.md).
 - When legal or assurance interpretation remains material, identify the exact unresolved question and qualified decision owner; do not ask the user to guess technical facts or invent an approved interpretation.
 
-Map the system boundary including people/processes, application and infrastructure, identity, vendors, support, telemetry, data movement and recovery. A requirement may apply to the organization or processing operation rather than a single code repository. Hosted region, encryption, a provider attestation or a passing scanner does not establish the customer's complete compliance.
+Describe the service or processing operation to which the requirement applies. Follow the data and responsibility through people/processes, application and infrastructure, identity, vendors, support, telemetry and recovery. Identify who controls each part and where a supplier or customer must perform an action. A requirement may apply to that whole operation rather than a single code repository.
+
+Use this boundary to decide what the project can demonstrate and what needs evidence from elsewhere. Hosted region, encryption, a provider attestation or a passing scanner can answer a particular question, but each leaves other responsibilities unexamined. Preserve that scope when explaining readiness or gaps.
 
 ## Derive proportionate controls
 
@@ -39,9 +41,9 @@ applicable obligation or commitment
 → evidence and remaining exposure
 ```
 
-- Compare prevention, detection and recovery where relevant; reuse adequate accepted controls rather than adding policy machinery.
-- Distinguish a control's design, implementation, observed operation and independent assessment.
-- Describe residual exposure and proposed acceptance honestly.
+For a proposed control, explain what outcome it protects, where it operates, who maintains it, and how failure becomes visible. Compare prevention, detection and recovery according to the risk: blocking an invalid operation, identifying a missed activity and restoring affected data address different consequences. Reuse adequate accepted controls and explain any uncovered part before adding policy machinery.
+
+Check that the proposed evidence would establish the control's intended operation. Configuration can show how a control is implemented; evidence from the relevant period and population can show whether it operated. Keep design, implementation, observed operation and independent assessment distinct. Describe remaining exposure and any proposed acceptance honestly.
 
 Carry decision consequences into affected product requirements, architecture, implementation, operating procedures and verification. Seek available security, data, delivery and operations expertise by capability; without it use project evidence and primary sources at the same standard. If obligations change intended usage, data handling, spending, retention or customer commitments, present concrete options and seek the unresolved authorized decision while continuing independent work.
 

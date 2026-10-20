@@ -50,7 +50,9 @@ Clarify material user/business outcomes, data/authority boundaries and high-impa
 
 ## Design and plan the slice
 
-Define concise acceptance and a proportionate plan.
+Turn the selected slice into a small set of outcomes that can be demonstrated. Then identify the design choices that could change those outcomes or force substantial rework. Resolve those before coding their dependents, while leaving ordinary implementation details to the implementation work.
+
+Keep the reasoning connected across phases. The product outcome should explain the requirements; the requirements should explain the design; the design should explain the implementation order and verification. Producing separate documents with inconsistent decisions does not establish this continuity. Reuse an existing brief or conversation when it already carries the necessary information.
 
 - For meaningful frontend work establish product-derived visual direction, interaction behavior and affected-surface coverage before coding, using available visual and interaction design expertise.
 - For backend work establish authority, invariants, state/failure and compatibility contracts using service-contract design expertise when available.
@@ -59,8 +61,8 @@ Define concise acceptance and a proportionate plan.
 
 ## Implement and verify
 
-Continue through implementation, tests and review using relevant supporting skills directly, preserving native invocation controls.
+Implement in increments that can be exercised, using relevant supporting skills directly and preserving native invocation controls. After each meaningful change, run the checks that observe its behavior, inspect the result, and repair defects before extending the same approach elsewhere. If implementation disproves an assumption, revisit the affected design or requirement and carry that change through the remaining work.
 
-- Deliver-reliable-changes owns the scenario/test/inspect/repair loop and evidence needed to claim completion; Git contributions owns isolation and publication.
-- Carry accepted decisions and affected knowledge forward.
-- End with the useful implemented outcome, actual evidence and remaining blockers within the established contribution/delivery scope.
+Deliver-reliable-changes owns this scenario/test/inspect/repair loop and the evidence needed to claim completion; Git contributions owns isolation and publication. Keep the accepted decisions and affected documentation consistent with what was built. For UI work, inspect the running experience; for stored behavior, check what can be read back through the real application path.
+
+Finish with the implemented user outcome, the checks actually performed, and any unfinished or blocked part. Delivery and learning are part of considering the result, but publishing, deploying or contacting users still follows the established contribution/delivery scope.

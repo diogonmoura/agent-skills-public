@@ -14,7 +14,9 @@ Choose research to resolve a user question or inform a decision. Use for request
 
 ## Frame the decision and method
 
-Inspect the intended experience, known constraints and supplied flow, frame or prototype. Identify the decision, relevant users/tasks and uncertainty. Use available context; ask only for facts that change the study and label planning assumptions.
+Begin with the decision the team cannot yet make. Identify whose experience matters, what those people are trying to accomplish, and which uncertainty observation could resolve. Inspect the supplied flow, frame or prototype to see whether it supports that task, including the states the study intends to observe.
+
+Form research questions about behavior or understanding that could change the design. Choose the method after framing the question: watching task performance can reveal where people become stuck, while asking for opinions alone cannot establish that they can use the interface. Reuse available context; ask only for facts that change the study and label planning assumptions.
 
 | Question | Suitable method |
 | --- | --- |
@@ -31,7 +33,9 @@ Give participants realistic goals and observable end states while leaving them t
 - Recovery tasks can start from naturally occurring failures or a moderator-prepared failed state; instructions should preserve the original goal without teaching an invalid attempt or its correction.
 - Instructional/comprehension exercises answer a different question and need their own interpretation.
 
-Prepare a concise moderator guide with purpose, think-aloud invitation, observations and neutral probes. Distinguish independent completion, assistance, errors/hesitation and subsequent interpretation. Check task feasibility in the prototype and trace tasks to research questions. Ratings require a stated question/scale and an interpretation justified by the method.
+Prepare a moderator guide that keeps the participant's goal separate from the interface's solution. Describe the situation and desired end state without naming the control to use. Decide what counts as independent completion, when assistance will be offered, and how assisted completion will be recorded, so the moderator does not quietly turn a failed task into a success.
+
+Invite participants to explain what they expect and what they are looking for. Use neutral follow-up probes after observing the behavior; record errors, hesitation, assistance and the participant's own explanation separately from your interpretation. Check task feasibility in the prototype and trace tasks to research questions. Ratings require a stated question/scale and an interpretation justified by the method.
 
 Use synthetic data where possible. Recruitment, contact, recording, private-data collection, publication and canvas writes require their own authorized scope and consent arrangements. A local guide or conversation can be sufficient output.
 

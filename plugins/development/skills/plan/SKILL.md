@@ -24,7 +24,9 @@ Read [task guidance](../../TASKS.md). Reuse existing plans and commands; scale t
 
 ## Order the work by its dependencies
 
-Use relevant technical conventions to choose small increments. Include the consequences that apply:
+Start from a useful observable result and work backward to its prerequisites. A good increment joins enough of the application to prove something meaningful: a caller can exercise the operation, the necessary data changes occur, and a check can distinguish success from failure. Organizing the plan only by folders or technical layers can postpone discovery that those parts do not work together.
+
+Put uncertain or constraining work early enough that it can change the remaining plan. For each increment, name the behavior it delivers, the important prerequisite and the evidence needed before moving on. Reuse the project's technical conventions to choose implementation detail. Include the consequences that apply:
 
 | Affected concern | Include in the plan |
 | --- | --- |
@@ -35,4 +37,6 @@ Use relevant technical conventions to choose small increments. Include the conse
 
 ## Return an executable plan
 
-Provide next steps in dependency order, assumptions and blockers. A tracker, a document per slice and parallel agents are optional. Planning alone does not implement or deploy the work.
+Return steps in the order they can actually be carried out. Make it clear which work is ready, which depends on a decision, and which can proceed independently. For changes to persisted data or deployed consumers, explain the order in which old and new versions can coexist and when cleanup becomes safe.
+
+Keep the plan easy to revise when implementation produces new evidence. The reader should be able to start the next step and recognize when it is done without requiring a separate planning ceremony. A tracker, a document per slice and parallel agents are optional. Planning alone does not implement or deploy the work.

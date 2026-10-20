@@ -14,22 +14,24 @@ Define how the product's purpose becomes hierarchy, composition, typography, col
 
 ## Resolve the visual decision
 
-Read the brief, realistic content, working environment, platform constraints and accepted references.
+Read the brief and work with the content the interface must actually carry. Identify what users need to notice first, how long they will spend reading or working, how much information they compare at once, and the environment in which they use the product. These questions give typography, density and composition a reason to take a particular form.
 
-- Distinguish requirements from inspiration and proposed choices.
-- Compare coherent alternatives when direction is still open; recommend one with a reason grounded in the task.
-- Missing brand assets permit a reversible proposal rather than invented research or a blocked engagement.
+When direction is open, compare coherent alternatives that change the experience, rather than variations of the same starter. Explain how each handles the task and where it places attention. Choose a direction whose visual decisions can be traced to the brief: type should support the reading task, spacing should express relationships, color should establish roles, and motion should help explain change.
 
-Establish semantic tokens and shared patterns for the decisions that matter. When visual choices are open, use available visual-execution craft for subject-grounded composition, typography, restraint and self-critique; accepted identity and the actual brief remain authoritative. Character should come from actual content and use, not decorative domain motifs or a recolored starter. Use [visual direction and review](references/visual-direction.md) for substantial new work, redesign or handoff; it connects scenarios, representative artifacts, tokens and rendered reconciliation without selecting a framework.
+Distinguish requirements from inspiration and proposed choices. Use references for particular qualities you can name and adapt, not as whole layouts to imitate. Missing brand assets permit a reversible proposal that can be shown and critiqued; they do not require invented research or a blocked engagement.
 
-## Materialize and reconcile
+Translate the direction into reusable roles. Give colors, type sizes, spacing and surfaces names that describe their use, then apply those roles consistently to shared components. These semantic tokens let the implementation preserve the design when a palette or component changes. Keep deliberate differences where the task needs them.
 
-Reuse accepted designs and choose available, authorized Figma work, local HTML/CSS prototypes or SVG wireframes according to the uncertainty. An explicitly required format remains part of the deliverable.
+Use available visual-execution craft for composition, typography and critique when choices are open; the accepted identity and actual brief remain authoritative. Derive character from the content and the way people work with it. A decorative domain motif or recolored starter does not explain why the design suits the product. Read [visual direction and review](references/visual-direction.md) for substantial new work, redesign or handoff, including how to connect the design to components and inspect the implemented result.
 
-1. Materialize and inspect a representative difficult state with realistic content, relevant layouts and content growth.
-2. Reconcile that result with the direction before propagating it.
+## Build and inspect the design
 
-Keep design rationale, accepted/proposed status, meaningful states and component/token intent in the existing design record. Technical guidance maps that intent to the chosen platform's real components; a generic design decision does not select React, Tailwind or a native framework.
+Reuse accepted designs and choose an artifact that can answer the remaining question. Figma can support shared design work when available and authorized; local HTML/CSS can reveal responsive or interactive behavior; SVG can explain a static layout or flow. An explicitly required format remains part of the deliverable.
+
+1. Build a representative part of the experience using realistic content. Include a difficult state, content growth and the layouts the task needs, so the design is judged beyond its most flattering empty screen.
+2. Inspect where attention goes, whether content remains readable and how the composition handles those conditions. Repair mismatches with the intended direction before applying the pattern elsewhere.
+
+Keep the reason for the choices, proposed versus accepted status, important states and reusable component/token roles in the existing design record. Technical guidance maps them to the chosen platform's real components; a generic design decision does not select React, Tailwind or a native framework.
 
 Use [interface quality](../interface-quality/SKILL.md) for evidence-based critique and [UX writing](../ux-writing/SKILL.md) for task language. Reconcile the rendered implementation with the direction and report intentional deviations or unverified surfaces. A screenshot supports visual assessment; interaction, accessibility and persisted outcomes require their own evidence through the verification loop.
 

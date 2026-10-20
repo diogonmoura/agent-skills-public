@@ -18,7 +18,9 @@ compatibility: Python 3.10+ standard library for validation and rendering. Optio
 
 # System flow explorer
 
-Produce one self-contained HTML file backed by a canonical JSON model. Use the bundled renderer rather than generating scenario-specific JavaScript. Deliver the source JSON alongside the HTML for refinement.
+Build an explanation a reader can explore without losing the user scenario. Choose a task the system supports and follow its messages, state changes and external interactions. Structural views show who owns that work; sequence views show how it unfolds. Depth changes reveal detail within the same explanation rather than creating a different story at each level.
+
+Produce one self-contained HTML file backed by a canonical JSON model. Use the bundled renderer rather than generating scenario-specific JavaScript. Deliver the source JSON alongside the HTML so later refinement can preserve the identities and evidence behind the views.
 
 Use this when an interactive architecture artifact is requested. For an evidence inventory or topology review without an explorer, use current-system mapping expertise when available; for a compact static diagram, use `architecture-diagramming`. Reuse their evidence rather than repeat discovery. The renderer is an optional documentation artifact, not application scaffolding.
 

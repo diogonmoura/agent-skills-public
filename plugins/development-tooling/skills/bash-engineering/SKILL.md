@@ -14,7 +14,9 @@ user-invocable: false
 
 # Bash engineering
 
-Use Bash for small command orchestration with a clear data and exit-status contract. Move substantial data modeling, API coordination or complex state management to a structured language when that makes maintenance simpler.
+Use Bash to orchestrate commands when the inputs, outputs and failure behavior remain easy to follow. Design the script as an interface: establish what its caller supplies, what stdout means, what diagnostics go to stderr, and which exit status signals failure. Preserve those contracts when changing a script used by other commands or CI.
+
+Follow critical commands through failure as carefully as through success. Decide whether the next action is still valid after a command fails and preserve that result through logging and cleanup. Shell options support that design but do not replace explicit reasoning about pipelines, substitutions and expected nonzero statuses. Move substantial data modeling, API coordination or complex state management to a structured language when that makes maintenance simpler.
 
 ## Modes and discovery
 
@@ -24,16 +26,27 @@ Use Bash for small command orchestration with a clear data and exit-status contr
 
 Discover actual callers, local/CI environments, GNU/BSD requirements, secrets, stdout consumers and mutation scope before editing. Consult [the Bash guide](references/bash-guide.md) for deeper implementation details; for CI integration also read [action boundaries](references/action-boundaries.md).
 
-## Workflow
+## Define the command interface
 
-1. Define arguments/options, defaults, required tools, stdout/stderr, exit codes, no-op behavior and side effects. Unknown/missing/invalid options must fail clearly; `--help` must work without credentials.
-2. Keep caller data as data: quote expansions, use arrays and `"$@"`, avoid `eval`/constructed command strings, and use structured tools for JSON/YAML.
-3. Implement explicit error checks for critical operations. Use shell options deliberately but account for `errexit`, substitutions, pipelines, conditionals and expected nonzero statuses.
-4. Separate discovery/validation from mutation. Provide a truthful dry-run for operational mutations, bounded targets and idempotent/resumable behavior.
-5. Scope variables/functions, avoid import-time side effects in libraries, preserve caller working directory and shell state, and use owned temporary paths with cleanup preserving failure status.
-6. Make logs useful and sanitized; reserve stdout for machine results when that is the contract. Keep CI grouping/outputs at the wrapper boundary.
-7. Validate syntax, ShellCheck and formatter consistency; add focused behavioral tests for argument boundaries, failure propagation, empty selection, no-op/dry-run and externally visible result.
-8. Document supported shell/tool versions, usage and failure/recovery semantics. Verify the installed executable/entrypoint and callers, not just a sourced helper function.
+Establish arguments/options, defaults, required tools, stdout/stderr, exit codes, no-op behavior and side effects. Unknown, missing and invalid options must fail clearly; `--help` must work without credentials. If another program consumes stdout, reserve it for the documented result and send useful sanitized diagnostics elsewhere. Keep CI grouping/outputs at the wrapper boundary so the underlying tool retains a normal CLI contract.
+
+## Preserve data and failure meaning
+
+Pass caller values as arguments without reconstructing them as shell syntax. Quote expansions, use arrays and `"$@"`, avoid `eval`/constructed command strings, and use structured tools for JSON/YAML. This keeps spaces and special characters in a value from changing the operation selected by the script.
+
+Check critical failures explicitly. Account for `errexit`, substitutions, pipelines, conditionals and expected nonzero statuses when deciding what stops execution. Preserve the original failure through diagnostic collection and cleanup so a successful final command cannot conceal the failed operation.
+
+## Control side effects and cleanup
+
+Separate discovery and validation from mutation. Resolve a bounded target set, recheck consequential preconditions and provide a truthful dry-run for operational mutations. Design reruns to identify completed work or resume safely, rather than repeating an ambiguous effect.
+
+Scope variables/functions, avoid import-time side effects in libraries, and preserve caller working directory and shell state. Use owned temporary paths and cleanup that preserves failure status. Cleanup should remove the script's temporary work without deleting unrelated or surviving user data.
+
+## Verify the executable and its callers
+
+Validate syntax, ShellCheck and formatter consistency, then test the behaviors the command promises: argument boundaries, failure propagation, empty selection, no-op/dry-run and the externally visible result. Verify the installed executable/entrypoint and actual callers, not just a sourced helper function.
+
+Document supported shell/tool versions, usage and failure/recovery semantics so a caller can distinguish a completed no-op from a failed attempt.
 
 ## Completion evidence
 

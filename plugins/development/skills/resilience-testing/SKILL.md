@@ -17,7 +17,9 @@ Verify the promised user outcome when a relevant dependency or component fails, 
 
 ## Define the hypothesis and boundary
 
-Read the journey, dependency/worker contracts, accepted deadlines and recovery expectations. Use reliability, observability and recovery guidance when available.
+Read the journey and identify a dependency whose failure could prevent or corrupt its outcome. Decide which state of failure matters: unavailable before work starts, interrupted while work is in progress, or unreachable after work may already have completed. Those conditions require different observations and can expose different recovery behavior.
+
+Read the dependency/worker contracts, accepted deadlines and recovery expectations. Explain what the application should tell the caller, what work may remain unfinished, and how that work will be accounted for after recovery. Use reliability, observability and recovery guidance when available.
 
 - State baseline behavior, one failure condition, expected degraded outcome, unaffected paths and the observation that would disprove the hypothesis.
 - Derive limits from accepted requirements; label provisional values.

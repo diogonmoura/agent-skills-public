@@ -35,7 +35,9 @@ Record intended arrival rate or concurrency, duration, warmup, thresholds, targe
 | Fixed concurrent population | Virtual-user executors. In a closed model, slower responses can reduce offered traffic; account for that when interpreting overload. |
 | Independent incoming demand | Arrival-rate executors. |
 
-Iterations may contain multiple requests; distinguish iteration rate from request rate. Size the generator and VU allocation and inspect achieved throughput and `dropped_iterations`. Unachieved intended load cannot establish application capacity.
+Choose the executor according to how demand arrives. A fixed concurrent population waits for its own work, so a slower application can reduce the rate the test offers. An arrival-rate model attempts to maintain incoming demand independently of that response time, provided the generator has enough capacity. Interpret the result according to that distinction before calling it a capacity limit.
+
+Iterations may contain multiple requests; distinguish iteration rate from request rate. Size the generator and VU allocation and inspect achieved throughput and `dropped_iterations`. Compare intended demand with what the generator actually offered, then examine application latency and failure under that achieved load. Unachieved intended load cannot establish application capacity.
 
 Check semantic outcomes as well as expected status codes.
 

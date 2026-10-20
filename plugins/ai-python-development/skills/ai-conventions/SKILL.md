@@ -15,7 +15,9 @@ Use AI contract and evaluation expertise when available for task contracts, auth
 
 ## Implement the accepted provider boundary
 
-Use the application's Python adapter and locked, compatible SDK version. Framework choice belongs to the accepted architecture: use installed ADK or LangChain/LangGraph specialists only for that chosen framework, without introducing either family for a direct SDK call. Keep provider configuration and credentials at the integration boundary.
+Use the application's Python adapter and locked, compatible SDK version. Framework choice belongs to the accepted architecture: use installed ADK or LangChain/LangGraph specialists only for that chosen framework, without introducing either family for a direct SDK call. Keep provider configuration and credentials at the integration boundary. Translate the SDK's responses into the application's own result and failure semantics there, including incomplete output, refusals, tool requests and transport errors. Domain code should not need to infer success from provider-specific response fields.
+
+For streaming, decide how the application assembles partial output, signals completion and handles interruption. Verify the selected SDK's actual lifecycle rather than assuming a stream of text has the same contract as a complete response. Preserve enough operation identity to diagnose a retry without repeating a consequential tool action.
 
 Prefer Gemini for low-cost LLM and transcription experiments.
 

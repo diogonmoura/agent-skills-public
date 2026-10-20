@@ -19,7 +19,9 @@ Identify the authorized cluster/database, version, hosting model, topology and o
 
 ## Establish recoverability
 
-Choose logical backup, physical backup/WAL recovery, managed snapshots/PITR or a combination from the recovery unit, downtime, retention and failure model.
+Begin with what must be recovered: one record set, one database, or the cluster and its supporting state. Establish the acceptable recovery point and time, then choose a backup and restoration approach that can meet them in the actual hosting environment. Logical backup, physical backup/WAL recovery and managed snapshots/PITR serve different recovery units and operating constraints; a combination may be needed.
+
+Check the complete restore path, including access to the backup, compatible tools, required roles/extensions and the configuration needed to start the recovered system. A backup that cannot be restored within the available access and time does not meet the operating requirement.
 
 - Include roles/global objects, extensions, encryption/access, dependencies and recovery configuration.
 - A replica shares many failure and deletion modes and is not an independent backup.

@@ -36,7 +36,9 @@ For new services, prefer a supported Python, uv with a committed lockfile, FastA
 
 Use installed service-contract design expertise for actor authority, invariants, state/failure, transaction and consumer contracts before substantive implementation; seek architecture expertise when consequential boundaries need decisions. Discover optional guidance through the actual inventory rather than another plugin's path. Without it, establish the affected behavior, ownership, failure semantics and observable acceptance in existing notes before coding. A local fix needs no new design ceremony.
 
-Map the accepted contract to FastAPI schemas/dependencies, SQLAlchemy sessions and migrations. Keep the affected endpoints, jobs, tools and consumers accounted for; do not redefine behavior separately in each handler.
+Map each part of the accepted behavior to its implementation owner. FastAPI handles the HTTP-facing input, response and dependency boundaries; application behavior decides the operation; SQLAlchemy sessions and migrations implement the selected data contract. Keep the substantive operation reusable by endpoints, jobs and tools that must obey the same rules, without forcing every function into a service/repository layer.
+
+Make transaction and resource ownership visible in that flow. The caller should be able to tell when a session is available, which operation commits, and what happens when an exception interrupts it. Keep the affected endpoints, jobs, tools and consumers accounted for; do not redefine behavior separately in each handler.
 
 ## Organize behavior and contracts
 
@@ -100,11 +102,11 @@ Preserve suitable existing database choices. For new persistence needs:
 | Object storage | Uploads with explicit size, type and access limits. |
 | Another database | Workload or platform requirements justify the choice. |
 
-Use one session per request, job or concurrent task; never share an AsyncSession across concurrent tasks or keep a global mutable session.
+Give each request, job or concurrent task its own session; never share an AsyncSession across concurrent tasks or keep a global mutable session. Treat the session as the unit through which that operation reads and changes data, with a lifetime that its owner closes reliably.
 
-- The operation owns its transaction: related changes commit together and roll back on failure.
-- Helpers do not commit opportunistically.
-- Serialize required data while the session is available; avoid implicit lazy I/O, inspect N+1 queries and load relationships deliberately.
+Let the business operation decide when related changes commit together. A helper that commits midway can leave a partial result when later work fails, so helpers should participate in the caller's transaction unless a separate durable step is intentional. Test that failure leaves the intended state, not just that an exception is raised.
+
+Load and serialize the data needed for the response while the session is available. Make relationship loading deliberate so response serialization does not unexpectedly trigger database I/O or a query per row. Inspect query behavior when the returned collection grows.
 
 Enforce uniqueness and invariants with database constraints. Handle races through conditional updates, appropriate locking or isolation, not check-then-insert alone.
 

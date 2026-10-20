@@ -17,7 +17,9 @@ Read [workflow framing](../../WORKFLOW.md) for skill selection and invocation bo
 
 ## Define the claim and boundary
 
-Read acceptance criteria and existing tests. Select the main affected journey and meaningful failure cases; allocate focused logic and combinatorial edge cases to unit/integration tests. Select an actual platform driver compatible with the surface and claim below, preserving an existing suite. Use installed tools for repeatable checks and exploratory operation; an MCP is optional. Keep regression tests and representative scenarios in the target application.
+Read the acceptance criteria and existing tests, then write down the user's goal and the observable result that completes it. Follow the journey through navigation, input, service work and the final state. Choose the important branches where a user could be blocked, receive misleading feedback or affect data they do not own.
+
+Keep a small set of these journeys at the application level. Put detailed combinations of business rules and edge cases in focused unit or integration tests so browser/device checks remain understandable and practical to run. Preserve an existing suite and choose an actual platform driver compatible with the surface and claim below. Use installed tools for repeatable checks and exploratory operation; an MCP is optional. Keep regression tests and representative scenarios in the target application.
 
 For a full-stack claim, exercise the real frontend, API and the application's actual persistence layer, with migrations applied where applicable. Preserve the selected database and exercise its actual transaction/persistence boundary. Keep external providers replaceable with controlled fixtures in routine CI; report that boundary. A mock API or browser-only demo proves a narrower claim and must be named as such.
 

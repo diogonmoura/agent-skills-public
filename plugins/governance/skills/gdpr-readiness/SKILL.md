@@ -35,7 +35,9 @@ Check special-category/children's data, profiling or other elevated-impact proce
 
 ## Translate requirements into the system lifecycle
 
-Map collection, access, use, disclosure, logs/analytics, AI/provider requests, derived stores, export, deletion and recovery.
+Follow each assessed processing purpose through the actual data lifecycle. Identify where data first enters, which people and services can access it, what it is used for, and which copies or derived forms are created. Include logs/analytics, AI/provider requests, exports and recovery paths, since these can continue processing data outside the main application record.
+
+Use that map to ask implementation questions against the accepted interpretation: which fields are necessary, how access is limited, where retention is enforced, and how the system can locate relevant data when handling a request. Keep the legal requirement and the chosen engineering mechanism distinguishable so a change in purpose or provider can be assessed without treating the old design as proof of continued applicability.
 
 - Minimize fields and exposure; use suitable defaults, access controls and purpose/retention boundaries.
 - A regional deployment does not settle remote support, subprocessors or international transfers.

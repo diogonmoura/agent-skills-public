@@ -29,7 +29,9 @@ Use system-design after product refinement and for consequential feature archite
 
 ## Adopt an existing project and assess the change
 
-For initial adoption, discover authoritative startup/test/build/migration commands, architecture and consumers, identity/tenant rules, deployment targets, critical journeys and operating constraints. Reuse existing instructions and evidence; add only missing useful pointers. Installing the plugins grants no authority to restructure or modernize the application.
+Begin adoption by finding the repository's own route from checkout to running software. Read instructions and manifests, locate the startup/test/build/migration commands, and inspect the entry points those commands use. Trace a critical journey far enough to understand its service, data and identity dependencies. Check deployment definitions to understand the intended target, while keeping deployed state separate from repository intent.
+
+Use that investigation to identify the conventions a contributor must preserve: component ownership, consumers, identity/tenant rules, configuration and operating constraints. Reuse existing instructions and add useful missing pointers. Installing the plugins grants no authority to restructure or modernize the application.
 
 During a feature or fix, trace the affected paths and identify changed contracts, stored data, permissions, integrations, configuration and delivery consequences.
 
@@ -67,7 +69,9 @@ Use delivery expertise when available for delivery contracts, and matching techn
 
 ## Establish focused quality checks
 
-Choose reproducible code, configuration and secret checks for the files and risks present; preserve accepted tools in existing projects. Distinguish syntax/schema checks from behavior and staged/diff checks from full-tree/history coverage. Use matching stack guidance and available guidance for the selected development tools for implementation details. Select focused checks with useful failures rather than adopting a blanket tool suite.
+Choose checks according to the mistakes they can catch in this repository. A parser or schema validator catches malformed configuration; a type check catches incompatible interfaces within its model; a behavior test observes an operation; a secret scan inspects the material included in its declared scope. Use complementary checks where their failure modes differ, and keep their commands reproducible.
+
+Preserve accepted tools in existing projects. Know whether each command examines staged files, the current tree, generated output or history before claiming coverage. Use matching stack and development-tool guidance for implementation details. Select checks with useful failures and clear ownership rather than adopting a blanket tool suite.
 
 Local hooks provide fast feedback on intended staged changes; CI independently enforces required checks over its declared scope. Keep expensive platform/integration checks outside every commit. Document exact commands, ownership and exceptions, and verify the setup in the actual worktree. Git contributions owns safe staging and commit-time verification.
 

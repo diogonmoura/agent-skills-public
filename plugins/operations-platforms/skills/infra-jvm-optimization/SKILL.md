@@ -13,7 +13,9 @@ metadata:
 
 # Infrastructure and JVM optimization
 
-Optimize cost or throughput subject to user outcomes and stability. A smaller pod or lower heap chart alone is not proof of improvement.
+Treat the JVM, application concurrency and hosting resources as one system. Establish where the workload spends time and memory, then form a hypothesis about the limiting resource. A heap setting can change collection behavior without bounding the process's total memory; a replica increase can move pressure to a shared database. Examine the outcome at the user and dependency level as well as the tuned component.
+
+Choose a small experiment that can distinguish the hypothesis from other causes and compare it with the baseline under representative conditions. Optimize cost or throughput subject to user outcomes and stability. A smaller pod or lower heap chart alone is not proof of improvement.
 
 Use JVM flags and ergonomics only for a Java/JVM workload. For Python, Node.js or another runtime, use capacity and demand-modeling expertise and that runtime's current guidance; do not introduce Java or Kubernetes to use this skill.
 

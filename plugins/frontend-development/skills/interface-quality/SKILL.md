@@ -23,7 +23,8 @@ Read the brief, references, accepted decisions and existing components. Identify
 Inspect rendered surfaces with realistic content and meaningful states, including relevant narrow layouts, failure/recovery and editing.
 
 - Trace issues to source, tokens or component definitions where available.
-- Evaluate hierarchy, typography/reading measure, spacing/alignment, semantic color, icon clarity and purposeful motion.
+- Follow the primary task and notice where the interface directs attention. Check whether the most prominent information and actions are the ones the task needs, and whether grouping and spacing explain which content belongs together.
+- Examine typography at the sizes and lengths actually used, including dense data, labels and long values. Check whether semantic color, icons and motion communicate a consistent meaning and remain understandable without relying on one visual cue alone.
 - Check content growth, zoom and locale/direction where they affect the task.
 
 Verify applicable accessibility requirements and exercise keyboard/focus, labels, overlay behavior and reduced motion when runtime access permits. Separate static observations, runtime results, hypotheses and unavailable evidence. A finding must establish the user impact it claims; use an unverified label for a path that has not been exercised.
@@ -34,8 +35,8 @@ Verify proposed corrections against the same requirement and actual context as t
 
 Prioritize task blockers, inaccessible controls and hidden consequences before comprehension, efficiency and polish.
 
-- Each finding needs its surface/state, evidence, user impact and smallest suitable correction.
-- Group repeated causes, keep uncertain suggestions separate and accept that a review may find no actionable issue.
+- Describe the exact surface and state, what you observed, and how it affects the user's task. Recommend the smallest correction that addresses that cause and explain what needs rechecking afterward.
+- Group issues caused by the same token or component so one shared repair can be assessed. Keep uncertain suggestions separate from demonstrated problems, and accept that a review may find no actionable issue.
 
 For substantial new work, inspect a representative difficult state before propagation. For global changes, reconcile every in-scope caller and meaningful variant through interaction-design. A shared component can pass while a caller remains wrong. Use [component and token audits](references/component-and-token-audits.md) for reuse or drift questions and [UX writing](../ux-writing/SKILL.md) for task language.
 

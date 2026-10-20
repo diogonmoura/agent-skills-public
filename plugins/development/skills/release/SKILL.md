@@ -25,7 +25,9 @@ Resolve the requested stopping point:
 | Preparation or readiness review | Return a concise release assessment by default. |
 | Authorized publish, deploy or recover action | Execute against the identified target through the established CLI/MCP/pipeline. |
 
-Use delivery expertise and relevant stack/operations guidance for immutable artifact identity, actual configuration, schema/data/consumer compatibility, test gates and recovery. Preserve established authorization without repeated ceremony; an unspecified target/action blocks execution.
+Identify exactly what is being released, where it will run or be distributed, and which configuration belongs to that target. Connect the artifact to its source revision and check results. Review the changes that survive replacing application code, especially schema/data changes and effects in external systems, because these determine whether rollback is sufficient.
+
+Establish what success will look like in the target and how a failed rollout will be contained or recovered. Use delivery expertise and relevant stack/operations guidance for immutable artifact identity, configuration, schema/data/consumer compatibility, test gates and recovery. Preserve established authorization without repeated ceremony; an unspecified target/action blocks execution.
 
 
 ## Execute an authorized action and verify

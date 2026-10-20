@@ -15,7 +15,7 @@ Read [workflow framing](../../WORKFLOW.md) for scope and invocation boundaries.
 
 # Make reviewable contributions
 
-Keep each objective isolated, verify the affected behavior and publish a clear contribution when the request authorizes it.
+Make the contribution easy to inspect and reproduce. Keep the objective's implementation, tests and documentation together in its worktree, and preserve unrelated work. Before publishing, check that the branch contains the intended change against the intended base and that the description explains the result to someone who has not read the conversation.
 
 ## Establish the target and workspace
 

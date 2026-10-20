@@ -29,7 +29,9 @@ Keep input scenarios/goldens, expected outcomes/rubrics and test results distinc
 | Supported multi-turn evaluation | `ConversationalTestCase` |
 | Rerunnable input collection | `EvaluationDataset` and `Golden` where appropriate |
 
-Populate cases from the actual application run, including relevant retrieved context and tool evidence supported by the installed API. Invented outputs establish only a fixture.
+Choose the interaction being evaluated, then collect its actual inputs and results. At application level, this may be the user's request and final response; at a component level, it is the input and output of that component. Keep the case at a consistent scope so the metric is judging the behavior intended by the test.
+
+Supply the fields the chosen metric needs from the real run. Distinguish evidence that should have been available from evidence the retriever actually returned, and expected tool behavior from the tools actually used. Otherwise a grounded-answer score or tool score can be based on a reconstructed ideal rather than the execution being assessed. Match the field requirements to the installed API and metric documentation. Invented outputs establish only a fixture.
 
 Adapt curated cases and held-out regressions to the selected dataset API without replacing the authoritative case source. Synthetic generation and conversation simulation are optional, credentialed execution paths; preserve agreed scope and review generated goldens before using them as acceptance evidence.
 

@@ -23,6 +23,8 @@ Read the application commands, environment model and accepted deployment decisio
 | Release | Produce a versioned artifact. |
 | Deployment | Promote that artifact to an environment. |
 
+Connect the stages through explicit inputs and outputs. Verification establishes evidence about a source revision and its relevant configuration. Release creates an artifact with an identity that can be traced to that evidence. Deployment selects the artifact and target configuration, performs the change, and verifies the served outcome. This separation makes it possible to diagnose a failed stage and resume without rebuilding or republishing an unrelated result.
+
 Combine stages for a small application when clearer. Share repeated mechanics through the selected provider's reusable interfaces with explicit inputs, permissions and outputs; avoid a generic pipeline framework.
 
 Keep provider-required entrypoints in their required locations and component-specific build/scripts beside their owner. Run the same meaningful checks locally and in CI. Provide fast feedback before expensive integration/E2E checks, retain useful failure evidence, and make required checks stable across path filters. Do not let a skipped workflow leave a required check permanently pending.

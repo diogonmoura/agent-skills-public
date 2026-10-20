@@ -19,7 +19,9 @@ Start with the accepted domain, workloads and data lifecycle. Identify authorita
 
 ### Invariants
 
-State the business facts that must remain true, including identity, uniqueness, relationships, lifecycle and tenant ownership.
+Describe the facts that must still be true after any accepted operation, including concurrent operations. Identify how records are recognized, which values must be unique, which relationships are valid, and who owns the data. Distinguish an application convenience from a rule whose violation would make stored state invalid.
+
+Put enforceable invariants in the durable store when it can express them. Keep application coordination for rules that span operations or external systems, and explain how a partial failure is detected and recovered. This makes the schema and transaction decisions follow from the domain rather than from a list of preferred data types.
 
 - Determine which guarantees belong in durable constraints and which need coordinated application behavior.
 - Consider deletion, history and correction semantics before choosing keys and references.
@@ -35,9 +37,9 @@ Use expected reads, writes, distribution, growth and failure tolerance to compar
 
 ### Atomic operations
 
-Define the atomic operation and conflict behavior.
+Identify which changes must become visible together for the business result to be valid. Follow two operations that can overlap and ask what happens when each reads the old state before either writes. Choose constraints, conditional writes, locks or transaction isolation that preserve the actual rule, and define whether a conflict is rejected, retried or merged.
 
-- Account for concurrent creation/update, retries, isolation, uniqueness and stale writers.
+Distinguish repeating an attempt from performing a new business operation. A retry after an uncertain response needs an identity or reconciliation rule that prevents an unintended second effect. Specify how stale writers are detected when overwriting newer state would violate the contract.
 
 A transaction in one store does not make remote side effects atomic. Derive idempotency or reconciliation needs from actual failure boundaries, using suitable service-design expertise when available.
 

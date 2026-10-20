@@ -18,9 +18,9 @@ metadata:
 
 Read [task guidance](../../TASKS.md). Use its task catalogue and the client's observed skill/plugin inventory when available. If the stopping point is unclear, distinguish product direction, design/plan, implementation and assessment. Explain how to seek product discovery and prioritization expertise for an unresolved product problem, or develop when working software is requested; reuse accepted context for a defined feature or defect.
 
-1. Choose the user-facing activity for the current phase/outcome and explain its expected result and side effects.
-2. Describe the relevant expertise; identify an actual matching skill only after observing its availability.
-3. Give one or two copyable examples.
+1. Choose the activity whose stopping point matches the request. Explain what the user will have afterward: a product decision, requirements, a design, working code, or an assessment. This is more useful than presenting every activity as a compulsory sequence.
+2. Describe the expertise that would help with that work and identify an actual matching skill only after observing its availability. Explain which guidance supports the activity without expanding its scope.
+3. Give one or two copyable requests using syntax supported by the client. Include enough context to show the intended outcome and stopping point.
 
 
 ## Explain availability and action boundaries

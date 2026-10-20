@@ -17,10 +17,11 @@ Read [task guidance](../../TASKS.md). Read [deliver-reliable-changes](../deliver
 
 ## Select meaningful coverage
 
-Resolve the target from the supplied scope/current change and project instructions.
+Identify what the requested change promises and what could break that promise. Inspect the existing tests and project commands before adding another test layer. Select checks that can observe the relevant result, including the previously broken condition for a bug fix and important denial or failure paths for changed behavior.
 
-- Use deliver-reliable-changes to select meaningful checks and existing required suites.
-- Add missing coverage for requested behavior where needed; do not silently alter production behavior, weaken assertions or inflate retries to pass.
+Use deliver-reliable-changes to select meaningful checks and existing required suites. Prefer the narrowest check that exercises the behavior faithfully, then cross a real integration boundary when a substitute would hide the risk. A test of a component with a fake service can establish its response to that service; it cannot establish that the actual service stores the right result.
+
+Add missing coverage where needed. Keep assertions independent enough to catch a plausible faulty implementation. Diagnose a failing test before deciding whether the application, fixture or environment is wrong; do not silently alter production behavior, weaken assertions or inflate retries to pass.
 
 ## Execute and report the actual boundary
 

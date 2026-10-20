@@ -39,7 +39,9 @@ For cross-cutting work, inventory affected surfaces, establish a representative 
 
 ## Implement the accepted visual system
 
-Map the accepted visual direction to semantic CSS variables and compatible Tailwind theme pairs. Reuse reviewed shadcn primitives/blocks, shared variants and the project's class-merging convention. Preserve the selected preset rather than layering a competing token system over it. Use consistent component semantics for surfaces, text, emphasis and status; preserve deliberate density and platform variants.
+Translate the accepted direction into semantic roles before assigning utilities across pages. Establish which tokens represent the page, raised surfaces, primary and secondary text, emphasis, interactive controls and status. Map those roles to compatible CSS variables and Tailwind theme pairs, retaining the selected shadcn preset as the implementation foundation.
+
+Build shared component variants for repeated differences that have a meaning in the product. Keep one-off layout choices close to their caller, and move a repeated pattern into a shared composition when its behavior and appearance need a common owner. Reuse reviewed shadcn primitives/blocks and the project's class-merging convention so local overrides do not quietly create a competing visual system. Preserve deliberate density and platform variants.
 
 Compose the product's layouts from those primitives. Add dark mode when required by the product or established system. Use upstream shadcn/Tailwind guidance for unfamiliar compatible APIs; establish typography, composition and product character through visual design reasoning. A component library supplies implementation primitives, not the product direction.
 

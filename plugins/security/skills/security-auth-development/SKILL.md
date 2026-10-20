@@ -14,7 +14,9 @@ user-invocable: true
 
 # Establish identity and authority through the lifecycle
 
-Identity proves a subject; authorization decides an operation in context. Read the accepted application, actors, trust boundaries and deployment. Establish who authenticates whom, what each actor may do to each resource, and how authority changes over time. Preserve accepted providers and protocols unless the request or evidence justifies reconsideration.
+Authentication establishes which identity the application is dealing with. Authorization decides whether that identity may perform a particular action on a particular resource now. Design both around the application: a successful sign-in does not establish membership of a tenant, permission to change a resource, or access to a paid capability.
+
+Read the accepted application, its clients and deployment. Trace where identity is established, how it is carried to trusted code, and where resource permissions are enforced. Then follow the events that change authority, including membership changes, session expiry and account recovery. Preserve accepted providers and protocols unless the request or evidence justifies reconsideration.
 
 ## Choose the smallest sufficient identity architecture
 
@@ -38,7 +40,9 @@ For federation and account linking:
 
 ## Enforce resource and tenant permissions
 
-Choose roles, attributes, relationships or a combination according to the domain. At each trusted enforcement boundary:
+Choose a policy model that can express the application's actual rules. Roles work well for stable groups of privileges; attributes help with contextual conditions; relationships express ownership, sharing and inherited access. These can compose. Compare whether the model makes legitimate grants, removals and audits understandable before adding a separate policy service.
+
+Place enforcement where the action or data access is controlled by trusted code. Check the actual resource being requested, including its tenant and relevant lifecycle state; a client-selected organization or role is input to verify. At each trusted enforcement boundary:
 
 - Verify subject, resource, action, tenant and relevant lifecycle/context. Default-deny unknown operations and prevent authority from client-supplied role/tenant fields.
 - Cover HTTP/API calls, jobs, exports, support tools and AI/MCP actions.
@@ -55,7 +59,9 @@ When using an external policy engine, establish model version, consistency, cach
 
 ## Make lifecycle and recovery explicit
 
-For each credential/session, define issuance, storage, expiry, refresh, rotation, revocation and logout. Match cookie/browser protections, native secure storage and service credentials to the actual client. Token format alone does not determine security.
+Follow the credential or session from enrollment to removal. Establish how it is issued and stored, how the application checks it, when it expires, and how it is refreshed, rotated or revoked. Decide what logout means for the current client and any other active sessions. These decisions determine how long previously granted access can remain usable.
+
+Match cookie/browser protections, native secure storage and service credentials to the actual client. Check how authorization changes reach existing sessions and caches, not only how the next sign-in works. Token format alone does not determine security.
 
 - Bound stale authorization according to accepted risk; invalidate or recheck when relevant authority changes. JWTs do not automatically provide immediate revocation or current membership.
 - Treat enrollment, recovery, factor changes, linking and deprovisioning as security-sensitive flows. Use appropriate proof of control, reauthentication/step-up and abuse limits without creating trivial account-lockout attacks.

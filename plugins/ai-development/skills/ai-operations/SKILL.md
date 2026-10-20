@@ -14,7 +14,9 @@ Use the accepted task, architecture, authority and operating constraints. This m
 
 ## Define meaningful operating signals
 
-Distinguish completed user tasks, provider/model responses, tool effects, retrieval behavior and evaluation results.
+Begin at the user task and follow the work needed to finish it. Record enough to tell whether the request was admitted, the model responded, a tool acted, and the intended result was completed. These events can disagree: a provider response may be valid while the task fails, and a timeout may occur after a tool effect has already committed.
+
+Use that separation to choose operating signals. Measure delays where they arise, preserve the identity of unfinished work, and distinguish execution failure from a quality judgment about a completed result. This makes it possible to diagnose a regression without treating every poor answer as a provider outage.
 
 - Relate success/failure, latency and freshness to the actual user journey.
 - Define useful denominators, time windows and candidate or approved targets; do not promise an SLO or quality threshold without acceptance.

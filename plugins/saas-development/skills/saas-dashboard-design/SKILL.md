@@ -18,11 +18,11 @@ Identify the audience, their recurring tasks, the decisions this surface should 
 
 ## Establish context and hierarchy
 
-Make organization/workspace, time range, environment and relevant resource scope recognizable before consequential actions.
+Begin with the work this audience returns to do. Determine what needs attention, what information explains the situation, and which action follows. Use that relationship to choose the starting view and navigation. An overview is useful when it helps prioritize work; a task list or detailed workspace may be the better starting point when users already know what they need to do.
 
-- Design navigation from the domain and frequency of work; show the current location and preserve context through drill-downs.
-- Prioritize the primary task, exceptions and next actions before adding overview metrics.
-- A metric earns space by helping this audience decide or act; use realistic content and data distributions when comparing layouts.
+Make organization/workspace, time range, environment and relevant resource scope recognizable before consequential actions. Preserve that context through drill-downs and return navigation so a user can investigate a record without rebuilding their filters or losing their place.
+
+Give each summary or metric a decision it supports. Establish what a change in the value would lead the user to do, then choose the surrounding explanation and route to detail. Compare layouts using realistic data distributions, including long names, large counts and uneven activity, rather than arranging identical cards around invented metrics.
 
 Derive hierarchy, typography, density, color and interaction language from the product's purpose and accepted design system. Seek available interface craft, interaction, accessibility and writing expertise by capability. When absent, make and inspect a coherent direction with project evidence and appropriate references. Use the accepted stack's components/tokens; the skill does not require a framework, design tool or chart library.
 

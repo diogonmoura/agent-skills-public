@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Turn recurring maintenance into a finite, evidence-backed review with owners and follow-up work.
+Review the operating conditions that drift between feature changes: capacity, retention, expiry, ownership and procedures. For each check, establish which decision its result can trigger and the evidence needed to make that decision. A check with no useful response creates recurring reporting work without improving the system.
+
+Compare the current observation with the previous finding and local policy. Preserve unresolved age, exceptions and ownership so a repeated run follows work through rather than rediscovering it as new. Keep the review finite and return accountable findings; deeper remediation can be a separate scoped action.
 
 ## Modes and general purpose
 

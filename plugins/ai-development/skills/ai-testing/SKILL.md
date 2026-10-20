@@ -27,7 +27,9 @@ Read [evaluation methods](references/evaluation-references.md) when choosing lev
 
 ### Select cases
 
-Derive cases from accepted behavior, meaningful user/data slices and privacy-reviewed observed failures.
+Derive cases from the task the application promises to perform. Include inputs on which different implementations could make consequentially different choices, and specify what would make each result useful or unacceptable. A case should reveal something about the capability; a large collection of interchangeable easy prompts can give a high score while leaving the difficult behavior unexamined.
+
+Use meaningful user/data slices and privacy-reviewed observed failures to identify variation. Keep cases used while developing the behavior separate from held-out cases used to assess whether the improvement generalizes.
 
 - Cover normal tasks, ambiguity, missing/conflicting evidence, invalid input, provider/tool failure and relevant adversarial conditions.
 - Keep inputs, expected outcomes/rubrics and actual results distinct.
@@ -35,7 +37,9 @@ Derive cases from accepted behavior, meaningful user/data slices and privacy-rev
 
 ### Select measures
 
-Choose exact assertions, reference-based or semantic measures, domain-specific metrics, calibrated model judges and human assessment according to the property.
+Choose a measure that can observe the property in question. Use exact assertions for facts the application can determine, such as whether an operation was authorized or a required field is present. Use reference-based or semantic measures when more than one wording can satisfy an answer. Use domain-specific metrics when the task has an established notion of quality. Human assessment remains important when usefulness or taste cannot yet be expressed reliably by a grader.
+
+When using a model judge, define the criteria it should apply and compare its judgments with accepted human assessments, including borderline and unacceptable results. Inspect disagreement before relying on an aggregate score. A fluent explanation from a judge is not evidence that its decision is calibrated.
 
 - Separate retrieval quality from answer usefulness and task outcome from optional implementation details such as tool order.
 - Calibrate subjective judges against accepted human examples, preserve disagreement and use human review where the decision remains subjective.

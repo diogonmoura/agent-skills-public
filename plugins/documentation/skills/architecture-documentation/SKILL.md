@@ -27,7 +27,9 @@ For a whole-system review, use arc42 as a coverage check: drivers/constraints, c
 
 Use C4 context and containers for the baseline, then selected component views where detail resolves ambiguity or risk. A container is an application/data store, not necessarily a Docker container. A component view zooms into one container; a code diagram is rarely needed for routine architectural explanation.
 
-For each meaningful building block, explain responsibility, interface, dependencies, state/ownership and code location. Describe the actual decomposition, including mixed legacy handlers, coupling and incomplete abstractions. Do not present a desired service layer as implemented or turn in-process libraries into imaginary services.
+Explain each meaningful building block in relation to the work it performs. State which part of the user or system outcome it owns, how another component invokes it, what state it controls, and why it depends on its neighbors. Link the code location so a contributor can follow the explanation into the implementation.
+
+Describe the actual decomposition, including mixed legacy handlers, coupling and incomplete abstractions. When a responsibility is spread across components, show that fact and its consequence instead of drawing a cleaner desired layer as though it exists. Keep in-process libraries distinct from independently running services.
 
 Each diagram declares type/scope/status and uses understandable element types, responsibilities, technologies and directed relationships.
 

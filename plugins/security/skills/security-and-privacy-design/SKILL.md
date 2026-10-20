@@ -25,7 +25,9 @@ Read the feature, architecture and existing security decisions. Identify valuabl
 
 ## Check meaningful resource operations
 
-For changed domain actions, use a small operation matrix where it clarifies the boundary: actor, exact resource, lifecycle conditions, authority, effect, transaction/history, conflict/retry and user-visible outcome.
+Trace an operation across the trust boundary rather than treating every route as an interchangeable read or write. Identify the actor and exact resource, the state in which the action is allowed, the permission required, and the effect that must be recorded. Include what happens when the request conflicts with another change or is repeated after an uncertain result.
+
+Use a small operation matrix when several actions need comparison: actor, exact resource, lifecycle conditions, authority, effect, transaction/history, conflict/retry and user-visible outcome. The purpose is to expose differences in authority and consequences that a generic endpoint checklist would miss.
 
 - Do not assume every resource permits generic CRUD.
 - Publishing, finalizing, amending, revoking and correcting can have different authority and retention rules.

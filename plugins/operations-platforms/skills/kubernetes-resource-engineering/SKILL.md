@@ -13,7 +13,9 @@ metadata:
 
 # Kubernetes resource engineering
 
-Engineer the rendered resource graph for the actual target. A copied base manifest or successful schema check is not enough to establish security, availability or maintainability.
+Design the resources as a connected application in the actual target. Follow selectors, references, ports, identities, configuration and storage from the workload to the objects it depends on. Establish which controller owns desired state and which values each environment overrides; the effective rendered resources are the ones whose behavior needs review.
+
+Assess the lifecycle as well as the shape of each object. Decide how the application starts, becomes ready, accepts traffic, drains and recovers, then check whether probes, rollout settings, resources and dependent jobs support that behavior. A copied base manifest or successful schema check cannot establish those relationships by itself.
 
 ## Modes and context
 

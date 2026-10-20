@@ -2,6 +2,16 @@
 
 Use this reference when writing or restructuring skills, repository instructions or other agent-facing guidance. Choose presentation for the decision or action the reader needs to find. Preserve the instruction's meaning and authority while making its organization visible.
 
+## Teach the method before compressing it
+
+Write for a capable practitioner who understands the field but has not reconstructed this particular method. A skill should explain how to approach its task: where to begin, what to inspect, how to interpret the result, and why a consequential choice follows. A list of concerns is useful as a reminder after that reasoning is clear; on its own it leaves the reader to supply the method.
+
+When an instruction uses an abstraction such as a contract, invariant, boundary or verification, name the thing involved and what the practitioner does with it. Define domain terms when understanding them changes the work. Connect the action to its consequence so the reader can recognize when another approach would be appropriate. Retain the explanation at the point of use instead of scattering it across several small fragments.
+
+Depth should resolve uncertainty about the task. Useful detail includes a distinction that changes a decision, a mechanism that makes the decision work, an assumption that limits it, or a way to recognize success and failure. Generic encouragement, repeated safeguards and longer restatements of a concern add reading without adding guidance. There is no target word count: a narrow skill can be short, while a substantial discipline needs room for its reasoning.
+
+Examples earn their place when they clarify something the explanation cannot make sufficiently tangible. Keep useful existing examples and executable resources. Do not add a sample scenario or code block simply to make every skill look substantial; improve the explanation first. Detailed conditional procedures belong in linked references, with enough of the method in the entry point that readers know when they need them.
+
 ## Choose the structure locally
 
 A skill can mix workflow and reference. Put shared purpose and essential constraints in the entry point; disclose substantial conditional detail through a link that says when to read it. A short skill may remain self-contained.
@@ -43,7 +53,8 @@ For an approach comparison, use columns such as “Approach”, “Useful when�
 For the skill's actual modes, ask:
 
 - Can a reader determine when it applies and what scope it permits?
-- Can they locate the decision criteria or next action without unpacking a long paragraph?
+- Can they explain how to perform the work, including what they inspect and how a finding changes the next action?
+- Can they locate a decision and understand its rationale without decoding shorthand or piecing together scattered fragments?
 - Are alternatives, dependencies, optional techniques and required safeguards distinguishable?
 - Can they find the relevant reference at the point it becomes useful?
 - Can they identify completion evidence and remaining uncertainty?

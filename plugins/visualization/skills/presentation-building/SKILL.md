@@ -14,7 +14,9 @@ Create or refine a portable single-file HTML deck, with local attachments when n
 
 ## Shape the narrative and visual direction
 
-Use supplied evidence to choose the argument, supporting examples and useful level of detail. Each slide should advance understanding or a decision. Keep facts, illustrative examples and proposals distinguishable, and preserve the author's voice. Select comparison, sequence, diagram or image layouts according to the content rather than a fixed slide count or repeated cards.
+Decide what the audience should understand or choose by the end, then arrange the argument that gets them there. Use supplied evidence to establish the situation, explain the consequential choice and support the recommendation. Give each slide a distinct contribution to that argument, with enough context that its main claim is understandable.
+
+Choose the visual form after deciding what the slide needs to explain. A comparison needs common dimensions; a sequence needs meaningful order; a diagram needs relationships; an image needs a reason to carry attention. Preserve the author's voice and distinguish facts, illustrative examples and proposals. Remove repeated claims and divide dense material when doing so improves the explanation, without inventing a fixed slide count or card arrangement.
 
 Derive typography, palette, density and motion from the brief. Reuse an accepted deck's identity during ordinary edits. The original dark scroll-driven profile is available as a starting point; its colors, title patterns and component counts are examples to adapt to the audience and content.
 

@@ -44,7 +44,9 @@ Authenticate on the server and enforce ownership there.
 - Constrain Tauri commands/capabilities, IPC inputs, allowed origins and remote content.
 - Use deterministic application authorization for all model-proposed client actions.
 
-Document backend addresses for host, simulator/emulator and physical devices, development network policy and production TLS. Device localhost is not the host backend. Define supported offline/cache behavior, reconnection, synchronization conflicts and cancellation rather than silently fabricating a fully offline product.
+Follow a client operation across both network and application lifecycle changes. Decide whether an interrupted request can be retried, how the client discovers an operation that may already have completed, and what happens to unsaved input when the application moves to the background or is restarted. Keep local display state separate from server-confirmed state so reconnection does not turn stale content into an authoritative update.
+
+Document backend addresses for host, simulator/emulator and physical devices, development network policy and production TLS. Device localhost is not the host backend. Define the accepted offline/cache behavior and how synchronization conflicts and cancellation are presented. Supporting drafts or cached reads does not automatically require a fully offline product.
 
 ## Establish and prove platform delivery
 

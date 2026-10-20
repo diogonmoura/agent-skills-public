@@ -29,7 +29,9 @@ Use parameterized values through the actual driver; dynamic identifiers need sep
 
 ### When using row-level security
 
-A custom session variable alone does not establish a trusted identity. Verify:
+Row-level security evaluates access under the database role and policy context of the statement. Establish how trusted application identity reaches that context and which code can change it. A custom session variable alone does not establish a trusted identity; an untrusted caller must not be able to choose the tenant that the policy trusts.
+
+Check both which existing rows an operation can reach and which proposed row values it may create or retain. Exercise the policy through the application's actual role and connection-pool behavior, because a privileged migration or table-owner session may bypass the restriction being tested. Verify:
 
 | Boundary | Check |
 | --- | --- |
@@ -40,7 +42,9 @@ A custom session variable alone does not establish a trusted identity. Verify:
 
 ## Handle concurrent operations deliberately
 
-Choose transaction/isolation and locking behavior for the invariant.
+Start from the concurrent operations that could violate the rule. Prefer a database constraint or atomic statement when it expresses the rule directly. When an operation reads and then decides what to write, establish which concurrent changes the selected isolation and locking behavior permits before assuming the earlier read remains valid.
+
+Treat a retryable transaction failure as a request to repeat the complete logical transaction with fresh reads. Keep attempts bounded and account separately for external effects, which the database cannot roll back. Choose transaction/isolation and locking behavior for the invariant.
 
 - Keep transactions bounded and avoid waiting on remote work while holding locks.
 - Use constraints and atomic statements where they settle races.

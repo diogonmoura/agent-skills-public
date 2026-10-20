@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Turn learning into demonstrated system improvement. An action being written, merged or marked done is not the same as its outcome being verified.
+Start with the supported failure pathway from the incident review. Identify which condition a proposed action changes and why changing it should prevent recurrence, improve detection or reduce harm. This keeps the action tied to the incident's mechanism instead of turning the follow-up into a general backlog of desirable improvements.
+
+Define how the control's effect will be observed before closing the action. Check that it reached the intended target and that the relevant behavior was exercised. If the same failure returns, investigate whether the action was incomplete, undeployed, bypassed, ineffective or based on an assumption that changed. A written, merged or closed action does not settle those questions.
 
 ## Modes and inputs
 

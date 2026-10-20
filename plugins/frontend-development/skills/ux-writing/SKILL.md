@@ -24,7 +24,9 @@ Match every recommended message, including the preferred default, to authoritati
 
 ## Make decisions and recovery clear
 
-Use specific actions, stable object names, descriptive destinations and persistent field labels. Review consequential confirmations as complete messages: title, explanation and actions together identify the affected object, action and material consequence, including irreversibility when established. Supply complete localized replacements with their placeholders intact.
+Name the action by what happens to the user's object, using the same term before and after the action. A label should let the user predict the result without needing to understand the implementation. Keep field labels visible when values have been entered, and make destinations clear enough that navigation does not depend on surrounding decoration.
+
+Review consequential confirmations as a whole. The title, explanation and actions should identify the affected object, what will happen, and any material consequence such as loss of access or irreversibility when established. Remove repetition that competes with that decision, while retaining information the user needs to choose safely. Supply complete localized replacements with their placeholders intact.
 
 Distinguish validation, connectivity, denied authority and system failure. Explain the affected outcome and an available recovery action; preserve input where retry is supported. Give first use, no matches, loading, partial and unavailable data meanings suited to the task. Clarity should preserve the accepted brand voice.
 

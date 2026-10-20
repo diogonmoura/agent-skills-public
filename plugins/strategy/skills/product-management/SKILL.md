@@ -26,7 +26,9 @@ Question the proposed feature when a simpler product, process or existing tool c
 
 ## Choose a useful slice and what to defer
 
-Compare plausible responses by the importance and frequency of the problem, strength of evidence, expected benefit, cost of learning or delivery, risk and dependencies. Use a scoring framework only when its inputs and precision help the decision. Explain what is deferred and why; a feature request is evidence of a need, not an automatic backlog commitment.
+Compare responses to the same user problem, including doing less or changing the surrounding workflow. Establish who benefits, how often the problem occurs, how much it prevents the intended outcome, and how strong the evidence is. Then consider what each response costs to learn about, deliver and maintain. Separate a low-cost idea from one whose adoption depends on changing several teams or external systems.
+
+Use these considerations to make a choice, rather than presenting an unranked list of attractive features. Explain which evidence supports the recommendation and which uncertain belief could reverse it. A scoring framework helps when its inputs can be defended; invented precision can conceal the actual judgment. State what is deferred and why. A feature request is evidence of a need, not an automatic backlog commitment.
 
 Choose a coherent experience that lets the intended user achieve a meaningful result.
 
@@ -43,6 +45,8 @@ Choose an observable user outcome and, where useful, a measure with its populati
 - Identify failure or harm signals as well as the desired improvement.
 - Separate proposed targets from accepted commitments and existing measurements.
 - Small populations may support qualitative observation better than a statistically unsupported experiment.
+
+Work backward from the next decision to the evidence it needs. If the uncertainty concerns whether people can find and complete the task, observe the task; if it concerns whether the proposed result is worth adopting, investigate the current workaround, consequences and willingness to change. Define what result would lead you to continue, revise or stop before collecting more evidence. This keeps research from becoming activity without a decision.
 
 Prioritize the assumptions whose failure would change the decision and choose the least costly credible way to investigate them. Use installed usability research expertise for participant methods; use [product feedback](../learn-from-product-feedback/SKILL.md) for evidence synthesis. Preparing a study is not conducting it. Contact, recording, telemetry changes and live experiments need the corresponding authorized scope.
 

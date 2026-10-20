@@ -22,7 +22,9 @@ Identify critical journeys, expected sustained and peak demand, growth, seasonal
 - Inspect tail latency, queues, saturation, throttling, memory peaks and database limits instead of sizing from average CPU alone.
 - No telemetry means an estimate requiring validation, not an invented measurement.
 
-Relate arrival rate and time in the system to in-flight work, with clear units and assumptions; steady-state queueing estimates do not describe overload or bursts automatically. Include fan-out, retries, long-running AI/audio work and slow providers. Decide where concurrency is bounded and where work is queued/rejected; avoid unbounded parallelism as a latency optimization.
+Translate demand into simultaneous work along the journey. Relate arrival rate and time in the system to in-flight work with clear units and assumptions, then account for fan-out, retries and operations that hold resources while waiting. Long-running AI/audio work and slow providers can occupy concurrency even when local CPU usage is low. Steady-state queueing estimates do not describe overload or bursts automatically.
+
+Decide where the application stops admitting more work, where it queues work, and what it tells the caller when a bound is reached. Check how long queued work can remain useful and how recovery drains it. Increasing parallelism helps only while the required downstream resources can serve it; otherwise it can increase waiting and failure.
 
 ## Design a coherent scaling path
 

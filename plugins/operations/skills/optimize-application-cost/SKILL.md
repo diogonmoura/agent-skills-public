@@ -22,7 +22,9 @@ Identify the environment, provider, region, currency, billing period and applica
 - Use EUR and relevant European regions for this user's estimates unless the project specifies otherwise.
 - Keep exchange-rate date, taxes/discount assumptions and commitments explicit; do not invent price conversions or reuse stale rates.
 
-Include compute, databases, storage/backup retention, network egress and load balancers, logs/telemetry, build artifacts, CI minutes and third-party/AI usage. Shared cluster/system costs and idle capacity should remain visible. Track a useful unit such as cost per active user, completed job or request alongside total spend; lower unit cost can still produce a larger bill with growth.
+Trace the bill to the work the application performs and the capacity kept available for it. Include compute, databases, storage/backup retention, network egress and load balancers, logs/telemetry, build artifacts, CI minutes and third-party/AI usage. Keep shared system costs and idle capacity visible, and state how shared amounts are allocated so apparent savings do not merely move to another owner.
+
+Track total spend alongside a useful unit such as cost per active user, completed job or request. Use completed useful work as the denominator when retries or failed operations can consume significant resources. Separate a more efficient unit cost from a reduction in the bill: growth, fixed commitments and unused reserved capacity can make those outcomes differ.
 
 ## Optimize against constraints
 

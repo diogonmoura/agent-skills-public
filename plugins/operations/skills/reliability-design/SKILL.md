@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Start with a user outcome, derive a measurable contract, then implement the monitoring. Do not start with whatever metric is easiest to query and call it journey reliability.
+Start with what the user depends on and decide what counts as completing it successfully. Define a service-level indicator (SLI) that measures that outcome over a known population, then establish an accepted service-level objective (SLO) and the monitoring needed to assess it. Infrastructure and request metrics help explain failure, but the indicator needs to retain the meaning of the user outcome.
+
+Decide what eligible work enters the denominator before defining success. Include work that starts but never reaches a terminal event, using a deadline or reconciliation observation where necessary. Otherwise the system can appear reliable by counting only work that managed to finish. Read the journey-to-SLO reference below when deriving the measurement or its arithmetic.
 
 ## Inputs and execution mode
 

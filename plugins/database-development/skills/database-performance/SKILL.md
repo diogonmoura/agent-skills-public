@@ -17,7 +17,9 @@ Establish the affected user operation, target, data distribution, load/concurren
 
 ## Diagnose before prescribing
 
-Use available aggregate workload evidence to find consequential operations, considering frequency, total cost and tail behavior.
+Locate the time spent in the affected user operation before tuning a query. Separate waiting for a connection, waiting for another transaction, executing SQL, transferring results and processing them in the application. Improving the query plan will not necessarily help a request whose time is spent waiting elsewhere.
+
+Use aggregate workload evidence to choose which operations matter. A frequently executed moderate query can consume more resources than an occasional slow one; a severe tail can still make a critical journey unusable. Compare those costs with the accepted user outcome, then form a specific explanation to test.
 
 - Inspect representative plans, cardinalities, waits and resource pressure with matching technical expertise.
 - Separate cold/warm behavior and tenant/data-size slices where they affect the conclusion.

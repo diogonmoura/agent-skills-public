@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Maintain one authoritative credential record and a complete map of its consumers. Credential values belong in protected stores, not the report.
+Treat a credential as access that is issued, distributed, used and eventually removed. Map each consumer from the authoritative store through synchronization and reload to actual use. That path determines whether a rotation has reached every consumer and when revoking the old access becomes safe.
+
+Maintain one authoritative credential record with that consumer map and the metadata needed to manage ownership, privileges and expiry. Credential values belong in protected stores, not the report. A changed secret reference or completed synchronization job does not establish that a running consumer uses the replacement.
 
 ## Modes and architecture
 

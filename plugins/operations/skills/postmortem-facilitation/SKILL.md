@@ -14,7 +14,9 @@ metadata:
 
 Read [composition guidance](../../COMPOSITION.md) for optional expertise, fallback and scope.
 
-Help responders think through what happened rather than fill a template with plausible explanations. Ask the next question that most changes understanding or the prevention plan.
+Reconstruct how the system and response produced the observed impact. Separate the event that triggered the incident from the conditions that let it propagate, the signals that revealed it, and the actions that restored service. Preserve what responders knew at the time so hindsight does not turn a reasonable decision under uncertainty into an unsupported account of individual failure.
+
+Use each question to resolve a gap in that explanation. Ask for the observation or decision context that would distinguish competing accounts, then carry the answer into the causal analysis and prevention plan. A useful review can establish recovery while leaving part of the underlying cause unknown.
 
 ## Modes
 

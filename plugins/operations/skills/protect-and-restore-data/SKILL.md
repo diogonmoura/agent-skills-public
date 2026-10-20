@@ -28,7 +28,9 @@ For Kubernetes, recover declarative application/infrastructure configuration and
 
 ## Prove restoration safely
 
-Restore into an isolated target with explicit source, recovery point and destination.
+Rehearse the path from a known backup or recovery point to a usable application. Identify the exact source and isolated destination, obtain the required keys and configuration, and prevent restored services from acting on the outside world before verification. Restored jobs and credentials may still be able to reach real providers, so isolation must cover behavior as well as database naming.
+
+Verify the recovered state through the application and the intended users' access, not only the database tool's success message. Measure recovery from the point used by the agreed objective, including preparation or dependency work that affects when service can resume. Keep the recovery point, elapsed time and remaining uncertainty in the evidence.
 
 - Avoid overwriting production or letting restored workers send emails, payments or duplicate external side effects.
 - Check access, schema, representative data and an application read/write journey; measure elapsed recovery time and actual data loss.

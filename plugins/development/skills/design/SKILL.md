@@ -30,12 +30,18 @@ For UI work establish contextual visual direction, flows, state and affected-sur
 | Rendered quality or consequential language | Available interface assessment or interface-language expertise |
 | A question needing participant evidence | Available usability research expertise |
 
-Establish a representative design before propagating it. Connect agreed decisions to tokens/components and the implementation handoff. Stack conventions map the design to implementation; Storybook can verify implemented component states later.
+Work through the main user task before polishing a screen. Determine what the user needs to understand, which action should be easiest to find, and what feedback explains the result. Use realistic content and the important empty, busy, error and permission states so the layout is designed for the application people will actually use.
+
+Develop a representative part of the experience far enough to judge the direction. If navigation is uncertain, a wireframe may answer the question; if typography, density or visual identity is uncertain, inspect a rendered design. Explain why the chosen direction suits the product and what an alternative would cost. Once it works, carry its layout, tokens and component behavior into the other affected surfaces.
+
+The handoff should make implementation choices traceable to design choices: which components to reuse, what states they need, how the layout adapts, and which details still need validation. Stack conventions map these decisions to implementation; Storybook can verify implemented component states later.
 
 
 ## Establish service behavior
 
-For backend work, establish public contracts, actor authority, invariants, state/failure and compatibility before choosing implementation layers or framework APIs. Use available service-contract design expertise for behavior and system-design for architectural boundaries.
+Start with an operation the service must support. Identify its caller, the data it may access, the checks that permit the action, and the stored changes that make the result true. Decide which changes must succeed together and which work can complete later. Explain what the caller can safely infer from a success, rejection or timeout.
+
+Follow the operation through repeated requests, partial failure and concurrent changes where they matter. An API shape alone does not settle whether a retry creates duplicate work or whether an old client can still use the service. Resolve these behavioral choices before organizing framework layers. Use available service-contract design expertise for this work and system-design for choices that change architectural boundaries.
 
 ## Resolve choices and hand off
 
