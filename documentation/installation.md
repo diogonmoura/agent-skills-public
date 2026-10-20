@@ -1,6 +1,6 @@
 # Install and update plugins
 
-Build complete bundles, load them through your client's supported route, then inspect discovery in the application workspace. You need Git, Python 3.10+ and network access to acquire the pinned upstream resources. Client authentication is separate from building.
+Build complete bundles, load them through your client's supported route, then inspect discovery in the application workspace. You need Git to clone this repository and Python 3.10+ with the validation dependencies installed. Building then uses committed resources without upstream access or Node.js. Client authentication is separate from building.
 
 [Build](#build-the-bundles) · [Load in a client](#load-them-in-your-client) · [Additional bundles](#select-additional-bundles) · [Optional Figma connection](#optional-figma-connection)
 
@@ -18,7 +18,7 @@ python scripts/build_plugins.py --destination ./built-plugins
 export AGENT_PLUGINS_DIR="$(pwd)/built-plugins"
 ```
 
-If you already have a checkout, start there instead of cloning again. The builder acquires pinned upstream skills and their resources for the selected plugin (development by default). The destination must be new. [Additional bundles and rebuilds](#select-additional-bundles) use the same builder.
+If you already have a checkout, start there instead of cloning again. The builder uses committed upstream skills and their resources for the selected plugin (development by default), applying adaptations only in its output. It does not fetch upstream repositories. The destination must be new. [Additional bundles and rebuilds](#select-additional-bundles) use the same builder.
 
 ## Load them in your client
 
@@ -76,7 +76,7 @@ Add this entry to `.agents/plugins/marketplace.json`, preserving any existing en
 
 The source path is relative to the application repository root. In supported Codex desktop clients, restart the app, open the Plugins Directory and install development from Project guidance. Start a new chat, confirm discovery and select `develop` in the skill picker. Add entries only for the additional bundles you choose.
 
-The [official OpenAI documentation](https://developers.openai.com/plugins/build/plugins#install-a-local-plugin-manually) describes the portable manifest and local marketplace route. CLI marketplace management and desktop installation differ; follow that guide for your client. A source checkout's `plugins/` directories omit acquired skills, so point the marketplace at complete built copies.
+The [official OpenAI documentation](https://developers.openai.com/plugins/build/plugins#install-a-local-plugin-manually) describes the portable manifest and local marketplace route. CLI marketplace management and desktop installation differ; follow that guide for your client. A source checkout's `plugins/` directories contain raw acquired skills without the collection’s adaptations or generated notices, so point the marketplace at complete built copies.
 
 </details>
 
@@ -151,7 +151,7 @@ To inspect every package rather than choose an application stack:
 python scripts/build_plugins.py --all --destination ./built-all-plugins
 ```
 
-`--all` and `--plugin` are mutually exclusive. Every destination must be new; replace client installations only after preserving local changes. Load each chosen built plugin through the client examples above, repeating its supported flag, marketplace entry, skill-source path or install operation as appropriate. Source directories contain local skills only; built directories also contain pinned acquisitions and notices. Application dependencies and live tools remain separate.
+`--all` and `--plugin` are mutually exclusive. Every destination must be new; replace client installations only after preserving local changes. Load each chosen built plugin through the client examples above, repeating its supported flag, marketplace entry, skill-source path or install operation as appropriate. Source directories contain authored skills and raw acquired snapshots; builds apply the collection’s adaptations and add provenance notices. Application dependencies and live tools remain separate.
 
 For structural verification of the default build:
 

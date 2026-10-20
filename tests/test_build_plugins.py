@@ -1,3 +1,4 @@
+from depot_fixture import write_depot
 import importlib.util
 import json
 from pathlib import Path
@@ -77,29 +78,6 @@ class InstallationTests(unittest.TestCase):
             self.assertTrue(result.endswith(original.split('---', 2)[2]))
             self.assertEqual((skill / 'reference.md').read_text(), 'Original resource')
 
-    def test_root_skill_acquisition_preserves_resources_and_checks_tree(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            upstream = root / 'upstream'
-            upstream.mkdir()
-            subprocess.run(['git', 'init', '-q', str(upstream)], check=True)
-            (upstream / 'SKILL.md').write_text('---\nname: root-skill\ndescription: Root fixture\n---\nRead references/guide.md\n')
-            (upstream / 'references').mkdir()
-            (upstream / 'references/guide.md').write_text('Complete reference')
-            subprocess.run(['git', '-C', str(upstream), 'add', '.'], check=True)
-            subprocess.run(['git', '-C', str(upstream), '-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'Fixture'], check=True)
-            commit = installer.git(upstream, 'rev-parse', 'HEAD').decode().strip()
-            tree = installer.git(upstream, 'rev-parse', 'HEAD^{tree}').decode().strip()
-            source = dict(repository=str(upstream), commit=commit, tree=tree, path='.')
-            _, archive = installer.acquire(source, root / 'cache')
-            output = root / 'skill'
-            installer.extract_skill(archive, '.', output)
-            self.assertTrue((output / 'SKILL.md').exists())
-            self.assertEqual((output / 'references/guide.md').read_text(), 'Complete reference')
-            source['tree'] = '0' * 40
-            with self.assertRaisesRegex(ValueError, 'tree mismatch'):
-                installer.acquire(source, root / 'cache')
-
     def test_usage_labels_preserve_native_controls_and_attribution(self):
         with tempfile.TemporaryDirectory() as tmp:
             skill = Path(tmp) / 'example'
@@ -160,22 +138,21 @@ class InstallationTests(unittest.TestCase):
             (upstream / 'LICENSE').write_text('Test license notice')
             subprocess.run(['git', '-C', str(upstream), 'add', '.'], check=True)
             subprocess.run(['git', '-C', str(upstream), '-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'Fixture'], check=True)
-            commit = installer.git(upstream, 'rev-parse', 'HEAD').decode().strip()
-            tree = installer.git(upstream, 'rev-parse', 'HEAD:skills/example').decode().strip()
-            source = dict(plugin='test', repository=str(upstream), commit=commit, tree=tree, path='skills/example', license='MIT', license_path='LICENSE')
+            commit = subprocess.check_output(['git', '-C', str(upstream), 'rev-parse', 'HEAD']).decode().strip()
+            source = dict(plugin='test', repository=str(upstream), commit=commit, path='skills/example', license='MIT', license_path='LICENSE')
             package = root / 'plugins/test'
             package.mkdir(parents=True)
             (package / 'plugin.json').write_text('{"name":"test","version":"0.1.0","description":"Test"}')
             (root / 'schemas').mkdir(exist_ok=True)
             (root / 'schemas/plugin.schema.json').write_text('{}')
-            (root / 'upstream.lock.json').write_text(json.dumps({'sources': [source]}))
+            write_depot(root, [source])
             output = root / 'installed'
             with self.assertRaisesRegex(ValueError, 'map strings to strings'):
-                installer.build(root, ['test'], output, root / 'cache')
+                installer.build(root, ['test'], output)
             self.assertFalse(output.exists())
             source['adaptations'] = ['string-metadata']
-            (root / 'upstream.lock.json').write_text(json.dumps({'sources': [source]}))
-            installer.build(root, ['test'], output, root / 'cache')
+            write_depot(root, [source])
+            installer.build(root, ['test'], output)
             self.assertEqual((output / 'test/skills/example/references/guide.md').read_text(), 'Complete reference')
             self.assertEqual((output / 'test/skills/example/UPSTREAM-LICENSE.txt').read_text(), 'Test license notice')
             self.assertFalse(any(p.is_symlink() for p in output.rglob('*')))
@@ -187,9 +164,9 @@ class InstallationTests(unittest.TestCase):
             # Build adapted output without changing the pinned source or native metadata.
             source['adaptations'] = ['string-metadata', 'workflow-framing', 'documentation-paths']
             (package / 'WORKFLOW.md').write_text('Project workflow guidance')
-            (root / 'upstream.lock.json').write_text(json.dumps({'sources': [source]}))
+            write_depot(root, [source])
             adapted = root / 'adapted'
-            installer.build(root, ['test'], adapted, root / 'cache')
+            installer.build(root, ['test'], adapted)
             skill_text = (adapted / 'test/skills/example/SKILL.md').read_text()
             self.assertIn('../../WORKFLOW.md', skill_text)
             self.assertIn('documentation/engineering/config.md', skill_text)
@@ -203,11 +180,10 @@ class InstallationTests(unittest.TestCase):
             self.assertEqual(notices['adaptations'], source['adaptations'])
 
             with self.assertRaises(ValueError):
-                installer.build(root, ['test'], output, root / 'cache')
-            source['tree'] = '0' * 40
-            (root / 'upstream.lock.json').write_text(json.dumps({'sources': [source]}))
+                installer.build(root, ['test'], output)
+            (root / 'plugins/test/skills/example/references/guide.md').write_text('tampered snapshot')
             with self.assertRaises(ValueError):
-                installer.build(root, ['test'], root / 'tampered', root / 'cache')
+                installer.build(root, ['test'], root / 'tampered')
             self.assertFalse((root / 'tampered').exists())
 
     def test_adversarial_review_uses_packaged_inline_method(self):
@@ -238,10 +214,10 @@ class InstallationTests(unittest.TestCase):
             (skill / 'SKILL.md').write_text('---\nname: example\ndescription: Example\nallowed-tools: [Read, Bash]\n---\nGuide\n')
             (root / 'schemas').mkdir()
             (root / 'schemas/plugin.schema.json').write_text('{}')
-            (root / 'upstream.lock.json').write_text('{"sources":[]}')
+            write_depot(root)
             output = root / 'output'
             with self.assertRaisesRegex(ValueError, 'allowed-tools'):
-                installer.build(root, ['example'], output, root / 'cache')
+                installer.build(root, ['example'], output)
             self.assertFalse(output.exists())
 
     def test_local_script_resources_exclude_runtime_bytecode(self):
@@ -258,9 +234,9 @@ class InstallationTests(unittest.TestCase):
             (scripts / '__pycache__/render.cpython-313.pyc').write_bytes(b'local cache')
             (root / 'schemas').mkdir()
             (root / 'schemas/plugin.schema.json').write_text('{}')
-            (root / 'upstream.lock.json').write_text('{"sources":[]}')
+            write_depot(root)
             output = root / 'output'
-            installer.build(root, ['example'], output, root / 'cache')
+            installer.build(root, ['example'], output)
             installed = output / 'example/skills/example/scripts'
             self.assertEqual((installed / 'render.py').read_text(), 'print("example")\n')
             self.assertFalse((installed / '__pycache__').exists())
@@ -317,11 +293,14 @@ class InstallationTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         generic = {'development', 'strategy', 'operations', 'frontend-development',
                    'backend-development', 'ai-development', 'delivery', 'documentation', 'visualization'}
-        sources = json.loads((root / 'upstream.lock.json').read_text())['sources']
+        sources = installer.load_sources(root)
         for plugin in generic:
             with self.subTest(plugin=plugin):
                 self.assertTrue((root / 'plugins' / plugin / 'plugin.json').is_file())
+                managed = {root / source['destination'] / 'SKILL.md' for source in sources}
                 for path in (root / 'plugins' / plugin).glob('skills/*/SKILL.md'):
+                    if path in managed:
+                        continue
                     self.assertEqual(yaml.safe_load(path.read_text().split('---', 2)[1])['metadata']['scope'], 'generic')
                 for source in sources:
                     if source['plugin'] == plugin:

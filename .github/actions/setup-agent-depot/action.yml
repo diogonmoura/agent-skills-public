@@ -1,0 +1,30 @@
+name: Set up pinned Agent Depot
+description: Build the reviewed maintenance CLI separately from the managed skill snapshots.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+      with:
+        node-version: '24'
+    - name: Read the maintenance tool pin
+      id: pin
+      shell: bash
+      run: |
+        node --input-type=module <<'JS'
+        import { readFileSync, appendFileSync } from 'node:fs';
+        const { repository, commit } = JSON.parse(readFileSync('tooling/agent-depot.json', 'utf8'));
+        if (repository !== 'joao-aires/agent-depot' || !/^[a-f0-9]{40}$/.test(commit)) throw new Error('Invalid maintenance tool pin');
+        appendFileSync(process.env.GITHUB_OUTPUT, `repository=${repository}\ncommit=${commit}\n`);
+        JS
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        repository: ${{ steps.pin.outputs.repository }}
+        ref: ${{ steps.pin.outputs.commit }}
+        path: .agent-depot/tool
+        persist-credentials: false
+    - name: Build the maintenance CLI
+      shell: bash
+      working-directory: .agent-depot/tool
+      run: |
+        npm ci --ignore-scripts
+        npm run build

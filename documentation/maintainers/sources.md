@@ -6,7 +6,7 @@
 
 For authoring principles and rule ownership, see [keeping guidance focused](../maintainer-reference.md#keep-guidance-focused).
 
-The [lockfile](../../upstream.lock.json) owns exact commit/tree pins, licenses and adaptations. Built bundles include complete acquired skills and notices; source-only checkouts do not. I select sources for provenance, maintenance, licensing and fit with these workflows. Popularity is supporting evidence, not proof of correctness.
+The [manifest](../../agent-depot.json) declares repositories, accepted artifact commits, destinations and consumer packaging metadata within each artifact. The [Depot lockfile](../../agent-depot.lock.json) records file integrity and provenance. Checkouts contain complete, unmodified acquired skills in their plugin folders. Build bundles to apply the collection’s adaptations and generate notices before loading them in a client. I select sources for provenance, maintenance, licensing and fit with these workflows. Popularity is supporting evidence, not proof of correctness.
 
 | Plugin | Source | Selected skills |
 | --- | --- | --- |
@@ -41,7 +41,7 @@ The [lockfile](../../upstream.lock.json) owns exact commit/tree pins, licenses a
 | Visual craft | frontend-design preserves its body and license; local framing applies accepted visual direction, project scope and platform conventions before aesthetic suggestions. |
 | Visibility and labels | Preserve explicit upstream controls; set support visibility only when absent. Scope/stack/role/invocation labels describe use, not permissions. |
 
-Acquisition verifies tree pins and copies resources without executing upstream scripts. Built `UPSTREAM.json`, `UPSTREAM-NOTICES.json` and license files record provenance. Trail of Bits material is CC-BY-SA-4.0; other acquired sources are MIT or Apache-2.0 as recorded at their pins. Bundles have mixed-license notices. Embedded live links/commands can still change despite source pinning. Private installed content is never redistributed.
+Agent Depot acquires accepted artifact commits and records file identities without executing upstream scripts. Built `UPSTREAM.json`, `UPSTREAM-NOTICES.json` and license files record provenance. Trail of Bits material is CC-BY-SA-4.0; other acquired sources are MIT or Apache-2.0 as recorded at their pins. Bundles have mixed-license notices. Embedded live links/commands can still change despite source pinning. Private installed content is never redistributed.
 
 ## Matt Pocock selection
 
@@ -235,7 +235,7 @@ The [Go source review](../../plugins/go-development/skills/go-conventions/refere
 
 ## Plugin ownership
 
-The collection has 24 independent packages and 117 skills: 78 local and 39 acquired. Development is the default build; 13 generic packages contain no stack-specific skills, and 11 technical packages are explicitly selected. Source commit/tree pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
+The collection has 24 independent packages and 117 skills: 78 local and 39 acquired. Development is the default build; 13 generic packages contain no stack-specific skills, and 11 technical packages are explicitly selected. Artifact commit pins, original resource groups and native invocation controls are preserved. Acquisition destinations follow the owners below; Humanizer uses documentation-local composition framing and the Python MCP wrapper uses Python-local conventions.
 
 A plugin represents a useful installation choice. Workflow, application discipline and supporting capability describe its purpose; generic versus technical describes its applicability. These groups do not impose an execution order or dependencies. Installing a technical package makes expertise available without accepting its technology for a project. Keep accepted choices, select matching guidance from actual inventory and retain useful outcomes when optional specialists are absent.
 
