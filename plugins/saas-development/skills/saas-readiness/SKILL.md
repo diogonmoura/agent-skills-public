@@ -28,10 +28,20 @@ Assess provider dependencies, abuse/quotas, privacy/licensing obligations, artif
 
 ## Make gaps actionable
 
-Separate defects within accepted constraints, unresolved consequential decisions and missing execution/access.
+Classify each gap before choosing the next action:
 
-- For each material gap, explain the affected promise, evidence, consequence and smallest useful next action.
-- Prioritize by impact and likelihood, exposure and recovery, rather than number of checked boxes.
-- Proposed acceptance of risk remains proposed until the authorized owner decides.
+| Gap | Distinction to preserve |
+| --- | --- |
+| Defect | Behavior falls short of accepted constraints. |
+| Unresolved consequential decision | The authorized owner still needs to settle a choice; proposed risk acceptance remains proposed. |
+| Missing execution or access | The relevant outcome remains unverified. |
 
-Give a scoped verdict: supported for the stated cohort, supported with explicitly accepted limits, or not yet supported by evidence. State blockers and remaining uncertainty honestly; readiness is not certification or permission to deploy. Carry material learning into existing product/design/operating records without requiring a new tracker or document ceremony. Execute fixes only within the requested scope.
+For each material gap, explain the affected promise, evidence, consequence and smallest useful next action. Prioritize by impact and likelihood, exposure and recovery, rather than number of checked boxes.
+
+Give one scoped verdict:
+
+- Supported for the stated cohort.
+- Supported with explicitly accepted limits.
+- Not yet supported by evidence.
+
+State blockers and uncertainty; readiness is not certification or permission to deploy. Carry material learning into existing product/design/operating records without a new tracker or document ceremony. Execute fixes only within the requested scope.

@@ -24,9 +24,16 @@ Resolve the target from the supplied scope/current change and project instructio
 
 ## Execute and report the actual boundary
 
-For component/state checks, use journey-testing guidance on Storybook when adopted; a catalogue build does not establish interaction coverage.
+Select the evidence for the claim:
 
-- Use actual persistence/authorization contracts for full-stack claims, journey-testing for web/desktop/mobile journeys, implementation expertise matching the selected load-test tool for load and resilience-testing for relevant bounded failures.
-- A bare test request does not authorize deployed load or fault injection.
-- Execute supported checks, diagnose failures and distinguish application defects, fixture/environment issues and unexecuted checks.
-- Return results, artifacts, actual boundaries and next action; a green build alone does not establish behavior.
+| Claim | Relevant boundary and guidance |
+| --- | --- |
+| Component/state behavior | Journey-testing guidance on Storybook when adopted; building the catalogue alone does not establish interaction coverage. |
+| Full-stack behavior | Actual persistence and authorization contracts. |
+| Web, desktop or mobile journey | Journey-testing and the actual target platform. |
+| Load | Implementation expertise matching the selected load-test tool. |
+| Bounded failure and recovery | Resilience-testing. |
+
+A bare test request does not authorize deployed load or fault injection. Execute supported checks and diagnose failures, distinguishing application defects, fixture/environment issues and unexecuted checks.
+
+Return results, artifacts, actual boundaries and the next action. A green build alone does not establish behavior.

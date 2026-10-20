@@ -18,13 +18,16 @@ user-invocable: false
 
 Read the request, `AGENTS.md`, existing components and accepted design decisions.
 
-- For a new web application, prefer Next.js App Router, TypeScript, Tailwind v4 and shadcn/ui.
-- For desktop or iOS/Android also use native-platform implementation and driver expertise.
-- A Tauri React/Vite DOM interface still follows this visual/interaction process and the compatible Tailwind/shadcn conventions; only web SSR defaults are inapplicable.
-- React Native uses native components, not DOM primitives.
-- Preserve an established React/Vite or other frontend unless a migration is requested.
-- Use the project's package manager, locked versions and component primitives; do not mix Tailwind v3/v4 or Radix/Base UI APIs casually.
-- For new Next.js projects, use `@tailwindcss/postcss`, `@import "tailwindcss"` and CSS-first semantic tokens via `@theme`/`@theme inline`; follow the selected shadcn preset rather than creating a competing token system.
+| Context | Applicable starting guidance |
+| --- | --- |
+| New web application | Prefer Next.js App Router, TypeScript, Tailwind v4 and shadcn/ui. |
+| Tauri React/Vite DOM interface | Apply the visual/interaction process and compatible Tailwind/shadcn conventions; web SSR defaults are inapplicable. |
+| React Native | Use native components, not DOM primitives. |
+| Desktop or iOS/Android | Also use native-platform implementation and driver expertise. |
+
+Preserve an established React/Vite or other frontend unless migration is requested. Use the project's package manager, locked versions and primitives; keep Tailwind v3/v4 and Radix/Base UI APIs compatible.
+
+For new Next.js projects, use `@tailwindcss/postcss`, `@import "tailwindcss"` and CSS-first semantic tokens via `@theme`/`@theme inline`. Follow the selected shadcn preset rather than creating a competing token system.
 
 Use visual design expertise for product-derived direction, accepted references and semantic token intent, and interaction design expertise for behavior. These generic methods apply beyond React; this skill owns the compatible React/Next.js implementation. Record meaningful stack deviations in the existing project note.
 
@@ -50,12 +53,21 @@ Use semantic controls, visible labels, keyboard access and clear focus.
 - Preserve input on recoverable failures, prevent duplicate submission and provide actionable errors.
 - Destructive actions follow the existing confirmation or recovery convention.
 
-- Use pages for substantial editing, panels for quick inspection and dialogs for short decisions.
+### Layout and data interaction
+
+Use pages for substantial editing, panels for quick inspection and dialogs for short decisions.
+
 - For growing datasets, use bounded server pagination/filtering, consistent row actions and bulk actions with explicit selection scope.
 - Put non-sensitive shareable view state in the URL.
 - Localize dates, time zones, numbers and units deliberately.
 
-Prefer React Hook Form with Zod for complex forms, TanStack Table for complex tables and a chart library such as Recharts when charts serve the task. Do not add these dependencies for a simple field or static list. Client validation helps users; the backend validates and enforces all business rules.
+| Required interaction | Candidate for compatible projects |
+| --- | --- |
+| Complex forms | React Hook Form with Zod |
+| Complex tables | TanStack Table |
+| Charts that serve the task | A chart library such as Recharts |
+
+Simple fields and static lists need not acquire these dependencies. Client validation helps users; the backend validates and enforces all business rules.
 
 ## Keep React and API boundaries clear
 

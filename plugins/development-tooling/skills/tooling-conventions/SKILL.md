@@ -32,9 +32,8 @@ Read only the relevant reference. Language-specific checks and packaging follow 
 
 ## Verify the actual integration
 
-Pin compatible tool versions and dependencies, keep local/CI command semantics aligned, and validate configuration with its real parser/linter and an appropriate execution boundary.
+Pin compatible tool versions and dependencies, align local/CI command semantics, and validate configuration with its real parser/linter and an appropriate execution boundary.
 
-- A YAML parse, image build, healthy collector or static component catalogue establishes only that stage.
-- Inspect startup, representative behavior, emitted/received signals, failure status and cleanup where those are the claim.
-- Preserve credentials, data ownership, partial staging and protected CI trust boundaries.
-- Record authored, locally checked, remotely run and unavailable capabilities separately.
+Inspect startup, representative behavior, emitted/received signals, failure status and cleanup where those are the claim. A YAML parse, image build, healthy collector or static component catalogue establishes only that stage.
+
+Preserve credentials, data ownership, partial staging and protected CI trust boundaries. Record authored, locally checked, remotely run and unavailable capabilities separately.

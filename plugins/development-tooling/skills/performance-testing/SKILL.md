@@ -30,12 +30,12 @@ Record intended arrival rate or concurrency, duration, warmup, thresholds, targe
 
 ## Implement meaningful k6 scenarios
 
-Choose virtual-user executors for a fixed concurrent population or arrival-rate executors for independent incoming demand.
+| Workload model | Executor choice and interpretation |
+| --- | --- |
+| Fixed concurrent population | Virtual-user executors. In a closed model, slower responses can reduce offered traffic; account for that when interpreting overload. |
+| Independent incoming demand | Arrival-rate executors. |
 
-- Iterations can contain multiple requests: distinguish iteration rate from request rate.
-- Size the load generator and VU allocation; inspect achieved throughput and `dropped_iterations`.
-- A test that did not generate its intended load cannot establish that the application sustained it.
-- In a closed model, slower responses can reduce offered traffic; account for that when interpreting overload.
+Iterations may contain multiple requests; distinguish iteration rate from request rate. Size the generator and VU allocation and inspect achieved throughput and `dropped_iterations`. Unachieved intended load cannot establish application capacity.
 
 Check semantic outcomes as well as expected status codes.
 

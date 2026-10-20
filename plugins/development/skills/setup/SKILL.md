@@ -22,9 +22,11 @@ Setup is technical foundation work, not a substitute for product discovery. Befo
 
 Use project-conventions to discover the repository, accepted stack, commands, identity model, environments and critical journey.
 
-- In a new project establish only useful foundations for the requested first slice; in an existing one identify missing context without restructuring it.
-- Ask about consequential product/platform choices, then record commands and accepted constraints in existing instructions/docs.
-- Verify available startup/migration/test paths and identify missing prerequisites.
-- Setup is not a claim that an application feature is complete. Use develop when the request is to build the application end to end.
+| Project context | Foundation work |
+| --- | --- |
+| New project | Establish useful foundations for the requested first slice. Satisfy the [applicable foundation contract](../project-conventions/SKILL.md#complete-new-project-foundations), including authored onboarding, checks/tests, packaging and delivery artifacts. |
+| Existing project | Preserve working foundations, identify missing context and address the requested gaps without restructuring the application. |
 
-For a new application, satisfy the [applicable foundation contract](../project-conventions/SKILL.md#complete-new-project-foundations): inspect the authored onboarding, checks/tests, packaging and delivery artifacts and run their available command paths. Identify unresolved targets or unavailable tools explicitly. Existing-project adoption preserves working foundations and focuses on the requested gaps.
+Ask about consequential product/platform choices, then record commands and accepted constraints in existing instructions/docs. Verify available startup, migration and test paths and run the available foundation command paths. Name unresolved targets, missing prerequisites and unavailable tools.
+
+Setup does not establish that an application feature is complete. Use develop when the request is to build the application end to end.

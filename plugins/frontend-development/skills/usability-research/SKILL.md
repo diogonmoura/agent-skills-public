@@ -16,7 +16,12 @@ Choose research to resolve a user question or inform a decision. Use for request
 
 Inspect the intended experience, known constraints and supplied flow, frame or prototype. Identify the decision, relevant users/tasks and uncertainty. Use available context; ask only for facts that change the study and label planning assumptions.
 
-Choose a method that can answer the question: task observation for completion/recovery, or a scoped concept/wording inquiry when appropriate. Justify participant variation, recruitment, session length and sample through the decision and access limits. Quantitative coverage or population claims need an applicable source/model, assumptions and uncertainty; otherwise state the qualitative learning aim. A proposed sample remains a plan until recruitment occurs.
+| Question | Suitable method |
+| --- | --- |
+| Can participants complete or recover a task? | Observe realistic task performance. |
+| How do participants understand a concept or wording? | Use a scoped concept/wording inquiry. |
+
+Justify participant variation, recruitment, session length and sample through the decision and access limits. Quantitative coverage or population claims need an applicable source/model, assumptions and uncertainty; otherwise state the qualitative learning aim. A proposed sample remains a plan until recruitment occurs.
 
 ## Observe without coaching
 

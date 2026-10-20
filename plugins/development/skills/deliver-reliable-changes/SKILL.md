@@ -49,12 +49,13 @@ These describe evidence, not additional approval ceremonies. A build, screenshot
 
 ## Implement, test, inspect and repair
 
-Keep meaningful regression tests with the feature as behavior is implemented.
+Keep meaningful regression tests with the feature as behavior is implemented. For each useful increment:
 
-- After each useful increment, run affected fast checks, exercise the changed path using the services it needs and inspect relevant diagnostics/state.
-- Diagnose discrepancies, repair the shared cause and recheck before dependent work.
-- Manual exploration complements committed tests.
-- Add coverage for an observed failure at the smallest boundary that captures its cause.
+1. Run affected fast checks and exercise the changed path using the services it needs.
+2. Inspect outcomes, diagnostics and relevant state against the accepted criteria.
+3. Diagnose discrepancies, repair the shared cause and recheck before dependent work. Add coverage for an observed failure at the smallest boundary that captures its cause.
+
+Manual exploration complements committed tests.
 
 Use isolated test data/stores and controlled providers. Journey-testing owns fixture identity, driver and platform details. Mocks demonstrate application handling; live integrations and native clients require their own evidence. Keep expensive load/fault/live-model checks at risk-appropriate milestones, rather than repeating every suite after each edit.
 
@@ -62,7 +63,8 @@ Before completion, reconcile all in-scope surfaces/consumers and run required br
 
 - Exercise affected documented entrypoints and production build/start paths, with locked tools and real generated artifacts.
 - Keep client, service and container configuration consistent.
-- A failed required command or missing driver leaves the corresponding claim partial even when other tests pass.
+
+A failed required command or missing driver leaves the corresponding claim partial even when other tests pass.
 
 Stop when acceptance is established or a precise blocker remains. Repeated failure without new evidence calls for diagnosis, not indefinite retries. Distinguish product defects, fixture/environment problems, stochastic evaluation and missing capabilities. Human decisions resolve unresolved product/taste questions; agent self-rating cannot supply that acceptance.
 

@@ -23,12 +23,9 @@ Use available aggregate workload evidence to find consequential operations, cons
 - Separate cold/warm behavior and tenant/data-size slices where they affect the conclusion.
 - Estimated plan costs are not wall-clock measurements, and a scan or a particular join type is not inherently a defect.
 
-Treat production diagnostics as workload with an impact.
+Treat production diagnostics as workload with an impact. Confirm the target, access and permitted load; use existing traces or non-executing plans when sufficient.
 
-- Confirm the target, access and permitted load; use existing traces or non-executing plans when sufficient.
-- An execution plan that runs the statement can change data or impose substantial load.
-- A rollback does not reverse every external effect.
-- Keep sensitive query parameters and records out of reports.
+A plan that runs the statement can change data or impose substantial load, and rollback does not reverse every external effect. Keep sensitive query parameters and records out of reports.
 
 ## Compare changes against the full contract
 

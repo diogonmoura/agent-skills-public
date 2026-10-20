@@ -37,7 +37,15 @@ Each diagram declares type/scope/status and uses understandable element types, r
 
 ## Explain runtime, lifecycle and data boundaries
 
-Choose representative architectural scenarios: important user work, critical external interfaces, startup/release and failure/recovery. Use sequences for interaction/ordering, state diagrams for lifecycle and data-flow views for information movement. Do not create a diagram per endpoint.
+Choose representative scenarios: important user work, critical external interfaces, startup/release and failure/recovery. Select the view for its explanatory job:
+
+| Question | View |
+| --- | --- |
+| How do participants interact and in what order? | Sequence |
+| How does an entity move through its lifecycle? | State diagram |
+| Where does information move? | Data-flow view |
+
+A diagram per endpoint is unnecessary.
 
 Trace actor/context through authorization, validation, transaction, persistence, events and user-visible outcome.
 

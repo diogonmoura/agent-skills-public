@@ -23,7 +23,7 @@ Use JVM flags and ergonomics only for a Java/JVM workload. For Python, Node.js o
 - **Setup/feature:** configure and test runtime/infra together, including probes, graceful shutdown, pools and load-sensitive behavior.
 - **Recurring review:** audit rendered settings and metrics against the previous baseline, identify inconsistencies, prepare measured bounded changes, and track experiments. Do not auto-promote unbenchmarked collector/resource changes to production.
 
-Consult [references/optimization-guide.md](references/optimization-guide.md). Discover runtime/JDK version, architecture/libc, container launch flags, application/consumer/job roles, deployment overrides, autoscaler metric semantics, resource limits and normal/peak behavior. Inspect effective rendered configuration, not only base YAML or comments for deeper implementation details when needed.
+Discover runtime/JDK version, architecture/libc, container launch flags, application/consumer/job roles, deployment overrides, autoscaler metric semantics, resource limits and normal/peak behavior. Inspect effective rendered configuration rather than only base YAML or comments. Consult [the optimization guide](references/optimization-guide.md) for deeper implementation details.
 
 ## Workflow
 

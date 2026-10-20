@@ -54,25 +54,30 @@ For browser/mobile/desktop telemetry use suitable supported SDKs and a controlle
 
 Use the project's selected local service mechanism with explicit connectivity, readiness and resource/retention bounds. Add only the backend the requested diagnostic capability needs. Expose supported read/query APIs or CLI for agents as well as dashboards for people; an MCP is optional and its availability must be verified. Keep query access scoped and correlate scenario/run, revision and environment with the relevant trace and logs. Capture sanitized diagnostic artifacts for failed checks; do not claim ingestion from a container being healthy.
 
-Exercise a representative successful journey and a controlled error through actual services.
+1. Exercise a representative successful journey and controlled error through actual services. Check span relationships across request/worker/tool boundaries, durations/units/outcomes, log correlation and sensitive-data exclusion.
+2. Assert generated telemetry at an inspectable export/test boundary.
+3. Verify receipt/query in the selected backend when available.
 
-- Check expected span relationships across request/worker/tool boundaries, durations/units/outcomes, log correlation and sensitive-data exclusion.
-- Assert generated telemetry at an inspectable export/test boundary and verify receipt/query in the selected backend when available.
-- This separates an application instrumentation defect from a routing/backend failure; document unverified destinations instead of claiming compatibility with every backend.
-- For a backend switch test ingestion and affected translations/queries explicitly.
+These boundaries distinguish instrumentation defects from routing/backend failures. Document unverified destinations; for a backend switch, test ingestion and affected translations/queries explicitly.
 
 AI execution telemetry explains latency, failures, tool use and usage; it does not prove answer quality. Keep evaluation cases, expected outcomes and deterministic scoring/version identity portable in the application. Add an external dataset/experiment service only for a useful accepted workflow, through an adapter without a service dependency in domain logic. Avoid duplicate instrumentation/exports and identify which pipeline owns each signal. Use matching technical guidance for backend/version-specific setup; missing tooling leaves that destination unverified, not a reason to select a vendor.
 
 ## Implement signals
 
-1. Emit structured JSON logs with UTC-compatible timestamp, severity, service, environment, version and message; maintain the project's schema or explicit mappings.
-2. Propagate trace context across request and async boundaries using supported libraries; add custom correlation only where it provides missing coverage. Clear scope after completion to avoid context leakage.
-3. Emit one canonical summary per work/attempt including failures and bounded duration/outcome fields. Observe start/admission and deadline/completion separately where silent failures matter.
-4. Implement counters and duration histograms/distributions with explicit units and bounded labels. Request/user/work IDs, arbitrary URLs and exception text are not metric dimensions.
-5. Configure platform/runtime/queue/datastore collection and separate role/deployment identities where needed. Normalize operation routes and preserve useful failure signals.
-6. Keep secrets, authentication session values, personal/financial payloads and sensitive query strings out at source. Apply collector masking as a secondary barrier; logging must not fail the application.
-7. Version-control collection/filter/retention/sampling configuration and validate effective target overrides. Filter low-value successful health traffic without hiding failures.
-8. Test parsing/types, context propagation, success/failure/timeout summaries, metric labels/units, redaction and exporter outage behavior. Verify representative data reaches the intended backend.
+These are complementary signal contracts, not an installation sequence:
+
+| Concern | Implementation contract |
+| --- | --- |
+| Logs | Structured JSON with UTC-compatible timestamp, severity, service, environment, version and message; preserve the project schema or explicit mappings. |
+| Context | Propagate across requests and async boundaries using supported libraries. Add correlation for missing coverage and clear scope after completion. |
+| Work/attempt outcomes | One canonical summary including failures and bounded duration/outcome fields. Observe start/admission separately from deadline/completion where silent failures matter. |
+| Metrics | Counters and duration histograms/distributions with explicit units and bounded labels. Request/user/work IDs, arbitrary URLs and exception text are not dimensions. |
+| Platform/runtime collection | Queue/datastore and runtime signals, separate role/deployment identities where needed, normalized operation routes and useful failures. |
+| Sensitive content | Exclude secrets, authentication session values, personal/financial payloads and sensitive query strings at source. Collector masking is secondary; logging must not fail the application. |
+| Collection configuration | Version filters, retention and sampling; validate effective target overrides. Filter low-value successful health traffic without hiding failures. |
+
+Test parsing/types, context propagation, success/failure/timeout summaries, metric labels/units, redaction and exporter outages. Verify representative data reaches the intended backend.
+
 
 ## Operate the pipeline
 

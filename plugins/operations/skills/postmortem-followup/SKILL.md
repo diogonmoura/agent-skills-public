@@ -22,7 +22,7 @@ Turn learning into demonstrated system improvement. An action being written, mer
 - **Implementation:** make a scoped fix, telemetry/test/runbook change or rehearsal tied to an action's success criterion.
 - **Recurring review:** compare action registers, code/config/runtime evidence and new incidents; update existing IDs, flag overdue/unverified controls and prepare bounded improvements. Do not auto-close actions from issue status alone.
 
-Consult [references/followup-guide.md](references/followup-guide.md). Gather reviewed incident evidence, action history, owners, deadlines and applicable implementation scope. Preserve proposed versus accepted ownership and documented exceptions for deeper implementation details when needed.
+Gather reviewed incident evidence, action history, owners, deadlines and applicable implementation scope. Preserve proposed versus accepted ownership and documented exceptions. Consult [the follow-up guide](references/followup-guide.md) for deeper implementation details when needed.
 
 ## Workflow
 

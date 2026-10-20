@@ -28,15 +28,19 @@ If the problem or product priority is still unresolved, use installed product di
 
 ## Define actionable work
 
-Produce concise actionable work: intended behavior, observable acceptance and failure/permission cases, affected surfaces/contracts, dependencies and verification.
+Produce the requirements needed to act:
 
-- For UI work identify interaction decisions requiring interaction design expertise; for backend work use service-contract design expertise to identify state, ownership, transactions and recovery decisions.
-- Do not write implementation code merely because the brief is detailed.
+- Intended behavior and observable acceptance, including failure and permission cases.
+- Affected surfaces/contracts and dependencies.
+- Verification approach.
+
+For UI work, identify interaction decisions using available interaction design expertise. For backend work, use available service-contract design expertise for state, ownership, transactions and recovery decisions. A detailed brief does not itself authorize implementation code.
+
 
 ## Return readiness and open decisions
 
 Return ready or needs-decisions with concrete unresolved questions and evidence.
 
-- A tracker item can be input/output when configured and authorized; conversation/Markdown is equally valid. Update labels/status or create tickets only within task policy.
-- Unattended runs return blockers rather than invent product decisions or wait for an absent person.
-- A routine task needs no exhaustive story catalogue or interview.
+Conversation or Markdown can be sufficient; a tracker item is another input/output when configured and authorized. Labels, status changes and ticket creation stay within task policy. Routine work needs no exhaustive story catalogue or interview.
+
+In unattended runs, return blockers rather than inventing product decisions or waiting for an absent person.

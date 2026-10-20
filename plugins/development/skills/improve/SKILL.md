@@ -22,11 +22,18 @@ A bare request surveys the relevant codebase/history and surfaces a short list o
 
 ## Implement an authorized improvement
 
-A specific requested improvement can authorize bounded implementation within established scope.
+A specific requested improvement can authorize bounded implementation. Keep a bare improvement assessment read-only; do not force another approval for routine choices already authorized.
 
-- Establish a baseline, diagnose the cause, define desired outcomes, make focused changes and compare results; do not force another approval for routine choices already authorized.
-- For UX changes use interaction design expertise before changing screens and track all affected surfaces.
-- When installed, use interface assessment expertise for evidence-based craft review and interface-language expertise for relevant task copy; use usability research expertise for a requested study or analysis of actual observations. Keep a bare improvement assessment read-only and use the same expertise during authorized repairs.
-- For architecture examine responsibilities, dependency direction, ownership, coupling/change hotspots, seams and testability; use codebase-design/domain-modeling when useful without forcing deep-module vocabulary, HTML reports or interviews.
-- Preserve behavior through incremental refactoring and regression checks; more abstractions are not inherently better.
-- Tracker proposals/creation and live experiments follow the task's explicit scope.
+1. Establish a baseline, diagnose the cause and define the desired outcome.
+2. Make focused changes within scope. Preserve behavior through incremental refactoring and regression checks.
+3. Compare results with the baseline and report the evidence.
+
+Choose the relevant analysis without imposing another process:
+
+| Concern | Examine and use |
+| --- | --- |
+| UX | Establish interaction intent before changing screens; account for all affected surfaces. Use available interface assessment and interface-language expertise for craft and task copy. |
+| Usability evidence | Use available research expertise for a requested study or actual observations. |
+| Architecture | Examine responsibilities, dependency direction, ownership, coupling/change hotspots, seams and testability. Use codebase-design/domain-modeling where useful, without forcing deep-module vocabulary, HTML reports or interviews. |
+
+More abstractions are not inherently better. Tracker proposals/creation and live experiments follow the task's explicit scope.

@@ -16,12 +16,12 @@ metadata:
 
 ## Explain the next useful activity
 
-Read [task guidance](../../TASKS.md). Use its task catalogue and the client's observed skill/plugin inventory when available.
+Read [task guidance](../../TASKS.md). Use its task catalogue and the client's observed skill/plugin inventory when available. If the stopping point is unclear, distinguish product direction, design/plan, implementation and assessment. Explain how to seek product discovery and prioritization expertise for an unresolved product problem, or develop when working software is requested; reuse accepted context for a defined feature or defect.
 
-- Explain what to use for the user's current phase/outcome, give one or two copyable examples and state expected results/side effects.
-- If the stopping point is unclear, distinguish product direction, a design/plan, implementation or assessment.
-- Explain how to seek product discovery and prioritization expertise for an unresolved product problem and develop when working software is requested.
-- Reuse accepted context for a defined feature or defect.
+1. Choose the user-facing activity for the current phase/outcome and explain its expected result and side effects.
+2. Describe the relevant expertise; identify an actual matching skill only after observing its availability.
+3. Give one or two copyable examples.
+
 
 ## Explain availability and action boundaries
 
@@ -32,4 +32,4 @@ Distinguish installed/observed skills and tools from this package's catalogue an
 - Help is read-only: do not run setup, probes, tests, installs, create schedules or begin the suggested activity.
 - Link the usage/SDLC guides through their published URLs when useful.
 
-Choose the user-facing activity first, explain its expected result, then describe the relevant expertise and identify an actual matching skill only after observing its availability. A specialist can also be requested directly when available; a selectable discipline is not an instruction to start a full lifecycle. Recommend the next activity without firing explicit-only skills, probing accounts or beginning work. Preserve the difference between catalogue entries and observed availability.
+A specialist can also be requested directly when available; selecting a discipline does not start a full lifecycle. Recommend the next activity without firing explicit-only skills, probing accounts or beginning work. Preserve the difference between catalogue entries and observed availability.

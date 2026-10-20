@@ -54,14 +54,14 @@ Use the relevant backend/frontend/AI skills and installed upstream expertise; do
 
 For a requested new application setup, create and validate the following applicable artifacts. A local-only execution boundary still permits preparing CI, release and deployment procedures; it does not authorize running remote publication or deployment.
 
-| Foundation | Expected artifact and evidence |
-| --- | --- |
-| Human onboarding | Authored root README linking each application/component README, purpose, architecture, prerequisites, configuration, install/start/migrate/test/build and shutdown/reset commands. Replace starter text and empty files. AGENTS.md complements these user-facing docs. |
-| Dependencies and configuration | Compatible manifests/lockfiles, safe .env examples, typed settings and actual lint/format/type/schema checks for code and configuration. Validate the configuration and scripts actually present with compatible checks, including secret detection; document scoped exceptions. |
-| Behavior verification | Runnable focused backend and frontend/component tests plus the first useful journey scaffold/fixtures. Setup tests prove startup/configuration boundaries; develop adds actual feature acceptance/regression tests. A build or empty test suite is insufficient. |
-| Build, packaging and local services | Reproducible build/package definitions for each deployable component and isolated startup of its real dependencies, initialization and readiness. Supply container build definitions when containers are the agreed delivery format; native clients use platform packaging. |
-| CI and release | Workflows on the selected CI provider that install locked tools, run code/configuration/behavior checks, build relevant artifacts and retain redacted failure evidence. Release workflows define versions, immutable artifacts and intended distribution destinations. |
-| Deployment and recovery | Document artifact promotion, required target/configuration/secrets, migrations, outcome verification and rollback/roll-forward. Implement target-specific automation when the target is agreed; an unknown target stays a blocker, not an invented cloud choice or pretend deploy job. |
+| Foundation | Prepare | Verify or distinguish |
+| --- | --- | --- |
+| Human onboarding | Authored root README linking each component README: purpose, architecture, prerequisites, configuration and install/start/migrate/test/build/shutdown/reset commands. | Replace starter text and empty files; AGENTS.md complements user-facing docs. |
+| Dependencies and configuration | Compatible manifests/lockfiles, safe .env examples, typed settings, and lint/format/type/schema checks for code and configuration. | Validate the actual configuration and scripts with compatible checks, including secret detection; document scoped exceptions. |
+| Behavior verification | Runnable focused backend and frontend/component tests plus the first useful journey scaffold/fixtures. | Setup tests establish startup/configuration; develop adds feature acceptance/regression. A build or empty suite is insufficient. |
+| Build, packaging and local services | Reproducible definitions per deployable component; isolated real dependencies, initialization and readiness. | Containers use container build definitions when agreed; native clients use platform packaging. |
+| CI and release | Selected-provider workflows using locked tools, code/configuration/behavior checks, artifact builds and redacted failure evidence. | Define release versions, immutable artifacts and intended distribution destinations. |
+| Deployment and recovery | Promotion, target/configuration/secrets, migrations, outcome verification and rollback/roll-forward procedures. | Add target-specific automation when agreed; an unknown target stays a blocker, not an invented cloud choice or pretend deploy job. |
 
 Use delivery expertise when available for delivery contracts, and matching technical guidance for selected provider, packaging and registry mechanics. Missing optional guidance does not remove the foundation outcomes above. Demonstrate a clean-checkout command path and inspect the actual artifacts before declaring setup complete. Keep knowledge navigable rather than producing numerous ceremonial documents. Existing projects and tiny changes retain proportionate scope.
 

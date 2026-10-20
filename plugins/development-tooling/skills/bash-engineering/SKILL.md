@@ -22,7 +22,7 @@ Use Bash for small command orchestration with a clear data and exit-status contr
 - **Feature/maintenance:** preserve documented interfaces and callers, correct failure/quoting behavior, and update examples/tests with changes.
 - **Recurring review:** audit changed entrypoints and inline CI shell, identify reproducible defects, prepare bounded patches and fixture tests, and retain stable findings. Do not run remote mutations merely to test scripts.
 
-Consult [references/bash-guide.md](references/bash-guide.md). For CI integration also read [references/action-boundaries.md](references/action-boundaries.md). Discover actual callers, local/CI environments, GNU/BSD requirements, secrets, stdout consumers and mutation scope before editing for deeper implementation details when needed.
+Discover actual callers, local/CI environments, GNU/BSD requirements, secrets, stdout consumers and mutation scope before editing. Consult [the Bash guide](references/bash-guide.md) for deeper implementation details; for CI integration also read [action boundaries](references/action-boundaries.md).
 
 ## Workflow
 

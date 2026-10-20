@@ -21,12 +21,12 @@ Establish the server/extension versions, deployment, roles and affected workload
 
 Use available pg_stat_statements, activity/wait statistics, locks, pool telemetry and system evidence to distinguish expensive SQL from connection waits, blocked transactions, I/O, CPU, serialization and excessive result transfer. Confirm extension access and collection/reset intervals before interpreting totals. Inspect representative parameter/data/tenant distributions and concurrency; averages can hide a consequential tail.
 
-Start with a non-executing EXPLAIN when execution would exceed the authorized impact.
+| Diagnostic | Execution boundary |
+| --- | --- |
+| Non-executing EXPLAIN | Start here when execution would exceed authorized impact. |
+| EXPLAIN ANALYZE | Executes the statement, including writes and invoked functions; even SELECT can be expensive or cause effects. |
 
-- EXPLAIN ANALYZE executes the statement, including writes and invoked functions; even SELECT can be expensive or cause effects.
-- A rollback cannot undo sequence consumption or external function effects.
-- Use a suitable bounded target and privacy-safe inputs.
-- Match available EXPLAIN options to the server version.
+Rollback cannot undo sequence consumption or external function effects. Use a suitable bounded target and privacy-safe inputs; match available EXPLAIN options to the server version.
 
 Compare estimated versus actual cardinality, loops, filtering, buffers and spills. A sequential scan may be optimal; an index-only scan still depends on visibility information. Statistics, skew, parameter-sensitive/prepared plans, expression shape, sort/pagination and result volume can matter more than a missing index. Diagnose one supported hypothesis rather than turning every plan node into a defect.
 

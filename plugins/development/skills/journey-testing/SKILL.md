@@ -37,6 +37,8 @@ Combine a small critical journey suite with component/state checks, visual regre
 - Stabilize data, rendering environment, fonts, time and animations for visual comparisons; compare against the accepted design and reviewed baselines. A changed screenshot is evidence to investigate, not permission to accept a new baseline.
 - Automated accessibility checks complement keyboard, screen-reader and user evaluation where needed; they do not prove accessibility or usability.
 
+### Agent exploration
+
 For exploration give the agent a user goal, acceptance criteria, target and allowed actions, rather than only a prescribed click sequence.
 
 - Inspect real UI/accessibility state, relevant requests, console errors, persisted outcomes and telemetry. Screenshots aid layout judgment but cannot establish saved data, permissions or task success.
@@ -46,19 +48,18 @@ For exploration give the agent a user goal, acceptance criteria, target and allo
 
 ## Exercise components within the verification loop
 
-Where Storybook is adopted, derive stories from the accepted interaction/state coverage before implementation and exercise the actual shared components, including portals and required providers.
+Where Storybook is adopted:
 
-- Add meaningful interaction assertions, accessibility checks and reviewed visual comparisons to the existing local/CI checks using the project's version-compatible runner.
-- A static Storybook build only proves the catalogue builds.
-- A story rendered without assertions is not evidence that its interaction works.
-- Do not silently treat accessibility warnings as passing required checks or require a paid publishing service to run local tests.
+1. Derive stories from accepted interaction/state coverage before implementation. Exercise actual shared components, including portals and required providers; keep failure/draft states repeatable through controlled providers.
+2. Add meaningful interaction assertions, accessibility checks and reviewed visual comparisons to existing local/CI checks using the project's version-compatible runner.
+3. Verify the actual route/native caller, real authentication, API/database persistence and denied access in critical journeys. Reuse stories or fixtures where supported instead of duplicating identical coverage.
 
-For a modal, verify keyboard opening, initial focus, Tab/Shift+Tab containment, Escape and trigger restoration; a mounted component assertion misses those behaviors.
+A static build proves only that the catalogue builds; a rendered story without assertions does not establish interaction behavior. Preserve accessibility warnings as unresolved required checks where applicable; a paid publishing service is unnecessary for local tests.
 
-- Keep narrow failure/draft states repeatable through controlled providers.
-- Reuse stories or fixtures in other tests where supported instead of duplicating identical coverage.
-- Still verify the actual route/native caller, real authentication, API/database persistence and denied access in critical journeys.
-- Keep heuristic design critique, agent exploration and observed participant usability research distinct; a discussion guide is a research plan, not evidence that users completed tasks.
+For example, a modal's verification includes keyboard opening, initial focus, Tab/Shift+Tab containment, Escape and trigger restoration. A mounted-component assertion misses those behaviors.
+
+Keep heuristic critique, agent exploration and observed participant usability research distinct. A discussion guide is a research plan, not evidence that users completed tasks.
+
 
 ## Make outcomes observable
 

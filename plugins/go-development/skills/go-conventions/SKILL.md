@@ -29,7 +29,11 @@ Use the project's module/toolchain policy and reproducible dependency commands. 
 
 ## Make errors and concurrency part of the contract
 
+### Errors
+
 Return useful errors and preserve inspectable identity/type where callers depend on it. Choose wrapping, public error exposure and logging at the responsible boundary; avoid lost errors or repeated noisy reports. Match errors.Is/As and other APIs to supported Go versions. Expected domain failures and programmer invariants need different handling; recovered panics do not prove the service remains correct.
+
+### Concurrency
 
 Make every started goroutine's ownership, completion and shutdown behavior clear.
 

@@ -18,7 +18,7 @@ Identity proves a subject; authorization decides an operation in context. Read t
 
 ## Choose the smallest sufficient identity architecture
 
-Separate browser, native, service and delegated-agent clients; their credential handling and trust differ. Compare the relevant options:
+Separate browser, native, service and delegated-agent clients; their credential handling and trust differ. Compare relevant mechanisms; sessions, protocol clients, brokers and managed services can compose rather than being mutually exclusive:
 
 | Approach | Questions that affect selection |
 | --- | --- |
@@ -44,15 +44,14 @@ Choose roles, attributes, relationships or a combination according to the domain
 - Cover HTTP/API calls, jobs, exports, support tools and AI/MCP actions.
 - Apply the same semantics to listing/search, related resources and bulk operations as to individual reads/writes.
 
-Keep membership, authentication and paid entitlements distinct. Check the product's authority-changing flows and any selected policy infrastructure:
+Keep membership, authentication and paid entitlements distinct. Check the product's authority-changing flows:
 
 | Concern | Establish |
 | --- | --- |
 | Invitation | Scope, expiry, intended recipient and permitted role grants |
 | Ownership or privileged support | Accepted rules for transfer, last-owner removal and support access |
-| When using an external policy engine | Model version, consistency, cache, availability and synchronization choices |
 
-Loading a policy engine does not settle those choices automatically.
+When using an external policy engine, establish model version, consistency, cache, availability and synchronization choices. Loading the engine does not settle them automatically.
 
 ## Make lifecycle and recovery explicit
 

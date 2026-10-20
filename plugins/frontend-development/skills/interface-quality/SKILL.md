@@ -39,4 +39,8 @@ Prioritize task blockers, inaccessible controls and hidden consequences before c
 
 For substantial new work, inspect a representative difficult state before propagation. For global changes, reconcile every in-scope caller and meaningful variant through interaction-design. A shared component can pass while a caller remains wrong. Use [component and token audits](references/component-and-token-audits.md) for reuse or drift questions and [UX writing](../ux-writing/SKILL.md) for task language.
 
-When repair is authorized, use compatible project primitives/tokens, preserve behavior and accepted character, then re-render and exercise affected interactions. Return assessed scope, prioritized findings, actual verification and remaining gaps. Keep aesthetic assessment, user acceptance, component checks and real application/native journeys distinct.
+### When repair is authorized
+
+Use compatible project primitives/tokens, preserve behavior and accepted character, then re-render and exercise affected interactions.
+
+Return assessed scope, prioritized findings, actual verification and remaining gaps. Keep aesthetic assessment, user acceptance, component checks and real application/native journeys distinct.

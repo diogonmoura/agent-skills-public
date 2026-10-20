@@ -34,12 +34,15 @@ Establish what the plan promises, what is metered and which entity owns usage an
 - Define trials, grace periods, upgrades/downgrades, failed payments, cancellation and reactivation only where relevant.
 - Ask about unresolved customer commitments; do not invent grace periods or silently remove access/data.
 
+### Payment and integration failure boundaries
+
 Treat webhook delivery, local commits, remote actions and user redirects as separate failure boundaries.
 
 - Verify authenticity and actual account/environment mapping.
 - Persist enough intent/progress to retry or reconcile safely; event deduplication alone does not prove completed business effects.
 - Define ordering/conflict handling and bounded recovery when provider/local state diverge.
-- A successful checkout redirect is not authoritative proof of paid access.
+
+A successful checkout redirect is not authoritative proof of paid access.
 
 ## Design the operating product
 
@@ -55,6 +58,6 @@ Specify customer administration, self-service and support boundaries. Include us
 
 Connect representative allowed/denied journeys, concurrent/replayed operations, interrupted processing, stale entitlements and tenant closure/recovery to observable outcomes.
 
-- Include the actual service/database/provider boundary when making integration claims.
-- Return accepted/proposed contracts, consequential choices, implementation/verification needs and evidence limits.
-- A design request stops at design; provider accounts, billing configuration and live publication need their own authorized actions.
+Include the actual service/database/provider boundary when making integration claims. Return accepted/proposed contracts, consequential choices, implementation/verification needs and evidence limits.
+
+A design request stops at design; provider accounts, billing configuration and live publication need their own authorized actions.

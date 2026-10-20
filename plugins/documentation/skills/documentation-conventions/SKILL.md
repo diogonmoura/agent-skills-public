@@ -47,13 +47,18 @@ Put product objectives and metric definitions in the PRD by default. Extract ana
 
 Separate requirements and constraints from their design response. The current architecture describes implemented behaviour. Put bounded target designs in work packages; use a separate target architecture for material cross-system change and retire it when fulfilled. Link requirements, decisions, work and verification rather than maintain competing baselines.
 
+### Work tracking
+
 If progress tracking is useful, keep one view in the existing tracker or project notes; no new tracker or ledger is required.
 
 - Where several packages need identification, preserve or agree stable IDs and a small kind vocabulary (feature, fix, refactor, docs, operations, research).
 - Numbers identify work; priorities/dependencies determine order.
 - Distinguish implementation, verification and deployment evidence.
 - Reviews preserve findings; actionable follow-up belongs in linked work or an explicit disposition, with closure evidence.
-- A proposed package does not authorize implementation.
+
+A proposed package does not authorize implementation.
+
+### Operating knowledge
 
 Keep operations documentation broader than runbooks.
 

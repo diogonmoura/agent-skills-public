@@ -46,16 +46,19 @@ Seek implementation expertise matching the actual runtime and selected telemetry
 
 ## Learn from quality and behavior changes
 
-Use privacy-approved samples, user corrections and incidents to detect changes in usefulness, grounding, retrieval freshness, refusals, tool behavior, latency or cost. Compare meaningful user/data slices with identifiable baselines and account for sampling bias and changed traffic. Investigate whether a regression comes from application/configuration, model/provider, corpus, tool or environment changes before choosing a repair.
+Use privacy-approved samples, user corrections and incidents to detect changes in usefulness, grounding, retrieval freshness, refusals, tool behavior, latency or cost.
 
-Use available evaluation expertise to assess quality and promote useful failures into representative regression cases. Traces describe what ran; they do not alone establish answer correctness or task usefulness. Keep online scores, offline held-out evaluation and actual user feedback distinguishable, including their population, uncertainty and permissions.
+1. Compare meaningful user/data slices with identifiable baselines, accounting for sampling bias and changed traffic.
+2. Investigate whether the regression comes from application/configuration, model/provider, corpus, tool or environment changes before choosing a repair.
+3. Use available evaluation expertise to assess quality and promote useful failures into representative regression cases.
+
+Traces describe what ran; they do not alone establish correctness or usefulness. Keep online scores, offline held-out evaluation and actual user feedback distinguishable, including their population, uncertainty and permissions.
+
 
 ## Release and recover reproducibly
 
 Version and promote the compatible application/model/prompt/retrieval/tool configuration with the relevant evidence. Define readiness, staged exposure where useful, rollback/roll-forward conditions and state/data compatibility through the project's delivery process. External provider behavior can change without an application deployment; retain a way to identify the effective configuration and respond to material change.
 
-Verify the affected user outcome and real received/queryable signals at the authorized target.
+Verify the affected user outcome and real received/queryable signals at the authorized target. Check telemetry loss/overhead and failure isolation when material. Configuration or SDK startup does not establish collection, and sampled observations do not establish complete coverage.
 
-- Configuration or SDK startup alone does not establish collection, and sampled observations do not establish complete coverage.
-- Check telemetry loss/overhead and failure isolation when material to the service.
-- Report actual operating evidence, known blind spots and next actions, and keep the relevant runbooks and recovery assumptions current.
+Report actual operating evidence, known blind spots and next actions; keep runbooks and recovery assumptions current.

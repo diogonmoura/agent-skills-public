@@ -40,6 +40,8 @@ Map the accepted contract to FastAPI schemas/dependencies, SQLAlchemy sessions a
 
 ## Organize behavior and contracts
 
+### Application structure and lifecycle
+
 Keep application code, migrations, tests and runtime configuration within the application's boundary.
 
 - Group routes, schemas, behavior and persistence by domain where useful.
@@ -48,6 +50,8 @@ Keep application code, migrations, tests and runtime configuration within the ap
 - Inject authentication, sessions and integrations.
 - Manage shared clients through lifespan and close them cleanly.
 - Validate configuration at startup, inject secrets through the deployment environment, and provide proportionate health/readiness checks with graceful shutdown.
+
+### Public schemas and HTTP contracts
 
 Separate public input/output schemas from ORM models.
 
@@ -69,7 +73,12 @@ Reuse the established identity provider or maintained library.
 - Restrict CORS; CORS is not CSRF protection.
 - Avoid long-lived browser tokens in local storage.
 
-Validate token signature with an explicit algorithm allowlist, trusted issuer/key source, audience and expiry; define session/token revocation as required. If local passwords are needed, use Argon2 through a maintained implementation such as pwdlib, verification/recovery and abuse controls. PyJWT handles tokens, not the whole identity lifecycle.
+For each selected credential mechanism:
+
+| Mechanism | Implementation checks |
+| --- | --- |
+| Tokens | Validate signature with an explicit algorithm allowlist, trusted issuer/key source, audience and expiry; define required session/token revocation. PyJWT handles tokens, not the whole identity lifecycle. |
+| Local passwords, when needed | Use Argon2 through a maintained implementation such as pwdlib, with verification/recovery and abuse controls. |
 
 Derive identity and verified tenant membership from authentication.
 
@@ -81,7 +90,15 @@ Derive identity and verified tenant membership from authentication.
 
 ## Make persistence and migrations intentional
 
-Prefer PostgreSQL for shared relational production data. SQLite fits appropriate local/single-writer contexts; other databases require workload or platform justification. Add Redis for a real cache, queue or coordination need, with expiry/ownership semantics; use object storage for uploads with explicit size/type/access limits. Preserve suitable existing database choices.
+Preserve suitable existing database choices. For new persistence needs:
+
+| Store | Applicability and contract |
+| --- | --- |
+| PostgreSQL | Preferred for shared relational production data. |
+| SQLite | Appropriate local/single-writer contexts. |
+| Redis | A real cache, queue or coordination need, with expiry and ownership semantics. |
+| Object storage | Uploads with explicit size, type and access limits. |
+| Another database | Workload or platform requirements justify the choice. |
 
 Use one session per request, job or concurrent task; never share an AsyncSession across concurrent tasks or keep a global mutable session.
 

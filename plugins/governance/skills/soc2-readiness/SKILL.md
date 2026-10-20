@@ -32,10 +32,14 @@ Map relevant criteria/commitments to actual controls, owners, frequency/triggers
 - Include applicable access lifecycle, changes, monitoring/incident handling, recovery, vendor and risk processes rather than equating readiness with application security.
 - Reuse proportionate existing processes; a particular compliance platform, policy count or organizational template is unnecessary.
 
-Distinguish suitable design and implementation at a point in time from operating effectiveness over a defined period; establish the intended Type 1/Type 2 scope with the auditor.
+Establish the intended Type 1/Type 2 scope with the auditor and distinguish the evidence questions:
 
-- Policies, configured jobs and generated screenshots are not proof that required activities happened.
-- Check who performed a control, when, across which population, with what exceptions and follow-up.
+| Claim | Relevant scope |
+| --- | --- |
+| Suitable design and implementation | A point in time |
+| Operating effectiveness | A defined period: who performed the control, when, across which population, with what exceptions and follow-up |
+
+Policies, configured jobs and generated screenshots do not prove that required activities happened.
 
 ## Assess evidence without manufacturing assurance
 

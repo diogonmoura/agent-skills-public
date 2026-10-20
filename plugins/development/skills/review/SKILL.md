@@ -28,9 +28,12 @@ Pin target/base/head from the PR or current repository context; ask only if ambi
 
 ## Verify and report findings
 
-Inspect existing checks and run appropriate authorized local tests when useful, including actual affected user journeys. Do not claim all tests passed from CI status alone.
+Inspect existing checks and run appropriate authorized local tests when useful, including actual affected journeys. CI status alone does not establish that all tests passed.
 
-- Return severity, concrete location/scenario, impact and an actionable fix; distinguish missing evidence from proven defects.
-- Leave source unchanged by default, apart from owned test/runtime artifacts.
-- Post review comments, apply fixes, approve or merge only when requested or covered by trusted job policy.
-- A changed head invalidates earlier review/test conclusions.
+For each finding, provide:
+
+- Severity and concrete location/scenario.
+- User or system impact.
+- An actionable fix.
+
+Distinguish missing evidence from a proven defect. Leave source unchanged by default, apart from owned test/runtime artifacts. Posting comments, applying fixes, approving or merging requires the request or trusted job policy. A changed head invalidates earlier review/test conclusions.

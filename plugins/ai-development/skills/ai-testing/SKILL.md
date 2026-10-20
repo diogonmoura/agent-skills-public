@@ -14,15 +14,18 @@ Start from the accepted user task, architecture and consequential failure modes.
 
 ## Define acceptance and evidence levels
 
-Separate deterministic invariants from uncertain model quality.
+| Property | Acceptance method |
+| --- | --- |
+| Deterministic invariants | Assert authorization, resource isolation, schema validity, side effects and recovery in the application, even when a model judge scores the answer highly. |
+| Uncertain model quality | Define task-specific criteria for grounding, ambiguity, refusal and relevant safety constraints; choose suitable measures and graders. |
 
-- Authorization, resource isolation, schema validity, side effects and recovery need application assertions even when a model judge gives an answer a high score.
-- Define useful quality criteria for the task, including grounding, ambiguity, refusal and relevant safety constraints.
-- State provisional thresholds and their uncertainty when acceptance is unresolved; do not invent product commitments.
+State provisional thresholds and uncertainty when acceptance is unresolved; do not invent product commitments.
 
 Read [evaluation methods](references/evaluation-references.md) when choosing levels, cases or graders. Assess model/retrieval components, protocol/runtime integration, agent trajectories, conversations, multimodal interaction and complete user journeys where the architecture needs them. Use actual compatible peers and persistent service state for integration and outcome claims. A component score, simulated user or recorded output establishes a narrower boundary than a live end-to-end interaction.
 
 ## Build representative cases and suitable measures
+
+### Select cases
 
 Derive cases from accepted behavior, meaningful user/data slices and privacy-reviewed observed failures.
 
@@ -30,11 +33,15 @@ Derive cases from accepted behavior, meaningful user/data slices and privacy-rev
 - Keep inputs, expected outcomes/rubrics and actual results distinct.
 - Preserve versioned datasets and useful held-out regressions; synthetic generation is an optional source requiring review, not a replacement for task evidence.
 
+### Select measures
+
 Choose exact assertions, reference-based or semantic measures, domain-specific metrics, calibrated model judges and human assessment according to the property.
 
 - Separate retrieval quality from answer usefulness and task outcome from optional implementation details such as tool order.
 - Calibrate subjective judges against accepted human examples, preserve disagreement and use human review where the decision remains subjective.
 - Keep expected results, thresholds and rubrics stable while repairing behavior.
+
+### Compare candidates
 
 Record the evaluated application/model/prompt/context/tool configuration and dataset/evaluator revisions.
 

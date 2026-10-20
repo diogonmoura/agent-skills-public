@@ -53,6 +53,6 @@ Design first-use, loading, useful empty, filtered-empty, partial/stale, denied, 
 
 Verify realistic content, keyboard/focus, accessible names, zoom, responsive layouts and the primary task under relevant success/failure states.
 
-- If implementing, inspect the rendered target rather than treating a component story or screenshot as full functional evidence.
-- Check server isolation and persisted outcomes separately.
-- Return the design rationale, affected states and actual evidence at the requested stopping point.
+When implementing, inspect the rendered target; a component story or screenshot does not establish full functional behavior. Check server isolation and persisted outcomes separately.
+
+Return the design rationale, affected states and actual evidence at the requested stopping point.

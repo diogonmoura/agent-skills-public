@@ -22,7 +22,7 @@ Build a tool other people and unattended workers can run, understand and recover
 - **Feature/maintenance:** preserve CLI/output contracts, local project manager and runtime, improve the affected boundaries, tests and documentation.
 - **Recurring review:** inspect changed code/dependencies and prior run evidence, identify reproducible correctness/usability gaps, prepare bounded fixes and fixtures, and maintain stable findings. Run against live systems only within the configured read/mutate policy.
 
-Consult [references/automation-guide.md](references/automation-guide.md). Discover the nearest README/pyproject/lock/entrypoint in multi-tool repositories; do not assume a global Python version or migrate dependency managers just for consistency for deeper implementation details when needed.
+Discover the nearest README/pyproject/lock/entrypoint in multi-tool repositories. Preserve its Python version and dependency manager unless migration is in scope. Consult [the automation guide](references/automation-guide.md) for deeper implementation details when needed.
 
 ## Workflow
 

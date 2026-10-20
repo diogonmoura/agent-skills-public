@@ -19,28 +19,32 @@ Read the product context and repository evidence. Use [system-mapping](../system
 
 ## Make decisions the user can assess
 
-Identify the useful journey, actors, data ownership, consumers and external dependencies.
+### Establish constraints
 
-- Establish constraints that affect the design: supported clients, offline behavior, synchronization, latency/concurrency, budget, deployment environment, recovery and team capabilities.
-- Mark unmeasured demand and unknown platform support explicitly.
+Identify the useful journey, actors, data ownership, consumers and external dependencies. Establish supported clients, offline behavior, synchronization, latency/concurrency, budget, deployment environment, recovery and team capabilities. Mark unmeasured demand and unknown platform support explicitly.
 
-Compare plausible options against those constraints.
+### Compare plausible options
 
-- Explain the recommendation, rejected alternatives, consequences and what evidence would reopen the choice.
-- Start with the simplest system that meets the accepted outcome; add service splits, queues, shared caches or additional frameworks for a demonstrated responsibility.
-- Use installed codebase-design for interfaces/test seams and domain-modeling for complex domain concepts.
-- A named pattern or popular framework does not establish suitability.
+Compare against those constraints and explain the recommendation, rejected alternatives, consequences and evidence that would reopen the choice. Start with the simplest system that meets the accepted outcome; add service splits, queues, shared caches or frameworks for a demonstrated responsibility. A named pattern or popular framework does not establish suitability.
 
-Describe system context and important service/client responsibilities, deployment boundaries and the critical request/event sequence.
+Use installed codebase-design for interfaces/test seams and domain-modeling for complex domain concepts.
 
-- Specify contracts, authority checks, persistence/transaction ownership, retries/idempotency, failure/cancellation, compatibility and configuration.
-- Include test seams, diagnostic signals, artifact/release strategy and recovery.
-- Use the relevant backend, frontend/native-client, AI and operations guidance when installed.
-- Architecture diagrams or a flow explorer clarify a decision when requested or useful; a drawing alone is not a design.
+### Describe the selected boundaries
 
-- For desktop/mobile distinguish native shell and client responsibilities from backend services in the accepted stack.
-- For AI separate model/runtime orchestration, AG-UI interaction transport, A2UI rendering and MCP/ACP integrations; verify actual SDK/protocol and harness capabilities before proposing reuse.
-- Existing-session attachment, concurrent edits and voice interruption need explicit supported contracts.
+Cover the affected design:
+
+- System context, service/client responsibilities, deployment boundaries and critical request/event sequence.
+- Contracts, authority checks, persistence/transaction ownership, retries/idempotency, failure/cancellation, compatibility and configuration.
+- Test seams, diagnostic signals, artifact/release strategy and recovery.
+
+Use relevant backend, frontend/native-client, AI and operations guidance when installed. Diagrams or a flow explorer can clarify a decision; a drawing alone is not a design.
+
+| When the application includes | Make these boundaries explicit |
+| --- | --- |
+| Desktop or mobile clients | Native shell/client responsibilities versus backend services in the accepted stack. |
+| AI capabilities | Model/runtime orchestration, AG-UI interaction transport, A2UI rendering and MCP/ACP integrations; verify actual SDK/protocol and harness capabilities before proposing reuse. |
+| Existing-session attachment, concurrent edits or voice interruption | The supported contracts for those operations. |
+
 
 ## Verify consequential technical claims
 

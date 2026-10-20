@@ -26,7 +26,10 @@ Resolve the named repository/update PRs and any trusted maintenance policy. Use 
 
 Inspect CI and test affected behavior. Resolve conflicts or patch failures only when repair is in scope; do not blindly regenerate lockfiles, retry defects away or automatically accept major upgrades.
 
-- A normal maintenance request can prepare fixes/PRs but does not imply merge permission.
-- With an explicit auto-merge policy, enforce eligibility, current head/base, required checks/reviews, branch protections, supported versions and no unresolved findings through available repository controls. Revalidate after every head change; never merge a different unreviewed revision.
-- Keep ambiguous/high-risk changes open with reasons.
-- Reuse existing update PRs and report per-item disposition, evidence and blockers; no finding is a valid result.
+| Situation | Disposition |
+| --- | --- |
+| Normal maintenance request | Prepare fixes or update existing PRs; merge permission is separate. |
+| Explicit auto-merge policy | Enforce eligibility, current head/base, required checks/reviews, branch protections, supported versions and no unresolved findings through available repository controls. |
+| Ambiguous or high-risk change | Keep it open with the evidence and reason. |
+
+Revalidate after every head change; never merge a different unreviewed revision. Reuse existing update PRs and report per-item disposition, evidence and blockers. No finding is a valid result.

@@ -35,7 +35,8 @@ For work that must survive process loss, retain accepted intent, a stable logica
 - Acknowledge work only after durable progress under the selected transport contract.
 - When domain changes and delivery intent must commit atomically, use an outbox or equivalent supported mechanism; dispatch still needs duplicate handling rather than an exactly-once claim.
 - Define cancellation races, compensation and exhausted-work handling where they affect correctness.
-- Best-effort work need not acquire a durable queue without a requirement.
+
+Best-effort work need not acquire a durable queue without a requirement.
 
 Bound calls, resource consumption, retries and total deadlines according to the journey. Make failures diagnosable without leaking sensitive data. Use relevant reliability/operations guidance for operating objectives and recovery, without introducing a platform solely to fill a checklist.
 
@@ -45,7 +46,8 @@ Identify actual consumers and supported versions before changing an API, event o
 
 - Compare meaning as well as schema: authority, omitted/null fields, status, order, pagination and error behavior can break callers even when types compile.
 - Keep compatibility, migration and recovery consequences explicit.
-- A rollback of application code does not necessarily reverse a data change.
+
+A rollback of application code does not necessarily reverse a data change.
 
 Describe the affected flow or state/contract in the existing design note or conversation; add diagrams only when they clarify a real uncertainty. Reuse the project vocabulary and accepted architecture. No layer quota, universal service split or document template is required.
 

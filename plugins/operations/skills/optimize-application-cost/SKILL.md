@@ -28,14 +28,15 @@ Include compute, databases, storage/backup retention, network egress and load ba
 
 Read capacity, recovery, latency and privacy requirements before proposing savings.
 
-- Prioritize unused resources, oversized allocations, unnecessary data movement/retention and expensive hot paths.
-- For Kubernetes, compare requests and actual usage over representative periods, then check node packing, scheduling constraints and whether released capacity will reduce billable nodes.
-- Reducing pod requests alone does not guarantee a lower bill.
+Prioritize unused resources, oversized allocations, unnecessary data movement/retention and expensive hot paths. Compare relevant levers against their constraints:
 
-- Include managed database/storage sizing and backup needs; do not cut restore coverage or resilience to make a chart look better.
-- Consider interruptible/spot capacity only for workloads that tolerate interruption.
-- Commitments/reservations need stable demand and a break-even assessment; do not buy them merely because a published discount looks attractive.
-- Scaling to zero needs acceptable startup latency and supported infrastructure.
+| Lever | Constraint or evidence needed |
+| --- | --- |
+| Kubernetes requests/capacity | Compare representative actual usage, node packing and scheduling constraints. Establish whether released capacity reduces billable nodes; lower pod requests alone do not prove savings. |
+| Managed database/storage sizing | Preserve backup needs, restore coverage and resilience. |
+| Interruptible/spot capacity | The workload tolerates interruption. |
+| Commitments/reservations | Stable demand and a break-even assessment; a published discount alone is insufficient. |
+| Scaling to zero | Acceptable startup latency and supported infrastructure. |
 
 For AI, examine model choice, token/audio volume, caching, batching, retry limits and rate controls against the actual quality requirements. Free tiers are account/model-dependent experiments, not a production cost guarantee. Keep budgets, growth scenarios and reasonable anomaly signals proportionate; a small application need not acquire a full FinOps platform.
 

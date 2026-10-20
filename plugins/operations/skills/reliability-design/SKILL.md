@@ -48,6 +48,8 @@ Discover the target, architecture, relevant feature/critical journeys, current t
 - Sum event counts before division for an event SLI; do not average unequal-traffic ratios.
 - Do not multiply endpoint availability to claim journey availability without justified dependency and correlation assumptions.
 
+### Outcome and missing-data interpretation
+
 - Started-but-never-finished work needs deadline/coverage accounting; success among terminal events alone hides stuck work.
 - Correctly rejecting invalid input may be a good technical outcome but is not completed purchase or rendered content.
 - An absent series, zero traffic, or failing telemetry pipeline is not a green SLI.

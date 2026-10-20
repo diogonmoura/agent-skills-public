@@ -48,8 +48,19 @@ Prioritize the assumptions whose failure would change the decision and choose th
 
 ## Carry direction into development and back
 
-Return the recommended or accepted problem, intended users, useful slice, deferred scope, evidence/assumptions, success signal and next decision. Keep these in the existing brief, PRD or conversation; no mandatory template, tracker or parallel decision register. Clearly identify unresolved choices.
+Return the product decision with:
 
-When engineering work follows, refine owns observable requirements, design owns system/experience decisions and plan owns implementation sequencing. Reach those activities only within the requested engagement; do not invoke explicit-only tasks automatically. Use their supporting methods directly when appropriate. A product-only request ends with the product decision and evidence plan, without implementation.
+- Recommended or accepted problem and intended users.
+- Useful slice and deferred scope.
+- Evidence, assumptions and unresolved choices.
+- Success signal and next decision.
 
-After delivery, feed actual outcomes through product feedback and revisit the affected priority or assumption. Keep accepted product decisions authoritative until changed by new evidence or the user; neither a completed feature nor a polished prototype establishes product success.
+Use the existing brief, PRD or conversation; no mandatory template, tracker or parallel decision register is needed.
+
+### When engineering work follows
+
+Refine owns observable requirements, design owns system/experience decisions and plan owns implementation sequencing. Reach those activities only within the requested engagement; do not invoke explicit-only tasks automatically. Use their supporting methods directly when appropriate. A product-only request ends with the product decision and evidence plan, without implementation.
+
+### After delivery
+
+Feed actual outcomes through product feedback and revisit the affected priority or assumption. Keep accepted product decisions authoritative until changed by new evidence or the user; neither a completed feature nor a polished prototype establishes product success.

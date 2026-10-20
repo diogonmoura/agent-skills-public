@@ -16,6 +16,8 @@ A skill can mix workflow and reference. Put shared purpose and essential constra
 | An abstract rule that is easy to misapply | A small example with starting condition, action and result | Does it clarify the rule without adding a new default? |
 | Completion evidence | A short list of observable outcomes | Does it distinguish performed work from a plan or claim? |
 
+A comparison table does not imply that its rows are mutually exclusive. State when mechanisms compose, and keep a shared prerequisite outside the rows so it clearly applies to every option. Separate operating modes from authorization constraints that apply in every mode.
+
 Use only the structures the content needs. Avoid replacing every sentence with a bullet, inserting a table for unrelated facts, or giving every skill the same sections. Labels help when readers need to locate a specific concern; bolding every item adds little hierarchy. Keep code, commands and contracts in their appropriate literal form.
 
 ## Keep the rule and its conditions together

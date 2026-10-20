@@ -25,11 +25,15 @@ Choose logical backup, physical backup/WAL recovery, managed snapshots/PITR or a
 - A replica shares many failure and deletion modes and is not an independent backup.
 - Continuous recovery depends on a usable base and the required WAL chain; monitor retention and restoreability, not just successful job completion.
 
-Exercise recovery on an authorized isolated target.
+Exercise recovery on an authorized isolated target. Verify a known recovery point, application compatibility, representative records/invariants and access, then measure actual recovery time and attainable data loss. Keep restored deletion/retention obligations and traffic cutover explicit.
 
-- Verify a known recovery point, application compatibility, representative records/invariants and access, then measure actual recovery time and attainable data loss.
-- Keep restored deletion/retention obligations and traffic cutover explicit.
-- Distinguish a documented procedure, successful backup and successful restore; none automatically establishes full application recovery.
+| Evidence | Claim supported |
+| --- | --- |
+| Documented procedure | A recovery approach is described. |
+| Successful backup | The backup operation completed. |
+| Successful restore | The restoration was exercised. |
+
+None automatically establishes full application recovery.
 
 ## Maintain health without hiding risk
 
@@ -38,6 +42,8 @@ Assess connections, long transactions, disk/WAL growth, vacuum/freeze, replicati
 - Slots can retain WAL; replicas can lag or conflict with recovery.
 - Investigate cause and consequences before dropping slots, cancelling work or changing durability.
 - Define primary/failover authority and fencing against split-brain; promotion alone does not prove clients moved or application writes are correct.
+
+### When upgrading
 
 For minor/major upgrades, check supported server/extension/driver combinations, storage needs and tooling.
 

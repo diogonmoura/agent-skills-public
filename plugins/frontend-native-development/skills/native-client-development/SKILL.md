@@ -15,14 +15,16 @@ metadata:
 
 ## Apply the accepted platform choices
 
-For my new desktop applications, prefer TypeScript with Tauri.
+Preserve existing native stacks. For my new applications:
 
-- Use a compatible SPA frontend such as React/Vite; keep Tauri's Rust shell and its dependencies explicit.
-- A hosted backend remains a separate service and keeps its accepted stack.
-- Bundle a local sidecar only when an accepted offline/local requirement justifies its packaging, lifecycle and update costs.
-- Preserve existing native stacks.
+| Target | Starting candidate and conditions |
+| --- | --- |
+| Desktop | TypeScript with Tauri and a compatible SPA such as React/Vite. Keep Tauri's Rust shell and dependencies explicit. |
+| TypeScript mobile | React Native + Expo when shared code fits the accepted product. Research unsupported native modules before promising parity. |
 
-For my new TypeScript mobile clients, React Native + Expo is the starting candidate when shared code fits the accepted product. Consequential framework selection belongs to system design; this skill supplies compatibility evidence and implementation for the selected native stack. Read [platform selection](references/platform-selection.md) when selecting or revisiting a framework. Preserve an accepted framework and research unsupported native modules before promising cross-platform parity.
+Consequential framework selection belongs to system design; this skill supplies compatibility evidence and implementation for the selected stack. Read [platform selection](references/platform-selection.md) when selecting or revisiting a framework.
+
+A hosted backend remains a separate service with its accepted stack. Bundle a local sidecar only when an accepted offline/local requirement justifies its packaging, lifecycle and update costs.
 
 ## Implement the platform experience
 

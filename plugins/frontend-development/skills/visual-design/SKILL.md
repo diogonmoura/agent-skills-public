@@ -24,11 +24,10 @@ Establish semantic tokens and shared patterns for the decisions that matter. Whe
 
 ## Materialize and reconcile
 
-Reuse accepted designs.
+Reuse accepted designs and choose available, authorized Figma work, local HTML/CSS prototypes or SVG wireframes according to the uncertainty. An explicitly required format remains part of the deliverable.
 
-- Choose available, authorized Figma work, local HTML/CSS prototypes or SVG wireframes according to the uncertainty.
-- An explicitly required format remains part of the deliverable.
-- Inspect a representative difficult state with realistic content before propagating the direction; include relevant layouts and content growth.
+1. Materialize and inspect a representative difficult state with realistic content, relevant layouts and content growth.
+2. Reconcile that result with the direction before propagating it.
 
 Keep design rationale, accepted/proposed status, meaningful states and component/token intent in the existing design record. Technical guidance maps that intent to the chosen platform's real components; a generic design decision does not select React, Tailwind or a native framework.
 

@@ -10,7 +10,7 @@ metadata:
 
 # Write interface copy for the actual task
 
-Make the action, current state and consequences understandable in the product's voice. Review proposes changes; rewrite/implementation applies authorized changes; harmonization aligns terms within the named scope. Use [interaction design](../interaction-design/SKILL.md) for behavior and [interface quality](../interface-quality/SKILL.md) for rendered fit.
+Make the action, current state and consequences understandable in the product's voice. Use [interaction design](../interaction-design/SKILL.md) for behavior and [interface quality](../interface-quality/SKILL.md) for rendered fit.
 
 ## Ground language in behavior
 
@@ -32,10 +32,10 @@ Preserve interpolation, escaping, numeric meaning, pluralization, locale convent
 
 ## Verify the complete recommendation
 
-For review, give the location/state, current and proposed complete text, reason and assumptions.
+| Mode | Deliver and verify |
+| --- | --- |
+| Review | Propose the location/state, current and complete replacement text, reason and assumptions. Group systemic terminology issues once. |
+| Authorized rewrite/implementation | Preserve bindings/structure; compare the affected flow, dynamic states, accessible labels and realistic narrow/locale wrapping. |
+| Harmonization | Align established terms within the named scope. |
 
-- Group systemic terminology issues once.
-- For authorized edits, preserve intended bindings/structure and compare the affected flow, dynamic states, accessible labels and realistic narrow/locale wrapping.
-- Use code/runtime evidence where available to check semantic accuracy.
-
-Report inspected surfaces and unresolved meaning, localization or comprehension gaps. A clearer sentence or agent critique does not establish participant usability findings.
+Use code/runtime evidence where available to check semantic accuracy. Report inspected surfaces and unresolved meaning, localization or comprehension gaps. A clearer sentence or agent critique does not establish participant usability findings.

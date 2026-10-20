@@ -29,7 +29,15 @@ Map the system boundary including people/processes, application and infrastructu
 
 ## Derive proportionate controls
 
-For each material applicable obligation or commitment, connect the intended outcome to a control, owner, implementation/operating scope and evidence.
+For each material applicable obligation or commitment, preserve this reasoning chain:
+
+```text
+applicable obligation or commitment
+→ intended outcome
+→ control, owner and scope
+→ implementation and operation
+→ evidence and remaining exposure
+```
 
 - Compare prevention, detection and recovery where relevant; reuse adequate accepted controls rather than adding policy machinery.
 - Distinguish a control's design, implementation, observed operation and independent assessment.
@@ -43,7 +51,13 @@ Evidence should identify the control/property, relevant population/period, actua
 
 - Preserve exceptions and gaps.
 - Protect sensitive records and collect only what the assurance purpose needs.
-- Versioned code or configuration supports implementation; a performed review or recovery exercise supports operation.
-- Neither a generated policy nor a planned test proves the activity occurred.
+
+| Evidence | Supports |
+| --- | --- |
+| Versioned code or configuration | Implementation |
+| Performed review or recovery exercise | Operation |
+| Generated policy or planned test alone | No proof that the activity occurred |
+
+Preserve the distinction from independent assessment.
 
 Return the scoped applicability/control decisions, evidence and remaining gaps. Use existing project records; no fixed spreadsheet, tracker or compliance platform is required. A readiness assessment does not certify compliance, submit filings, accept terms or authorize production changes.

@@ -8,7 +8,13 @@ For each goroutine/resource, identify its owner, start/stop contract, completion
 
 Use context-aware HTTP/database calls and release request-scoped resources on all relevant paths. Pass context per operation where it represents that call's lifetime. If background work legitimately outlives a request, give it an explicit service-owned bounded lifecycle and a durability decision; detaching cancellation alone does not make a durable job. A timeout may leave an external result ambiguous and require reconciliation.
 
-Choose a mutex for coordinated shared invariants, atomics for suitably independent state, and channels when communication/ownership transfer clarifies the contract. Document actual concurrency guarantees, including whether returned mutable values remain shared. Test closed channels, cancellation while blocked, concurrent shutdown and partial startup where those are permitted states; avoid copying a sample lifecycle without its preconditions.
+| Coordination need | Candidate |
+| --- | --- |
+| Coordinated shared invariants | Mutex |
+| Suitably independent state | Atomics |
+| Communication or ownership transfer that clarifies the contract | Channels |
+
+Document actual concurrency guarantees, including whether returned mutable values remain shared. Test closed channels, cancellation while blocked, concurrent shutdown and partial startup where permitted; preserve a sample lifecycle's preconditions.
 
 ## Shut down against the actual server contract
 

@@ -20,7 +20,13 @@ Derive typography, palette, density and motion from the brief. Reuse an accepted
 
 ## Construct with the existing resources
 
-Read [HTML implementation guide](references/html-guide.md) for the original skeleton conventions, component catalogue, fullscreen behavior and known rendering issues. Use [the skeleton](references/presentation-skeleton.html) as a starting resource when suitable. Load the [timeline addon](references/addons/timeline.html) only for useful chronology or a requested timeline; preserve its integration contract when used.
+| Need | Resource |
+| --- | --- |
+| HTML construction or repair | [Implementation guide](references/html-guide.md): skeleton conventions, component catalogue, fullscreen behavior and known rendering issues. |
+| A suitable starting document | [Presentation skeleton](references/presentation-skeleton.html). |
+| Useful chronology or a requested timeline | [Timeline addon](references/addons/timeline.html); preserve its integration contract. |
+
+Load only resources relevant to the actual construction.
 
 Keep the HTML/CSS/JS portable and assets reachable. Reuse tokens and shared components, preserve unique slide identity and navigation, and handle dense content through appropriate grouping or targeted layout changes. Animation should support the message, respect reduced motion and leave all content available.
 

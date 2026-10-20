@@ -16,7 +16,14 @@ Create a responsive, self-contained HTML diagram when that is the requested arti
 
 Identify the audience, question, scope and source evidence. Distinguish implemented architecture, observed deployment, proposed design and unknowns. Trace important relationships to supplied context or source; use current-system mapping expertise or evidence-backed architecture explanation expertise when available for deeper discovery and semantic coverage. Keep technology lists and invented components from standing in for an explanation.
 
-Choose context/container/component views for structure, sequences for order, state views for lifecycle or data flows for information movement. Keep labels, directed relationships and boundaries consistent. Explain notation where needed and provide text for important meaning.
+| Reader's question | Suitable view |
+| --- | --- |
+| What is the structure? | Context/container/component |
+| What happens in what order? | Sequence |
+| How does state change? | State/lifecycle |
+| Where does information move? | Data flow |
+
+Keep labels, directed relationships and boundaries consistent. Explain notation where needed and provide text for important meaning.
 
 ## Use the HTML guide selectively
 

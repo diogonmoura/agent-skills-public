@@ -39,7 +39,12 @@ Coordinate Python SDK/instrumentation ownership to avoid duplicate spans and pro
 
 - Use the accepted export backend and compatible library versions; use available observability expertise for signal contracts and guidance for the selected development tools for selected Collector/backend setup.
 - Keep evaluation cases and scorers runnable without those services.
-- Use [DeepEval testing](../ai-deepeval-testing/SKILL.md) when DeepEval is the accepted evaluator and [Python AI observability](../python-ai-observability/SKILL.md) when implementing OpenTelemetry instrumentation; neither selects a hosted service.
-- An installed SDK does not establish interoperability or answer quality.
+
+| Selected implementation | Guidance |
+| --- | --- |
+| DeepEval evaluation | [DeepEval testing](../ai-deepeval-testing/SKILL.md) |
+| OpenTelemetry instrumentation | [Python AI observability](../python-ai-observability/SKILL.md) |
+
+Neither choice selects a hosted service. An installed SDK does not establish interoperability or answer quality.
 
 For an accepted AG-UI/A2UI integration, read [version-matched interaction integration](references/interaction-integration.md) and use the chosen framework's compatible adapter. Keep technical configuration, actual stream/render checks and unavailable capabilities explicit.

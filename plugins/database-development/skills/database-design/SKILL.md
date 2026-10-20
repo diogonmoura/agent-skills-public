@@ -17,11 +17,15 @@ Start with the accepted domain, workloads and data lifecycle. Identify authorita
 
 ## Choose representations and consistency boundaries
 
+### Invariants
+
 State the business facts that must remain true, including identity, uniqueness, relationships, lifecycle and tenant ownership.
 
 - Determine which guarantees belong in durable constraints and which need coordinated application behavior.
 - Consider deletion, history and correction semantics before choosing keys and references.
 - Document units, precision, null/absent meanings and time semantics where ambiguity changes behavior.
+
+### Storage and derived representations
 
 Use expected reads, writes, distribution, growth and failure tolerance to compare relational, document, key/value, object, search or analytical storage.
 
@@ -29,11 +33,13 @@ Use expected reads, writes, distribution, growth and failure tolerance to compar
 - Treat replicas, caches and indexes as derived until their authority and consistency contract are explicit.
 - Workload or availability requirements must justify denormalization, partitioning or a new engine.
 
+### Atomic operations
+
 Define the atomic operation and conflict behavior.
 
 - Account for concurrent creation/update, retries, isolation, uniqueness and stale writers.
-- A transaction in one store does not make remote side effects atomic.
-- Derive idempotency or reconciliation needs from actual failure boundaries, using suitable service-design expertise when available.
+
+A transaction in one store does not make remote side effects atomic. Derive idempotency or reconciliation needs from actual failure boundaries, using suitable service-design expertise when available.
 
 ## Evolve without losing the contract
 
@@ -42,7 +48,8 @@ Assess readers, writers, queued work and supported application versions against 
 - Separate structural changes, data conversion and final cleanup.
 - Choose compatibility steps, bounded resumable backfills and validation from deployment constraints; an expand/migrate/contract approach is useful when versions overlap.
 - Define completion, rejected/ambiguous data handling and recovery before irreversible conversion.
-- Code rollback may not undo stored data changes.
+
+Code rollback may not undo stored data changes.
 
 Include access, retention, export and deletion across derived stores, providers and restored backups. Define recovery objectives and seek operating expertise for actual restoration evidence. Distinguish missing guidance from missing database access; neither authorizes connecting to an unspecified target.
 

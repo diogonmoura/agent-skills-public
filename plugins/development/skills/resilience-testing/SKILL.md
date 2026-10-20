@@ -23,7 +23,15 @@ Read the journey, dependency/worker contracts, accepted deadlines and recovery e
 - Derive limits from accepted requirements; label provisional values.
 - Do not inject faults solely because a tool supports them or prescribe every scenario for a small feature.
 
-Examples: a slow provider produces a bounded error while unrelated reads work; a restarted worker resumes accepted work without repeating a business effect; loss of database access fails mutations without corrupting data and normal operation returns afterward. HTTP success, pod readiness and a green alert alone do not prove these outcomes.
+Examples illustrate different failure boundaries:
+
+| Failure | Outcome to establish |
+| --- | --- |
+| Slow provider | A bounded error while unrelated reads work. |
+| Worker restart | Accepted work resumes without repeating a business effect. |
+| Loss of database access | Mutations fail without corrupting data and normal operation returns afterward. |
+
+HTTP success, pod readiness and a green alert alone do not prove these outcomes.
 
 ## Choose the least intrusive method
 
@@ -39,12 +47,16 @@ Match the injection point to the claim. Raising an exception is not the same as 
 
 Routine fixture tests stay within the existing local test scope. A live or shared-environment experiment needs an established target/action policy specifying selected resources, duration, affected users/dependencies, data ownership and side-effect constraints. Preserve authority already granted; do not treat installing this skill as permission to terminate resources. Production experiments require explicit production scope and are not the default.
 
+### Before injection
+
 Check baseline health and observability before injection.
 
 - Define measurable stop conditions, a reachable stop mechanism, bounded fault lifetime and the expected recovery procedure.
 - Preserve data and control email/payment/model effects.
 - If the target identity, observation or restoration path is missing, return a plan with that blocker rather than execute blindly.
 - Do not initiate an incident or contact responders without the requested authority.
+
+### During the fault
 
 Introduce one controlled fault first.
 

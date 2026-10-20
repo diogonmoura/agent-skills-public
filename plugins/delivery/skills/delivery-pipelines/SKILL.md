@@ -15,7 +15,15 @@ user-invocable: false
 
 ## Separate verification, artifacts and deployment
 
-Read the application commands, environment model and accepted deployment decisions. Keep workflows small enough to explain: CI verifies a change; release produces a versioned artifact; deployment promotes that artifact to an environment. Combine stages for a small application when clearer. Share repeated mechanics through the selected provider's reusable interfaces with explicit inputs, permissions and outputs; avoid a generic pipeline framework.
+Read the application commands, environment model and accepted deployment decisions. Distinguish the stage responsibilities:
+
+| Stage | Responsibility |
+| --- | --- |
+| CI | Verify a change. |
+| Release | Produce a versioned artifact. |
+| Deployment | Promote that artifact to an environment. |
+
+Combine stages for a small application when clearer. Share repeated mechanics through the selected provider's reusable interfaces with explicit inputs, permissions and outputs; avoid a generic pipeline framework.
 
 Keep provider-required entrypoints in their required locations and component-specific build/scripts beside their owner. Run the same meaningful checks locally and in CI. Provide fast feedback before expensive integration/E2E checks, retain useful failure evidence, and make required checks stable across path filters. Do not let a skipped workflow leave a required check permanently pending.
 
@@ -33,10 +41,10 @@ Name workflows, jobs and steps by their purpose, component and target. Preserve 
 Every delivery path should have a usable rollback or roll-forward route: retain the previous artifact/configuration, identify compatibility constraints, and expose a clear recovery input or job.
 
 - Review schema compatibility before rollout; use expand/migrate/contract when needed.
-- Rolling back application code does not undo data changes.
 - Prefer a compatible forward fix when reversal would lose data; point to the application's data-recovery runbook when restoration is necessary.
 - Verify the recovery mechanics in a safe environment and keep them current with migrations and infrastructure changes.
-- Do not claim production recovery from a YAML review alone.
+
+Rolling back application code does not undo data changes. A YAML review alone does not establish production recovery.
 
 ## Check stack-specific rollout consequences
 
@@ -73,11 +81,15 @@ For performance workflows, define an accepted workload and isolate application/d
 
 Validate settings and affected target combinations, inspect the complete effective diff and preserve code/config/artifact traceability. Distinguish desired configuration from applied state; verify the actual revision and affected outcome after application. Retain a usable compatible recovery target, accounting for rotated credentials and changed schemas rather than blindly restoring stale values. Use the existing configuration/GitOps mechanism; no new central service is required.
 
+### Feature flags
+
 Feature flags need a purpose, owner, intended audience, default/evaluation-failure behavior, tested relevant states and a removal condition.
 
 - Flags control exposure, not authorization.
 - Use bounded staged exposure and a kill/recovery path when risk warrants it; do not create an untested matrix of every flag combination.
 - After an emergency override, reconcile source and effective state so later deployments do not restore an unintended setting.
+
+### Runtime and dependency upgrades
 
 For routine runtime/library/base-image upgrades, review supported versions and release notes, keep coupled versions coherent, regenerate lockfiles with the project's tools, verify affected behavior and publish a new tested artifact. Automation can propose updates; passing installation or a vulnerability scan alone does not establish compatibility. Follow accepted release/recovery conventions without imposing universal automatic merges.
 
@@ -90,6 +102,8 @@ For application-on-runner checks, reuse the supported local service mechanism an
 - Use appropriate native runners/devices for desktop/mobile checks.
 - A backend run does not prove native-client behavior; missing platform coverage stays visible.
 
+
+## Validate code, configuration and secrets
 
 For language/configuration/secret checks use the project's compatible tools and commands. Keep local/hook and CI semantics aligned; CI independently verifies its intended scope. A syntax check does not establish provider semantics, and a staged secret check does not establish clean history. Preserve failing status while collecting redacted evidence.
 

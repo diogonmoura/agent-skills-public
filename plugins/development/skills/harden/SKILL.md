@@ -22,4 +22,5 @@ Map the affected data, actors, trust boundaries and valuable actions using proje
 - Prioritize evidenced risks rather than running every scanner.
 - Apply bounded fixes within the request and verify ownership/tenant denial, invalid inputs, secret handling and affected behavior.
 - Use vulnerability prioritization and remediation expertise for dependency findings, credential management expertise for credential authority and specialist reviews within their coverage.
-- Report residual risks and unverified boundaries. Do not rotate live credentials, rewrite authentication, accept risk, merge or claim legal/security certification without the corresponding scope/evidence.
+
+Report residual risks and unverified boundaries. Live credential rotation, authentication rewrites, risk acceptance, merging and legal/security certification each require the corresponding scope and evidence.

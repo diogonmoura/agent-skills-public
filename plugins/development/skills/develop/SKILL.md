@@ -16,7 +16,20 @@ metadata:
 
 Read [task guidance](../../TASKS.md). Use [system-design](../system-design/SKILL.md) after product refinement or when the feature changes consequential architecture, before dependent planning/implementation. Read [git-contributions](../git-contributions/SKILL.md) for the objective's feature worktree, [deliver-reliable-changes](../deliver-reliable-changes/SKILL.md) for verification and completion. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
 
-For a new application, read [new-application flow](references/new-application-flow.md) and establish its decision outcomes in order before dependent implementation: purpose/business context, product, requirements, feasibility/system design, UX/visual direction, plan/foundations, implementation/test/repair, delivery/learning. Reuse sufficient accepted evidence; do not skip missing outcomes merely because a stack or starter kit was named.
+## When starting a new application
+
+Read [new-application flow](references/new-application-flow.md). Reuse sufficient accepted evidence and establish missing outcomes before work that depends on them:
+
+1. Purpose and business context.
+2. Product outcome and useful slice.
+3. Requirements and observable acceptance.
+4. Feasibility and system design.
+5. UX and visual direction.
+6. Implementation plan and foundations.
+7. Implementation, testing and repair.
+8. Delivery and learning.
+
+A named stack or starter kit does not supply missing decisions. Defined existing work reuses accepted context; it does not restart the full lifecycle.
 
 ## Establish a useful slice
 

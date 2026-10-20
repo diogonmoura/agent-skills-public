@@ -28,7 +28,15 @@ Relate arrival rate and time in the system to in-flight work, with clear units a
 
 Inspect the entire request path: worker/process counts, per-process connection pools, database connection/IO limits, caches, queues, storage and third-party quotas. Adding replicas can multiply database connections and exhaust a shared dependency. Prefer measured query/index improvements, batching, payload reduction and useful caching with explicit freshness/invalidation rules before expanding infrastructure blindly.
 
-Estimate a normal, peak and degraded scenario, with headroom for rollout and the failure the application is expected to tolerate. Specify the bottleneck, scaling trigger, upper bound and dependency constraint; do not automatically introduce Kubernetes for a small application on another platform.
+Compare the relevant demand conditions:
+
+| Scenario | Account for |
+| --- | --- |
+| Normal | Sustained expected demand. |
+| Peak | Expected peak or burst behavior. |
+| Degraded | The failure the application is expected to tolerate. |
+
+Include rollout headroom. Specify the bottleneck, scaling trigger, upper bound and dependency constraint; a small application on another platform need not acquire Kubernetes.
 
 ## Apply Kubernetes mechanics when relevant
 

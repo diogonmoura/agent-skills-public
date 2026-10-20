@@ -26,7 +26,12 @@ Use available evidence before adding tools: support reports, user-provided inter
 
 ## Combine what users say and do
 
-Qualitative feedback explains context and friction; quantitative usage helps indicate prevalence and outcomes. Group repeated reports by underlying problem, preserve representative evidence, deduplicate repeated contacts and distinguish people/accounts from mentions. Do not treat the loudest customer or an AI-generated sentiment score as a representative population.
+| Evidence | Helps explain | Interpretation limit |
+| --- | --- | --- |
+| Qualitative feedback | Context and friction | The loudest customer or an AI-generated sentiment score does not establish a representative population. |
+| Quantitative usage | Prevalence and outcomes | Check missing events, definitions and selection bias before interpreting the population. |
+
+Group repeated reports by underlying problem, preserve representative evidence, deduplicate repeated contacts and distinguish people/accounts from mentions.
 
 Choose a small number of meaningful measures when data exists: reaching the intended outcome, drop-off between relevant steps, repeat use or retention.
 
@@ -42,7 +47,8 @@ Separate observations from interpretations and hypotheses.
 
 - Prioritize by severity, relevance to the intended users, evidence and cost of learning/fixing; do not invent numeric scoring where it adds no clarity.
 - Explain conflicting evidence and uncertainty.
-- A feature request may reveal a problem better solved another way.
+
+A feature request may reveal a problem better solved another way.
 
 Recommend a bounded response with an observable outcome and a way to assess it later. Bring accepted work into requirements/planning, using the conversation or Markdown when sufficient; no ticket requirement. Use [product management](../product-management/SKILL.md) for product reprioritization and the next useful slice; refinement owns detailed engineering requirements. Keep the roadmap, assumptions and decision log aligned without turning every comment into backlog work. Close the loop by checking the outcome after the change; contact/report back to users only when requested.
 

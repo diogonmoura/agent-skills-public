@@ -22,7 +22,8 @@ Turn recurring maintenance into a finite, evidence-backed review with owners and
 - For setup build a risk-based review register and automate stable checks.
 - During features/maintenance update capacity, retention, ownership and procedure requirements affected by the change.
 - In recurring review runs consume the last reviewed revision/register, collect current evidence, update stable findings and prepare bounded remedies.
-- Cleanup/resource mutations need a configured target/action policy; otherwise return candidates and patches rather than deleting anything.
+
+Cleanup/resource mutations need a configured target/action policy; otherwise return candidates and patches rather than deleting anything.
 
 The general value is preventing operational debt and reducing toil, not reproducing a project's calendar. Prefer event-driven checks after configuration/releases/ownership changes, backed by periodic review for drift. Retire checks with no decision value and measure whether automation reduced manual effort without weakening outcomes.
 

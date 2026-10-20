@@ -52,10 +52,10 @@ A selected AI observability platform may add its own exporter, fields, experimen
 
 ## Verify received evidence and operating behavior
 
-Test a representative deterministic application path with an in-memory or isolated exporter first: nesting/context, success/failure, retries/cancellation, bounded dimensions, sensitive-data exclusion and shutdown behavior.
+1. Test a representative deterministic path with an in-memory or isolated exporter: nesting/context, success/failure, retries/cancellation, bounded dimensions, sensitive-data exclusion and shutdown.
+2. Within authorized scope, confirm receipt and useful correlation at the selected destination for a known task.
 
-- Then, within authorized scope, confirm receipt and useful correlation at the selected destination for a known task.
-- SDK initialization or successful export alone cannot prove queryable end-to-end traces.
+SDK initialization or successful export alone cannot prove queryable end-to-end traces.
 
 Exercise queue pressure, unreachable exporters, sampling and process shutdown to the extent relevant to the service. Distinguish dropped/sampled records from complete coverage and check overhead against the operating budget. Keep retention/export failures visible through the project's diagnostics without leaking payloads.
 

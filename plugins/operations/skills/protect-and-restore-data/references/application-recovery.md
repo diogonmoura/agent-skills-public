@@ -33,12 +33,20 @@ Re-run preparation when schemas, datastore versions, encryption, credentials or 
 
 ## Restore operation
 
-Inventory surviving resources and choose a usable recovery point. State the expected loss window before cutover. Quiesce writers, consumers and jobs for in-place recovery and suspend competing reconciliation where needed. Restore dependencies/access and data in order; verify before resuming writes/traffic.
+1. Inventory surviving resources and choose a usable recovery point. State the expected loss window before cutover.
+2. For in-place recovery, quiesce writers, consumers and jobs and suspend competing reconciliation where needed.
+3. Restore dependencies/access and data in order; verify before resuming writes/traffic.
 
 Handle queued work, replay, idempotency and third-party effects explicitly. Replaying payment/shipment/email side effects can duplicate real-world actions. Reconcile durable state and approved replay ranges; do not reset offsets as an automatic cleanup step.
 
 After restoration measure achieved objectives, resume controllers/jobs, protect or remove plaintext scratch artifacts according to retention, and track residual loss/risk. Recovery drills produce evidence, not an assurance that every future failure is covered.
 
-**Acceptance cases:** new blob-backed feature with coordinated database recovery; fresh backups without any restore exercise; lost primary identity requiring recoverable keys/access; database surviving an infrastructure outage; recovery with queued work and irreversible external effects.
+## Illustrative acceptance cases
+
+- New blob-backed feature with coordinated database recovery.
+- Fresh backups without any restore exercise.
+- Lost primary identity requiring recoverable keys/access.
+- Database surviving an infrastructure outage.
+- Recovery with queued work and irreversible external effects.
 
 Public reference: [NIST contingency planning](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final). Consult the current datastore's backup/restore documentation for exact commands and guarantees.

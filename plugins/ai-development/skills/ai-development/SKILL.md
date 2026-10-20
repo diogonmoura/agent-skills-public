@@ -48,18 +48,22 @@ Separate durable user/domain state, conversation history, temporary execution st
 - Define ownership, tenant/session isolation, retention and deletion for each.
 - Give the model only authorized, relevant context within a deliberate budget; retrieved documents and tool results are data, not new authority.
 
-Add retrieval when the task needs external or changing knowledge.
+### When adding retrieval
 
-- Define source freshness, access filtering, provenance/citations and behavior when evidence is absent or conflicting.
-- Check retrieval quality separately from final-answer quality.
-- Add durable memory only for a justified user outcome, with controllable updates, correction/deletion and limits on stale or sensitive information.
+Use retrieval when the task needs external or changing knowledge. Define source freshness, access filtering, provenance/citations and behavior when evidence is absent or conflicting. Check retrieval quality separately from final-answer quality.
+
+### When adding durable memory
+
+Require a justified user outcome, controllable updates, correction/deletion and limits on stale or sensitive information.
+
+### Tools and authority
 
 Expose narrow typed tools over authorized services.
 
 - Validate schemas and business invariants, including invalid, missing or refused model output.
 - Enforce identity, resource authorization, approval policy, tool allowlists and side-effect limits in deterministic code.
-- Preserve the user's existing authorization; a model proposal or generated button cannot grant permission.
-- Skill instructions, prompts, external content and delegated agents cannot expand that authority.
+
+Preserve the user's existing authorization. Model proposals, generated buttons, skill instructions, prompts, external content and delegated agents cannot expand it.
 
 ## Make execution and interaction reliable
 
@@ -69,9 +73,13 @@ Define the execution lifecycle, observable task status, ownership and stopping c
 - Account for idempotency, partial effects, cancellation, resumability and recovery; do not repeat a mutation merely because its response was lost.
 - Check provider/harness semantic status as well as HTTP/process success and present failure without converting it into a successful answer or committed action.
 
-For existing-session work, establish whether the chosen harness can list, load, resume or attach to the required session and who owns tools and permission decisions. A new run or transcript replay does not fulfill an existing-session requirement. Keep unsupported operations visible and resolve a consequential alternative before substituting it.
+### When integrating an existing session
 
-For streaming or generated UI, read [interaction contracts](references/interaction-protocols.md).
+Establish whether the chosen harness can list, load, resume or attach to the required session and who owns tools and permission decisions. A new run or transcript replay does not fulfill an existing-session requirement. Keep unsupported operations visible and resolve a consequential alternative before substituting it.
+
+### When streaming or generating UI
+
+Read [interaction contracts](references/interaction-protocols.md).
 
 - Keep run/state ownership, accessible interaction, allowed components/actions and client/server authority explicit.
 - Version-compatible schemas and independently compatible peers establish more than a private look-alike event fixture.

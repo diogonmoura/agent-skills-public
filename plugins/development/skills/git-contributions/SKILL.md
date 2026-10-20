@@ -19,24 +19,21 @@ Keep each objective isolated, verify the affected behavior and publish a clear c
 
 ## Establish the target and workspace
 
-- Inspect the intended repository, contribution instructions, status, remotes, base and worktrees before writes.
-- Resolve ambiguity that changes the target; preserve unrelated edits.
-- Use one separate named feature worktree per objective, reusing it for implementation, tests, docs and follow-up fixes.
-- Create it from the intended base after fetching when available; verify actual edit/test paths are inside it.
-- Initialize an empty repository only as needed to enable that isolation.
+1. Inspect the intended repository, contribution instructions, status, remotes, base and worktrees before writes. Resolve ambiguity that changes the target; preserve unrelated edits.
+2. Establish one named feature worktree for the objective, fetching the intended base when available. Reuse it for implementation, tests, docs and follow-up fixes; initialize an empty repository only when needed to enable isolation.
+3. Verify that actual edit/test paths are inside the objective worktree, keeping the base checkout untouched.
 
-Keep the base checkout untouched by objective changes. Parallel execution, when supported and authorized, uses the objective integration branch and coordinated worktrees. If worktree isolation is unavailable, disclose the limitation and use an agreed alternative without claiming isolation exists.
+Parallel execution, when supported and authorized, uses the objective integration branch and coordinated worktrees. If isolation is unavailable, disclose the limitation and use an agreed alternative without claiming isolation exists.
+
 
 ## Verify and commit
 
-- Use documented quality commands and the existing hook runner; [project conventions](../project-conventions/SKILL.md#establish-focused-quality-checks) owns tool setup.
-- Verify hooks in this worktree, preserving hooksPath and partial staging.
-- Inspect formatter edits, stage intended changes, redact scan output and resolve relevant failures.
-- CI independently repeats required checks.
+1. Use documented quality commands and the existing hook runner; [project conventions](../project-conventions/SKILL.md#establish-focused-quality-checks) owns tool setup. Verify hooks in this worktree, preserving hooksPath and partial staging.
+2. Inspect formatter edits, stage intended changes, redact scan output and resolve relevant failures. Inspect the staged diff for accidental files and secrets; retain unrelated work.
+3. When the contribution flow includes committing, make coherent Conventional Commits: `type(scope): concise subject`, with an optional repository-supported scope. Mark actual breaking changes and put a supplied issue reference in the repository's preferred location; otherwise omit it.
 
-Review the diff and make coherent Conventional Commits: `type(scope): concise subject`, with an optional repository-supported scope. Mark actual breaking changes. Use a supplied issue reference in the repository's preferred location; absent one, omit it. Keep the contribution useful without requiring a tracker.
+CI independently repeats required checks. A contribution needs no tracker. Report local and remote state accurately.
 
-Actually commit when the requested contribution flow includes it. Inspect the staged diff for accidental files and secrets; retain unrelated work. Report local and remote state accurately.
 
 ## Publish the verified revision
 

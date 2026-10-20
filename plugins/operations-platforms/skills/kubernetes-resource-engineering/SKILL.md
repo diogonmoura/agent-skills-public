@@ -21,18 +21,26 @@ Engineer the rendered resource graph for the actual target. A copied base manife
 - **Feature/maintenance:** update workload/config/network/state dependencies and every impacted rendered target while preserving unrelated environments.
 - **Recurring review:** render supplied target variants, audit secure-default and semantic drift, prepare bounded patches/tests, and retain exceptions/unknowns as stable findings. Apply/prune/cloud mutations only under assigned target authority.
 
-Consult [references/resource-guide.md](references/resource-guide.md). Establish Deployments/jobs/stateful/infrastructure roles, target namespace, image identity, ports, identities/secrets, storage, dependency flows, availability/resource budget, reconciliation owner and expected deletion behavior. Verify supported API/CRD versions and actual CNI/admission/runtime features for deeper implementation details when needed.
+Establish Deployments/jobs/stateful/infrastructure roles, target namespace, image identity, ports, identities/secrets, storage, dependency flows, availability/resource budget, reconciliation owner and expected deletion behavior. Verify supported API/CRD versions and actual CNI/admission/runtime features. Consult [the resource guide](references/resource-guide.md) for deeper implementation details.
 
 ## Workflow
 
-1. Organize coherent common bases/chart templates and explicit target overrides. Use stable labels/selectors and typed/documented inputs; distinguish mandatory decisions from safe defaults.
-2. Apply compatible least-privilege workload identity, pod/container security, immutable images, protected configuration/secrets and narrowly exposed ports.
-3. Define explicit traffic flows and network isolation, including DNS, collectors, controllers and external dependencies; verify allowed and denied paths.
-4. Budget CPU/memory/storage and startup/drain/recovery. Align probes, shutdown, rollout, replica capacity, disruption budgets, topology and scaling ownership with the actual workload.
-5. Define jobs' deadlines/retries/concurrency/timezone, storage retention/reclaim, infrastructure deletion policy and required recovery/access paths.
-6. Render all affected variants with pinned tools. Test cross-resource selectors/references, config substitutions, image/version identity, unresolved placeholders, CRD schema coverage and exceptions.
-7. Run schema/policy checks plus target admission/diff where authorized. Review deletes, immutable changes, reconciliation dependencies and CRD upgrades separately.
-8. Deliver through the existing controller workflow; verify readiness, routing, denied boundaries, job/data outcomes and source/live reconciliation. Track staged local versus live validation honestly.
+### Define the resource contract
+
+| Concern | Define in the selected manifests/chart structure |
+| --- | --- |
+| Organization | Coherent common bases/templates, explicit target overrides, stable labels/selectors and typed/documented inputs. Distinguish required decisions from safe defaults. |
+| Workload security | Compatible least-privilege identity, pod/container security, immutable images, protected configuration/secrets and narrowly exposed ports. |
+| Network | Explicit allowed and denied flows, including DNS, collectors, controllers and external dependencies. |
+| Resource and lifecycle | CPU/memory/storage, startup/drain/recovery, probes, rollout, replica capacity, disruption budgets, topology and scaling ownership. |
+| Jobs and retained resources | Deadlines/retries/concurrency/timezone, storage retention/reclaim, infrastructure deletion policy and recovery/access paths. |
+
+### Render, check and deliver
+
+1. Render all affected variants with pinned tools. Test selectors/references, substitutions, image/version identity, unresolved placeholders, CRD schema coverage and exceptions; verify allowed and denied network paths.
+2. Run schema/policy checks and authorized target admission/diff. Review deletes, immutable changes, reconciliation dependencies and CRD upgrades separately.
+3. Deliver through the existing controller workflow within target authority. Verify readiness, routing, denied boundaries, job/data outcomes and source/live reconciliation. Distinguish local from live validation.
+
 
 ## Completion evidence
 

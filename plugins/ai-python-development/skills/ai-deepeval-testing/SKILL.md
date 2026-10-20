@@ -23,9 +23,13 @@ Map the accepted evaluation levels to supported DeepEval APIs. Use output cases 
 
 Keep input scenarios/goldens, expected outcomes/rubrics and test results distinct.
 
-- Use `LLMTestCase` for single-turn input/output evidence and `ConversationalTestCase` for supported multi-turn evaluation.
-- `EvaluationDataset` and `Golden` can organize rerunnable inputs.
-- Populate cases from the actual application run, including relevant retrieved context and tool evidence supported by the installed API; invented outputs establish only a fixture.
+| Evidence or input | Compatible DeepEval representation |
+| --- | --- |
+| Single-turn input/output | `LLMTestCase` |
+| Supported multi-turn evaluation | `ConversationalTestCase` |
+| Rerunnable input collection | `EvaluationDataset` and `Golden` where appropriate |
+
+Populate cases from the actual application run, including relevant retrieved context and tool evidence supported by the installed API. Invented outputs establish only a fixture.
 
 Adapt curated cases and held-out regressions to the selected dataset API without replacing the authoritative case source. Synthetic generation and conversation simulation are optional, credentialed execution paths; preserve agreed scope and review generated goldens before using them as acceptance evidence.
 

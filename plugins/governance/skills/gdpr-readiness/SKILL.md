@@ -27,9 +27,11 @@ Consider establishment and relevant offering/monitoring activity, not just serve
 
 For each processing purpose, establish the accepted basis, necessary data, transparency and retention.
 
-- Consent is not a universal fallback and a privacy notice does not establish a lawful basis.
-- Check special-category/children's data, profiling or other elevated-impact processing when present.
-- Investigate whether a DPIA or other responsibility applies rather than imposing one for every feature or silently omitting it.
+Consent is not a universal fallback and a privacy notice does not establish a lawful basis.
+
+### When processing raises additional concerns
+
+Check special-category/children's data, profiling or other elevated-impact processing when present. Investigate whether a DPIA or other responsibility applies; neither impose one for every feature nor silently omit it.
 
 ## Translate requirements into the system lifecycle
 

@@ -331,12 +331,12 @@ When the user names a framework, school of strategy, or thinker, read `reference
 
 Rules:
 
-1. **Be faithful to the framework.** Use its canonical logic rather than merely labeling generic analysis with the framework name.
-2. **Keep framework and evidence separate.** A framework structures reasoning; it does not prove a market fact.
-3. **Integrate the result.** Map framework insights back into the six strategy questions, `strategy-state.md`, and `decision-log.md` when they change the strategy.
-4. **Do not create framework soup.** Combine frameworks only when each answers a different material question.
-5. **Respect the user's request.** If the user asks specifically for Five Forces, Playing to Win, Zero to One, Wardley Mapping, 7 Powers, etc., show the analysis through that framework rather than silently translating it into another one.
-6. **Verify unfamiliar frameworks.** If a requested named framework is not covered in `references/frameworks.md`, research its canonical method before applying it instead of improvising from the name.
+- **Be faithful to the framework.** Use its canonical logic rather than merely labeling generic analysis with the framework name.
+- **Keep framework and evidence separate.** A framework structures reasoning; it does not prove a market fact.
+- **Integrate the result.** Map framework insights back into the six strategy questions, `strategy-state.md`, and `decision-log.md` when they change the strategy.
+- **Do not create framework soup.** Combine frameworks only when each answers a different material question.
+- **Respect the user's request.** If the user asks specifically for Five Forces, Playing to Win, Zero to One, Wardley Mapping, 7 Powers, etc., show the analysis through that framework rather than silently translating it into another one.
+- **Verify unfamiliar frameworks.** If a requested named framework is not covered in `references/frameworks.md`, research its canonical method before applying it instead of improvising from the name.
 
 ## Strategy Mutation Protocol
 
@@ -353,13 +353,15 @@ Do not defend the initial concept for conversational consistency.
 
 ## Evidence Discipline
 
-Always distinguish:
+Classify the evidence and reasoning:
 
-- **Fact** — directly supported by evidence
-- **Derived calculation** — computed from stated inputs
-- **Inference** — conclusion drawn from evidence
-- **Assumption** — unverified belief required by the thesis
-- **Strategic judgment** — recommendation under uncertainty
+| Kind | Meaning |
+| --- | --- |
+| Fact | Directly supported by evidence |
+| Derived calculation | Computed from stated inputs |
+| Inference | Conclusion drawn from evidence |
+| Assumption | Unverified belief required by the thesis |
+| Strategic judgment | Recommendation under uncertainty |
 
 Keep recommendations and user-accepted commitments distinct in every persistent artifact. Mark proposed pivots, pricing, buyers and business models as provisional until the user accepts them; a decision log cannot manufacture that acceptance. Carry only accepted commitments into system design and implementation.
 
@@ -411,15 +413,15 @@ Load references selectively.
 
 Adapt to the decision; do not mechanically output every section.
 
-1. **Decision / recommendation** — what should be done and why
-2. **Current thesis and alternatives** — including any thesis mutation
-3. **Opportunity reality** — decisive customer, market and competitive evidence
-4. **Where to play + how to win** — beachhead, positioning, distribution, value creation, expansion
-5. **Business model + economics** — monetization, market size, pricing, GTM, unit economics and scenarios as relevant
-6. **Durability** — economic power, accumulating assets, future-market robustness
-7. **Risks / assumptions** — what could break the thesis
-8. **Experiments / tripwires** — what to learn next and what would change the recommendation
-9. **State changes** — for ongoing `develop` / `review` work
+- **Decision / recommendation** — what should be done and why
+- **Current thesis and alternatives** — including any thesis mutation
+- **Opportunity reality** — decisive customer, market and competitive evidence
+- **Where to play + how to win** — beachhead, positioning, distribution, value creation, expansion
+- **Business model + economics** — monetization, market size, pricing, GTM, unit economics and scenarios as relevant
+- **Durability** — economic power, accumulating assets, future-market robustness
+- **Risks / assumptions** — what could break the thesis
+- **Experiments / tripwires** — what to learn next and what would change the recommendation
+- **State changes** — for ongoing `develop` / `review` work
 
 ## Anti-Patterns
 

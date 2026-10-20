@@ -18,16 +18,20 @@ Read [task guidance](../../TASKS.md). Seek available delivery expertise for read
 
 ## Establish the release boundary
 
-Resolve the objective: prepare/readiness review or an authorized publish/deploy/recover action against an identified target.
+Resolve the requested stopping point:
 
-- Use delivery expertise and relevant stack/operations guidance for immutable artifact identity, actual configuration, schema/data/consumer compatibility, test gates and recovery.
-- Preserve established authorization without repeated ceremony; an unspecified target/action stays a blocker to execution.
+| Request | Result and execution boundary |
+| --- | --- |
+| Preparation or readiness review | Return a concise release assessment by default. |
+| Authorized publish, deploy or recover action | Execute against the identified target through the established CLI/MCP/pipeline. |
 
-## Prepare, execute when authorized and verify
+Use delivery expertise and relevant stack/operations guidance for immutable artifact identity, actual configuration, schema/data/consumer compatibility, test gates and recovery. Preserve established authorization without repeated ceremony; an unspecified target/action blocks execution.
 
-Prepare a concise release assessment by default.
 
-- For an authorized execution, use the established CLI/MCP/pipeline, serialize mutations as required and record actual effects.
-- Verify served revision, critical journeys and async/cache paths rather than treating a successful job as customer success.
-- Report prepared, locally checked, released, deployed and target-verified states separately.
-- Do not automatically merge, deploy production or restore data from a generic release request.
+## Execute an authorized action and verify
+
+1. Serialize mutations as required and record their actual effects.
+2. Verify the served revision, critical journeys and async/cache paths. A successful job alone does not establish customer success.
+3. Report prepared, locally checked, released, deployed and target-verified states separately.
+
+A generic release request does not automatically authorize merging, production deployment or data restoration.
