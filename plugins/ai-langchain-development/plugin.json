@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ai-langchain-development",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "LangChain and LangGraph implementation, dependencies and persistence.",
   "author": {
     "name": "João Aires"

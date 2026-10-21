@@ -1,3 +1,4 @@
+from depot_fixture import write_depot
 import importlib.util
 import json
 from pathlib import Path
@@ -18,7 +19,7 @@ class InvocationTests(unittest.TestCase):
             (root / 'schemas').mkdir()
             for name in ('plugin', 'mcp'):
                 (root / f'schemas/{name}.schema.json').write_text('{}')
-            (root / 'upstream.lock.json').write_text(json.dumps({'sources': []}))
+            write_depot(root)
             skill = root / 'plugins/example/skills/start-work'
             (skill / 'agents').mkdir(parents=True)
             (root / 'plugins/example/plugin.json').write_text('{"name":"example"}')

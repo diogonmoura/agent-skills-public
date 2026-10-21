@@ -25,6 +25,8 @@ class SyncTests(unittest.TestCase):
             unrelated.symlink_to(unrelated_source)
             with patch.object(Path, "home", return_value=home), patch("sys.argv", ["sync_skills.py", "sync"]):
                 SYNC.main()
+            self.assertFalse((target / 'frontend-design').exists())
+            self.assertFalse((target / 'implement').exists())
             self.assertEqual(legacy.resolve(), (ROOT / "plugins/strategy/skills/business-strategy").resolve())
             self.assertEqual(unrelated.resolve(), unrelated_source.resolve())
             with patch.object(Path, "home", return_value=home), patch("sys.argv", ["sync_skills.py", "remove"]):

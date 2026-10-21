@@ -1,0 +1,3037 @@
+{
+  "schemaVersion": 2,
+  "manifestHash": "15697bb74b92eed256e65395e353ba88b235add8d8b79df2b49720101dcce902",
+  "sources": {
+    "vercel-labs-agent-skills": {
+      "repository": "https://github.com/vercel-labs/agent-skills.git"
+    },
+    "shadcn-ui-ui": {
+      "repository": "https://github.com/shadcn-ui/ui.git"
+    },
+    "microsoft-playwright-cli": {
+      "repository": "https://github.com/microsoft/playwright-cli.git"
+    },
+    "github-awesome-copilot": {
+      "repository": "https://github.com/github/awesome-copilot.git"
+    },
+    "trailofbits-skills": {
+      "repository": "https://github.com/trailofbits/skills.git"
+    },
+    "anthropics-skills": {
+      "repository": "https://github.com/anthropics/skills.git"
+    },
+    "google-adk-python": {
+      "repository": "https://github.com/google/adk-python.git"
+    },
+    "langchain-ai-langchain-skills": {
+      "repository": "https://github.com/langchain-ai/langchain-skills.git"
+    },
+    "mattpocock-skills": {
+      "repository": "https://github.com/mattpocock/skills.git"
+    },
+    "azure-aks-skills": {
+      "repository": "https://github.com/Azure/AKS-Skills.git"
+    },
+    "wshobson-agents": {
+      "repository": "https://github.com/wshobson/agents.git"
+    },
+    "blader-humanizer": {
+      "repository": "https://github.com/blader/humanizer.git"
+    },
+    "getsentry-skills": {
+      "repository": "https://github.com/getsentry/skills.git"
+    }
+  },
+  "artifacts": {
+    "frontend-reactjs-development--vercel-composition-patterns": {
+      "source": "vercel-labs-agent-skills",
+      "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "kind": "skill",
+      "path": "skills/composition-patterns",
+      "destination": "plugins/frontend-reactjs-development/skills/vercel-composition-patterns",
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT (skill frontmatter)",
+          "license_path": null,
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "AGENTS.md": {
+          "sha256": "89e3ddd58fcf99a53a50e25dfd21b8cde1be5f10b7df6bacd3dfa6796932f516",
+          "mode": "100644"
+        },
+        "README.md": {
+          "sha256": "85915a43a6f0b4efe525e3cf6398dd866166da2025837c4460468a24a940da94",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "e38e0eaa609316b10423a9a138ed95e35099accd3f735585295c8a8f165c28a3",
+          "mode": "100644"
+        },
+        "metadata.json": {
+          "sha256": "49262ed5cb4186f31ee980cf8d990be0170c51efed4908d0464a1cff9905bd05",
+          "mode": "100644"
+        },
+        "rules/_sections.md": {
+          "sha256": "a174213b87e6911e2b766995a2cbaf8d1534057076e82fb79fe3f0ecb38047df",
+          "mode": "100644"
+        },
+        "rules/_template.md": {
+          "sha256": "587f7d16b0660eb61fee4a4d3d7df2b3077d6835de170602c7d6e60bee559131",
+          "mode": "100644"
+        },
+        "rules/architecture-avoid-boolean-props.md": {
+          "sha256": "007555ebb020f4d552582a2c4db194db71a1fd33094012e5187bcfa4f8c392d5",
+          "mode": "100644"
+        },
+        "rules/architecture-compound-components.md": {
+          "sha256": "f246af13dc269b521cf20eb8ad99a0cb645beac381c8c9b117262c34612c8457",
+          "mode": "100644"
+        },
+        "rules/patterns-children-over-render-props.md": {
+          "sha256": "7c45a0d21b3c4126a32cba916ee31adeae195386ad1dbbe6634aedb7457aa0ad",
+          "mode": "100644"
+        },
+        "rules/patterns-explicit-variants.md": {
+          "sha256": "8c19e596e61807549d01ce8c6954c6358199f97a8511c0c02c625ec0efda8c0e",
+          "mode": "100644"
+        },
+        "rules/react19-no-forwardref.md": {
+          "sha256": "881830adb7534c4b2d70db426556646ad9837f5478f744f35641f635ada22227",
+          "mode": "100644"
+        },
+        "rules/state-context-interface.md": {
+          "sha256": "09e73afbf9285fa416679cc864a287b9e8b821d0969272ab784295386d8c9bc3",
+          "mode": "100644"
+        },
+        "rules/state-decouple-implementation.md": {
+          "sha256": "76a8c1eb29a70d8996ab3f71260345af2f7bc89deab815a421d6c87c6591a9c3",
+          "mode": "100644"
+        },
+        "rules/state-lift-state.md": {
+          "sha256": "74c54038a6c554c748fe31cec673b80861b5d920b7553cf78cdf10d18b4b759b",
+          "mode": "100644"
+        }
+      },
+      "digest": "e6d1721bff2ec291640341b12b5b82af2e193d81b62ceef7d23818348dda5222",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "frontend-reactjs-development--vercel-react-best-practices": {
+      "source": "vercel-labs-agent-skills",
+      "commit": "063bee94c3f4df8453406c830b0a7df0f2860278",
+      "kind": "skill",
+      "path": "skills/react-best-practices",
+      "destination": "plugins/frontend-reactjs-development/skills/vercel-react-best-practices",
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT (skill frontmatter)",
+          "license_path": null,
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "AGENTS.md": {
+          "sha256": "fc93e7421177bbf869cce892bc60a6c83a4517d974bc3bf65c4e2c1e58a6ccf6",
+          "mode": "100644"
+        },
+        "README.md": {
+          "sha256": "9eafb2123d3b8b2aef41fba0db2648a3f4f49996f8c7c8bb2c86263befd8b48a",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "71ed7794962fa6e803ee83030517b5b93a9f70fbfeb431ec4535c5480a8d8355",
+          "mode": "100644"
+        },
+        "metadata.json": {
+          "sha256": "c4e18bac3290fbe1b471a605867d4df68b03144ea26b8befdbe8f9d8fd124354",
+          "mode": "100644"
+        },
+        "rules/_sections.md": {
+          "sha256": "01c59969e4e867f0708c8f8ef9c6d87fab9a07d0586244f429ff84013db8a115",
+          "mode": "100644"
+        },
+        "rules/_template.md": {
+          "sha256": "99df2a3ea088c6c22de2484ddc7e964d0e9923846f44c63380343ecc64455442",
+          "mode": "100644"
+        },
+        "rules/advanced-effect-event-deps.md": {
+          "sha256": "55ed8f9f27a1bff803d6fa55828176207714b02123cbb97ddb8a90d88024a723",
+          "mode": "100644"
+        },
+        "rules/advanced-event-handler-refs.md": {
+          "sha256": "a3097edeecfb2ff6851cd66ed8cdf0617c3c88180504bee824aa6e75a215bbbc",
+          "mode": "100644"
+        },
+        "rules/advanced-init-once.md": {
+          "sha256": "3e4dc22173eb0e2b6dcf583e3babd862b8696328f8f59aee7c4d746c5bc05f6c",
+          "mode": "100644"
+        },
+        "rules/advanced-use-latest.md": {
+          "sha256": "8a3f64dfe5a77d1564248faf17fe662ae75b55d497a243cb30b38eb07ccbbf9a",
+          "mode": "100644"
+        },
+        "rules/async-api-routes.md": {
+          "sha256": "523338540d73427dc14c0cbb19f2741ebccdf8b105a7b2c1b33d2905cf237a42",
+          "mode": "100644"
+        },
+        "rules/async-cheap-condition-before-await.md": {
+          "sha256": "03107c1f70a293cd58a8abc5474c5548e20ea4efdf01b6d45aae7ad0ac1cb32c",
+          "mode": "100644"
+        },
+        "rules/async-defer-await.md": {
+          "sha256": "f3c142d090615abdcc99d31c123be37b31f0f1ed8d9ec9f7789a3bc6883ae0fb",
+          "mode": "100644"
+        },
+        "rules/async-dependencies.md": {
+          "sha256": "16ef469f877e30c6b8e1e1b4bc3e527312fa3c6318cb785a4eca186ea236131a",
+          "mode": "100644"
+        },
+        "rules/async-parallel.md": {
+          "sha256": "6d2f841896279e976dfcdc1ac89e70771ac188baadfd43c096b5706cb838b961",
+          "mode": "100644"
+        },
+        "rules/async-suspense-boundaries.md": {
+          "sha256": "de05fedac2eb7ae563b887b5a424464ec3dfaf84e5b7797467ebe2a796ac8afc",
+          "mode": "100644"
+        },
+        "rules/bundle-analyzable-paths.md": {
+          "sha256": "62090b5c815fd71bf1133dce754f51abc16a9456d0ccd025fd627de27726e92a",
+          "mode": "100644"
+        },
+        "rules/bundle-barrel-imports.md": {
+          "sha256": "e648f6d54525f07a691357040ca5bff6ea3424788a91ff63812adb29622a671b",
+          "mode": "100644"
+        },
+        "rules/bundle-conditional.md": {
+          "sha256": "09c8259c3efb04fc0abb8e412ccbda217c222ae8118516283e571c995fe3a7d4",
+          "mode": "100644"
+        },
+        "rules/bundle-defer-third-party.md": {
+          "sha256": "3719fb47b191e8db4fe22686ec88448ad5af9e6838585425abbe103d0b642e37",
+          "mode": "100644"
+        },
+        "rules/bundle-dynamic-imports.md": {
+          "sha256": "401817a7369f315fc5a68a1095742ff7d53d0461906880dc9d64a41495ee1986",
+          "mode": "100644"
+        },
+        "rules/bundle-preload.md": {
+          "sha256": "d1f7cc28da7cd5ab249acd287edc5b761afcfb194e9cb62cd44c5f3543db2de2",
+          "mode": "100644"
+        },
+        "rules/client-event-listeners.md": {
+          "sha256": "242a873349febc1ce685e85617994784dbab92c2eaa68aed7fed5a83e7680e93",
+          "mode": "100644"
+        },
+        "rules/client-localstorage-schema.md": {
+          "sha256": "0fb7cdf9dc93fdf22f87e3669f953fb9d4ac9b0be42eec4a29fe9a2560610b88",
+          "mode": "100644"
+        },
+        "rules/client-passive-event-listeners.md": {
+          "sha256": "1f35016f9053de69e884ee9be00654e37979c2ca85f5e57764dc2626ff7acb4b",
+          "mode": "100644"
+        },
+        "rules/client-swr-dedup.md": {
+          "sha256": "644652c39c6cc00de8d1c77a7273612e868dc3f7edda30764164c12ec0f764a3",
+          "mode": "100644"
+        },
+        "rules/js-batch-dom-css.md": {
+          "sha256": "480b891b9eaf96e929dc1e964274a4828e3a78009b7d00ccd965a0d425215959",
+          "mode": "100644"
+        },
+        "rules/js-cache-function-results.md": {
+          "sha256": "3daaa11d24f4295cb6be8bc6f407f2ce83cc7b5bd1f0e68891ea8ab835721dc7",
+          "mode": "100644"
+        },
+        "rules/js-cache-property-access.md": {
+          "sha256": "73e47431e74878a927061bf0ddc7cd91a7556cb35d2573f3421e82300d9ae311",
+          "mode": "100644"
+        },
+        "rules/js-cache-storage.md": {
+          "sha256": "11b826b0433898c1ece2d3547010d8e77db9fb240185748c45db91493de9b6cc",
+          "mode": "100644"
+        },
+        "rules/js-combine-iterations.md": {
+          "sha256": "71add08aeeb43091d4ff4c0b2842cce8b4bdef8ad3e732cc034bb5a84827e746",
+          "mode": "100644"
+        },
+        "rules/js-early-exit.md": {
+          "sha256": "925ce5ce87f3347186ca62212f29cc6baa2b8c85a96d2720ad07c3d0abf781c0",
+          "mode": "100644"
+        },
+        "rules/js-flatmap-filter.md": {
+          "sha256": "9e5b166a41914d975bef7635467f8fb32cd98b5c3126c0bc6f163490812fb5f0",
+          "mode": "100644"
+        },
+        "rules/js-hoist-regexp.md": {
+          "sha256": "f9e9aef2f7c2307dd7310f283df85dcada45fc43e9bb941b0c3aa414dec21ec4",
+          "mode": "100644"
+        },
+        "rules/js-index-maps.md": {
+          "sha256": "5df1bdc2cfabb2c98abd55d26762e5c18189535c2e686184f426082e62920391",
+          "mode": "100644"
+        },
+        "rules/js-length-check-first.md": {
+          "sha256": "8b54a311c826b299272f29187fc58bc55772a04c4a72eeb29456ee96dc9fc624",
+          "mode": "100644"
+        },
+        "rules/js-min-max-loop.md": {
+          "sha256": "87dfb67e2f39df6ad8bcfb5b78c5fb364d3c07554ad188a202408d99f3763421",
+          "mode": "100644"
+        },
+        "rules/js-request-idle-callback.md": {
+          "sha256": "ee08f83905b4011abbc33d594033157d77561b5bbd9b36b04f0f409581ffec32",
+          "mode": "100644"
+        },
+        "rules/js-set-map-lookups.md": {
+          "sha256": "a7fd781a6ba9ad49065961b6f9a90ef486bf6b648390e1a08704025f98e1642b",
+          "mode": "100644"
+        },
+        "rules/js-tosorted-immutable.md": {
+          "sha256": "d0a5e1b0fec48a0a81397957e2f068e224329f7c42cb5feeed8aae6fa64025e8",
+          "mode": "100644"
+        },
+        "rules/rendering-activity.md": {
+          "sha256": "1e5e7eaf3555e61d6a2e900089c676527d26259501db5594f59544b6c664f85a",
+          "mode": "100644"
+        },
+        "rules/rendering-animate-svg-wrapper.md": {
+          "sha256": "9c6ae0ca7a51434e803887c64cded760956579a1452ccb80a461a03f9c937c77",
+          "mode": "100644"
+        },
+        "rules/rendering-conditional-render.md": {
+          "sha256": "2ec2fa23c4148285144687050c52369adba3da2fbe3d486f8d3e0aad8f06f2bc",
+          "mode": "100644"
+        },
+        "rules/rendering-content-visibility.md": {
+          "sha256": "64eee6d5b916fe74df33363994b27fc7f71bea3bcedc7ee04bda23107ca3e6e4",
+          "mode": "100644"
+        },
+        "rules/rendering-hoist-jsx.md": {
+          "sha256": "93b229560fae92005ed9a2a829064607b39b2e984e92d221d05b2d41df2b7c0e",
+          "mode": "100644"
+        },
+        "rules/rendering-hydration-no-flicker.md": {
+          "sha256": "dc7ab358c67c177bca6e6f360fbc935ebe4efa928c0ba3ebd3f9f3d9e2000ca3",
+          "mode": "100644"
+        },
+        "rules/rendering-hydration-suppress-warning.md": {
+          "sha256": "915bacb934e2927d84b37a3f3d225a47b309ac8f9e494ed2bcb66ce07c5676a2",
+          "mode": "100644"
+        },
+        "rules/rendering-resource-hints.md": {
+          "sha256": "351b1095d641717b930f1b2253282b7120af3023bc74e06c17675168d4286864",
+          "mode": "100644"
+        },
+        "rules/rendering-script-defer-async.md": {
+          "sha256": "4cea07b7875ba7fc2c7465ff23b63a2bb334f90aaf2d9293d38d67b05fdb32ab",
+          "mode": "100644"
+        },
+        "rules/rendering-svg-precision.md": {
+          "sha256": "ed468533f6e95f622859c884b122cf21f9f593ed6bb3d500a54de4b9f9bcb9fb",
+          "mode": "100644"
+        },
+        "rules/rendering-usetransition-loading.md": {
+          "sha256": "3a1249c3f13026b6f54ab5712c388df219d6af01b12aa542749acd99a46f4bc1",
+          "mode": "100644"
+        },
+        "rules/rerender-defer-reads.md": {
+          "sha256": "234050a77faf50cb306be10a9e15bd4421134ab5907e75f13e6d78e2bd262dc9",
+          "mode": "100644"
+        },
+        "rules/rerender-dependencies.md": {
+          "sha256": "17eb5830956fb56486fd3cfc7431f5849d39751730c05ad9e77dd4f0c27169c5",
+          "mode": "100644"
+        },
+        "rules/rerender-derived-state-no-effect.md": {
+          "sha256": "cb11ec76f50aa7b6847269f02d79b120c889a30d9ecd2c1d578f75144419c77a",
+          "mode": "100644"
+        },
+        "rules/rerender-derived-state.md": {
+          "sha256": "1c326bb67b01fb084eb00c8911b0a7cff54681c2315b629f88e49b64eaa6481d",
+          "mode": "100644"
+        },
+        "rules/rerender-functional-setstate.md": {
+          "sha256": "5e68df6b2ae8058e67f476ff1ac67bde159f5a9d18df439e46eabcdeb7b52e58",
+          "mode": "100644"
+        },
+        "rules/rerender-lazy-state-init.md": {
+          "sha256": "4ae844740f266fc8cbf050701230286624a2440ec5be67b9a63d9edc3c580573",
+          "mode": "100644"
+        },
+        "rules/rerender-memo-with-default-value.md": {
+          "sha256": "81c47476564ad8a79fc68fc442734255ca7d6829424359464503fda0a9f9a0dd",
+          "mode": "100644"
+        },
+        "rules/rerender-memo.md": {
+          "sha256": "1f258990c2f27ff6256b3cc5c43300631bb3f0d81f749aed08d07fcdcc131dd1",
+          "mode": "100644"
+        },
+        "rules/rerender-move-effect-to-event.md": {
+          "sha256": "abc2cbf167bee056743023351e96806a411d3398da8802093620aecf0721f029",
+          "mode": "100644"
+        },
+        "rules/rerender-no-inline-components.md": {
+          "sha256": "1cc32907a770272524ba682eef9e7efdd8ad4533b6f89b718a1fcd7d1d0eb6a3",
+          "mode": "100644"
+        },
+        "rules/rerender-simple-expression-in-memo.md": {
+          "sha256": "5bdcf2d1558ba5204e643c887b7b4060f89630969425651eb68e96427d97f800",
+          "mode": "100644"
+        },
+        "rules/rerender-split-combined-hooks.md": {
+          "sha256": "6f45d703343484ef9acef9388397f3642966ae6a5a258899a0cf1f9977cfbf6c",
+          "mode": "100644"
+        },
+        "rules/rerender-transitions.md": {
+          "sha256": "60f4033909a62df5e5b8c601494f9e50a562e2f8c1c2d81eac24f38142265f1c",
+          "mode": "100644"
+        },
+        "rules/rerender-use-deferred-value.md": {
+          "sha256": "8c3579576a61a949884167745dcfaf1d5426ba305cc61fd0a79602d70fda4909",
+          "mode": "100644"
+        },
+        "rules/rerender-use-ref-transient-values.md": {
+          "sha256": "f1a649af9d1d0b5c762f6c9c4c1c70c90d7df82aa10296ee87aadb78c1b76c54",
+          "mode": "100644"
+        },
+        "rules/server-after-nonblocking.md": {
+          "sha256": "d0b8d24a3db9f0f65f9e2bddbf230b0e03a5f60e1229d93a4a18f5e7a991c7c2",
+          "mode": "100644"
+        },
+        "rules/server-auth-actions.md": {
+          "sha256": "a2ca8aa102839251c7971ec784560fab943c20b36fe6f80365d4110c13260c23",
+          "mode": "100644"
+        },
+        "rules/server-cache-lru.md": {
+          "sha256": "1924b64561841923b88a657085097a0aeba3e0ba2d5470b9f5c15cc10d6ae70f",
+          "mode": "100644"
+        },
+        "rules/server-cache-react.md": {
+          "sha256": "fddeea6c870bb3da4134b61d54b7d09b83d2603f929b7547cd3dc1dc269edd5c",
+          "mode": "100644"
+        },
+        "rules/server-dedup-props.md": {
+          "sha256": "c2747424cdac46be62f835f245a0aa887b0090b416d28e2ac8676702645eeb37",
+          "mode": "100644"
+        },
+        "rules/server-hoist-static-io.md": {
+          "sha256": "5abea4dd882b13661bd5f7dfb93f9e547d5f08176c61c448ade91b210ed5d49f",
+          "mode": "100644"
+        },
+        "rules/server-no-shared-module-state.md": {
+          "sha256": "4d869bf1cd2f1632e5ca4c0e64b1cf0e71c5f5a0f940bc8a22174d205e735ed7",
+          "mode": "100644"
+        },
+        "rules/server-parallel-fetching.md": {
+          "sha256": "569a2e9fc04f9606686cd75c5894ef8781b502786a7fffe241396846c7733472",
+          "mode": "100644"
+        },
+        "rules/server-parallel-nested-fetching.md": {
+          "sha256": "ad5d9656984d4a959997a2367bf59cc6632297b4634a1dd13a087939d83f30b3",
+          "mode": "100644"
+        },
+        "rules/server-serialization.md": {
+          "sha256": "f4c7d68b29c82381baad059c4a7f09e868e71ec9c3115a26ad3ae7d24c0dfe1f",
+          "mode": "100644"
+        }
+      },
+      "digest": "4dbd63ceb6148c3eb3f5b60c6865a07948c45dc08c910197a2516fd4f38b0f27",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "frontend-reactjs-development--shadcn": {
+      "source": "shadcn-ui-ui",
+      "commit": "6b600cf1ff42f8a746747ea587e52af3ee224643",
+      "kind": "skill",
+      "path": "skills/shadcn",
+      "destination": "plugins/frontend-reactjs-development/skills/shadcn",
+      "resources": [
+        {
+          "path": "LICENSE.md",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT",
+          "license_path": "LICENSE.md",
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "deba6c5152d9835892fa7dffeb1fedbb689ddac7e59e14e57ec5eaf9463309e4",
+          "mode": "100644"
+        },
+        "agents/openai.yml": {
+          "sha256": "35db91b1eef58b2abe01da9b88577de5a44e233b740cd93d692ddeeadd2afe4d",
+          "mode": "100644"
+        },
+        "assets/shadcn-small.png": {
+          "sha256": "0ecc62d682727f68fc4937eed19960c706714fa084d44f63028d611ae02bf3d7",
+          "mode": "100644"
+        },
+        "assets/shadcn.png": {
+          "sha256": "7d60ad6fec4d89a0d44ba5a3c9283d2fea0047af5467f9227040e20d927d39b7",
+          "mode": "100644"
+        },
+        "cli.md": {
+          "sha256": "a381e35bf36fe7bb851952c13707e01e82434fd7a4a4e53f6df26c6370838904",
+          "mode": "100644"
+        },
+        "customization.md": {
+          "sha256": "84c1d47168c4b8adb5840e4af30a4e373ae3377c1110478c8974f398dd63f5ba",
+          "mode": "100644"
+        },
+        "evals/evals.json": {
+          "sha256": "58aca2760b0cc5265bb575f76cd8eed344b88544314b8cb2cd53e0b8007dc936",
+          "mode": "100644"
+        },
+        "mcp.md": {
+          "sha256": "8d696b4e45b7d0e337367248513bd9acebe8f3bcfd7b748c775e5a337c8f38c8",
+          "mode": "100644"
+        },
+        "registry.md": {
+          "sha256": "4f239be36bd2b58e17047db1ca80ab7da00e15a8b73242e5e4d50d113c4caa05",
+          "mode": "100644"
+        },
+        "rules/base-vs-radix.md": {
+          "sha256": "2b2deb47d004285220c1fc6b38bb2edc2d0ccbcdafd031b0b189d5d8ed0d1ba8",
+          "mode": "100644"
+        },
+        "rules/chat.md": {
+          "sha256": "de29c12524a27578a59ecf8c95ea939278c1a3572a3706bfc99f6f92cb770b7b",
+          "mode": "100644"
+        },
+        "rules/composition.md": {
+          "sha256": "f282df828d83a91132a846ddb62eea149a7c7c94822e9ca88cfddf85af01aa41",
+          "mode": "100644"
+        },
+        "rules/forms.md": {
+          "sha256": "29593e14381e34626f8e0e9c15c59f3394b92a0623af6a6ec94585400123853c",
+          "mode": "100644"
+        },
+        "rules/icons.md": {
+          "sha256": "d4a58266648872d9ee07d0c2368843a1cb88b8253b7f528dd7bda9d68b6c2535",
+          "mode": "100644"
+        },
+        "rules/styling.md": {
+          "sha256": "f88fbd72dff862805b786dc7d7e4c74c83030fc278c5b97c993e4e665001798c",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+          "mode": "100644"
+        }
+      },
+      "digest": "1343b31fd83487bd435b5534a156ef51d0e30f21e241bebf47382f409cfbe283",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development-tooling--playwright-cli": {
+      "source": "microsoft-playwright-cli",
+      "commit": "b85c7a736bb473bf55b584e54a09ffa698d6d871",
+      "kind": "skill",
+      "path": "skills/playwright-cli",
+      "destination": "plugins/development-tooling/skills/playwright-cli",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Playwright CLI",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "9bba755285a4c9ad72a4a41b9c7baef6fb516d329c0b44ed0573715f4479b906",
+          "mode": "100644"
+        },
+        "references/element-attributes.md": {
+          "sha256": "bf19aa4671e0a50a0fefa9c790f39124e803060eefe395042b723c29fcb7faa2",
+          "mode": "100644"
+        },
+        "references/playwright-tests.md": {
+          "sha256": "c5b0719fef2cfdff50bd744051b2f9afc119775db4b48e9b2882c1cf3886797c",
+          "mode": "100644"
+        },
+        "references/pr-attachments.md": {
+          "sha256": "24b118e74598be72e73e24fe223d295b9099c85b1860a7c8f6e5690c9038fa2a",
+          "mode": "100644"
+        },
+        "references/request-mocking.md": {
+          "sha256": "54e801c9663fc2b6d68ceb058cb1c360724c2499f42acc7852a68e83e5b5f37c",
+          "mode": "100644"
+        },
+        "references/running-code.md": {
+          "sha256": "3029569ed6ddaeffc0b87badde967efdc2973b1677f078830098146eb3b78ebe",
+          "mode": "100644"
+        },
+        "references/session-management.md": {
+          "sha256": "a4f16271f95d3eec7bc56e659d8adbb8f6ad7d603a6fa15efdcdd071a50c6ce3",
+          "mode": "100644"
+        },
+        "references/storage-state.md": {
+          "sha256": "9ac47f9ae4a1aedcd2077f8ac9ab1ba6bee1962cb83ff51adcd36fb6d83b5ec6",
+          "mode": "100644"
+        },
+        "references/test-generation.md": {
+          "sha256": "27ecb11ef647999bd7486695bb1aacc3682097e6bb5742804cb6c8769c2b5364",
+          "mode": "100644"
+        },
+        "references/tracing.md": {
+          "sha256": "ef73e71bee792e341df9cd4f60529c929ade48b538ac76e033f4f20843e8dbda",
+          "mode": "100644"
+        },
+        "references/video-recording.md": {
+          "sha256": "1c800b897824cb54394c34265d8ebffdbb530adfc8d612c5d798b667a1799f48",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "9a7110fc2d2f964038e5dc49128f908f29f47a574c961cba16085914e879cbda",
+          "mode": "100644"
+        }
+      },
+      "digest": "e7be165fc8cc086eb5cf1cc95c3f5976bddbdefe1873517e3603010d0910ba1b",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development-tooling--github-actions-hardening": {
+      "source": "github-awesome-copilot",
+      "commit": "143a3d976b3c1603cc8932984d5e1f28501cb5fc",
+      "kind": "skill",
+      "path": "skills/github-actions-hardening",
+      "destination": "plugins/development-tooling/skills/github-actions-hardening",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "GitHub Actions",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "31a8e7483d978e6267941edefebbe42aaa946bb3d43c9095aa3db343d4a8ff06",
+          "mode": "100644"
+        },
+        "references/injection.md": {
+          "sha256": "ebd6ef8d39ba6f1cd3dc13051e6ed4163d1d2ba36518cf0f7393836a211e58ff",
+          "mode": "100644"
+        },
+        "references/permissions-and-tokens.md": {
+          "sha256": "7272d00b20cf99c6fcbf34346f76730907c00701aef44bb9cfb7ab3eecac336b",
+          "mode": "100644"
+        },
+        "references/report-format.md": {
+          "sha256": "3ecd2442e173bc001f858747873349be7c6c77050470b87ae516647908b1e86e",
+          "mode": "100644"
+        },
+        "references/supply-chain.md": {
+          "sha256": "f66f613dbd732ce87c1e76b88208efde8feae3ffe5a3ab405cde4ce3df66f605",
+          "mode": "100644"
+        },
+        "references/triggers-and-privilege.md": {
+          "sha256": "465f3f76517e9f5374a73e30f46cb47e1fe62ce9fd81f782808a3abbb2df2756",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "e32449d23085399adc1222f7a17408b730550258e51627c153cb108ca9955823",
+          "mode": "100644"
+        }
+      },
+      "digest": "ff5e6858902e2fd02be72113eda2bbc6778ca828199e7d3eff547931bc549422",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "backend-python-development--modern-python": {
+      "source": "trailofbits-skills",
+      "commit": "82fe8226252622fa807643bdca1710901198553a",
+      "kind": "skill",
+      "path": "plugins/modern-python/skills/modern-python",
+      "destination": "plugins/backend-python-development/skills/modern-python",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "backend-python-development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "backend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Python",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "ef774b925eb1d1fc12e4f5ddc3f5ad925ecd795315827447228c70cc44c6170c",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "f56c544187af5bd3c76f1cd082619644090ab7b6d8abe77d4d3115d39dced5c1",
+          "mode": "100644"
+        },
+        "assets/trail-of-bits-mark.svg": {
+          "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+          "mode": "100644"
+        },
+        "references/dependabot.md": {
+          "sha256": "d3678e32472305c0ef136bca99b26c3f75554d63675930e396f26a91a97451ad",
+          "mode": "100644"
+        },
+        "references/migration-checklist.md": {
+          "sha256": "58c947e6200a91f350c9adc898af7fc6263fda41d36ae81ffd4dd923b3a1015e",
+          "mode": "100644"
+        },
+        "references/pep723-scripts.md": {
+          "sha256": "c348b136613a4fed8f623d6013c0c6413d2c24f2973b2e5f85b80ecc68646045",
+          "mode": "100644"
+        },
+        "references/prek.md": {
+          "sha256": "4be1c181c71aab64ba58573242a1c451d576a5c61ceeb400bb5827f4e1f9532a",
+          "mode": "100644"
+        },
+        "references/pyproject.md": {
+          "sha256": "aec906835ec687024700d31e5c146baaabc9524129384304857b3aa81809401b",
+          "mode": "100644"
+        },
+        "references/ruff-config.md": {
+          "sha256": "8d247862f1beaf76816ed6775f5a0c8dc96d74c7f2b71bbf1aaedc4937373b17",
+          "mode": "100644"
+        },
+        "references/security-setup.md": {
+          "sha256": "32d6754a87d5006f923706d10446cc617cb22d36cfc30b55d39bd7f4c61d864c",
+          "mode": "100644"
+        },
+        "references/testing.md": {
+          "sha256": "82e36068fbf28a9615d3c96e5d946e304ce8f89ae1ba7475d20934501d55b0d9",
+          "mode": "100644"
+        },
+        "references/uv-commands.md": {
+          "sha256": "348cd69e8c780a0c7d54a2fac3c2956c7efe5630229782753da1685416672cdc",
+          "mode": "100644"
+        },
+        "templates/dependabot.yml": {
+          "sha256": "a85ede8ff9cc3a2f63cb1fba24e65c36a5885ecc95722af15157dc5258f28a12",
+          "mode": "100644"
+        },
+        "templates/pre-commit-config.yaml": {
+          "sha256": "18efd067e75cba5fc71705c2f90c548a03c3cded4cd2a7f9b4a1d617e115db0d",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+          "mode": "100644"
+        }
+      },
+      "digest": "55d35b162216cc4105a99d80b01d6bbda28b24c6f24c4aba46e35ac1d62849e5",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--property-based-testing": {
+      "source": "trailofbits-skills",
+      "commit": "82fe8226252622fa807643bdca1710901198553a",
+      "kind": "skill",
+      "path": "plugins/property-based-testing/skills/property-based-testing",
+      "destination": "plugins/development/skills/property-based-testing",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "README.md": {
+          "sha256": "ffbe30eec09cc64fb1eae836b07ca1d82939bda3f1e6f0dceadcdd78793a3112",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "9448cacb65c6237a7c22dc59602667177ecae405524079ae9ff92240590b995a",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "51d635deefa254d8cdf6dc56450851b6ec9545cd37f88a4eb4035cf3f2262fff",
+          "mode": "100644"
+        },
+        "assets/trail-of-bits-mark.svg": {
+          "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+          "mode": "100644"
+        },
+        "references/generating.md": {
+          "sha256": "c0e72dfc89babe3c32de718b81b94044362c85e776d7475e950dfeaab78bb58e",
+          "mode": "100644"
+        },
+        "references/interpreting-failures.md": {
+          "sha256": "dbae7db8773712ba03268a3d56ea5aa6720af0650a5189580bfd88aa2edc3f9a",
+          "mode": "100644"
+        },
+        "references/libraries.md": {
+          "sha256": "f7218acf8e668130ef3048983472579d04e12030c5401926f666363e5f69c686",
+          "mode": "100644"
+        },
+        "references/refactoring.md": {
+          "sha256": "6eb5c206f575704791f089608bb06e41d6eed91b9d3c7fb27912f969aed07a18",
+          "mode": "100644"
+        },
+        "references/reviewing.md": {
+          "sha256": "110b08118a1e7b1a2566def6e9d2a0bf43fc2deefce857d2ce3b4382b07bc774",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+          "mode": "100644"
+        }
+      },
+      "digest": "e5139f99a8d425ec29c99bedbd462c2cd722b0d020e77078406d2fec2a185884",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--differential-review": {
+      "source": "trailofbits-skills",
+      "commit": "82fe8226252622fa807643bdca1710901198553a",
+      "kind": "skill",
+      "path": "plugins/differential-review/skills/differential-review",
+      "destination": "plugins/development/skills/differential-review",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "inline-adversarial-review",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "f9af6a8193fc1a9f8ca3c54bb8d19095a5f20c9472ca6d014488bbde50b67da0",
+          "mode": "100644"
+        },
+        "adversarial.md": {
+          "sha256": "3cb823f38c6e551cbcf5f72325d2bb219dacdad774072519c31d50d92db19800",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "0279d56f88dc1a04d4b1941a25fa7672912a3ceb0557b13c38d069908b30ae61",
+          "mode": "100644"
+        },
+        "assets/trail-of-bits-mark.svg": {
+          "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+          "mode": "100644"
+        },
+        "methodology.md": {
+          "sha256": "16b335d24cf2145e3dc4a37f50056550d29db2efa20e6df78fec95ec1e6fb0b4",
+          "mode": "100644"
+        },
+        "patterns.md": {
+          "sha256": "52abb18abbc73502a3d3b2f36a7a035adc1db40fd812d1d5424cf065036a06e9",
+          "mode": "100644"
+        },
+        "reporting.md": {
+          "sha256": "0016876dc6f158e926448bff1b6f634796757c7afe09dff177cfe30250724fc4",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+          "mode": "100644"
+        }
+      },
+      "digest": "6ae7158c30beeebf08e28d32daad26d4855bf29b1777b0b3e371192a6b3f5c88",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "ai-python-development--mcp-builder": {
+      "source": "anthropics-skills",
+      "commit": "8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4",
+      "kind": "skill",
+      "path": "skills/mcp-builder",
+      "destination": "plugins/ai-python-development/skills/mcp-builder",
+      "resources": [
+        {
+          "path": "skills/mcp-builder/LICENSE.txt",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-python-development",
+          "license": "Apache-2.0",
+          "license_path": "skills/mcp-builder/LICENSE.txt",
+          "adaptations": [
+            "ai-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Python, standalone FastMCP, MCP",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "LICENSE.txt": {
+          "sha256": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "0f4592dcb53cf2b5d6b7febee6b4152018b565551a1c29e3c612f57b218ab295",
+          "mode": "100644"
+        },
+        "reference/evaluation.md": {
+          "sha256": "8c99479f8a2d22a636c38e274537aac3610879e26f34e0709825077c4576f427",
+          "mode": "100644"
+        },
+        "reference/mcp_best_practices.md": {
+          "sha256": "80fb4369a349447cf18ecdd7494fe7938b6065377e9f08c077cec411093a3007",
+          "mode": "100644"
+        },
+        "reference/node_mcp_server.md": {
+          "sha256": "c3ba35a4f599dd53be9c6555ae72c19a7bf412cd5426576c2c08d42755482c66",
+          "mode": "100644"
+        },
+        "reference/python_mcp_server.md": {
+          "sha256": "2da52f77e675191014ca2e146a4b95aa04d0ca7dd7e2b100322df15ade685e80",
+          "mode": "100644"
+        },
+        "scripts/connections.py": {
+          "sha256": "9403668a2041568772082a8b334122c1f88daf0541fb393af4522d0094a47a6e",
+          "mode": "100644"
+        },
+        "scripts/evaluation.py": {
+          "sha256": "49ed1d17cdce5da101b210197740713f49b935c29d4f339542a14b132658e6f7",
+          "mode": "100644"
+        },
+        "scripts/example_evaluation.xml": {
+          "sha256": "9272b348ddcc4b06ba562367ccd0770e018158c0068ac5116d5e34aaeff8777a",
+          "mode": "100644"
+        },
+        "scripts/requirements.txt": {
+          "sha256": "d5d7558b2368ecea9dfeed7d1fbc71ee9e0750bebd1282faa527d528a344c3c7",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+          "mode": "100644"
+        }
+      },
+      "digest": "6f3679a417c72eaf2eae05a486d16a510d8a0ab8cc8b808923396b81358e9571",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "ai-adk-development--adk-agent-builder": {
+      "source": "google-adk-python",
+      "commit": "6be386d8939c4898aa2c0fc8a1f7cb34e7df7904",
+      "kind": "skill",
+      "path": ".agents/skills/adk-agent-builder",
+      "destination": "plugins/ai-adk-development/skills/adk-agent-builder",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-adk-development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Google ADK",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "5690ecc21fa48c0c502b8a6b517190e1fc45a9305fafc94cdc80fde16c7981cc",
+          "mode": "100644"
+        },
+        "references/advanced-patterns.md": {
+          "sha256": "a969e151d35579e51083b23211e030af9e2bb598a459ab55e37585209716f44f",
+          "mode": "100644"
+        },
+        "references/best-practices.md": {
+          "sha256": "4ebd48f624851a9ae919b68b7d99dfddd3cc3ebbbdb0036a61b7e0bb33d686ca",
+          "mode": "100644"
+        },
+        "references/callbacks-and-plugins.md": {
+          "sha256": "52d64a432ec76ea59635594b3e0204aec50ed050672740621c4a09249fb4de4d",
+          "mode": "100644"
+        },
+        "references/dynamic-nodes.md": {
+          "sha256": "ec766dfb1591840ebe0f993c14c6e3bda30fbee12240f8859739cf9738364b50",
+          "mode": "100644"
+        },
+        "references/function-nodes.md": {
+          "sha256": "23df7bc520231a54063f4a90d92045ba58af4b4b2b2a4c5971bf15de6eb5833a",
+          "mode": "100644"
+        },
+        "references/getting-started.md": {
+          "sha256": "99644e313c3693faae1e98cbfc9ccba9cc8b8444323acfaf6bab623cf30d36a3",
+          "mode": "100644"
+        },
+        "references/human-in-the-loop.md": {
+          "sha256": "08c60bfbd8184f815bd0f0293d88f498d5ad335f4960fc4f8aed4bdc1f1304fc",
+          "mode": "100644"
+        },
+        "references/import-paths.md": {
+          "sha256": "641673d4ed5282b82db4f585ecd3377309bee0cbef34dd65dfe65b4199d94993",
+          "mode": "100644"
+        },
+        "references/llm-agent-nodes.md": {
+          "sha256": "a7d7c62f9db67f930e21a6bfb32c1573a1c42d516882dd1b58945346e40242fe",
+          "mode": "100644"
+        },
+        "references/multi-agent.md": {
+          "sha256": "173c1eb805a9629fe16cc3c78e6ef1e5e772ad92970cf35d294a8e2fee9cd56d",
+          "mode": "100644"
+        },
+        "references/parallel-and-fanout.md": {
+          "sha256": "d4c8fd73adc335b87e5d4fe027b7159e08c4244be6478444d9806c2517f12991",
+          "mode": "100644"
+        },
+        "references/routing-and-conditions.md": {
+          "sha256": "4f4757105f9fc09a4d7323736ba8533c2562308d3cfcd7230191e386d7370661",
+          "mode": "100644"
+        },
+        "references/session-and-state.md": {
+          "sha256": "b3ccd5b4aa4cf7bc3d262e758827d149d6de79f387fae2250e0683d481e99be9",
+          "mode": "100644"
+        },
+        "references/state-and-events.md": {
+          "sha256": "027870f1d4728e02001d92e19119a14043e00143e7e1208e76d2434a20451222",
+          "mode": "100644"
+        },
+        "references/task-mode.md": {
+          "sha256": "a757fcd0b5ac09095b58b26eb604b89ec989444832830e941b129ef1001b9d5c",
+          "mode": "100644"
+        },
+        "references/testing.md": {
+          "sha256": "93f277984398acaef4f27dfa395059783e909da303ca8b5631809eb7f6cfbbdb",
+          "mode": "100644"
+        },
+        "references/tool-catalog.md": {
+          "sha256": "225c30730150716284c852954a0950eda201e83dc89fc8f5c8b92abbe97a2db2",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "mode": "100644"
+        }
+      },
+      "digest": "ed740623b733c0e5d2982333eaae2845f316fd7a8936381ec5f9de04fc592ff7",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "ai-adk-development--adk-architecture": {
+      "source": "google-adk-python",
+      "commit": "6be386d8939c4898aa2c0fc8a1f7cb34e7df7904",
+      "kind": "skill",
+      "path": ".agents/skills/adk-architecture",
+      "destination": "plugins/ai-adk-development/skills/adk-architecture",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-adk-development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Google ADK",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "44901394ad6efdce484bca41eb1492fa4c7ac0b456d95a0fa2668bdf086a0851",
+          "mode": "100644"
+        },
+        "references/api-principles.md": {
+          "sha256": "e0fec48d0fd298b2a906d2aa59e938df5f12a2b46dca8f52d7047c1a283254a2",
+          "mode": "100644"
+        },
+        "references/architecture-checkpoint-resume.md": {
+          "sha256": "34de83c84fffd99fe8544e4c6ae5799705e7070e62e919334ff0bea2ef8f0f55",
+          "mode": "100644"
+        },
+        "references/architecture-context.md": {
+          "sha256": "d7bca0dcadbf100e866648ca70c8b3a43397193f6ce8c3273ba544a7f25917f7",
+          "mode": "100644"
+        },
+        "references/architecture-llm-context-orchestration.md": {
+          "sha256": "584d3924ee1521556a9c55b4af09a7a4021fa5e7fadb3163a383d89f0b80a62e",
+          "mode": "100644"
+        },
+        "references/architecture-node-runner.md": {
+          "sha256": "f6e3c41c07a35d8a9a0e8518f2e3ec687792af9efdc1853a3de32c597ecd1a39",
+          "mode": "100644"
+        },
+        "references/architecture-observability.md": {
+          "sha256": "a35405ba44d22eef7e982cfaa2d6a1379ba8c086a234138a055445da8a25cdd7",
+          "mode": "100644"
+        },
+        "references/architecture-runner-roles.md": {
+          "sha256": "64051aa0ce5af9ce69287cdbf8b0096db75895fba5458c365bc5919ca9916be3",
+          "mode": "100644"
+        },
+        "references/architecture-workflow-resumability.md": {
+          "sha256": "d14252bb76c0e181813323d32c53498cddff46b62dddd33d0737ed308d5a4573",
+          "mode": "100644"
+        },
+        "references/interface-agent.md": {
+          "sha256": "a435f6cb7c1ba76b922bf8d554aa39210b128b64d37b43cf3311862a837b3423",
+          "mode": "100644"
+        },
+        "references/interface-base-agent.md": {
+          "sha256": "73465e4ec1c05e00cae701543387e59bd9f237c03282c697869356716f7ab70d",
+          "mode": "100644"
+        },
+        "references/interface-base-node.md": {
+          "sha256": "2c069b9295bcab502de49908a666ced379ac523fbd7e231a4ec8741ee8a8f836",
+          "mode": "100644"
+        },
+        "references/interface-event.md": {
+          "sha256": "748e8630b70622f965aba031877c287a92fbe9661e58de65bbb2dae873f91c85",
+          "mode": "100644"
+        },
+        "references/interface-runner.md": {
+          "sha256": "de996c3177974cb2af4e333fbdfaefd23da64be531c64e1d6311580bd484f0b7",
+          "mode": "100644"
+        },
+        "references/interface-workflow.md": {
+          "sha256": "ac1aa5130dd512c2fb7abad2f57899604556bf9f92e140ee614ddd65201e47d3",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "mode": "100644"
+        }
+      },
+      "digest": "774059497af00c94c6d0e00491074fcb88c4a6e987004c8ed20db0ec2a96ba73",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "ai-langchain-development--langchain-fundamentals": {
+      "source": "langchain-ai-langchain-skills",
+      "commit": "16a992f09ab3ccfb642dd4f08d350d833d1990bf",
+      "kind": "skill",
+      "path": "config/skills/langchain-fundamentals",
+      "destination": "plugins/ai-langchain-development/skills/langchain-fundamentals",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangChain",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "00dc50a19d6eec308e3c4a5b8ca237fdddeb00195e7e29d009049f5d0566f5c2",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478",
+          "mode": "100644"
+        }
+      },
+      "digest": "bfde421675d169f40c866e64b9829b44a17edf42f4514fa54568c5efe63ef3a2",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "ai-langchain-development--langgraph-fundamentals": {
+      "source": "langchain-ai-langchain-skills",
+      "commit": "16a992f09ab3ccfb642dd4f08d350d833d1990bf",
+      "kind": "skill",
+      "path": "config/skills/langgraph-fundamentals",
+      "destination": "plugins/ai-langchain-development/skills/langgraph-fundamentals",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangGraph",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "193bea142c9df04abc44917fb96c0be53ec9b5c77f56670004d3c03c117fb990",
+          "mode": "100644"
+        },
+        "references/python.md": {
+          "sha256": "3d30871a6463f955452fdebe607248c39b6806cf07c0fe655e3783b48acc6d91",
+          "mode": "100644"
+        },
+        "references/typescript.md": {
+          "sha256": "8cf8577265a75a1e46a5e1dfc7599c63efb60059591593dbb92dbd51acd5d22a",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478",
+          "mode": "100644"
+        }
+      },
+      "digest": "4cd4a11a330318b7a0289d21fbf8961d07aa9dfce487760ac688f58e1886bda7",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "ai-langchain-development--langgraph-persistence": {
+      "source": "langchain-ai-langchain-skills",
+      "commit": "16a992f09ab3ccfb642dd4f08d350d833d1990bf",
+      "kind": "skill",
+      "path": "config/skills/langgraph-persistence",
+      "destination": "plugins/ai-langchain-development/skills/langgraph-persistence",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangGraph",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "0a9a4f36e6d7895a273ce0882655e57023d2d992d4fde8e033e2936ac1df789e",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478",
+          "mode": "100644"
+        }
+      },
+      "digest": "d29c596582297ceb65bdbeb12a29d25314d691718615896715e55c70abc7a304",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "ai-langchain-development--langchain-dependencies": {
+      "source": "langchain-ai-langchain-skills",
+      "commit": "16a992f09ab3ccfb642dd4f08d350d833d1990bf",
+      "kind": "skill",
+      "path": "config/skills/langchain-dependencies",
+      "destination": "plugins/ai-langchain-development/skills/langchain-dependencies",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "ai-langchain-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "LangChain, LangGraph",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "e099bf710d55bac77bdb3aa3e0b76e3da249f0ba910f37ba6a87c524d14dd8bf",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478",
+          "mode": "100644"
+        }
+      },
+      "digest": "735d8280678c92ca6ccc4b651333499e74499063edfa43d61809a16ffdcdd5d8",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--code-review": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/code-review",
+      "destination": "plugins/development/skills/code-review",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "47f4e52c21694def9c7c11cbfbf891ca35eac7a93e395797515be3c8a409ae50",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "71901a5164cad8a98d86e6738941247b7d6cc82126022db35b1d86114621170c",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--codebase-design": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/codebase-design",
+      "destination": "plugins/development/skills/codebase-design",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "DEEPENING.md": {
+          "sha256": "f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1",
+          "mode": "100644"
+        },
+        "DESIGN-IT-TWICE.md": {
+          "sha256": "52b52e75655a27aea59c6966b410bac82448968ad46ef1ebb9f07c274e3ae010",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "fa3cee561faaabd2da0fd140a06588010836219c1458b61e887bb8c3caf593c1",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--diagnosing-bugs": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/diagnosing-bugs",
+      "destination": "plugins/development/skills/diagnosing-bugs",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "9168404abda0967a5d32977e3498cd95fda6807018852f3de736a78357c82b40",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b",
+          "mode": "100644"
+        },
+        "scripts/hitl-loop.template.sh": {
+          "sha256": "35103539fc36873eea36074769ad454f9379d6fc8b2dc0e26ce987fd3bfe5503",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "eb23195022e40a4d9a24123a58ef9f391a975ce0b0301c1723b0dc033a02855b",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--domain-modeling": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/domain-modeling",
+      "destination": "plugins/development/skills/domain-modeling",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "ADR-FORMAT.md": {
+          "sha256": "944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0",
+          "mode": "100644"
+        },
+        "GLOSSARY-FORMAT.md": {
+          "sha256": "21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "7dc4011d632fd5d1b135aa4a891862b10c0aab482dcd2b47c06ae06a67b0c755",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--grill-with-docs": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/grill-with-docs",
+      "destination": "plugins/development/skills/grill-with-docs",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "7de372c13488f1ee96cc11cd8907b56b6809cc93eef776eeddd37de6b6cbe3fe",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "94cd0ab161fb468a836349f5ed482ba58ce8e709a05c57ce533d739dbd35cca9",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "2f17c01c07f7454656e7e532cfb6f439ccaf5ddd552942a5831f4e0954d8bc2c",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--implement": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/implement",
+      "destination": "plugins/development/skills/implement",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "implementation-entrypoint"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "6d3fd9e83b8f36e5213854779db49b256a457a7ebb4a503e53fa7dcff696adc3",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "8970a8596ade0c28ab427f41a4ea242d6bdf6186c59ebf55e1238dbecaab79dc",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "5e30bba102fab458ebb208562e04d6e676cc55e816b651f5544c60fc37f82b39",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--implement-spec": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/implement-spec",
+      "destination": "plugins/development/skills/implement-spec",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "7a22dd2e60b8fcece478ced9d2533582adf3520d695acd3ab715341535c9e56d",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "fd41efb42c60c96320d6531be7e4bf15cbf5518cd652d57dff27ccffa46988e9",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "775d10fbd9dd345f97ac50bcfd295ab7bed1fa635c60a3acba2bb04e169052d0",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--improve-codebase-architecture": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/improve-codebase-architecture",
+      "destination": "plugins/development/skills/improve-codebase-architecture",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "HTML-REPORT.md": {
+          "sha256": "581e8bb5a521e46bbda8ca7e19b15948bed882187108092ebb90c62513b77528",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "552240a5ab5cec6b67c15dd1ad6e9f6962b1bca6ce870059a8c2713760c20392",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "c8cb20f68ebf0edb4e497bc11ae5fcaa196004e661cd189015b04f4109ced7f1",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "5c7354a6d15448996c29129b49c2a97297ca904e54bf822d93a861dbaf190046",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--prototype": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/prototype",
+      "destination": "plugins/development/skills/prototype",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "LOGIC.md": {
+          "sha256": "f61c7d249e786a79ef289018901c348271e1798dd0b0bc5607b5c6f4d4a01ab9",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "714de632d116bb73f65cdb5a882db15b9369a6713b9a47c0fad827848f0bfbe3",
+          "mode": "100644"
+        },
+        "UI.md": {
+          "sha256": "723211e878acbc7b6ff09755263f3295cde724ba902ff0064da41eed51d45ad3",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "5af65e43ab41a350436697b81e27b7f848d36782043b73c322bb2c9fa9cc55dc",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "93fb7c6561f5513869e30b97dfbd2704f3ebd610e5bf0561f4cc852b7c0b59f9",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--research": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/research",
+      "destination": "plugins/development/skills/research",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "985569f15739c713d6784887c3d186d4ef9ac85bec5ad9c068d25bf0739928e4",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "9b4c470d63221c1f68f22df70b83e2f12401b317babe0d1b7b5f24a974474d0d",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "06bd8a95fda330179e4bca99947d5638f2b69cc8db1b6ddf0d6280d43eba4b4e",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--retro": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/retro",
+      "destination": "plugins/development/skills/retro",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "33fbc28568e3146f20fd908b12998bc0ab30aa4f4c87288199a40793efa94696",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "cb6fb9d7e6b4be5975f41f6def1dd00a1255bad5d9b02696b124c924a8b8745c",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "e023a6593438814c169665220f5bf826a87773d2ded74c739599cc2b513b178f",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--tdd": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/tdd",
+      "destination": "plugins/development/skills/tdd",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "93ea419b76e9caaf26153b828e984f7c3fb136f4caa67b14af95f32ea965a1cc",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "ea6f01cf1b8c06a4b0f5b649d74b1b8ce8685e72af1b38d70d877693e092af0b",
+          "mode": "100644"
+        },
+        "mocking.md": {
+          "sha256": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
+          "mode": "100644"
+        },
+        "tests.md": {
+          "sha256": "859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "0fea2f1ccf28d8caa9074d85b2bb27c8adb57cbfc17cc4a0fee18c4077536060",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--to-spec": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/engineering/to-spec",
+      "destination": "plugins/development/skills/to-spec",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "tracker-neutral"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "43ad9cf318e5e7d3d1fa360253a37021796dc87a0c2e595ad262661a10f85088",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "1c5b4d1e3d8e52287ef19cc2742fdbbfae1914ac75d33af3e4c8174f08cc55bb",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "be9a0b8f3cb07952f98b41e17cef45aadfcffa22181caaf2e21f1d5e70424317",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--grill-me": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/productivity/grill-me",
+      "destination": "plugins/development/skills/grill-me",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "73a6363973e068d0970796f88e9d13434875ca53a26c7900d8d3711338604e7e",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--grilling": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/productivity/grilling",
+      "destination": "plugins/development/skills/grilling",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "10ff989e7498b23b5acb49d5048f11dcd906757d2f79c5cdf8a00001381296f2",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "fd132c63b7ce4855db85d723668c5cb1c8d6287b81da257759c0f5452d0915a0",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--handoff": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/productivity/handoff",
+      "destination": "plugins/development/skills/handoff",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "7c62de979fdc7ac32fb5ddb2146156c917f80ee070d30fadc9d40343c4b6ed25",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "5c479fd562c691851690e8b18c8501045bef0943c10743d636b2fae26add1d28",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "18809a4fa320c5ef0aedda496a8e834dc16359041bd00d3c5f05341d4015e6bc",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--to-questionnaire": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/productivity/to-questionnaire",
+      "destination": "plugins/development/skills/to-questionnaire",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "user",
+            "role": "task"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "b5eb929842ee0e93d867c5e906d183d350f2f2d149eaeaa86967d94d8eda1d3b",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "9e8a06c38c8842eea8d4922cb9d1ead8e3ace647bab259b943c994a1b4742bc2",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "d78629b23a6c0f0a07d0e521688932960c82d72d81f337629e4c9ee466f1f0ad",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--writing-for-agents": {
+      "source": "mattpocock-skills",
+      "commit": "4588b32ecab9ecc9fc8cc6b6c5e7d675b6004b0d",
+      "kind": "skill",
+      "path": "skills/productivity/writing-for-agents",
+      "destination": "plugins/development/skills/writing-for-agents",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "documentation-paths",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL-MECHANICS.md": {
+          "sha256": "c768e6307c7c10728c401c213f2c4ba71c542127eeb7ad2956aabd15a0fa0059",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "551adca942227b44192edba88acd4e8db911f0121ce58ad16944ccf6a896a74a",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+          "mode": "100644"
+        }
+      },
+      "digest": "668f6eaf31745676a337ef65461fb0821c0daf29828cc70e3d6a39fa3a0ad166",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development-tooling--supply-chain-risk-auditor": {
+      "source": "trailofbits-skills",
+      "commit": "82fe8226252622fa807643bdca1710901198553a",
+      "kind": "skill",
+      "path": "plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor",
+      "destination": "plugins/development-tooling/skills/supply-chain-risk-auditor",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development-tooling",
+          "license": "CC-BY-SA-4.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Supported dependency lockfile ecosystems",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "a1254b7f8d3a1731a9a7e1f9cd6c67b59cf84ed6ef7c7fb455db9a14c528ceb4",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "7d79ce0a77aaa1e2c72939b02b285b13a84d9da85ffb965a9d1489c358cd27ab",
+          "mode": "100644"
+        },
+        "assets/trail-of-bits-mark.svg": {
+          "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+          "mode": "100644"
+        },
+        "scripts/collect.py": {
+          "sha256": "fd75cffad628980a6da521b5d3a40fb5dd16c5bb9ad63a25245e5208d08abff7",
+          "mode": "100644"
+        },
+        "scripts/model.py": {
+          "sha256": "78a20954b76e81216991b57453ceddbdb867035a0d6993b98cfa05a7f8d008d3",
+          "mode": "100644"
+        },
+        "scripts/pyproject.toml": {
+          "sha256": "a79ec30039ce3bc90544b9d833f7edc128232821575736f659d2b2ca0a601f3b",
+          "mode": "100644"
+        },
+        "scripts/render.py": {
+          "sha256": "9d6091645c8a8edf5c50d24bd70ff881efa30b920d93b46ea1775ee2dd328bc7",
+          "mode": "100644"
+        },
+        "scripts/sources.py": {
+          "sha256": "4eb66952dca285b4790d1193b39f240e8015025ee054a215f4c696cbba2478e2",
+          "mode": "100644"
+        },
+        "scripts/test_collect.py": {
+          "sha256": "ea4f25bdab0add75d500b22ba5eb9f993d3695d974cd3f92b418f5cff07e00da",
+          "mode": "100644"
+        },
+        "scripts/test_model.py": {
+          "sha256": "92059fe937c50f1502d71df2ddc4f123e8e2647fc0f4f7b270727ef9a2004f5c",
+          "mode": "100644"
+        },
+        "scripts/test_render.py": {
+          "sha256": "319970fd010d6bf5fbf79b595e8fc918c5e74645b718f495f2479aef3ea8cc16",
+          "mode": "100644"
+        },
+        "scripts/test_sources.py": {
+          "sha256": "5c0a993d747e3ed29972272a18a14dd46b6f897bdfff7e147d0a9e9b4b4b6511",
+          "mode": "100644"
+        },
+        "scripts/uv.lock": {
+          "sha256": "99598cc397a42c945abbc9d839d1c61f1852f414660ce41e2e68bd9cdf664100",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+          "mode": "100644"
+        }
+      },
+      "digest": "b954a2decda896cb5ffc173a6212707a5225decd3345811c8fdeef36459f75e0",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "operations-platforms--aks-cost-optimization": {
+      "source": "azure-aks-skills",
+      "commit": "20bf35201a79b324d2ca3e00e5c82020ff362024",
+      "kind": "skill",
+      "path": "skills/aks-cost-optimization",
+      "destination": "plugins/operations-platforms/skills/aks-cost-optimization",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "operations-platforms",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "Azure AKS",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "5fa57d0d4681e071b81433d8963b6e82936f4c1d8dac7e6b4c0757eaa62896c4",
+          "mode": "100644"
+        },
+        "azure-aks-anomalies.md": {
+          "sha256": "396e588a5d4bbc86144a17cb1b45a8ac0d95ab940e098bde33a064e74e577c6d",
+          "mode": "100644"
+        },
+        "azure-aks-autoscaler.md": {
+          "sha256": "f01b1952d7bc0217e7d1362de764025c4d681b3e4c4a477ba7af695b45a33cca",
+          "mode": "100644"
+        },
+        "azure-aks-cost-addon.md": {
+          "sha256": "97bacb0c461c9f8ada46b39616521018e17d6f51feafc7127478201b3683aabb",
+          "mode": "100644"
+        },
+        "azure-aks-rightsizing.md": {
+          "sha256": "8c9edefed4b07ca3c914732e6fb3b43ff4f43fc93451ad58f169981efd5f4358",
+          "mode": "100644"
+        },
+        "azure-aks-spot.md": {
+          "sha256": "f82c6d41c9da92b51b03ead27d4ef1e8a81021ea9a29fc64842c30a6b39f6a94",
+          "mode": "100644"
+        },
+        "azure-aks-vpa.md": {
+          "sha256": "3dae1c706ebe394f4964b581bd9537fdb7625c3784a03e76bcce52cd7bb80cb6",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "92b556ec5ae47bb5ba07e2ebfe1c5dba656d65beabcf1a3f129e48b1e6855ccb",
+          "mode": "100644"
+        }
+      },
+      "digest": "36720bd3462e93d7b9657cfe47424e1b93d6dba0dd1c82f5083f972472436fae",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "frontend-reactjs-development--tailwind-design-system": {
+      "source": "wshobson-agents",
+      "commit": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+      "kind": "skill",
+      "path": "plugins/frontend-mobile-development/skills/tailwind-design-system",
+      "destination": "plugins/frontend-reactjs-development/skills/tailwind-design-system",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-reactjs-development",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "frontend-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "stack-specific",
+            "invocation": "agent",
+            "stack": "React, Next.js, Tailwind, shadcn",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "b6577edb7b7f71a6954f68b80c7eea1748ccdf31862759f864bce558fb2bcf83",
+          "mode": "100644"
+        },
+        "references/advanced-patterns.md": {
+          "sha256": "40a4a9fa931f4bc95213870ea1fe7c32ce50aacf3531af07954b660c4f51e1a2",
+          "mode": "100644"
+        },
+        "references/details.md": {
+          "sha256": "06db0dc31dabeced9ea5ee27dfe2f98fd1783756a3930e6aeacf09ab4fc6562a",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746",
+          "mode": "100644"
+        }
+      },
+      "digest": "b1221b34209529f116c9abe07c7b0ab10b116ee8a22320d237e5676395fcf630",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "documentation--humanizer": {
+      "source": "blader-humanizer",
+      "commit": "225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8",
+      "kind": "skill",
+      "path": ".",
+      "destination": "plugins/documentation/skills/humanizer",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "documentation",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "composition-framing",
+            "usage-labels",
+            "support-visibility"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "agent",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        ".claude-plugin/marketplace.json": {
+          "sha256": "e539740285b660d2288a38b6d9b237396c6769828c671c46b9f91e760db6cc29",
+          "mode": "100644"
+        },
+        ".claude-plugin/plugin.json": {
+          "sha256": "054c0afeeb03c12f01a7f156da949edfdec3a2b756588f5ff4ee7357b0c07f6a",
+          "mode": "100644"
+        },
+        ".cursor-plugin/plugin.json": {
+          "sha256": "d1e0b50594cf4bbe57fd164b771b401713a91b76b5a213ebe8f4558bb2036546",
+          "mode": "100644"
+        },
+        ".github/ISSUE_TEMPLATE/config.yml": {
+          "sha256": "cb7e95de7606d07654024c8d47916796b307033e23ddb2b0a821a9bf89e999ef",
+          "mode": "100644"
+        },
+        ".github/ISSUE_TEMPLATE/new-pattern.yml": {
+          "sha256": "7436d578fa0056a09da5da6da950a03cb49f3ce27cf268ae295eb3d7ca19f604",
+          "mode": "100644"
+        },
+        ".github/ISSUE_TEMPLATE/rewrite-problem.yml": {
+          "sha256": "ecfe5e82c5b6d44683e0cb63cfad117dfdd16e30cc6f03510ef335414eea4947",
+          "mode": "100644"
+        },
+        ".github/workflows/validate.yml": {
+          "sha256": "f2d6a8780fb0b3cf6fa7d2ffccd72d0fc8bee29b4e63ea0fd65924712c9055fd",
+          "mode": "100644"
+        },
+        "AGENTS.md": {
+          "sha256": "de84a449da400454df1225ddb1ced728c35bf0be7811b239e3370c7dbe1f4e69",
+          "mode": "100644"
+        },
+        "CHANGELOG.md": {
+          "sha256": "b3591fe203429f1a6bd2f713c79272e9a8e58a487843d0908d2bbe0700722afa",
+          "mode": "100644"
+        },
+        "LICENSE": {
+          "sha256": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+          "mode": "100644"
+        },
+        "README.md": {
+          "sha256": "a07a054f230dca1e3d25e32ba6c808905b743cc6fa56bf8b6868cee0b12a0432",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "0612f1dfb1672b0ea9b97e139bf1f06cabe98d8b27424fe8ff01e1fb4cc99cad",
+          "mode": "100644"
+        },
+        "agents/openai.yaml": {
+          "sha256": "9d87ff83149a04f86a372948b8ee35fa249de20923867bbc2a49304290aad736",
+          "mode": "100644"
+        },
+        "scripts/validate-package.py": {
+          "sha256": "941bd99e52b2ba21449719bb7969607ac8117e3dc173d0c9dfe64fd274c65938",
+          "mode": "100755"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+          "mode": "100644"
+        }
+      },
+      "digest": "68a5328e67c084cd36e89155afd75d4d539f6d26d221bde3d8cbfa1e1b7d0d33",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "development--agents-md": {
+      "source": "getsentry-skills",
+      "commit": "f57ada2d0b640406ea7e25b11d636c530e77c58b",
+      "kind": "skill",
+      "path": "skills/agents-md",
+      "destination": "plugins/development/skills/agents-md",
+      "resources": [
+        {
+          "path": "LICENSE",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "development",
+          "license": "Apache-2.0",
+          "license_path": "LICENSE",
+          "adaptations": [
+            "workflow-framing",
+            "instruction-authoring-framing",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "both",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "SKILL.md": {
+          "sha256": "8a91ada35068f43ef7ee03e38937863bac4f407878b06f0a4f1ddb4af24bec7e",
+          "mode": "100644"
+        },
+        "SOURCES.md": {
+          "sha256": "14ac842801b7bc938dfbb9efee072fc4e9ab43b456e40f3235fee503544a0721",
+          "mode": "100644"
+        },
+        "SPEC.md": {
+          "sha256": "4f8cff992ca96fa4d369227051cd3f5aa8b34974c81bf814aa3a1cf18541e74a",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "96e78a9ce85795b117c8929887bdb78f88bf23f7b85a31f0872cde4dff7e92cd",
+          "mode": "100644"
+        }
+      },
+      "digest": "7d0a2906c218e89698b79163e150a98c751eac71dfa72eea32f9edca750d2304",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    },
+    "frontend-development--frontend-design": {
+      "source": "anthropics-skills",
+      "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "kind": "skill",
+      "path": "skills/frontend-design",
+      "destination": "plugins/frontend-development/skills/frontend-design",
+      "resources": [
+        {
+          "path": "skills/frontend-design/LICENSE.txt",
+          "destination": "UPSTREAM-LICENSE.txt"
+        }
+      ],
+      "metadata": {
+        "packaging": {
+          "plugin": "frontend-development",
+          "license": "Apache-2.0",
+          "license_path": "skills/frontend-design/LICENSE.txt",
+          "adaptations": [
+            "visual-design-framing",
+            "usage-labels"
+          ],
+          "labels": {
+            "scope": "generic",
+            "invocation": "both",
+            "role": "support"
+          }
+        }
+      },
+      "files": {
+        "LICENSE.txt": {
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "mode": "100644"
+        },
+        "SKILL.md": {
+          "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+          "mode": "100644"
+        },
+        "UPSTREAM-LICENSE.txt": {
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "mode": "100644"
+        }
+      },
+      "digest": "3e55230af5915b43616d7db447029fde98bcab30f881c056f6829c237f0743ac",
+      "inspection": {
+        "format": "skill",
+        "validation": "valid",
+        "skills": [
+          "SKILL.md"
+        ],
+        "mcpServers": [],
+        "extensions": [],
+        "diagnostics": []
+      }
+    }
+  }
+}

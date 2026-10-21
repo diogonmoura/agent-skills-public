@@ -8,6 +8,13 @@ import re
 import unicodedata
 from urllib.parse import unquote, urlsplit
 
+try:
+    from upstream_sources import load_sources
+    from build_plugins import adapt_skill
+except ModuleNotFoundError:
+    from scripts.upstream_sources import load_sources
+    from scripts.build_plugins import adapt_skill
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -42,9 +49,10 @@ def anchors(text):
 
 
 def maintained_documents(root):
+    managed = {root / s['destination'] / 'SKILL.md' for s in load_sources(root, verify=False)}
     return sorted({root / "README.md", root / "AGENTS.md",
                    *(root / "documentation").rglob("*.md"), *root.glob("plugins/*/*.md"),
-                   *root.glob("plugins/*/skills/*/SKILL.md")})
+                   *root.glob("plugins/*/skills/*/SKILL.md")} - managed)
 
 
 def check_links(root):
@@ -138,11 +146,14 @@ def check_built(root, built, selected=None):
     actual = {p.name for p in built.iterdir() if p.is_dir()}
     if actual != packages:
         errors.append(f"Built plugins differ: missing={sorted(packages-actual)}, extra={sorted(actual-packages)}")
-    sources = json.loads((root / "upstream.lock.json").read_text())["sources"]
+    sources = load_sources(root, selected)
     names = []
     for plugin in sorted(packages & actual):
         source, target = root / "plugins" / plugin, built / plugin
+        managed = {root / s['destination'] for s in sources if s['plugin'] == plugin}
         for path in source.rglob("*"):
+            if any(path.is_relative_to(directory) for directory in managed):
+                continue
             if not path.is_file() or "__pycache__" in path.parts or path.suffix in {".pyc", ".pyo"}:
                 continue
             copy = target / path.relative_to(source)
@@ -163,13 +174,29 @@ def check_built(root, built, selected=None):
         recorded_sources = [{k: v for k, v in n.items() if k != "installed_skill"} for n in notices]
         if Counter(map(lambda s: json.dumps(s, sort_keys=True), expected_sources)) != Counter(map(lambda s: json.dumps(s, sort_keys=True), recorded_sources)):
             errors.append(f"{plugin}: notices differ from lockfile")
-        local = {p.parent.name for p in source.glob("skills/*/SKILL.md")}
+        local = {p.parent.name for p in source.glob("skills/*/SKILL.md") if p.parent not in managed}
         upstream = {n["installed_skill"] for n in notices}
         expected_names = local | upstream
         actual_names = {p.name for p in (target / "skills").iterdir() if p.is_dir()}
         if expected_names != actual_names or local & upstream or len(upstream) != len(notices):
             errors.append(f"{plugin}: skill inventory differs or collides")
+        expected_notices = [dict(s, installed_skill=Path(s['destination']).name) for s in expected_sources]
         for notice in notices:
+            if notice not in expected_notices:
+                errors.append(f'{plugin}: invalid acquired skill notice')
+                continue
+            # Reconstruct only consumer adaptations, checking all acquired resources against committed bytes.
+            import shutil
+            import tempfile
+            with tempfile.TemporaryDirectory() as tmp:
+                expected = Path(tmp) / notice['installed_skill']
+                shutil.copytree(root / notice['destination'], expected)
+                adapt_skill(expected, notice)
+                actual_skill = target / 'skills' / notice['installed_skill']
+                expected_files = {p.relative_to(expected) for p in expected.rglob('*') if p.is_file()}
+                actual_files = {p.relative_to(actual_skill) for p in actual_skill.rglob('*') if p.is_file()} - {Path('UPSTREAM.json')}
+                if expected_files != actual_files or any(not (actual_skill / p).is_file() or (expected / p).read_bytes() != (actual_skill / p).read_bytes() for p in expected_files):
+                    errors.append(f'{plugin}: acquired resources differ: {notice["installed_skill"]}')
             skill = target / "skills" / notice["installed_skill"]
             record = skill / "UPSTREAM.json"
             if not (skill / "SKILL.md").exists() or not record.exists() or json.loads(record.read_text()) != notice:
