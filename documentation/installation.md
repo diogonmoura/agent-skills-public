@@ -39,6 +39,15 @@ Then select `/development:develop`, or `/development:workflow-help` for help cho
 
 [Claude Code's local-plugin guide](https://code.claude.com/docs/en/plugins/create#develop-without-a-marketplace) documents this route. Its [manifest reference](https://code.claude.com/docs/en/plugins-reference) allows a directory without a Claude manifest: the standard `skills/` layout loads and the directory supplies the plugin name. This route loads skills; it does not translate the portable `mcp.json` into Claude's `.mcp.json` configuration.
 
+To install without building locally, add the published marketplace. On every push to `main`, the [publish workflow](../.github/workflows/publish-claude-marketplace.yml) builds all bundles with the same builder and pushes the output, plus a `.claude-plugin/marketplace.json`, to the `claude-marketplace` branch:
+
+```bash
+claude plugin marketplace add joao-aires/agent-skills-public#claude-marketplace
+claude plugin install development@agent-skills-public
+```
+
+Inside a session, `/plugin marketplace add` and `/plugin install` do the same. Install further bundles by name, for example `strategy@agent-skills-public`. Updates arrive when a bundle's `version` changes. A fork publishes its own branch once Actions are enabled for it; replace the owner in the command.
+
 </details>
 
 <details>
