@@ -1,0 +1,555 @@
+<title>Skill Constellation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Interactive map of every skill in the collection and how the skills load, mention and route to each other.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* layout: full-bleed radar field on the left, telemetry console on the right; stacks vertically on phones */
+:root {
+  --bg: #04080c;
+  --bg-2: #08131b;
+  --grid: #0e2330;
+  --line: #17384a;
+  --fg: #d9f1f7;
+  --dim: #6f909c;
+  --faint: #3a5866;
+  --accent: #4fe3ff;
+  --warm: #ffb547;
+  --panel: rgba(7, 18, 26, 0.9);
+  --display: "Chakra Petch", "Rajdhani", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: radial-gradient(ellipse at 38% 50%, #0a1c27 0%, var(--bg) 62%) fixed, var(--bg);
+  color: var(--fg);
+  font: 14px/1.5 var(--body);
+  overflow: hidden;
+}
+.shell {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px;
+  box-sizing: border-box;
+}
+.stage { position: relative; min-width: 0; min-height: 0; }
+svg#map { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+svg#map:active { cursor: grabbing; }
+
+.hud-corner { position: absolute; font: 500 11px/1.4 var(--mono); color: var(--dim); letter-spacing: 0.08em; text-transform: uppercase; pointer-events: none; }
+.hud-corner.tl { top: 4px; left: 4px; }
+.hud-corner.bl { bottom: 4px; left: 4px; }
+.hud-corner b { color: var(--accent); font-weight: 500; }
+.zoom-ctl { position: absolute; right: 4px; bottom: 4px; display: flex; gap: 6px; }
+.zoom-ctl button, .chip-btn {
+  font: 500 12px var(--mono); color: var(--fg); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 3px; padding: 5px 9px; cursor: pointer;
+}
+.zoom-ctl button:hover, .chip-btn:hover { border-color: var(--accent); color: var(--accent); }
+button:focus-visible, input:focus-visible, .link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* console */
+.console {
+  min-width: 0; min-height: 0; overflow-y: auto;
+  background: var(--panel); border: 1px solid var(--line);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  padding: 18px 18px 24px; display: flex; flex-direction: column; gap: 18px;
+}
+.brand { display: flex; flex-direction: column; gap: 2px; }
+.brand h1 { font: 700 22px/1.1 var(--display); letter-spacing: 0.14em; text-transform: uppercase; margin: 0; color: var(--fg); text-wrap: balance; }
+.brand p { margin: 0; color: var(--dim); font-size: 13px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stat { background: var(--bg-2); padding: 8px 8px 6px; display: flex; flex-direction: column; gap: 2px; }
+.stat b { font: 600 20px/1 var(--display); color: var(--accent); font-variant-numeric: tabular-nums; }
+.stat span { font: 500 10px/1.2 var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.label { font: 600 11px var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 8px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.label em { font-style: normal; color: var(--faint); letter-spacing: 0.04em; text-transform: none; }
+
+.search { position: relative; }
+.search input {
+  width: 100%; box-sizing: border-box; background: var(--bg); color: var(--fg);
+  border: 1px solid var(--line); border-radius: 3px; padding: 9px 10px 9px 30px; font: 14px var(--body);
+}
+.search::before { content: "›"; position: absolute; left: 11px; top: 6px; color: var(--accent); font: 600 18px var(--mono); }
+.results { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; max-height: 220px; overflow-y: auto; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px; }
+.fam {
+  display: inline-flex; align-items: center; gap: 6px; font: 500 12px var(--body); color: var(--fg);
+  background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px 3px 8px; cursor: pointer;
+}
+.fam i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 8px var(--c); }
+.fam[aria-pressed="false"] { opacity: 0.35; }
+.edges { display: flex; flex-direction: column; gap: 6px; }
+.edge-row { display: grid; grid-template-columns: 18px 44px 1fr; align-items: center; gap: 8px; font-size: 13px; color: var(--fg); cursor: pointer; }
+.edge-row input { margin: 0; accent-color: var(--accent); }
+.edge-row small { color: var(--dim); display: block; font-size: 12px; line-height: 1.35; }
+
+.card { border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+.card h2 { font: 600 20px/1.15 var(--display); margin: 0; letter-spacing: 0.04em; overflow-wrap: anywhere; }
+.card .desc { margin: 0; color: #b9d3dc; font-size: 13.5px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 500 11px var(--mono); padding: 2px 7px; border: 1px solid var(--line); border-radius: 2px; color: var(--dim); }
+.tag.plugin { color: var(--c); border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+.tag.task { color: var(--warm); border-color: color-mix(in srgb, var(--warm) 45%, transparent); }
+.links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.link {
+  display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; align-items: center; gap: 8px;
+  width: 100%; text-align: left; background: transparent; border: 0; border-left: 2px solid transparent;
+  color: var(--fg); font: 13px var(--body); padding: 4px 6px; cursor: pointer; border-radius: 0 3px 3px 0;
+}
+.link:hover { background: rgba(79, 227, 255, 0.06); border-left-color: var(--accent); }
+.link i { width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.link span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.link small { font: 11px var(--mono); color: var(--dim); }
+.empty { color: var(--faint); font-size: 13px; margin: 0; }
+.hint { color: var(--dim); font-size: 12.5px; margin: 0; }
+.hint kbd { font: 11px var(--mono); border: 1px solid var(--line); border-radius: 2px; padding: 0 4px; color: var(--fg); }
+
+/* map marks */
+.ring { fill: none; stroke: var(--grid); }
+.ring.major { stroke: var(--line); stroke-dasharray: 2 6; }
+.spoke { stroke: var(--grid); }
+.core-spin { transform-box: fill-box; transform-origin: center; animation: spin 60s linear infinite; }
+.core-spin.rev { animation-duration: 90s; animation-direction: reverse; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.sweep { transform-origin: 0 0; animation: spin 14s linear infinite; }
+.member { stroke-width: 0.6; stroke-opacity: 0.18; }
+.e { fill: none; stroke-width: 1.1; stroke-opacity: 0.38; }
+.e.mentions { stroke-dasharray: 3 3; }
+.e.routes { stroke-dasharray: 1 4; stroke-linecap: round; stroke-width: 1.4; }
+.e.cross { stroke-opacity: 0.6; }
+.node circle.body { stroke: var(--bg); stroke-width: 1.2; }
+.node circle.halo { fill: none; stroke-width: 1; stroke-opacity: 0.7; }
+.node { cursor: pointer; }
+.node text, .hub text {
+  font: 500 9px var(--body); fill: var(--fg); paint-order: stroke; stroke: var(--bg); stroke-width: 3px;
+  pointer-events: none; opacity: 0; transition: opacity 0.2s;
+}
+.node.big text, .show-labels .node text { opacity: 0.85; }
+.hub { cursor: pointer; }
+.hub text { font: 600 11px var(--display); letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.9; }
+.hub polygon { fill: var(--bg); stroke-width: 1.4; }
+.hub .count { font: 500 8px var(--mono); letter-spacing: 0; text-transform: none; fill: var(--dim); }
+
+.focus .node, .focus .ring-hub, .focus .e, .focus .member { opacity: 0.08; transition: opacity 0.25s; }
+.focus .on { opacity: 1 !important; }
+.focus .node.on text { opacity: 1; }
+.focus .e.on { stroke-opacity: 0.95; stroke-width: 1.8; animation: flow 1s linear infinite; }
+.focus .e.mentions.on { stroke-dasharray: 5 4; }
+.focus .e.loads.on { stroke-dasharray: 9 4; }
+.focus .member.on { stroke-opacity: 0.4; }
+@keyframes flow { to { stroke-dashoffset: -13; } }
+.node.sel circle.halo { stroke-opacity: 1; stroke-width: 2; }
+.fam-off { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .core-spin, .sweep, .focus .e.on { animation: none; }
+}
+@media (max-width: 860px) {
+  body { overflow: auto; }
+  .shell { grid-template-columns: minmax(0, 1fr); grid-template-rows: 62vh auto; height: auto; }
+  .stage { height: 62vh; }
+  .console { overflow: visible; }
+  .hud-corner.bl { display: none; }
+}
+</style>
+
+<div class="shell">
+  <div class="stage">
+    <svg id="map" viewBox="-640 -640 1280 1280" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of skills grouped by plugin, with lines for references between skills">
+      <defs>
+        <radialGradient id="sweepGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="scale(600)">
+          <stop offset="0" stop-color="#4fe3ff" stop-opacity="0"></stop>
+          <stop offset="1" stop-color="#4fe3ff" stop-opacity="0.07"></stop>
+        </radialGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2.4" result="b"></feGaussianBlur>
+          <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+        </filter>
+      </defs>
+      <g id="viewport">
+        <g id="backdrop"></g>
+        <g id="members"></g>
+        <g id="edges"></g>
+        <g id="hubs"></g>
+        <g id="nodes"></g>
+      </g>
+    </svg>
+    <div class="hud-corner tl">Skill graph · <b id="statusLine">online</b></div>
+    <div class="hud-corner bl" id="hoverLine">Hover a node · click to lock</div>
+    <div class="zoom-ctl">
+      <button type="button" id="zin" aria-label="Zoom in">+</button>
+      <button type="button" id="zout" aria-label="Zoom out">−</button>
+      <button type="button" id="zreset">Reset</button>
+      <button type="button" id="labels" aria-pressed="false">Labels</button>
+    </div>
+  </div>
+
+  <aside class="console">
+    <div class="brand">
+      <h1>Skill Constellation</h1>
+      <p>Every skill in agent-skills-public, grouped by plugin. Lines show where one skill loads, names or routes to another.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+
+    <div>
+      <p class="label"><label for="q">Find a skill</label><em><kbd>/</kbd> to focus</em></p>
+      <div class="search"><input id="q" type="search" autocomplete="off" placeholder="e.g. interface-design"></div>
+      <ul class="results links" id="results"></ul>
+    </div>
+
+    <div>
+      <p class="label">Plugin families <em>tap to hide</em></p>
+      <div class="legend" id="legend"></div>
+    </div>
+
+    <div>
+      <p class="label">Connections</p>
+      <div class="edges" id="edgeToggles"></div>
+    </div>
+
+    <section class="card" id="card" aria-live="polite"></section>
+  </aside>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const DATA = /*DATA-START*/{"plugins":{"ai-adk-development":{"description":"Google ADK architecture and agent implementation.","version":"0.1.1"},"ai-development":{"description":"Provider-independent AI application design, testing/evaluation and operations; models, context, tools, harnesses and protocols.","version":"0.14.1"},"ai-langchain-development":{"description":"LangChain and LangGraph implementation, dependencies and persistence.","version":"0.1.1"},"ai-python-development":{"description":"Python provider/FastMCP integration, DeepEval testing and Python OpenTelemetry observability.","version":"0.3.3"},"backend-development":{"description":"Framework-independent service authority, state, durable work, failure and consumer contracts.","version":"0.1.1"},"backend-python-development":{"description":"Python, FastAPI, SQLAlchemy, Alembic, persistence and Python automation implementation.","version":"0.1.3"},"browser-extension-development":{"description":"Chrome Manifest V3 architecture, permissions, extension UI, runtime testing and store delivery; preserve accepted frameworks and design.","version":"0.1.4"},"database-development":{"description":"Database design and evidence-led performance methods independent of engine, application language or hosting platform.","version":"0.1.2"},"database-postgresql-development":{"description":"PostgreSQL schema, transactions, performance and operations; original guidance with reviewed upstream and first-party source references.","version":"0.1.2"},"delivery":{"description":"Provider-independent CI, artifact identity, promotion, deployment and recovery methods.","version":"0.1.2"},"development":{"description":"Stack-independent SDLC activities, project foundations, contributions and verification.","version":"0.3.4"},"development-tooling":{"description":"Selected Bash, browser/load testing, CI/container/registry, diagnostics and supply-chain tooling.","version":"0.1.3"},"documentation":{"description":"Product and engineering writing, architecture explanation, knowledge upkeep and prose editing.","version":"0.1.4"},"frontend-development":{"description":"Integrated interface design and visual craft, UX writing and usability research across application types.","version":"0.4.1"},"frontend-native-development":{"description":"TypeScript/Tauri and React Native/Expo clients, platform lifecycle, packaging and native verification.","version":"0.1.2"},"frontend-reactjs-development":{"description":"React, Next.js, shadcn and Tailwind implementation guidance.","version":"0.1.6"},"go-development":{"description":"Go engineering for accepted modules, services, libraries and CLIs: lifecycle, dependency, error and verification contracts with contextual primary references.","version":"0.1.2"},"governance":{"description":"Applicability-led compliance design and GDPR/SOC 2 readiness: translate obligations and service commitments into accountable controls and evidence.","version":"0.1.3"},"operations":{"description":"Platform-independent reliability, observability, incidents, recovery, capacity and upkeep.","version":"0.1.2"},"operations-platforms":{"description":"Selected JVM, Kubernetes and Azure AKS implementation and optimization.","version":"0.1.3"},"saas-development":{"description":"SaaS tenant/customer and commercial lifecycle design, task-oriented dashboards and scoped readiness assessment across implementation stacks.","version":"0.1.3"},"security":{"description":"Security/privacy design and identity/access development across application stacks; contextual framework selection and verification.","version":"0.2.1"},"strategy":{"description":"Business strategy, product priorities and evidence-based product learning.","version":"0.1.2"},"typescript-development":{"description":"TypeScript engineering for accepted runtimes, libraries, services and clients; module/package contracts, validation and verification independent of React.","version":"0.1.2"},"visualization":{"description":"Architecture diagrams, interactive system explanation and presentations.","version":"0.1.2"}},"skills":[{"id":"ai-adk-development/adk-agent-builder","plugin":"ai-adk-development","name":"adk-agent-builder","description":"Builds ADK (Agent Development Kit) Python agents: LLM agents with tools, graph workflows of function and agent nodes, conditional routing, fan-out and join, schema-validated delegation between agents, human-in-the-loop pauses, and pytest coverage for all of it. Use when asked to create an agent or a workflow, add a tool to one, branch or loop between nodes, run steps in parallel, pause for user approval, or test an agent. Don't use for explaining how ADK works internally or designing its core components (use `adk-architecture`), for an agent that already runs but misbehaves (use `adk-debug`), for authoring a sample under `contributing/` (use `adk-sample-creator`), or for naming, typing, and formatting conventions (use `adk-style`).","role":"support","scope":"generic","invocation":"both","upstream":"google-adk-python","resources":17},{"id":"ai-adk-development/adk-architecture","plugin":"ai-adk-development","name":"adk-architecture","description":"Explains how the ADK runtime fits together: the node and graph execution model, Context and Event flow, checkpoint and resume, tracing, and the rules governing the public API surface. Use when answering \"how does X work\" about ADK internals, tracing where an event or a piece of state comes from, deciding where a new capability belongs, reviewing a change to BaseNode, Workflow, Runner, Agent, Event or Context, working out why a node re-ran or stayed waiting after a resume, or judging whether a change breaks the public API. Don't use for assembling an agent from existing pieces (use adk-agent-builder), diagnosing one failing run or test (use adk-debug), or formatting and naming conventions (use adk-style).","role":"support","scope":"generic","invocation":"both","upstream":"google-adk-python","resources":14},{"id":"ai-development/ai-development","plugin":"ai-development","name":"ai-development","description":"Design, build and operate AI-enabled applications and agent integrations independently of a provider. Use for model/tool workflows, context and retrieval, skills, harnesses, MCP, agent interaction or generated UI, and their evaluation and delivery; apply technical guidance only to the accepted stack.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":4},{"id":"ai-development/ai-operations","plugin":"ai-development","name":"ai-operations","description":"Define and improve AI operating behavior across task observability, quality monitoring, latency/cost, provider limits, drift, rollout and recovery. Use for AI production readiness, operational diagnosis or learning from live behavior independently of a language, telemetry SDK or monitoring backend.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"ai-development/ai-testing","plugin":"ai-development","name":"ai-testing","description":"Design and assess AI testing and evaluation across components, retrieval, agent trajectories, conversations, protocols and product journeys. Use for quality criteria, datasets, graders, regression gates and evaluation evidence independently of an implementation library or application language.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"ai-langchain-development/langchain-dependencies","plugin":"ai-langchain-development","name":"langchain-dependencies","description":"INVOKE THIS SKILL when setting up a new project or when asked about package versions, installation, or dependency management for LangChain, LangGraph, LangSmith, or Deep Agents. Covers required packages, minimum versions, environment requirements, versioning best practices, and common community tool packages for both Python and TypeScript.","role":"support","scope":"generic","invocation":"both","upstream":"langchain-ai-langchain-skills","resources":0},{"id":"ai-langchain-development/langchain-fundamentals","plugin":"ai-langchain-development","name":"langchain-fundamentals","description":"Create LangChain agents with create_agent, define tools, and use middleware for human-in-the-loop and error handling.","role":"support","scope":"generic","invocation":"both","upstream":"langchain-ai-langchain-skills","resources":0},{"id":"ai-langchain-development/langgraph-fundamentals","plugin":"ai-langchain-development","name":"langgraph-fundamentals","description":"INVOKE THIS SKILL when writing ANY LangGraph code. Covers StateGraph, state schemas, nodes, edges, Command, Send, invoke, streaming, and error handling.","role":"support","scope":"generic","invocation":"both","upstream":"langchain-ai-langchain-skills","resources":2},{"id":"ai-langchain-development/langgraph-persistence","plugin":"ai-langchain-development","name":"langgraph-persistence","description":"INVOKE THIS SKILL when your LangGraph needs to persist state, remember conversations, travel through history, or configure subgraph checkpointer scoping. Covers checkpointers, thread_id, time travel, Store, and subgraph persistence modes.","role":"support","scope":"generic","invocation":"both","upstream":"langchain-ai-langchain-skills","resources":0},{"id":"ai-python-development/ai-conventions","plugin":"ai-python-development","name":"ai-conventions","description":"Implement accepted Python model/provider adapters and standalone FastMCP interfaces. Use for Gemini integration, version-matched Python MCP APIs and interaction integration; preserve established providers and frameworks.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"ai-python-development/ai-deepeval-testing","plugin":"ai-python-development","name":"ai-deepeval-testing","description":"Implement Python AI evaluation suites with DeepEval for model, retrieval, agent trajectory, conversation and end-to-end quality. Use when DeepEval is selected or being evaluated; preserve existing evaluation tools and do not introduce model calls, hosted reporting or synthetic generation without scope.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":0},{"id":"ai-python-development/mcp-builder","plugin":"ai-python-development","name":"mcp-builder","description":"Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).","role":"support","scope":"generic","invocation":"both","upstream":"anthropics-skills","resources":0},{"id":"ai-python-development/python-ai-observability","plugin":"ai-python-development","name":"python-ai-observability","description":"Set up and verify Python AI observability with OpenTelemetry and compatible model/framework instrumentation. Use for AI task/tool/retrieval traces, usage and latency signals, export/privacy configuration and operational diagnosis; keep the chosen backend and quality evaluation separate.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":0},{"id":"backend-development/backend-design","plugin":"backend-development","name":"backend-design","description":"Define application-service behavior, authority, state and interface contracts independently of a framework. Use for APIs, durable jobs, stored data or integration changes before dependent implementation; preserve accepted behavior for local fixes.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"backend-python-development/backend-conventions","plugin":"backend-python-development","name":"backend-conventions","description":"Build, extend or review Python/FastAPI systems with SQLAlchemy, Alembic, contextual persistence, auth, API contracts, jobs and optional AI/FastMCP. Use for backend architecture, endpoints, migrations, transactions, integrations and verification; accept reference systems and preserve established project constraints.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":2},{"id":"backend-python-development/modern-python","plugin":"backend-python-development","name":"modern-python","description":"Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migrating from pip/Poetry/mypy/black.","role":"support","scope":"generic","invocation":"both","upstream":"trailofbits-skills","resources":9},{"id":"backend-python-development/python-automation-engineering","plugin":"backend-python-development","name":"python-automation-engineering","description":"Design, implement, review and maintain useful Python operational automations and reporting tools with ergonomic CLIs, typed boundaries, reproducible projects, complete API collection, resumable mutations and verified outcomes.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"browser-extension-development/browser-extension-delivery","plugin":"browser-extension-development","name":"browser-extension-delivery","description":"Prepare or review Chrome MV3 release packages and Chrome Web Store readiness. Use for production ZIP contents, listing/privacy evidence, update compatibility and authorized upload/submission/publication; preserve existing CI and release policy.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"browser-extension-development/browser-extension-development","plugin":"browser-extension-development","name":"browser-extension-development","description":"Design, implement, debug or migrate Chrome Manifest V3 extensions. Use for extension entrypoints, background lifecycle, messaging, persistence and WXT/CRXJS integration; preserve the accepted UI framework and backend.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"browser-extension-development/browser-extension-security","plugin":"browser-extension-development","name":"browser-extension-security","description":"Design, implement or review Chrome MV3 permissions and extension trust boundaries. Use for manifest grants, content-script messaging, privileged fetch/injection, extension storage and browser-to-backend identity.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"browser-extension-development/browser-extension-testing","plugin":"browser-extension-development","name":"browser-extension-testing","description":"Plan and execute Chrome MV3 unit, component and real-extension tests. Use for worker restart, popup/panel lifecycle, site permissions, messaging and production-package verification with a compatible browser driver.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"browser-extension-development/browser-extension-ui","plugin":"browser-extension-development","name":"browser-extension-ui","description":"Design, implement or assess Chrome extension experiences by matching user tasks to suitable UI patterns and browser surfaces. Use for extension information architecture, surface lifecycle, injected UI, permission states and assets; preserve the product's design system.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":3},{"id":"database-development/database-design","plugin":"database-development","name":"database-design","description":"Design or evolve stored data, constraints, transactions and migration behavior independently of a database engine. Use for persistence choices, schema changes, consistency boundaries and data lifecycle decisions.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"database-development/database-performance","plugin":"database-development","name":"database-performance","description":"Investigate database workload performance and compare improvements while preserving correctness and operating budgets. Use for latency, throughput, contention, connection or resource bottlenecks before choosing engine-specific tuning.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"database-postgresql-development/postgresql-development","plugin":"database-postgresql-development","name":"postgresql-development","description":"Develop or review PostgreSQL schemas, transactions, migrations and access policies. Use for SQL, data integrity, concurrency and engine-specific persistence behavior with the actual application roles and server version.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":0},{"id":"database-postgresql-development/postgresql-operations","plugin":"database-postgresql-development","name":"postgresql-operations","description":"Plan or perform scoped PostgreSQL backup/recovery, maintenance, replication and upgrades. Use for operating procedures and readiness with the actual hosting model, recovery objectives and authorized target.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":0},{"id":"database-postgresql-development/postgresql-performance","plugin":"database-postgresql-development","name":"postgresql-performance","description":"Diagnose and improve PostgreSQL query, locking, connection and maintenance performance using representative workload evidence. Use for slow queries, pool pressure, plan regressions and resource bottlenecks.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":0},{"id":"delivery/delivery-pipelines","plugin":"delivery","name":"delivery-pipelines","description":"Create or review provider-independent CI/CD and release contracts for application verification, artifact promotion, deployment and rollback or roll-forward. Apply when delivery infrastructure changes, within the requested repository and environment scope.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"development/agents-md","plugin":"development","name":"agents-md","description":"Creates and maintains concise AGENTS.md and CLAUDE.md project instruction files. Use when asked to create AGENTS.md, update AGENTS.md, maintain agent docs, set up CLAUDE.md, document repository agent conventions, or keep coding-agent instructions minimal and reference-backed.","role":"support","scope":"generic","invocation":"both","upstream":"getsentry-skills","resources":0},{"id":"development/code-review","plugin":"development","name":"code-review","description":"Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to \\\"review since X\\\".","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/codebase-design","plugin":"development","name":"codebase-design","description":"Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/deliver-reliable-changes","plugin":"development","name":"deliver-reliable-changes","description":"Implement, review and prepare application changes for delivery with focused verification, practical CI/CD and operational evidence. Use for feature implementation, bug fixes, PR preparation, pipeline changes and deployment readiness.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"development/dependencies","plugin":"development","name":"dependencies","description":"Review dependency/runtime updates, vulnerability remediation or dependency-update PRs with release-note, compatibility and CI evidence. Use for explicit or configured maintenance jobs; auto-merge only under an established eligible-update policy.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/design","plugin":"development","name":"design","description":"Design UI interactions, backend contracts or architecture for a requested change before implementation. Use for flows, navigation, shared components, API/data/state behavior or consequential design alternatives; produce concise text and useful wireframes/mockups when needed.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/develop","plugin":"development","name":"develop","description":"Take a rough business idea, feature, refactor or improvement through clarification, design, implementation, testing and review in one requested engagement. Use for end-to-end development with consequential questions and explicit assumptions, not a promise of zero interaction or automatic deployment.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":1},{"id":"development/diagnosing-bugs","plugin":"development","name":"diagnosing-bugs","description":"Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/differential-review","plugin":"development","name":"differential-review","description":"Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context, calculates blast radius by counting callers, checks test coverage of modified code, and generates a markdown report. Use when reviewing a PR, commit, or diff for security vulnerabilities, checking whether a change re-introduces a previously fixed bug, asking what else a change could break, or finding which modified code has no test covering it.","role":"support","scope":"generic","invocation":"both","upstream":"trailofbits-skills","resources":0},{"id":"development/domain-modeling","plugin":"development","name":"domain-modeling","description":"Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/git-contributions","plugin":"development","name":"git-contributions","description":"Develop a feature in an isolated Git worktree, make Conventional Commits and publish a concise pull request to the correct repository. Apply by default when starting feature work, continuing a feature branch, committing changes or preparing a PR; respect plan-only requests and existing contribution conventions.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"development/grill-me","plugin":"development","name":"grill-me","description":"A relentless interview to sharpen a plan or design.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/grill-with-docs","plugin":"development","name":"grill-with-docs","description":"A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/grilling","plugin":"development","name":"grilling","description":"Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/handoff","plugin":"development","name":"handoff","description":"Compact the current conversation into a handoff document for another agent to pick up.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/harden","plugin":"development","name":"harden","description":"Assess and address security/privacy weaknesses in the supplied feature, diff or repository. Use for a scoped hardening task with evidence-backed fixes and verification, preserving accepted architecture and task authority.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/implement","plugin":"development","name":"implement","description":"Implement a piece of work based on a spec or set of tickets.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/implement-spec","plugin":"development","name":"implement-spec","description":"Implement the result of /to-spec and /to-tickets in code.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/improve","plugin":"development","name":"improve","description":"Assess codebase improvement opportunities or implement a specified improvement objective. Use for architecture, performance, reliability, testability, UX consistency or developer-experience work; bare invocation discovers prioritized evidence-backed opportunities.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/improve-codebase-architecture","plugin":"development","name":"improve-codebase-architecture","description":"Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/journey-testing","plugin":"development","name":"journey-testing","description":"Define, automate, explore and evaluate user journeys across web, desktop and mobile applications, including browser extensions. Use for UI/API/persistence changes, interaction and visual consistency, authentication, authorization, lifecycle behavior and failing journey checks.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":2},{"id":"development/plan","plugin":"development","name":"plan","description":"Plan implementation of agreed work using repository context, dependencies, verification and release consequences. Use for a bounded feature/refactor plan; do not turn a small fix into a mandatory planning workflow.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/project-conventions","plugin":"development","name":"project-conventions","description":"Establish or maintain an application repository's structure, stack constraints, scoped AGENTS.md, local setup and delivery conventions. Use when explicitly asked to start, organize or review a project, or when the requested change affects those foundations; keep ordinary feature work within existing conventions.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"development/property-based-testing","plugin":"development","name":"property-based-testing","description":"Writes, reviews, and debugs property-based tests \u2014 Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Solidity invariants. Use whenever tests should cover a whole input domain instead of a hand-picked list of examples: encode/decode and serialize/deserialize pairs, parsers, canonicalizers and normalizers, validators, numeric and Decimal types, comparators and sort order, data structures, and smart-contract state invariants. Also use when adding cases to an existing @given, fast-check, or proptest suite, when judging whether existing property tests assert anything real, and when a generator has shrunk a counterexample and you need to tell a wrong property from a genuine bug. Not for coverage-guided binary fuzzing (libFuzzer, AFL), mutation-testing campaigns, static analysis, benchmarking, or end-to-end UI tests.","role":"support","scope":"generic","invocation":"both","upstream":"trailofbits-skills","resources":5},{"id":"development/prototype","plugin":"development","name":"prototype","description":"Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/refine","plugin":"development","name":"refine","description":"Refine a rough idea, brief, conversation or optional tracker item into repository-aware actionable work. Use to establish scope, acceptance criteria, affected UX/API/data boundaries and material questions before implementation, including unattended refinement jobs.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/release","plugin":"development","name":"release","description":"Prepare or execute a named application release/deployment with artifact, configuration, compatibility and recovery verification. Use for deployment readiness or an explicitly authorized target action; bare invocation prepares and reports rather than deploying.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/requirements-engineering","plugin":"development","name":"requirements-engineering","description":"Elicit, analyze, validate and maintain verifiable functional and quality requirements for features, refactors, new systems and architecture changes. Use as supporting expertise during refine when stakeholder needs, behavior, cross-system constraints or acceptance are materially uncertain.","role":"support","scope":"generic","invocation":"agent","upstream":"","resources":0},{"id":"development/research","plugin":"development","name":"research","description":"Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/resilience-testing","plugin":"development","name":"resilience-testing","description":"Design, implement, run or review controlled failure tests for application journeys, dependency outages, delays, worker loss and resource exhaustion. Use to verify bounded failure handling and recovery in an authorized isolated or non-production target; choose proportionate fixtures or experiments without requiring a chaos platform.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"development/retro","plugin":"development","name":"retro","description":"Conduct a retrospective on a coding session.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/review","plugin":"development","name":"review","description":"Review a PR, branch or current diff against its intended behavior and engineering standards, checking appropriate test evidence. Use for explicit reviews or configured PR-review jobs; default to assessment rather than source changes, publication or merge.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/setup","plugin":"development","name":"setup","description":"Establish a new application or adopt an existing repository, discover working commands and accepted constraints, and prepare a useful first slice. Use for explicit project setup or adoption; preserve an existing project layout and tooling.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/system-design","plugin":"development","name":"system-design","description":"Choose and evolve application architecture from product outcomes, existing system evidence and operating constraints. Use after product refinement for a new system or before planning a feature that changes service, data, client or integration boundaries; avoid architecture ceremony for small local edits.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"development/system-mapping","plugin":"development","name":"system-mapping","description":"Discover and document an application's services, dependencies, deployment topology and user/request/data journeys from repository, documentation and runtime evidence for setup, feature analysis or recurring architecture updates.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"development/tdd","plugin":"development","name":"tdd","description":"Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\", or wants integration tests.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/test","plugin":"development","name":"test","description":"Select, add where needed and run checks for the current change or named journey, component or application. Use for unit/integration/contract/web/desktop/mobile verification and relevant performance/resilience checks within the authorized target scope.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/to-questionnaire","plugin":"development","name":"to-questionnaire","description":"Turn a decision you can't fully answer into a questionnaire for someone else to fill in.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/to-spec","plugin":"development","name":"to-spec","description":"Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development/workflow-help","plugin":"development","name":"workflow-help","description":"Explain this plugin toolkit, available task entry points and supporting skills by SDLC phase or requested outcome. Use for help, command discovery, invocation syntax, automation examples and choosing a next development activity without starting it.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":0},{"id":"development/writing-for-agents","plugin":"development","name":"writing-for-agents","description":"Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.","role":"support","scope":"generic","invocation":"both","upstream":"mattpocock-skills","resources":0},{"id":"development-tooling/bash-engineering","plugin":"development-tooling","name":"bash-engineering","description":"Create, refactor and audit reliable Bash CLI utilities, build/operations scripts and CI action entrypoints with safe argument handling, explicit failure semantics, portability, testable side effects and useful documentation.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":2},{"id":"development-tooling/github-actions-hardening","plugin":"development-tooling","name":"github-actions-hardening","description":"Security hardening reviewer for GitHub Actions workflow files (.github/workflows/*.yml). Reasons about the Actions threat model that pattern matchers and general code linters miss \u2014 untrusted-input script injection, privileged triggers running fork code, mutable action references, and over-scoped tokens. Use this skill when asked to review, audit, harden, or secure a GitHub Actions workflow, when writing a new workflow, or for any request like \"is this workflow safe?\", \"review my CI for security issues\", \"why is pull_request_target dangerous here?\", \"pin my actions\", or \"lock down GITHUB_TOKEN permissions\". Covers script injection via ${{ }} interpolation, pull_request_target / workflow_run privilege escalation, SHA-pinning of third-party actions, least-privilege permissions, GITHUB_ENV/GITHUB_OUTPUT injection, secret exposure, OIDC over long-lived credentials, and self-hosted runner exposure on public repositories.","role":"support","scope":"generic","invocation":"both","upstream":"github-awesome-copilot","resources":5},{"id":"development-tooling/performance-testing","plugin":"development-tooling","name":"performance-testing","description":"Design, implement, run or review k6 load and performance checks for application journeys locally, against an application started on a CI runner, or against a deployed non-production environment. Use for latency, concurrency, throughput, saturation and performance regressions; preserve target authority and existing tooling.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"development-tooling/playwright-cli","plugin":"development-tooling","name":"playwright-cli","description":"Automate browser interactions, test web pages and work with Playwright tests.","role":"support","scope":"generic","invocation":"both","upstream":"microsoft-playwright-cli","resources":10},{"id":"development-tooling/supply-chain-risk-auditor","plugin":"development-tooling","name":"supply-chain-risk-auditor","description":"Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile tree, abandoned or archived upstreams, npm publisher concentration, and install-time script execution. Use when asked to audit dependencies, assess supply-chain or third-party package risk, or review a dependency tree before an engagement.","role":"support","scope":"generic","invocation":"both","upstream":"trailofbits-skills","resources":0},{"id":"development-tooling/tooling-conventions","plugin":"development-tooling","name":"tooling-conventions","description":"Configure selected GitHub Actions, Docker/Compose, local quality tools, telemetry backends and web test drivers. Use for their implementation and compatibility details after the project selects those tools; preserve existing alternatives.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":8},{"id":"documentation/architecture-documentation","plugin":"documentation","name":"architecture-documentation","description":"Explain and maintain a software system's architecture through structural views, runtime and lifecycle scenarios, interface analysis, deployment boundaries and evidence. Use for architecture documentation, system breakdowns and technical architecture reviews; preserve current versus target design and existing project scope.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"documentation/documentation-conventions","plugin":"documentation","name":"documentation-conventions","description":"Decide what project knowledge to document and where its canonical home belongs; maintain affected PRDs, architecture, schemas, decisions and runbooks. Use before adding durable documentation and during planning, implementation, migrations, deployment changes or documentation reviews.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"documentation/documentation-writing","plugin":"documentation","name":"documentation-writing","description":"Write and review clear, accurate, useful product and engineering documentation, including PRDs, requirements, architecture, decisions, feature specifications and operational guides. Use for new documents and substantive documentation revisions, adapting explanations, examples and presentation to readers.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"documentation/humanizer","plugin":"documentation","name":"humanizer","description":"Rewrite AI-sounding text so it reads like the writer without changing what it says. Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line closers, staged openers, forced triads, dashes everywhere, inflated claims, sales language, stock AI words, bold labels, or filler. Based on Wikipedia's \"Signs of AI writing.","role":"support","scope":"generic","invocation":"both","upstream":"blader-humanizer","resources":0},{"id":"frontend-development/interface-design","plugin":"frontend-development","name":"interface-design","description":"Design, inspect and improve complete user interfaces across navigation, visual hierarchy, behavior, shared composition and accessibility. Use for new UI, cross-screen changes, visual refinements, design reviews and design-to-implementation handoffs; preserve accepted product direction and authorized scope.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":9},{"id":"frontend-development/usability-research","plugin":"frontend-development","name":"usability-research","description":"Plan task-based usability studies and analyze supplied observations for a specific interface or flow. Use for research questions, participant tasks, neutral discussion guides or evidence synthesis; distinguish proposed studies, heuristic review and actual participant findings.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"frontend-development/ux-writing","plugin":"frontend-development","name":"ux-writing","description":"Review, write or harmonize interface labels, instructions, validation, errors, empty states and confirmations in their task context. Use directly for UI copy or during relevant design and implementation; preserve product behavior, established voice, localization and consequential meaning.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"frontend-native-development/native-client-development","plugin":"frontend-native-development","name":"native-client-development","description":"Build and verify TypeScript Tauri desktop clients and iOS/Android clients connected to application backends. Use for native shell integration, accepted mobile frameworks, platform lifecycle, secure client storage, packaging and native testing; preserve established client frameworks.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":2},{"id":"frontend-reactjs-development/frontend-conventions","plugin":"frontend-reactjs-development","name":"frontend-conventions","description":"Build, extend or review React/Next.js interfaces using the selected component system, compatible styling conventions and supplied visual references. Use for dashboards, customer applications, storefronts, content sites, navigation, styling, forms and frontend architecture; preserve accepted project choices during ordinary feature work.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"frontend-reactjs-development/shadcn","plugin":"frontend-reactjs-development","name":"shadcn","description":"Manages shadcn components and projects \u2014 adding, searching, fixing, debugging, styling, and composing UI, including chat interfaces. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".","role":"support","scope":"generic","invocation":"both","upstream":"shadcn-ui-ui","resources":0},{"id":"frontend-reactjs-development/tailwind-design-system","plugin":"frontend-reactjs-development","name":"tailwind-design-system","description":"Build scalable design systems with Tailwind CSS v4, design tokens, component libraries, and responsive patterns. Use when creating component libraries, implementing design systems, or standardizing UI patterns.","role":"support","scope":"generic","invocation":"both","upstream":"wshobson-agents","resources":2},{"id":"frontend-reactjs-development/vercel-composition-patterns","plugin":"frontend-reactjs-development","name":"vercel-composition-patterns","description":"React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.","role":"support","scope":"generic","invocation":"both","upstream":"vercel-labs-agent-skills","resources":0},{"id":"frontend-reactjs-development/vercel-react-best-practices","plugin":"frontend-reactjs-development","name":"vercel-react-best-practices","description":"React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.","role":"support","scope":"generic","invocation":"both","upstream":"vercel-labs-agent-skills","resources":0},{"id":"go-development/go-conventions","plugin":"go-development","name":"go-conventions","description":"Build, extend or review Go services, libraries and command-line applications. Use for modules, package/API boundaries, errors, cancellation, runtime lifecycle and meaningful Go verification without requiring a framework.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":3},{"id":"governance/compliance-design","plugin":"governance","name":"compliance-design","description":"Translate applicable legal, contractual and assurance requirements into system boundaries, controls, ownership and evidence. Use during product/system design or a scoped compliance assessment; distinguish engineering work from legal interpretation and independent assurance.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"governance/gdpr-readiness","plugin":"governance","name":"gdpr-readiness","description":"Assess GDPR applicability and engineering readiness for an actual service or changed processing operation. Use for personal-data flows, privacy-by-design, rights/retention/provider consequences and evidence gaps rather than reproducing the regulation.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"governance/soc2-readiness","plugin":"governance","name":"soc2-readiness","description":"Prepare or assess SOC 2 readiness for a defined service, commitments and examination scope. Use for system/control boundaries, operating evidence, exceptions and remediation priorities; does not perform an independent attestation.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"operations/credential-lifecycle","plugin":"operations","name":"credential-lifecycle","description":"Inventory, issue, rotate, revoke, and retire operational secrets, API keys, deploy keys, service-account credentials, and certificates, including response to leaked credentials.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":2},{"id":"operations/incident-response","plugin":"operations","name":"incident-response","description":"Coordinate and investigate active service incidents using impact-led triage, reversible stabilization, causal evidence, escalation, communication and independent recovery verification across any application stack.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"operations/observability-operations","plugin":"operations","name":"observability-operations","description":"Implement, audit and maintain application/infrastructure logs, metrics, traces, client telemetry and collection pipelines during setup, feature work or recurring instrumentation improvements.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"operations/operational-housekeeping","plugin":"operations","name":"operational-housekeeping","description":"Plan and run recurring operational reviews of capacity, artifact retention, backup activity, dependency queues, expiring access, scheduled environments, and runbook ownership.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"operations/optimize-application-cost","plugin":"operations","name":"optimize-application-cost","description":"Estimate or improve application infrastructure and service cost, including Kubernetes, managed databases, storage, networking and AI providers. Apply to cost tradeoffs, budget reviews or architecture choices using regional pricing, measured usage and reliability constraints.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"operations/plan-application-capacity","plugin":"operations","name":"plan-application-capacity","description":"Design or review application capacity, concurrency and scaling for Kubernetes or another hosting platform. Apply to growth, saturation, resource sizing, latency bottlenecks and architecture changes using measured demand and current platform-specific guidance.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"operations/postmortem-facilitation","plugin":"operations","name":"postmortem-facilitation","description":"Reconstruct incident history, conduct a focused blameless evidence-led interview and generate or review a postmortem with causal analysis, uncertainty, impact and measurable learning actions.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":2},{"id":"operations/postmortem-followup","plugin":"operations","name":"postmortem-followup","description":"Review incident histories and postmortems to derive, prioritize, implement and verify learning actions, track overdue or ineffective fixes, and identify recurring failure patterns across incidents.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"operations/protect-and-restore-data","plugin":"operations","name":"protect-and-restore-data","description":"Plan, implement or review database backups, restore verification and application disaster recovery. Apply when persistence, deployment topology, migrations or recovery requirements change; use the actual database, Kubernetes operator and cloud provider guidance.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":2},{"id":"operations/reliability-design","plugin":"operations","name":"reliability-design","description":"Analyze user journeys and system dependencies to define, implement, and review SLIs, SLOs, error budgets, dashboards and actionable monitoring for new systems, features or recurring reliability reviews.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":2},{"id":"operations/runbook-engineering","plugin":"operations","name":"runbook-engineering","description":"Create, rewrite, exercise and audit operational runbooks for alerts, recovery or planned procedures with evidenced diagnostic branches, scoped actions, verification and reachable escalation.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"operations/vulnerability-management","plugin":"operations","name":"vulnerability-management","description":"Coordinate vulnerability triage and recurring patch work across scanners, dependencies, base images, and infrastructure through deadline tracking, production rollout, and verified closure.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":2},{"id":"operations-platforms/aks-cost-optimization","plugin":"operations-platforms","name":"aks-cost-optimization","description":"Reduce Azure Kubernetes Service (AKS) spending: pod rightsizing, VPA-driven recommendations, cluster-autoscaler tuning, spot node pools, namespace-level cost visibility, and cost-anomaly detection. WHEN: rightsize pods, VPA recommendations, idle nodes, scale-down, autoscaler profile, spot nodes, cheaper compute, cost add-on, namespace cost breakdown, spending anomaly, 'my AKS bill is too high', 'is my app consuming what it requests', resource requests vs actual usage, over-provisioned workloads, spot vs on-demand, per-namespace or per-team cost allocation, 'who's spending what and why'. DO NOT USE FOR: GPU / inference cost and idle GPU pools (use aks-gpu-inference); autoscaler that is failing to scale up during an incident (use aks-troubleshooting); choosing SKUs at cluster-creation time (use aks-cluster-setup).","role":"support","scope":"generic","invocation":"both","upstream":"azure-aks-skills","resources":0},{"id":"operations-platforms/infra-jvm-optimization","plugin":"operations-platforms","name":"infra-jvm-optimization","description":"Measure and improve application/infrastructure resource efficiency, JVM memory and GC, startup/shutdown, autoscaling, scheduling and resilience during setup, feature changes or recurring optimization reviews.","role":"task","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"operations-platforms/kubernetes-resource-engineering","plugin":"operations-platforms","name":"kubernetes-resource-engineering","description":"Design, generate, review and maintain Kubernetes application/infrastructure resources, Helm charts and Kustomize overlays with secure defaults, reliable lifecycle, controller ownership and rendered validation.","role":"task","scope":"stack-specific","invocation":"both","upstream":"","resources":1},{"id":"saas-development/saas-dashboard-design","plugin":"saas-development","name":"saas-dashboard-design","description":"Design or improve SaaS customer and operator dashboards around decisions, tenant context and actionable workflows. Use for dashboard information architecture, metrics, tables, administration and realistic interface states across frontend stacks.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"saas-development/saas-design","plugin":"saas-development","name":"saas-design","description":"Design or evolve SaaS tenancy, organization/customer lifecycle, entitlements and administration independently of framework or billing provider. Use when hosted-product behavior crosses identity, commercial and operating boundaries.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":1},{"id":"saas-development/saas-readiness","plugin":"saas-development","name":"saas-readiness","description":"Assess a SaaS launch, customer rollout or capability expansion against actual commitments and operating evidence. Use for a scoped readiness verdict and prioritized gaps, without assuming every enterprise feature or authorizing release.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"security/security-and-privacy-design","plugin":"security","name":"security-and-privacy-design","description":"Design, implement or review features with security and privacy built into data flows, authorization and integrations. Apply to changes involving identities, user data, external inputs, dependencies or new trust boundaries; revisit protections as the application evolves.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"security/security-auth-development","plugin":"security","name":"security-auth-development","description":"Design, implement or review authentication, authorization and identity lifecycle across application stacks. Use for sessions, federation, passkeys, machine identity, tenant/resource access and contextual identity-framework selection.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":2},{"id":"strategy/business-opportunity-analysis","plugin":"strategy","name":"business-opportunity-analysis","description":"Deprecated legacy compatibility skill. Use only when explicitly invoked as business-opportunity-analysis or when the newer business-strategy skill is unavailable. Provides a self-contained fallback for TAM/SAM/SOM, pricing, GTM, revenue scenarios, OSS commercialization, unit economics, moats, and valuation. Prefer business-strategy for all new strategy work.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":5},{"id":"strategy/business-strategy","plugin":"strategy","name":"business-strategy","description":"Develop, evaluate, compare, and continuously update business and product strategy from first principles. Use for startup ideas, business plans, market entry, wedge/beachhead selection, positioning, competitive analysis, economic power and value capture, market structure, customer behavior and culture, future-market scenarios, TAM/SAM/SOM, pricing, go-to-market, monetization, open-source commercialization, unit economics, moats, strategic control points, revenue scenarios, valuation, named strategy frameworks, or when the user wants to determine what a product or company should become. Treat the user's initial concept as a hypothesis, not the strategy.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":17},{"id":"strategy/learn-from-product-feedback","plugin":"strategy","name":"learn-from-product-feedback","description":"Analyze user feedback and product usage to evaluate outcomes, identify problems and inform the next product decision. Use when reviewing a shipped feature, investigating adoption/usability or prioritizing evidence; do not start surveys, contact users or install analytics without a request.","role":"task","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"strategy/product-management","plugin":"strategy","name":"product-management","description":"Shape product direction from user problems, evidence and constraints. Use for discovery, prioritization, useful first slices, success measures and product sequencing before development or when new evidence changes priorities; reuse accepted decisions for defined changes.","role":"support","scope":"generic","invocation":"both","upstream":"","resources":0},{"id":"typescript-development/typescript-conventions","plugin":"typescript-development","name":"typescript-conventions","description":"Build, extend or review TypeScript libraries, services and clients using the accepted runtime and toolchain. Use for module/compiler configuration, public types, runtime boundaries, package compatibility and meaningful verification independently of a frontend framework.","role":"support","scope":"stack-specific","invocation":"both","upstream":"","resources":2},{"id":"visualization/architecture-diagramming","plugin":"visualization","name":"architecture-diagramming","description":"Create or refine responsive, theme-aware HTML architecture diagrams for structural, runtime, data and deployment explanations. Use when a portable HTML diagram is requested or chosen; preserve existing notation and accepted visual direction.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":3},{"id":"visualization/presentation-building","plugin":"visualization","name":"presentation-building","description":"Create or refine portable single-file HTML slide decks, including narrative, visual direction, responsive/fullscreen layout and optional timeline navigation. Use for HTML presentation work; preserve requested formats and existing deck identity.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":3},{"id":"visualization/system-flow-explorer","plugin":"visualization","name":"system-flow-explorer","description":"Build an explorable, standalone HTML architecture and message-flow explorer from repository evidence or a proposed design. Use when users want to explore a service or repository's architecture, capabilities, dataflow, request lifecycle, sequence messages, or C4 context/container/component views; also use for brainstorming and refining proposed system designs with these views. Keep user scenarios, diagram views, and architecture depth separate. Not for unrelated UI design, generic charts, or application feature implementation.","role":"task","scope":"generic","invocation":"user","upstream":"","resources":2}],"edges":[{"source":"ai-adk-development/adk-agent-builder","target":"ai-adk-development/adk-architecture","kind":"mentions"},{"source":"ai-adk-development/adk-architecture","target":"ai-adk-development/adk-agent-builder","kind":"mentions"},{"source":"ai-development/ai-development","target":"ai-development/ai-operations","kind":"loads"},{"source":"ai-development/ai-development","target":"ai-development/ai-testing","kind":"loads"},{"source":"ai-python-development/ai-conventions","target":"ai-python-development/ai-deepeval-testing","kind":"loads"},{"source":"ai-python-development/ai-conventions","target":"ai-python-development/mcp-builder","kind":"mentions"},{"source":"ai-python-development/ai-conventions","target":"ai-python-development/python-ai-observability","kind":"loads"},{"source":"backend-python-development/backend-conventions","target":"ai-development/ai-development","kind":"mentions"},{"source":"backend-python-development/backend-conventions","target":"ai-python-development/mcp-builder","kind":"mentions"},{"source":"backend-python-development/backend-conventions","target":"backend-python-development/modern-python","kind":"mentions"},{"source":"backend-python-development/modern-python","target":"development/dependencies","kind":"mentions"},{"source":"browser-extension-development/browser-extension-development","target":"browser-extension-development/browser-extension-security","kind":"loads"},{"source":"browser-extension-development/browser-extension-development","target":"browser-extension-development/browser-extension-testing","kind":"loads"},{"source":"browser-extension-development/browser-extension-development","target":"browser-extension-development/browser-extension-ui","kind":"loads"},{"source":"browser-extension-development/browser-extension-security","target":"browser-extension-development/browser-extension-delivery","kind":"loads"},{"source":"browser-extension-development/browser-extension-testing","target":"browser-extension-development/browser-extension-security","kind":"loads"},{"source":"browser-extension-development/browser-extension-testing","target":"browser-extension-development/browser-extension-ui","kind":"loads"},{"source":"browser-extension-development/browser-extension-ui","target":"browser-extension-development/browser-extension-testing","kind":"loads"},{"source":"delivery/delivery-pipelines","target":"development/develop","kind":"mentions"},{"source":"development-tooling/bash-engineering","target":"delivery/delivery-pipelines","kind":"mentions"},{"source":"development-tooling/tooling-conventions","target":"development-tooling/bash-engineering","kind":"mentions"},{"source":"development-tooling/tooling-conventions","target":"development-tooling/github-actions-hardening","kind":"mentions"},{"source":"development-tooling/tooling-conventions","target":"development-tooling/performance-testing","kind":"mentions"},{"source":"development-tooling/tooling-conventions","target":"development-tooling/playwright-cli","kind":"mentions"},{"source":"development-tooling/tooling-conventions","target":"operations-platforms/kubernetes-resource-engineering","kind":"mentions"},{"source":"development/deliver-reliable-changes","target":"development/diagnosing-bugs","kind":"mentions"},{"source":"development/deliver-reliable-changes","target":"development/git-contributions","kind":"loads"},{"source":"development/deliver-reliable-changes","target":"development/journey-testing","kind":"loads"},{"source":"development/deliver-reliable-changes","target":"development/resilience-testing","kind":"loads"},{"source":"development/dependencies","target":"development/git-contributions","kind":"loads"},{"source":"development/dependencies","target":"development/project-conventions","kind":"loads"},{"source":"development/design","target":"development/system-design","kind":"loads"},{"source":"development/design","target":"frontend-development/interface-design","kind":"mentions"},{"source":"development/develop","target":"development/deliver-reliable-changes","kind":"loads"},{"source":"development/develop","target":"development/git-contributions","kind":"loads"},{"source":"development/develop","target":"development/requirements-engineering","kind":"loads"},{"source":"development/develop","target":"development/system-design","kind":"loads"},{"source":"development/develop","target":"development/system-mapping","kind":"loads"},{"source":"development/develop","target":"frontend-development/interface-design","kind":"mentions"},{"source":"development/git-contributions","target":"development/project-conventions","kind":"loads"},{"source":"development/grill-with-docs","target":"development/domain-modeling","kind":"mentions"},{"source":"development/harden","target":"development/deliver-reliable-changes","kind":"loads"},{"source":"development/implement-spec","target":"development/code-review","kind":"mentions"},{"source":"development/implement-spec","target":"development/tdd","kind":"mentions"},{"source":"development/improve","target":"development/codebase-design","kind":"mentions"},{"source":"development/improve","target":"development/deliver-reliable-changes","kind":"loads"},{"source":"development/improve","target":"development/git-contributions","kind":"loads"},{"source":"development/improve","target":"frontend-development/interface-design","kind":"mentions"},{"source":"development/improve-codebase-architecture","target":"development/codebase-design","kind":"mentions"},{"source":"development/improve-codebase-architecture","target":"development/domain-modeling","kind":"mentions"},{"source":"development/journey-testing","target":"development-tooling/performance-testing","kind":"mentions"},{"source":"development/journey-testing","target":"development/deliver-reliable-changes","kind":"mentions"},{"source":"development/plan","target":"development/deliver-reliable-changes","kind":"loads"},{"source":"development/plan","target":"development/project-conventions","kind":"loads"},{"source":"development/plan","target":"development/system-design","kind":"loads"},{"source":"development/project-conventions","target":"development/deliver-reliable-changes","kind":"loads"},{"source":"development/project-conventions","target":"development/git-contributions","kind":"loads"},{"source":"development/project-conventions","target":"development/system-design","kind":"mentions"},{"source":"development/refine","target":"development/project-conventions","kind":"loads"},{"source":"development/refine","target":"development/requirements-engineering","kind":"loads"},{"source":"development/requirements-engineering","target":"development/refine","kind":"loads"},{"source":"development/resilience-testing","target":"development/journey-testing","kind":"mentions"},{"source":"development/retro","target":"development/writing-for-agents","kind":"mentions"},{"source":"development/review","target":"development/code-review","kind":"mentions"},{"source":"development/review","target":"development/deliver-reliable-changes","kind":"loads"},{"source":"development/review","target":"frontend-development/interface-design","kind":"mentions"},{"source":"development/setup","target":"development/git-contributions","kind":"loads"},{"source":"development/setup","target":"development/project-conventions","kind":"loads"},{"source":"development/system-design","target":"development/codebase-design","kind":"mentions"},{"source":"development/system-design","target":"development/domain-modeling","kind":"mentions"},{"source":"development/system-design","target":"development/system-mapping","kind":"loads"},{"source":"development/tdd","target":"development/code-review","kind":"mentions"},{"source":"development/tdd","target":"development/codebase-design","kind":"mentions"},{"source":"development/test","target":"development/deliver-reliable-changes","kind":"loads"},{"source":"development/test","target":"development/journey-testing","kind":"loads"},{"source":"documentation/architecture-documentation","target":"documentation/documentation-writing","kind":"loads"},{"source":"documentation/documentation-conventions","target":"documentation/architecture-documentation","kind":"loads"},{"source":"documentation/documentation-conventions","target":"documentation/documentation-writing","kind":"loads"},{"source":"documentation/documentation-conventions","target":"documentation/humanizer","kind":"mentions"},{"source":"documentation/documentation-writing","target":"documentation/documentation-conventions","kind":"loads"},{"source":"documentation/documentation-writing","target":"documentation/humanizer","kind":"mentions"},{"source":"frontend-development/interface-design","target":"development/develop","kind":"mentions"},{"source":"frontend-development/interface-design","target":"development/implement","kind":"mentions"},{"source":"frontend-development/interface-design","target":"frontend-development/usability-research","kind":"mentions"},{"source":"frontend-development/interface-design","target":"frontend-development/ux-writing","kind":"mentions"},{"source":"frontend-development/usability-research","target":"frontend-development/interface-design","kind":"loads"},{"source":"frontend-development/ux-writing","target":"frontend-development/interface-design","kind":"loads"},{"source":"frontend-reactjs-development/frontend-conventions","target":"delivery/delivery-pipelines","kind":"mentions"},{"source":"frontend-reactjs-development/frontend-conventions","target":"frontend-development/interface-design","kind":"mentions"},{"source":"frontend-reactjs-development/frontend-conventions","target":"frontend-reactjs-development/shadcn","kind":"mentions"},{"source":"frontend-reactjs-development/frontend-conventions","target":"frontend-reactjs-development/tailwind-design-system","kind":"mentions"},{"source":"frontend-reactjs-development/shadcn","target":"development/dependencies","kind":"mentions"},{"source":"operations-platforms/kubernetes-resource-engineering","target":"operations-platforms/infra-jvm-optimization","kind":"mentions"},{"source":"operations/observability-operations","target":"operations/reliability-design","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/credential-lifecycle","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/incident-response","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/observability-operations","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/optimize-application-cost","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/plan-application-capacity","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/protect-and-restore-data","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/reliability-design","kind":"mentions"},{"source":"operations/operational-housekeeping","target":"operations/vulnerability-management","kind":"mentions"},{"source":"operations/optimize-application-cost","target":"operations/observability-operations","kind":"mentions"},{"source":"operations/optimize-application-cost","target":"operations/operational-housekeeping","kind":"mentions"},{"source":"operations/plan-application-capacity","target":"operations/observability-operations","kind":"mentions"},{"source":"operations/plan-application-capacity","target":"operations/reliability-design","kind":"mentions"},{"source":"operations/postmortem-facilitation","target":"operations/postmortem-followup","kind":"mentions"},{"source":"operations/protect-and-restore-data","target":"operations/incident-response","kind":"mentions"},{"source":"operations/reliability-design","target":"operations/observability-operations","kind":"mentions"},{"source":"security/security-and-privacy-design","target":"development/differential-review","kind":"mentions"},{"source":"strategy/business-opportunity-analysis","target":"strategy/business-strategy","kind":"mentions"},{"source":"strategy/business-strategy","target":"development/develop","kind":"mentions"},{"source":"strategy/business-strategy","target":"strategy/product-management","kind":"loads"},{"source":"strategy/learn-from-product-feedback","target":"strategy/product-management","kind":"loads"},{"source":"strategy/product-management","target":"strategy/business-strategy","kind":"loads"},{"source":"strategy/product-management","target":"strategy/learn-from-product-feedback","kind":"loads"},{"source":"visualization/system-flow-explorer","target":"visualization/architecture-diagramming","kind":"mentions"}],"routes":[{"plugin":"development","doc":"TASKS.md","target":"development/design"},{"plugin":"development","doc":"TASKS.md","target":"development/develop"},{"plugin":"development","doc":"TASKS.md","target":"development/git-contributions"},{"plugin":"development","doc":"TASKS.md","target":"development/implement"},{"plugin":"development","doc":"TASKS.md","target":"development/improve"},{"plugin":"development","doc":"TASKS.md","target":"development/plan"},{"plugin":"development","doc":"TASKS.md","target":"development/refine"},{"plugin":"development","doc":"TASKS.md","target":"development/release"},{"plugin":"development","doc":"TASKS.md","target":"development/requirements-engineering"},{"plugin":"development","doc":"TASKS.md","target":"development/review"},{"plugin":"development","doc":"TASKS.md","target":"development/setup"},{"plugin":"development","doc":"TASKS.md","target":"development/test"},{"plugin":"development","doc":"TASKS.md","target":"development/workflow-help"},{"plugin":"development","doc":"TASKS.md","target":"frontend-development/interface-design"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/code-review"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/codebase-design"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/diagnosing-bugs"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/domain-modeling"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/git-contributions"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/grill-me"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/grill-with-docs"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/grilling"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/handoff"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/implement"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/implement-spec"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/improve-codebase-architecture"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/project-conventions"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/prototype"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/resilience-testing"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/retro"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/tdd"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/to-questionnaire"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/to-spec"},{"plugin":"development","doc":"WORKFLOW.md","target":"development/writing-for-agents"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/credential-lifecycle"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/incident-response"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/observability-operations"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/operational-housekeeping"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/optimize-application-cost"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/plan-application-capacity"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/postmortem-facilitation"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/postmortem-followup"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/protect-and-restore-data"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/reliability-design"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/runbook-engineering"},{"plugin":"operations","doc":"OPERATIONS.md","target":"operations/vulnerability-management"}]}/*DATA-END*/;
+
+const FAMILIES = [
+  { key: "workflow", label: "Workflow", color: "#4fe3ff", plugins: ["development", "strategy", "operations"] },
+  { key: "discipline", label: "Disciplines", color: "#6ff5c2", plugins: ["frontend-development", "backend-development", "ai-development", "delivery"] },
+  { key: "support", label: "Docs & visuals", color: "#c4a6ff", plugins: ["documentation", "visualization"] },
+  { key: "impl", label: "Implementation", color: "#ffb547", plugins: ["backend-python-development", "frontend-reactjs-development", "frontend-native-development", "typescript-development", "go-development", "browser-extension-development"] },
+  { key: "ai", label: "AI frameworks", color: "#ff7ab8", plugins: ["ai-python-development", "ai-adk-development", "ai-langchain-development"] },
+  { key: "platform", label: "Data & platforms", color: "#86b2ff", plugins: ["development-tooling", "operations-platforms", "database-development", "database-postgresql-development"] },
+  { key: "assurance", label: "Security & SaaS", color: "#ff7a66", plugins: ["security", "governance", "saas-development"] },
+];
+const EDGE_KINDS = [
+  { key: "loads", label: "Loads", note: "Links straight to the other skill's instructions" },
+  { key: "mentions", label: "Names", note: "Names the other skill as a next step or alternative" },
+  { key: "routes", label: "Routes", note: "A plugin's task guide sends work to a skill in another plugin" },
+];
+
+/* ---------- model ---------- */
+const famOf = {};
+FAMILIES.forEach(f => f.plugins.forEach(p => famOf[p] = f));
+Object.keys(DATA.plugins).forEach(p => { if (!famOf[p]) { famOf[p] = FAMILIES[0]; FAMILIES[0].plugins.push(p); } });
+const color = p => famOf[p].color;
+
+const CORE = "development"; // the default plugin sits in the reactor core; its skills orbit it
+const pluginOrder = FAMILIES.flatMap(f => f.plugins.filter(p => DATA.plugins[p] && p !== CORE));
+const skillsBy = {};
+DATA.skills.forEach(s => (skillsBy[s.plugin] ||= []).push(s));
+
+const R = 470;
+const totalWeight = pluginOrder.reduce((a, p) => a + Math.sqrt((skillsBy[p] || []).length) + 1.6, 0);
+let acc = 0;
+const hubs = pluginOrder.map(p => {
+  const w = Math.sqrt((skillsBy[p] || []).length) + 1.6;
+  const angle = ((acc + w / 2) / totalWeight) * Math.PI * 2 - Math.PI / 2;
+  acc += w;
+  const n = (skillsBy[p] || []).length;
+  return { id: "p:" + p, plugin: p, type: "hub", angle, n, x: Math.cos(angle) * R, y: Math.sin(angle) * R, fx: Math.cos(angle) * R, fy: Math.sin(angle) * R };
+});
+if (DATA.plugins[CORE]) hubs.push({ id: "p:" + CORE, plugin: CORE, type: "hub", core: true, angle: -Math.PI / 2, n: (skillsBy[CORE] || []).length, x: 0, y: 0, fx: 0, fy: 0 });
+const hubBy = Object.fromEntries(hubs.map(h => [h.plugin, h]));
+
+const nodes = DATA.skills.map(s => ({ ...s, type: "skill", out: [], inc: [], routedFrom: [] }));
+const nodeBy = Object.fromEntries(nodes.map(n => [n.id, n]));
+
+const links = DATA.edges
+  .filter(e => nodeBy[e.source] && nodeBy[e.target])
+  .map(e => ({ ...e, cross: nodeBy[e.source].plugin !== nodeBy[e.target].plugin }));
+links.forEach(l => { nodeBy[l.source].out.push(l); nodeBy[l.target].inc.push(l); });
+
+const routes = [];
+const seenRoute = new Set();
+DATA.routes.forEach(r => {
+  const t = nodeBy[r.target];
+  if (!t || !hubBy[r.plugin]) return;
+  if (!t.routedFrom.some(x => x.plugin === r.plugin && x.doc === r.doc)) t.routedFrom.push(r);
+  if (t.plugin === r.plugin) return;
+  const k = r.plugin + ">" + r.target;
+  if (seenRoute.has(k)) return;
+  seenRoute.add(k);
+  routes.push({ source: "p:" + r.plugin, target: r.target, kind: "routes", cross: true, plugin: r.plugin });
+});
+nodes.forEach(n => { n.deg = n.out.length + n.inc.length; n.r = 3.2 + Math.sqrt(n.inc.length * 2 + n.out.length) * 1.7; });
+
+/* ---------- layout: settle once, then draw a still frame ---------- */
+nodes.forEach(n => {
+  const h = hubBy[n.plugin];
+  const jitter = (Math.random() - 0.5) * 30;
+  if (h.core) { const a = Math.random() * Math.PI * 2; n.x = Math.cos(a) * 170; n.y = Math.sin(a) * 170; }
+  else { n.x = h.x * 0.82 + jitter; n.y = h.y * 0.82 + jitter; }
+});
+const all = [...nodes, ...hubs];
+const onRing = d => d.type === "skill" && !hubBy[d.plugin].core;
+const sim = d3.forceSimulation(all)
+  .force("charge", d3.forceManyBody().strength(d => d.type === "hub" ? -120 : -26).distanceMax(220))
+  .force("toHubX", d3.forceX(d => onRing(d) ? hubBy[d.plugin].x * 0.8 : 0).strength(d => onRing(d) ? 0.16 : 0))
+  .force("toHubY", d3.forceY(d => onRing(d) ? hubBy[d.plugin].y * 0.8 : 0).strength(d => onRing(d) ? 0.16 : 0))
+  .force("orbit", d3.forceRadial(175, 0, 0).strength(d => d.type === "skill" && hubBy[d.plugin].core ? 0.35 : 0))
+  .force("links", d3.forceLink(links.map(l => ({ source: l.source, target: l.target }))).id(d => d.id).strength(0.015).distance(120))
+  .force("collide", d3.forceCollide(d => d.type === "hub" ? (d.core ? 96 : 26) : d.r + 5).iterations(3))
+  .stop();
+for (let i = 0; i < 400; i++) sim.tick();
+nodes.forEach(n => { if (Math.hypot(n.x, n.y) < 100) { const a = Math.atan2(n.y, n.x); n.x = Math.cos(a) * 105; n.y = Math.sin(a) * 105; } });
+
+/* ---------- draw ---------- */
+const svg = d3.select("#map");
+const vp = d3.select("#viewport");
+
+const bd = d3.select("#backdrop");
+[90, 180, 300, 420, 540].forEach((r, i) => bd.append("circle").attr("class", "ring" + (i % 2 ? " major" : "")).attr("r", r));
+for (let a = 0; a < 360; a += 15) {
+  const t = a * Math.PI / 180;
+  bd.append("line").attr("class", "spoke").attr("x1", Math.cos(t) * 90).attr("y1", Math.sin(t) * 90).attr("x2", Math.cos(t) * 600).attr("y2", Math.sin(t) * 600).attr("stroke-opacity", a % 45 ? 0.35 : 0.8);
+}
+bd.append("path").attr("class", "sweep").attr("d", d3.arc()({ innerRadius: 90, outerRadius: 600, startAngle: 0, endAngle: Math.PI / 5 })).attr("fill", "url(#sweepGrad)");
+const core = d3.select("#hubs").append("g").attr("class", "hub core-hub fam-workflow").attr("tabindex", 0).attr("role", "button").attr("aria-label", "Plugin development (core)");
+core.append("circle").attr("r", 66).attr("fill", "#061019").attr("stroke", "#4fe3ff").attr("stroke-opacity", 0.5);
+core.append("circle").attr("class", "core-spin").attr("r", 76).attr("fill", "none").attr("stroke", "#4fe3ff").attr("stroke-width", 2).attr("stroke-dasharray", "30 8 4 8").attr("stroke-opacity", 0.55);
+core.append("circle").attr("class", "core-spin rev").attr("r", 84).attr("fill", "none").attr("stroke", "#ffb547").attr("stroke-width", 1).attr("stroke-dasharray", "2 10").attr("stroke-opacity", 0.6);
+core.append("text").attr("text-anchor", "middle").attr("y", 6).attr("fill", "#d9f1f7").style("font", "700 34px var(--display)").text(nodes.length);
+core.append("text").attr("text-anchor", "middle").attr("y", 24).attr("fill", "#6f909c").style("font", "500 9px var(--mono)").style("letter-spacing", "0.18em").text("SKILLS ONLINE");
+core.append("text").attr("text-anchor", "middle").attr("y", -30).attr("fill", "#4fe3ff").style("font", "600 10px var(--display)").style("letter-spacing", "0.16em").text("DEVELOPMENT · " + (skillsBy[CORE] || []).length);
+
+d3.select("#members").selectAll("line").data(nodes).join("line")
+  .attr("class", d => "member fam-" + famOf[d.plugin].key)
+  .attr("x1", d => d.x).attr("y1", d => d.y)
+  .attr("x2", d => hubBy[d.plugin].x).attr("y2", d => hubBy[d.plugin].y)
+  .attr("stroke", d => color(d.plugin));
+
+function curve(a, b) {
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+  const dist = Math.hypot(b.x - a.x, b.y - a.y);
+  const pull = Math.min(0.55, dist / 900);
+  const cx = mx * (1 - pull), cy = my * (1 - pull);
+  return `M${a.x},${a.y}Q${cx},${cy} ${b.x},${b.y}`;
+}
+const allEdges = [...links, ...routes];
+const edgeSel = d3.select("#edges").selectAll("path").data(allEdges).join("path")
+  .attr("class", d => `e ${d.kind}${d.cross ? " cross" : ""}`)
+  .attr("d", d => curve(d.kind === "routes" ? hubBy[d.plugin] : nodeBy[d.source], nodeBy[d.target]))
+  .attr("stroke", d => d.kind === "routes" ? color(d.plugin) : color(nodeBy[d.source].plugin));
+
+const hubSel = d3.select("#hubs").selectAll("g.ring-hub").data(hubs.filter(h => !h.core)).join("g")
+  .attr("class", d => "hub ring-hub fam-" + famOf[d.plugin].key)
+  .attr("transform", d => `translate(${d.x},${d.y})`)
+  .attr("tabindex", 0).attr("role", "button").attr("aria-label", d => `Plugin ${d.plugin}`);
+hubSel.append("polygon").attr("points", "0,-13 11.3,-6.5 11.3,6.5 0,13 -11.3,6.5 -11.3,-6.5").attr("stroke", d => color(d.plugin)).attr("filter", "url(#glow)");
+hubSel.append("text").attr("class", "count").attr("text-anchor", "middle").attr("y", 3).text(d => d.n);
+hubSel.append("text")
+  .attr("text-anchor", d => Math.cos(d.angle) > 0.3 ? "start" : Math.cos(d.angle) < -0.3 ? "end" : "middle")
+  .attr("x", d => Math.cos(d.angle) * 20).attr("y", d => Math.sin(d.angle) * 22 + 4)
+  .attr("fill", d => color(d.plugin))
+  .text(d => d.plugin.replace(/-development$/, "").replace(/-/g, " "));
+
+const nodeSel = d3.select("#nodes").selectAll("g").data(nodes).join("g")
+  .attr("class", d => `node fam-${famOf[d.plugin].key}${d.inc.length >= 4 ? " big" : ""}`)
+  .attr("transform", d => `translate(${d.x},${d.y})`)
+  .attr("tabindex", 0).attr("role", "button").attr("aria-label", d => `Skill ${d.name}`);
+nodeSel.filter(d => d.role === "task").append("circle").attr("class", "halo").attr("r", d => d.r + 3.5).attr("stroke", "#ffb547");
+nodeSel.append("circle").attr("class", "body").attr("r", d => d.r).attr("fill", d => color(d.plugin)).attr("fill-opacity", d => d.upstream ? 0.55 : 1);
+nodeSel.append("text").attr("x", d => d.r + 4).attr("y", 3).text(d => d.name);
+
+/* ---------- zoom ---------- */
+const zoom = d3.zoom().scaleExtent([0.6, 6]).on("zoom", ev => {
+  vp.attr("transform", ev.transform);
+  svg.classed("show-labels", labelsOn || ev.transform.k > 1.8);
+});
+svg.call(zoom).on("dblclick.zoom", null);
+let labelsOn = false;
+d3.select("#zin").on("click", () => svg.transition().duration(300).call(zoom.scaleBy, 1.5));
+d3.select("#zout").on("click", () => svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5));
+d3.select("#zreset").on("click", () => { select(null); svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity); });
+d3.select("#labels").on("click", function () {
+  labelsOn = !labelsOn; this.setAttribute("aria-pressed", labelsOn);
+  svg.classed("show-labels", labelsOn || d3.zoomTransform(svg.node()).k > 1.8);
+});
+
+/* ---------- focus ---------- */
+const edgeOn = { loads: true, mentions: true, routes: true };
+const famOn = Object.fromEntries(FAMILIES.map(f => [f.key, true]));
+let selected = null;
+
+function neighborhood(d) {
+  const ids = new Set([d.id]);
+  const es = new Set();
+  if (d.type === "hub") {
+    nodes.filter(n => n.plugin === d.plugin).forEach(n => {
+      ids.add(n.id);
+      [...n.out, ...n.inc].forEach(l => { if (edgeOn[l.kind]) { es.add(l); ids.add(l.source); ids.add(l.target); } });
+    });
+    routes.filter(r => r.plugin === d.plugin || nodeBy[r.target].plugin === d.plugin).forEach(r => { if (edgeOn.routes) { es.add(r); ids.add(r.target); ids.add(r.source); } });
+  } else {
+    [...d.out, ...d.inc].forEach(l => { if (edgeOn[l.kind]) { es.add(l); ids.add(l.source); ids.add(l.target); } });
+    routes.filter(r => r.target === d.id).forEach(r => { if (edgeOn.routes) { es.add(r); ids.add(r.source); } });
+    ids.add("p:" + d.plugin);
+  }
+  return { ids, es };
+}
+function highlight(d) {
+  svg.classed("focus", !!d);
+  if (!d) { nodeSel.classed("on", false); d3.selectAll("#hubs .hub").classed("on", false); edgeSel.classed("on", false); d3.selectAll(".member").classed("on", false); return; }
+  const { ids, es } = neighborhood(d);
+  nodeSel.classed("on", n => ids.has(n.id));
+  d3.selectAll("#hubs .hub").classed("on", h => ids.has(h.id));
+  edgeSel.classed("on", e => es.has(e));
+  d3.selectAll(".member").classed("on", n => d.type === "hub" ? n.plugin === d.plugin : n.id === d.id);
+}
+function select(d) {
+  selected = d;
+  nodeSel.classed("sel", n => d && n.id === d.id);
+  highlight(d);
+  renderCard();
+}
+function focusOn(d) {
+  select(d);
+  const t = d3.zoomTransform(svg.node());
+  const k = Math.max(t.k, 1.6);
+  svg.transition().duration(600).call(zoom.transform, d3.zoomIdentity.scale(k).translate(-d.x, -d.y));
+}
+const hoverLine = document.getElementById("hoverLine");
+function hoverText(d) {
+  return d.type === "hub"
+    ? `${d.plugin} · ${d.n} skills`
+    : `${d.name} · uses ${d.out.length} · used by ${d.inc.length}`;
+}
+core.datum(hubBy[CORE]);
+const allHubSel = d3.selectAll("#hubs .hub");
+[nodeSel, allHubSel].forEach(sel => sel
+  .on("mouseenter", (ev, d) => { hoverLine.textContent = hoverText(d); if (!selected) highlight(d); })
+  .on("mouseleave", () => { hoverLine.textContent = "Hover a node · click to lock"; highlight(selected); })
+  .on("click", (ev, d) => { ev.stopPropagation(); select(selected && selected.id === d.id ? null : d); })
+  .on("keydown", (ev, d) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(d); } }));
+svg.on("click", () => select(null));
+
+/* ---------- console ---------- */
+const crossCount = links.filter(l => l.cross).length;
+const isolated = nodes.filter(n => n.deg === 0 && !routes.some(r => r.target === n.id)).length;
+document.getElementById("stats").innerHTML = [
+  [nodes.length, "skills"], [hubs.length, "plugins"], [links.length, "skill links"], [crossCount + routes.length, "cross-plugin"],
+].map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join("");
+
+const legend = d3.select("#legend").selectAll("button").data(FAMILIES).join("button")
+  .attr("type", "button").attr("class", "fam").attr("aria-pressed", "true").style("--c", d => d.color)
+  .html(d => `<i></i>${d.label}`)
+  .on("click", function (ev, f) {
+    famOn[f.key] = !famOn[f.key];
+    this.setAttribute("aria-pressed", famOn[f.key]);
+    d3.selectAll(".fam-" + f.key).classed("fam-off", !famOn[f.key]);
+    edgeSel.classed("fam-off", e => {
+      const a = e.kind === "routes" ? famOf[e.plugin].key : famOf[nodeBy[e.source].plugin].key;
+      return !famOn[a] || !famOn[famOf[nodeBy[e.target].plugin].key] || !edgeOn[e.kind];
+    });
+  });
+
+const toggles = d3.select("#edgeToggles").selectAll("label").data(EDGE_KINDS).join("label").attr("class", "edge-row");
+toggles.append("input").attr("type", "checkbox").attr("id", d => "edge-" + d.key).property("checked", true)
+  .on("change", function (ev, k) {
+    edgeOn[k.key] = this.checked;
+    edgeSel.filter(e => e.kind === k.key).classed("fam-off", !this.checked);
+    highlight(selected);
+  });
+toggles.append("svg").attr("width", 44).attr("height", 10).append("line")
+  .attr("x1", 0).attr("x2", 44).attr("y1", 5).attr("y2", 5).attr("stroke", "#4fe3ff").attr("stroke-width", d => d.key === "routes" ? 2 : 1.5)
+  .attr("stroke-linecap", "round").attr("stroke-dasharray", d => d.key === "loads" ? null : d.key === "mentions" ? "3 3" : "1 4");
+toggles.append("span").html(d => `${d.label}<small>${d.note}</small>`);
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function linkItem(n, extra) {
+  return `<li><button type="button" class="link" data-id="${esc(n.id)}" style="--c:${color(n.plugin)}"><i></i><span>${esc(n.name || n.plugin)}</span><small>${esc(extra)}</small></button></li>`;
+}
+function list(title, items, emptyText) {
+  return `<div><p class="label">${title} <em>${items.length}</em></p>${items.length ? `<ul class="links">${items.join("")}</ul>` : `<p class="empty">${emptyText}</p>`}</div>`;
+}
+const short = p => p.replace(/-development$/, "");
+
+function renderCard() {
+  const card = document.getElementById("card");
+  const d = selected;
+  if (!d) {
+    const top = [...nodes].sort((a, b) => b.inc.length - a.inc.length || b.deg - a.deg).slice(0, 8);
+    const hubsOut = [...nodes].sort((a, b) => b.out.length - a.out.length).slice(0, 5);
+    card.innerHTML = `
+      <p class="hint">Click any node to lock onto it and trace its connections. Hexagons are plugins, dots are skills. An amber ring marks a task you start; a faded dot is acquired from an upstream source.</p>
+      ${list("Load-bearing skills", top.map(n => linkItem(n, `← ${n.inc.length}`)), "")}
+      ${list("Orchestrators", hubsOut.map(n => linkItem(n, `→ ${n.out.length}`)), "")}
+      <p class="hint">${isolated} skills stand alone: no other skill or guide points at them, and they point at none. They load on their own description.</p>`;
+  } else if (d.type === "hub") {
+    const own = nodes.filter(n => n.plugin === d.plugin).sort((a, b) => b.deg - a.deg);
+    const outside = new Map();
+    own.forEach(n => n.out.filter(l => l.cross).forEach(l => outside.set(l.target, nodeBy[l.target])));
+    routes.filter(r => r.plugin === d.plugin).forEach(r => outside.set(r.target, nodeBy[r.target]));
+    const inbound = new Map();
+    own.forEach(n => n.inc.filter(l => l.cross).forEach(l => inbound.set(l.source, nodeBy[l.source])));
+    const meta = DATA.plugins[d.plugin] || {};
+    card.innerHTML = `
+      <div class="tags"><span class="tag plugin" style="--c:${color(d.plugin)}">${esc(famOf[d.plugin].label)}</span><span class="tag">plugin · v${esc(meta.version || "?")}</span></div>
+      <h2>${esc(d.plugin)}</h2>
+      <p class="desc">${esc(meta.description || "")}</p>
+      ${list("Skills inside", own.map(n => linkItem(n, `${n.role === "task" ? "task · " : ""}${n.deg}`)), "No skills")}
+      ${list("Reaches into other plugins", [...outside.values()].map(n => linkItem(n, short(n.plugin))), "Self-contained")}
+      ${list("Called from other plugins", [...inbound.values()].map(n => linkItem(n, short(n.plugin))), "Nothing outside points here")}`;
+  } else {
+    const uses = d.out.map(l => linkItem(nodeBy[l.target], l.kind === "loads" ? "loads" : "names"));
+    const usedBy = d.inc.map(l => linkItem(nodeBy[l.source], l.kind === "loads" ? "loads" : "names"));
+    const routed = d.routedFrom.map(r => `<li><button type="button" class="link" data-id="p:${esc(r.plugin)}" style="--c:${color(r.plugin)}"><i></i><span>${esc(r.plugin)}</span><small>${esc(r.doc)}</small></button></li>`);
+    card.innerHTML = `
+      <div class="tags">
+        <span class="tag plugin" style="--c:${color(d.plugin)}">${esc(d.plugin)}</span>
+        <span class="tag ${d.role === "task" ? "task" : ""}">${esc(d.role)}</span>
+        <span class="tag">${esc(d.scope)}</span>
+        <span class="tag">invoked by ${esc(d.invocation === "both" ? "user or agent" : d.invocation)}</span>
+        ${d.upstream ? `<span class="tag">upstream · ${esc(d.upstream)}</span>` : `<span class="tag">authored here</span>`}
+      </div>
+      <h2>${esc(d.name)}</h2>
+      <p class="desc">${esc(d.description)}</p>
+      ${list("Uses →", uses, "Points at no other skill")}
+      ${list("Used by ←", usedBy, "No skill points here")}
+      ${list("Routed from plugin guides", routed, "Not named in any plugin guide")}`;
+  }
+  card.querySelectorAll("[data-id]").forEach(b => b.addEventListener("click", () => {
+    const id = b.dataset.id;
+    const target = id.startsWith("p:") ? hubBy[id.slice(2)] : nodeBy[id];
+    if (target) focusOn(target);
+  }));
+}
+
+/* ---------- search ---------- */
+const q = document.getElementById("q");
+const results = document.getElementById("results");
+q.addEventListener("input", () => {
+  const v = q.value.trim().toLowerCase();
+  if (!v) { results.innerHTML = ""; return; }
+  const hits = [...hubs.filter(h => h.plugin.includes(v)), ...nodes.filter(n => n.name.includes(v) || n.description.toLowerCase().includes(v))]
+    .sort((a, b) => ((a.name || a.plugin).startsWith(v) ? -1 : 0) - ((b.name || b.plugin).startsWith(v) ? -1 : 0))
+    .slice(0, 12);
+  results.innerHTML = hits.length
+    ? hits.map(n => n.type === "hub" ? `<li><button type="button" class="link" data-id="${esc(n.id)}" style="--c:${color(n.plugin)}"><i></i><span>${esc(n.plugin)}</span><small>plugin</small></button></li>` : linkItem(n, short(n.plugin))).join("")
+    : `<li class="empty">No skill matches “${esc(v)}”.</li>`;
+  results.querySelectorAll("[data-id]").forEach(b => b.addEventListener("click", () => {
+    const id = b.dataset.id;
+    focusOn(id.startsWith("p:") ? hubBy[id.slice(2)] : nodeBy[id]);
+  }));
+});
+q.addEventListener("keydown", ev => { if (ev.key === "Enter") { const b = results.querySelector("[data-id]"); if (b) b.click(); } });
+document.addEventListener("keydown", ev => {
+  if (ev.key === "/" && document.activeElement !== q) { ev.preventDefault(); q.focus(); }
+  if (ev.key === "Escape") { select(null); }
+});
+
+document.getElementById("statusLine").textContent = `${hubs.length} plugins · ${nodes.length} skills`;
+renderCard();
+</script>
