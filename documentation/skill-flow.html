@@ -21,6 +21,7 @@
   color-scheme: dark;
 }
 html, body { height: 100%; }
+[hidden] { display: none !important; }
 body { background: var(--bg); color: var(--fg); font: 14px/1.5 var(--body); overflow: hidden; }
 button { font: inherit; color: inherit; }
 button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -130,6 +131,62 @@ main { min-width: 0; min-height: 0; overflow-y: auto; display: flex; flex-direct
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(95, 216, 255, 0.6); } 100% { box-shadow: 0 0 0 14px rgba(95, 216, 255, 0); } }
 .pulse { animation: pulse 0.9s ease-out 2; }
 
+/* view switch */
+.top-right { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.views { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.vbtn { background: var(--surface); border: 0; padding: 7px 14px; cursor: pointer; font: 600 12px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.vbtn + .vbtn { border-left: 1px solid var(--line); }
+.vbtn[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+
+/* radar */
+.radar { position: relative; flex: 1 0 auto; min-height: 600px; height: calc(100vh - 210px); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  background: radial-gradient(ellipse at 50% 50%, #0b1d29 0%, var(--bg) 70%); }
+#rsvg { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; user-select: none; }
+#rsvg.dragging { cursor: grabbing; }
+.hud { position: absolute; font: 500 11px/1.4 var(--mono); color: var(--dim); letter-spacing: 0.08em; text-transform: uppercase; pointer-events: none; }
+.hud.tl { top: 10px; left: 12px; } .hud.bl { bottom: 10px; left: 12px; max-width: 55%; }
+.hud b { color: var(--accent); font-weight: 500; }
+.rzoom { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 6px; }
+.rzoom button { font: 500 12px var(--mono); background: rgba(11, 22, 32, 0.9); border: 1px solid var(--line); border-radius: 3px; padding: 4px 9px; cursor: pointer; }
+.rzoom button:hover { border-color: var(--accent); color: var(--accent); }
+.rzoom button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.r-ring { fill: none; stroke: #10283a; }
+.r-ring.dash { stroke: var(--line); stroke-dasharray: 2 7; }
+.r-spoke { stroke: #10283a; }
+.r-spin { transform-box: fill-box; transform-origin: center; animation: rspin 60s linear infinite; }
+.r-spin.rev { animation-duration: 90s; animation-direction: reverse; }
+.r-sweep { transform-origin: 0 0; animation: rspin 12s linear infinite; }
+@keyframes rspin { to { transform: rotate(360deg); } }
+.r-member { stroke-width: 0.7; stroke-opacity: 0.2; }
+.r-arc { fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-opacity: 0.45; }
+.r-arc.loop { stroke: var(--task); stroke-dasharray: 6 5; stroke-opacity: 0.6; }
+.r-arc.iter { stroke: var(--task); stroke-opacity: 0.7; }
+.r-hub { cursor: pointer; }
+.r-hub polygon { fill: var(--bg); stroke-width: 1.5; }
+.r-hub .cnt { font: 500 13px var(--mono); fill: var(--dim); }
+.r-hub .lbl { font: 600 19px var(--display); letter-spacing: 0.08em; text-transform: uppercase; paint-order: stroke; stroke: var(--bg); stroke-width: 5px; }
+.r-hub .lbl.small { font-size: 14px; }
+.r-hub .sub { font: 500 12px var(--mono); fill: var(--faint); letter-spacing: 0.08em; text-transform: uppercase; }
+.rn, .r-core { cursor: pointer; }
+.rn circle.b { stroke: var(--bg); stroke-width: 1.2; }
+.rn circle.h { fill: none; stroke: var(--task); stroke-width: 1.1; stroke-opacity: 0.8; }
+.rn text, .r-exp { font: 500 15px var(--body); fill: var(--fg); paint-order: stroke; stroke: var(--bg); stroke-width: 3px; pointer-events: none; }
+.rn text { opacity: 0; transition: opacity 0.2s; }
+#rsvg.zoomed .rn text, #rsvg.labels .rn text { opacity: 0.85; }
+.r-exp { font: 500 13px var(--mono); fill: #86b2ff; opacity: 0.8; letter-spacing: 0.04em; }
+.r-edge { fill: none; stroke-width: 1.6; stroke-dasharray: 8 4; animation: rflow 1s linear infinite; }
+.r-route { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 12 6; filter: url(#glow); animation: rflow 0.9s linear infinite; }
+.r-route.spur { stroke-width: 1.6; stroke-dasharray: 3 5; stroke: var(--task); }
+@keyframes rflow { to { stroke-dashoffset: -18; } }
+#rsvg.lit .rn, #rsvg.lit .r-core, #rsvg.lit .r-hub, #rsvg.lit .r-member, #rsvg.lit .r-exp, #rsvg.lit .r-arc { opacity: 0.12; transition: opacity 0.25s; }
+#rsvg.lit .on { opacity: 1 !important; }
+#rsvg.lit .rn.on text { opacity: 1; }
+#rsvg.lit .r-member.on { stroke-opacity: 0.55; }
+.rn.sel circle.b { stroke: #fff; stroke-width: 2; }
+.r-hub.now polygon { stroke-width: 3; filter: url(#glow); }
+.r-badge circle { fill: var(--accent); } .r-badge.now circle { fill: var(--task); }
+.r-badge text { font: 600 15px var(--mono); fill: var(--bg); }
+
 /* console */
 .console { min-width: 0; min-height: 0; overflow-y: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
 .console h2 { margin: 0; font: 600 19px/1.2 var(--display); letter-spacing: 0.03em; overflow-wrap: anywhere; }
@@ -164,6 +221,8 @@ main { min-width: 0; min-height: 0; overflow-y: auto; display: flex; flex-direct
 }
 @media (max-width: 860px) {
   body { overflow: auto; }
+  .radar { height: 72vh; min-height: 420px; flex: none; }
+  .hud.bl { display: none; }
   .shell { display: flex; flex-direction: column; height: auto; }
   main { overflow: visible; }
   .board { display: flex; flex-direction: column; gap: 30px; }
@@ -183,7 +242,7 @@ main { min-width: 0; min-height: 0; overflow-y: auto; display: flex; flex-direct
   .console { overflow: visible; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .pulse { animation: none; }
+  .pulse, .r-spin, .r-sweep, .r-edge, .r-route { animation: none; }
   .card, .lane, .chip { transition: none; }
 }
 </style>
@@ -195,9 +254,15 @@ main { min-width: 0; min-height: 0; overflow-y: auto; display: flex; flex-direct
         <h1>Skill Flow</h1>
         <p>How the 120 skills in agent-skills-public work together, from product direction to running the system. Pick a starting point to trace its route.</p>
       </div>
+      <div class="top-right">
+      <div class="views" role="group" aria-label="View">
+        <button type="button" class="vbtn" data-view="flow" aria-pressed="true">Flow</button>
+        <button type="button" class="vbtn" data-view="radar" aria-pressed="false">Radar</button>
+      </div>
       <div class="search">
         <input id="q" type="search" autocomplete="off" placeholder="Find a skill  ( / )" aria-label="Find a skill">
         <ul id="qres" hidden></ul>
+      </div>
       </div>
     </div>
 
@@ -213,6 +278,32 @@ main { min-width: 0; min-height: 0; overflow-y: auto; display: flex; flex-direct
     </section>
 
     <div class="board" id="board"></div>
+
+    <div class="radar" id="radar" hidden>
+      <svg id="rsvg" viewBox="-680 -680 1360 1360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Radar view: lifecycle stages on a ring with their skills in orbit">
+        <defs>
+          <radialGradient id="sweepGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="scale(640)">
+            <stop offset="0" stop-color="#5fd8ff" stop-opacity="0"></stop>
+            <stop offset="1" stop-color="#5fd8ff" stop-opacity="0.08"></stop>
+          </radialGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.4" result="b"></feGaussianBlur>
+            <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+          </filter>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#5fd8ff"></path></marker>
+          <marker id="arrW" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#ffb547"></path></marker>
+        </defs>
+        <g id="rback"></g><g id="rmembers"></g><g id="rring"></g><g id="redges"></g><g id="rroute"></g><g id="rhubs"></g><g id="rnodes"></g><g id="rcore"></g><g id="rbadges"></g>
+      </svg>
+      <div class="hud tl">Radar · <b id="rstatus"></b></div>
+      <div class="hud bl" id="rhover">Hover a node · click to lock · drag to pan</div>
+      <div class="rzoom">
+        <button type="button" id="rzin" aria-label="Zoom in">+</button>
+        <button type="button" id="rzout" aria-label="Zoom out">−</button>
+        <button type="button" id="rzreset">Reset</button>
+        <button type="button" id="rlabels" aria-pressed="false">Labels</button>
+      </div>
+    </div>
   </main>
 
   <aside class="console" id="console" aria-live="polite"></aside>
@@ -302,7 +393,7 @@ function showHome() {
       <div class="stat"><b>${flow.expertise.length}</b><span>tech stacks</span></div>
     </div>
     <div class="sec"><div class="sec-lbl">How to read it</div>
-      <p class="desc">Work moves along the top row, drops into implementation, and comes back along the bottom row to running the system. Maintenance feeds learning back into direction. Each card says what it hands on to the next.</p>
+      <p class="desc">Work moves along the top row, drops into implementation, and comes back along the bottom row to running the system. Maintenance feeds learning back into direction. Each card says what it hands on to the next. Switch to <b style="color:var(--accent)">Radar</b> for the same lifecycle as a live ring.</p>
     </div>
     <div class="legend">
       <div><span class="chip entry">refine</span>A task you start by asking for it</div>
@@ -364,6 +455,7 @@ function open(kind, id, push = true) {
   if (kind === "region") showRegion(id); else if (kind === "skill") showSkill(id); else { history = []; showHome(); }
   con.scrollTop = 0;
   focusBoard(kind, id);
+  radarSync();
   const b = document.getElementById("back");
   if (b) b.addEventListener("click", () => { const prev = history.pop(); open(prev ? prev.kind : "home", prev ? prev.id : null, false); });
 }
@@ -444,7 +536,7 @@ function goStep(i) {
   renderPath();
   const s = activePath.steps[i];
   const el = regionEl(s.stage);
-  if (el) { el.classList.remove("pulse"); void el.offsetWidth; el.classList.add("pulse"); el.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
+  if (el && !board.hidden) { el.classList.remove("pulse"); void el.offsetWidth; el.classList.add("pulse"); el.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
   const r = regions[s.stage];
   if (r) { current = null; history = []; showRegion(s.stage); }
 }
@@ -489,6 +581,7 @@ function pick(id) {
   q.value = ""; qres.hidden = true;
   if (activePath) setPath(null);
   open("skill", id);
+  if (!radarEl.hidden) { const pt = nodePos[id]; if (pt) zoomTo(pt.x, pt.y, 640); return; }
   const chip = board.querySelector(`.chip[data-skill="${id}"]`) || regionEl(skills[id].home);
   if (chip) { chip.scrollIntoView({ block: "center", behavior: "smooth" }); chip.classList.remove("pulse"); void chip.offsetWidth; chip.classList.add("pulse"); }
 }
@@ -505,6 +598,270 @@ document.addEventListener("keydown", e => {
   if (e.key === "/" && document.activeElement !== q) { e.preventDefault(); q.focus(); }
   if (e.key === "Escape" && document.activeElement !== q) { if (activePath) setPath(null); else open("home", null, false); }
 });
+
+/* ---------- radar view: the lifecycle as a ring ---------- */
+const NS = "http://www.w3.org/2000/svg";
+const radarEl = document.getElementById("radar");
+const rsvg = document.getElementById("rsvg");
+const g = id => document.getElementById(id);
+const R_HUB = 420, R_IN = 175, R_EXP = 590;
+const COL = { stage: "#5fd8ff", lane: "#6ff5c2", across: "#c4a6ff", exp: "#86b2ff", task: "#ffb547" };
+function el(tag, attrs, parent, text) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text != null) e.textContent = text;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const ringIds = flow.stages.flatMap(st => st.lanes ? st.lanes.map(l => l.id) : [st.id]);
+const hubPos = {};
+ringIds.forEach((id, i) => {
+  const a = -Math.PI / 2 + i * 2 * Math.PI / ringIds.length;
+  hubPos[id] = { a, x: Math.cos(a) * R_HUB, y: Math.sin(a) * R_HUB, ring: true };
+});
+flow.across.forEach((grp, i) => {
+  const a = -Math.PI / 4 + i * Math.PI / 2;
+  hubPos[grp.id] = { a, x: Math.cos(a) * R_IN, y: Math.sin(a) * R_IN };
+});
+flow.stages.filter(st => st.lanes).forEach(st => {
+  const ls = st.lanes.map(l => hubPos[l.id]);
+  const a = Math.atan2(ls.reduce((t, p) => t + Math.sin(p.a), 0), ls.reduce((t, p) => t + Math.cos(p.a), 0));
+  hubPos[st.id] = { a, x: Math.cos(a) * R_HUB, y: Math.sin(a) * R_HUB, virtual: true };
+});
+hubPos.develop = { a: -Math.PI / 2, x: 0, y: 0 };
+const posOf = id => hubPos[id];
+
+/* skill positions: a small sunflower around each hub, tasks closest */
+const nodePos = {};
+const GOLD = Math.PI * (3 - Math.sqrt(5));
+Object.values(regions).forEach(r => {
+  if (r.lanes) return;
+  const h = hubPos[r.id];
+  const inset = h.ring ? 92 : 0;  /* ring stages keep their skills inside the ring, labels outside */
+  const cx = h.x - Math.cos(h.a) * inset, cy = h.y - Math.sin(h.a) * inset;
+  [...r.entry, ...r.support].forEach((sid, k) => {
+    const d = (h.ring ? 0 : 34) + 19 * Math.sqrt(k + (h.ring ? 0.6 : 0)), t = h.a + Math.PI + k * GOLD;
+    nodePos[sid] = { x: cx + Math.cos(t) * d, y: cy + Math.sin(t) * d, kind: regions[r.id].kind, region: r.id };
+  });
+});
+/* technical stacks on the outer orbit, near the stages they serve */
+const expLayout = flow.expertise.map(e => {
+  const angs = e.stages.map(st => hubPos[st].a);
+  const a = Math.atan2(angs.reduce((t, x) => t + Math.sin(x), 0), angs.reduce((t, x) => t + Math.cos(x), 0));
+  const ids = expertiseSkills(e);
+  return { e, ids, a: (a + 2 * Math.PI) % (2 * Math.PI), w: ids.length * 0.03 + 0.09 };
+}).sort((x, y) => x.a - y.a);
+/* spread evenly around the orbit, keeping their order and staying as close as possible to the stages they serve */
+{
+  const n = expLayout.length, step = 2 * Math.PI / n;
+  const off = Math.atan2(expLayout.reduce((t, x, i) => t + Math.sin(x.a - i * step), 0), expLayout.reduce((t, x, i) => t + Math.cos(x.a - i * step), 0));
+  expLayout.forEach((x, i) => { x.a = off + i * step; });
+}
+expLayout.forEach(x => x.ids.forEach((sid, j) => {
+  const t = x.a - x.w / 2 + 0.045 + j * 0.03;
+  const rr = R_EXP + (j % 2 ? 12 : -12);
+  nodePos[sid] = { x: Math.cos(t) * rr, y: Math.sin(t) * rr, kind: "exp", plugin: x.e.plugin };
+}));
+nodePos[flow.endToEnd.skill] = { x: 0, y: 0, kind: "core" };
+
+/* backdrop: rings, spokes, sweep */
+const bk = g("rback");
+[100, R_IN, 300, R_HUB, 505, R_EXP, 655].forEach((r, i) => el("circle", { class: "r-ring" + (i % 2 ? " dash" : ""), r }, bk));
+for (let a = 0; a < 360; a += 15) {
+  const t = a * Math.PI / 180;
+  el("line", { class: "r-spoke", x1: Math.cos(t) * 95, y1: Math.sin(t) * 95, x2: Math.cos(t) * 660, y2: Math.sin(t) * 660, "stroke-opacity": a % 45 ? 0.35 : 0.8 }, bk);
+}
+const sweepEnd = Math.PI / 5;
+el("path", { class: "r-sweep", fill: "url(#sweepGrad)", d: `M${Math.cos(0) * 95},0 L640,0 A640,640 0 0 1 ${Math.cos(sweepEnd) * 640},${Math.sin(sweepEnd) * 640} L${Math.cos(sweepEnd) * 95},${Math.sin(sweepEnd) * 95} A95,95 0 0 0 95,0 Z` }, bk);
+
+/* lifecycle arcs between consecutive ring hubs; the last one closes the loop */
+const ringG = g("rring");
+function arc(a1, a2, r) { return `M${Math.cos(a1) * r},${Math.sin(a1) * r} A${r},${r} 0 0 1 ${Math.cos(a2) * r},${Math.sin(a2) * r}`; }
+ringIds.forEach((id, i) => {
+  const next = ringIds[(i + 1) % ringIds.length];
+  let a1 = hubPos[id].a + 0.07, a2 = hubPos[next].a - 0.07;
+  if (a2 < a1) a2 += 2 * Math.PI;
+  const loop = i === ringIds.length - 1;
+  const iter = id === "implement" && next === "verify";
+  el("path", { class: "r-arc" + (loop ? " loop" : iter ? " iter" : ""), d: arc(a1, a2, R_HUB), "marker-end": `url(#${loop || iter ? "arrW" : "arr"})`, ...(iter ? { "marker-start": "url(#arrW)" } : {}), "data-from": id, "data-to": next }, ringG);
+});
+
+/* membership spokes, hubs, nodes */
+const memG = g("rmembers"), hubG = g("rhubs"), nodeG = g("rnodes");
+Object.entries(nodePos).forEach(([sid, p]) => {
+  if (p.kind === "exp" || p.kind === "core") return;
+  const h = hubPos[p.region];
+  el("line", { class: "r-member", x1: h.x, y1: h.y, x2: p.x, y2: p.y, stroke: COL[p.kind] || COL.stage, "data-member": sid, "data-region": p.region }, memG);
+});
+const hubKind = id => regions[id]?.kind;
+Object.entries(hubPos).forEach(([id, h]) => {
+  if (h.virtual || id === "develop") return;
+  const r = regions[id];
+  const c = COL[hubKind(id)] || COL.stage;
+  const hg = el("g", { class: "r-hub", "data-region": id, transform: `translate(${h.x},${h.y})`, tabindex: 0, role: "button", "aria-label": r.label }, hubG);
+  el("polygon", { points: "0,-21 18.2,-10.5 18.2,10.5 0,21 -18.2,10.5 -18.2,-10.5", stroke: c, filter: "url(#glow)" }, hg);
+  const stage = r.kind === "lane" ? regions[r.parent] : r;
+  el("text", { class: "cnt", "text-anchor": "middle", y: 4.5 }, hg, stage.number != null ? String(stage.number).padStart(2, "0") : r.kind === "across" ? "∞" : "00");
+  const out = h.ring ? 34 : 0;
+  const lx = Math.cos(h.a) * out, ly = Math.sin(h.a) * out;
+  const anchor = Math.cos(h.a) > 0.35 ? "start" : Math.cos(h.a) < -0.35 ? "end" : "middle";
+  el("text", { class: "lbl" + (h.ring ? "" : " small"), x: lx, y: h.ring ? ly + 6 : (Math.sin(h.a) < 0 ? -34 : 44), "text-anchor": h.ring ? anchor : "middle", fill: c }, hg, r.label);
+  if (r.kind === "lane") el("text", { class: "sub", x: lx, y: ly + 24, "text-anchor": anchor }, hg, "maintenance");
+});
+expLayout.forEach(x => {
+  const rr = R_EXP + 30, t = x.a;
+  const anchor = Math.cos(t) > 0.35 ? "start" : Math.cos(t) < -0.35 ? "end" : "middle";
+  el("text", { class: "r-exp", x: Math.cos(t) * rr, y: Math.sin(t) * rr + 3, "text-anchor": anchor, "data-plugin": x.e.plugin }, g("rhubs"), x.e.label);
+});
+Object.entries(nodePos).forEach(([sid, p]) => {
+  if (p.kind === "core") return;
+  const task = isTask(sid);
+  const ng = el("g", { class: "rn", "data-skill": sid, transform: `translate(${p.x},${p.y})`, tabindex: 0, role: "button", "aria-label": name(sid) }, nodeG);
+  const r = p.kind === "exp" ? 4.5 : task ? 8 : 6;
+  if (task) el("circle", { class: "h", r: r + 3.5 }, ng);
+  el("circle", { class: "b", r, fill: COL[p.kind] || COL.stage, "fill-opacity": p.kind === "exp" ? 0.55 : 1 }, ng);
+  const right = p.kind === "exp" ? p.x > 0 : p.x >= (hubPos[p.region]?.x ?? 0);
+  el("text", { x: right ? r + 5 : -(r + 5), y: 5, "text-anchor": right ? "start" : "end" }, ng, name(sid));
+});
+
+/* core: the end-to-end develop activity */
+const core = el("g", { class: "r-core", "data-skill": flow.endToEnd.skill, tabindex: 0, role: "button", "aria-label": "develop, end to end" }, g("rcore"));
+el("circle", { r: 78, fill: "#061019", stroke: "#5fd8ff", "stroke-opacity": 0.5 }, core);
+el("circle", { class: "r-spin", r: 88, fill: "none", stroke: "#5fd8ff", "stroke-width": 2, "stroke-dasharray": "30 8 4 8", "stroke-opacity": 0.55 }, core);
+el("circle", { class: "r-spin rev", r: 96, fill: "none", stroke: "#ffb547", "stroke-dasharray": "2 10", "stroke-opacity": 0.6 }, core);
+el("text", { "text-anchor": "middle", y: -24, fill: "#ffb547", style: "font:600 14px var(--display);letter-spacing:.18em" }, core, "DEVELOP");
+el("text", { "text-anchor": "middle", y: 12, fill: "#dcecf2", style: "font:700 40px var(--display)" }, core, Object.keys(skills).length);
+el("text", { "text-anchor": "middle", y: 30, fill: "#7a97a3", style: "font:500 11px var(--mono);letter-spacing:.18em" }, core, "SKILLS ONLINE");
+g("rstatus").textContent = `${ringIds.length} ring stages · ${Object.keys(skills).length} skills`;
+
+/* focus: what lights up for a selected skill, region or path */
+function curve(a, b) {
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, d = Math.hypot(b.x - a.x, b.y - a.y), k = Math.min(0.5, d / 1000);
+  return `M${a.x},${a.y}Q${mx * (1 - k)},${my * (1 - k)} ${b.x},${b.y}`;
+}
+const on = sel => rsvg.querySelectorAll(sel).forEach(e => e.classList.add("on"));
+const qs = v => CSS.escape(v);
+function markSkill(id) { on(`.rn[data-skill="${qs(id)}"]`); on(`.r-member[data-member="${qs(id)}"]`); }
+function markRegion(id) {
+  const r = regions[id];
+  if (!r) return;
+  (r.lanes || [r]).forEach(x => { on(`.r-hub[data-region="${qs(x.id)}"]`); [...x.entry, ...x.support].forEach(markSkill); });
+}
+function radarSync() {
+  rsvg.querySelectorAll(".on,.now,.sel").forEach(e => e.classList.remove("on", "now", "sel"));
+  g("redges").innerHTML = ""; g("rroute").innerHTML = ""; g("rbadges").innerHTML = "";
+  let lit = false;
+  if (activePath) {
+    lit = true;
+    const steps = activePath.steps;
+    markSkill(activePath.entry);
+    if (activePath.entry === flow.endToEnd.skill) on(".r-core");
+    let prev = activePath.entry === flow.endToEnd.skill ? hubPos.develop : null;
+    steps.forEach((st, i) => {
+      const show = stepNow < 0 || i <= stepNow;
+      const p = posOf(st.stage);
+      if (show) {
+        if (prev && prev !== p) el("path", { class: "r-route", d: curve(prev, p), "marker-end": "url(#arr)" }, g("rroute"));
+        prev = p;
+        (st.also || []).forEach(a => { el("path", { class: "r-route spur", d: curve(p, posOf(a)) }, g("rroute")); markRegion(a); });
+        if (stepNow < 0 || i === stepNow) { on(`.r-hub[data-region="${qs(st.stage)}"]`); markRegion(st.stage); st.skills.forEach(markSkill); }
+        else on(`.r-hub[data-region="${qs(st.stage)}"]`);
+      }
+      const stack = steps.slice(0, i).filter(x => x.stage === st.stage).length;
+      const side = 34 + stack * 28;  /* beside the hub, along the ring, clear of its label */
+      const bx = p.x + Math.sin(p.a) * side, by = p.y - Math.cos(p.a) * side;
+      const bg = el("g", { class: "r-badge" + (i === stepNow ? " now" : ""), transform: `translate(${bx},${by})` }, g("rbadges"));
+      el("circle", { r: 13 }, bg); el("text", { "text-anchor": "middle", y: 5.5 }, bg, i + 1);
+      if (i === stepNow) rsvg.querySelector(`.r-hub[data-region="${qs(st.stage)}"]`)?.classList.add("now");
+    });
+  } else if (current && current.kind === "skill") {
+    lit = true;
+    const id = current.id, p = nodePos[id];
+    markSkill(id);
+    rsvg.querySelector(`.rn[data-skill="${qs(id)}"]`)?.classList.add("sel");
+    if (p?.region) on(`.r-hub[data-region="${qs(p.region)}"]`);
+    if (p?.kind === "core") on(".r-core");
+    if (p?.kind === "exp") flow.expertise.find(e => e.plugin === p.plugin).stages.forEach(st => (regions[st].lanes || [regions[st]]).forEach(x => on(`.r-hub[data-region="${qs(x.id)}"]`)));
+    const out = skills[id].loads, inc = Object.values(skills).filter(o => o.loads.includes(id)).map(o => o.id);
+    out.forEach(t => { markSkill(t); if (nodePos[t]) el("path", { class: "r-edge", d: curve(p, nodePos[t]), stroke: COL.stage, "marker-end": "url(#arr)" }, g("redges")); });
+    inc.forEach(t => { markSkill(t); if (nodePos[t]) el("path", { class: "r-edge", d: curve(nodePos[t], p), stroke: COL.task, "marker-end": "url(#arrW)" }, g("redges")); });
+  } else if (current && current.kind === "region") {
+    lit = true;
+    const r = regions[current.id];
+    markRegion(current.id);
+    const stageId = r.kind === "lane" ? r.parent : current.id;
+    if (r.kind !== "across") expertiseFor(stageId).forEach(e => { expertiseSkills(e).forEach(markSkill); on(`.r-exp[data-plugin="${qs(e.plugin)}"]`); });
+    rsvg.querySelectorAll(".r-arc").forEach(a => { const ids = (r.lanes || [r]).map(x => x.id); if (ids.includes(a.dataset.from) || ids.includes(a.dataset.to)) a.classList.add("on"); });
+  }
+  rsvg.classList.toggle("lit", lit);
+}
+
+/* hover readout, clicks (ignoring drags), pan and zoom */
+const rhover = g("rhover");
+rsvg.addEventListener("pointerover", e => {
+  const n = e.target.closest("[data-skill],[data-region]");
+  if (!n) return;
+  if (n.dataset.skill) { const sk = skills[n.dataset.skill]; rhover.textContent = `${sk.name} · ${homeLabel(sk.id)} · loads ${sk.loads.length}`; }
+  else rhover.textContent = `${regions[n.dataset.region].label} · ${(regions[n.dataset.region].lanes || [regions[n.dataset.region]]).reduce((t, x) => t + x.entry.length + x.support.length, 0)} skills`;
+});
+rsvg.addEventListener("pointerout", e => { if (!e.relatedTarget || !rsvg.contains(e.relatedTarget)) rhover.textContent = "Hover a node · click to lock · drag to pan"; });
+let vb = { x: -680, y: -680, w: 1360 }, drag = null, moved = 0;
+function applyVB() { rsvg.setAttribute("viewBox", `${vb.x} ${vb.y} ${vb.w} ${vb.w}`); rsvg.classList.toggle("zoomed", vb.w < 820); }
+function svgScale() { const r = rsvg.getBoundingClientRect(); return vb.w / Math.min(r.width, r.height); }
+function svgPoint(e) {
+  const r = rsvg.getBoundingClientRect(), s = svgScale();
+  return { x: vb.x + vb.w / 2 + (e.clientX - r.left - r.width / 2) * s, y: vb.y + vb.w / 2 + (e.clientY - r.top - r.height / 2) * s };
+}
+function zoomAt(pt, k) {
+  const w = Math.min(1700, Math.max(280, vb.w * k)); k = w / vb.w;
+  vb = { x: pt.x - (pt.x - vb.x) * k, y: pt.y - (pt.y - vb.y) * k, w }; applyVB();
+}
+let anim = null;
+function zoomTo(x, y, w) {
+  cancelAnimationFrame(anim);
+  const from = { ...vb }, to = { x: x - w / 2, y: y - w / 2, w };
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { vb = to; applyVB(); return; }
+  const t0 = performance.now();
+  const step = t => { const k = Math.min(1, (t - t0) / 500), e = 1 - Math.pow(1 - k, 3); vb = { x: from.x + (to.x - from.x) * e, y: from.y + (to.y - from.y) * e, w: from.w + (to.w - from.w) * e }; applyVB(); if (k < 1) anim = requestAnimationFrame(step); };
+  anim = requestAnimationFrame(step);
+}
+rsvg.addEventListener("wheel", e => { e.preventDefault(); zoomAt(svgPoint(e), e.deltaY > 0 ? 1.12 : 1 / 1.12); }, { passive: false });
+rsvg.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, vb: { ...vb } }; moved = 0; });
+window.addEventListener("pointermove", e => {
+  if (!drag) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y; moved = Math.max(moved, Math.hypot(dx, dy));
+  if (moved < 4) return;
+  rsvg.classList.add("dragging");
+  const s = svgScale(); vb = { ...drag.vb, x: drag.vb.x - dx * s, y: drag.vb.y - dy * s }; applyVB();
+});
+window.addEventListener("pointerup", () => { drag = null; rsvg.classList.remove("dragging"); });
+rsvg.addEventListener("click", e => {
+  if (moved >= 4) { e.stopPropagation(); return; }
+  const t = e.target.closest("[data-skill],[data-region]");
+  if (!t) { if (!activePath) open("home", null, false); e.stopPropagation(); }
+}, true);
+rsvg.addEventListener("keydown", e => {
+  const t = e.target.closest("[data-skill],[data-region]");
+  if (t && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); t.dispatchEvent(new MouseEvent("click", { bubbles: true })); }
+});
+g("rzin").addEventListener("click", () => zoomAt({ x: vb.x + vb.w / 2, y: vb.y + vb.w / 2 }, 1 / 1.4));
+g("rzout").addEventListener("click", () => zoomAt({ x: vb.x + vb.w / 2, y: vb.y + vb.w / 2 }, 1.4));
+g("rzreset").addEventListener("click", () => zoomTo(0, 0, 1360));
+g("rlabels").addEventListener("click", function () { const v = !rsvg.classList.contains("labels"); rsvg.classList.toggle("labels", v); this.setAttribute("aria-pressed", v); });
+
+/* view switch, kept in the link as #flow or #radar */
+function setView(v) {
+  const radar = v === "radar";
+  board.hidden = radar; radarEl.hidden = !radar;
+  document.querySelectorAll(".vbtn").forEach(b => b.setAttribute("aria-pressed", b.dataset.view === (radar ? "radar" : "flow")));
+  if (location.hash !== "#" + (radar ? "radar" : "flow")) window.history.replaceState(null, "", "#" + (radar ? "radar" : "flow"));
+  radarSync();
+}
+document.querySelectorAll(".vbtn").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
+window.addEventListener("hashchange", () => setView(location.hash === "#radar" ? "radar" : "flow"));
+const _renderPath = renderPath;
+renderPath = function () { _renderPath(); radarSync(); };
+setView(location.hash === "#radar" ? "radar" : "flow");
 
 open("home", null, false);
 </script>
