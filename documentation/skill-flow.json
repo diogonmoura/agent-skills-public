@@ -1,0 +1,220 @@
+{
+  "$comment": "Curated workflow model behind documentation/skill-flow.html, derived from documentation/sdlc.md. Every skill under plugins/*/skills must be placed exactly once: in a stage, a maintenance lane, an across-phase group, as the end-to-end activity, or through a technical expertise plugin. Run scripts/build_skill_flow.py after changing skills or this file.",
+  "endToEnd": {
+    "skill": "development/develop",
+    "label": "One authorized engagement from rough idea through requirements, design, implementation, tests and review"
+  },
+  "stages": [
+    {
+      "id": "direction",
+      "label": "Product direction",
+      "number": null,
+      "summary": "What is worth solving and why. Sits before the engineering phases and is reopened by evidence.",
+      "handoff": "Accepted problem, value, priority and non-goals",
+      "entry": ["strategy/product-management", "strategy/business-strategy"],
+      "support": ["strategy/learn-from-product-feedback", "strategy/business-opportunity-analysis"]
+    },
+    {
+      "id": "requirements",
+      "label": "Requirements",
+      "number": 1,
+      "summary": "Turn accepted intent into verifiable behavior, quality constraints and acceptance.",
+      "handoff": "Actors, promised behavior, constraints and acceptance",
+      "entry": ["development/refine"],
+      "support": ["development/requirements-engineering", "development/grilling", "development/to-spec", "development/grill-me", "development/grill-with-docs", "development/to-questionnaire"]
+    },
+    {
+      "id": "design",
+      "label": "Solution design",
+      "number": 2,
+      "summary": "Settle the architecture, interface and contract choices that matter before code.",
+      "handoff": "Consequential choices, contracts and migration consequences",
+      "entry": ["development/design"],
+      "support": ["development/system-design", "frontend-development/interface-design", "backend-development/backend-design", "database-development/database-design", "ai-development/ai-development", "saas-development/saas-design", "development/domain-modeling", "development/codebase-design", "development/prototype", "frontend-development/ux-writing", "frontend-development/usability-research", "saas-development/saas-dashboard-design"]
+    },
+    {
+      "id": "plan",
+      "label": "Implementation planning",
+      "number": 3,
+      "summary": "Sequence agreed work into bounded increments with dependencies and checks.",
+      "handoff": "Ordered increments, protected behavior and verification",
+      "entry": ["development/plan"],
+      "support": ["development/system-mapping"]
+    },
+    {
+      "id": "implement",
+      "label": "Implementation",
+      "number": 4,
+      "summary": "Build the change in an objective worktree, carrying tests and docs with it.",
+      "handoff": "Objective branch, commits and pull request",
+      "entry": ["development/implement"],
+      "support": ["development/git-contributions", "development/tdd", "development/diagnosing-bugs", "development/implement-spec"]
+    },
+    {
+      "id": "verify",
+      "label": "Verification",
+      "number": 5,
+      "summary": "Observe real behavior, repair failures and recheck without weakening acceptance.",
+      "handoff": "Observed checks, failures, repairs and evidence",
+      "entry": ["development/test"],
+      "support": ["development/deliver-reliable-changes", "development/journey-testing", "ai-development/ai-testing", "development/resilience-testing", "development/property-based-testing"]
+    },
+    {
+      "id": "release",
+      "label": "Release",
+      "number": 6,
+      "summary": "Prepare readiness or run a named, authorized delivery with recovery in place.",
+      "handoff": "Released artifact, target, rollout and rollback status",
+      "entry": ["development/release"],
+      "support": ["delivery/delivery-pipelines", "saas-development/saas-readiness", "governance/gdpr-readiness", "governance/soc2-readiness"]
+    },
+    {
+      "id": "maintenance",
+      "label": "Maintenance",
+      "number": 7,
+      "summary": "Keep the running system healthy. Four responsibilities, each with its own entry points.",
+      "handoff": "Health signals, incidents, remediation and open risk",
+      "entry": [],
+      "support": [],
+      "lanes": [
+        {
+          "id": "respond",
+          "label": "Respond & restore",
+          "entry": ["operations/incident-response"],
+          "support": ["operations/protect-and-restore-data", "operations/runbook-engineering"]
+        },
+        {
+          "id": "reliability",
+          "label": "Reliability & signals",
+          "entry": ["operations/reliability-design", "operations/observability-operations"],
+          "support": ["operations/plan-application-capacity", "operations/optimize-application-cost", "ai-development/ai-operations"]
+        },
+        {
+          "id": "learn",
+          "label": "Learn & prevent",
+          "entry": ["operations/postmortem-facilitation", "operations/postmortem-followup"],
+          "support": ["development/retro"]
+        },
+        {
+          "id": "evolve",
+          "label": "Maintain & evolve",
+          "entry": ["development/improve", "development/dependencies"],
+          "support": ["operations/vulnerability-management", "operations/operational-housekeeping", "operations/credential-lifecycle", "development/improve-codebase-architecture"]
+        }
+      ]
+    }
+  ],
+  "loops": [
+    { "from": "implement", "to": "verify", "label": "Implement and verify iterate until acceptance holds" },
+    { "from": "maintenance", "to": "direction", "label": "Delivered value and confirmed learning reopen direction and requirements" }
+  ],
+  "across": [
+    {
+      "id": "foundations",
+      "label": "Project foundations",
+      "entry": ["development/setup", "development/workflow-help"],
+      "support": ["development/project-conventions", "development/agents-md", "development/writing-for-agents"]
+    },
+    {
+      "id": "review",
+      "label": "Review & research",
+      "entry": ["development/review"],
+      "support": ["development/code-review", "development/differential-review", "development/research", "development/handoff"]
+    },
+    {
+      "id": "security",
+      "label": "Security & compliance",
+      "entry": ["development/harden"],
+      "support": ["security/security-and-privacy-design", "security/security-auth-development", "governance/compliance-design"]
+    },
+    {
+      "id": "docs",
+      "label": "Docs & visuals",
+      "entry": ["visualization/architecture-diagramming", "visualization/system-flow-explorer", "visualization/presentation-building"],
+      "support": ["documentation/documentation-conventions", "documentation/documentation-writing", "documentation/architecture-documentation", "documentation/humanizer"]
+    }
+  ],
+  "expertise": [
+    { "plugin": "frontend-reactjs-development", "label": "React & Next.js", "stages": ["design", "implement", "verify"] },
+    { "plugin": "frontend-native-development", "label": "Desktop & mobile clients", "stages": ["design", "implement", "verify"] },
+    { "plugin": "browser-extension-development", "label": "Browser extensions", "stages": ["design", "implement", "verify", "release"] },
+    { "plugin": "typescript-development", "label": "TypeScript", "stages": ["implement", "verify"] },
+    { "plugin": "go-development", "label": "Go", "stages": ["implement", "verify"] },
+    { "plugin": "backend-python-development", "label": "Python services & automation", "stages": ["implement", "verify", "maintenance"] },
+    { "plugin": "database-postgresql-development", "label": "PostgreSQL", "stages": ["design", "implement", "maintenance"] },
+    { "plugin": "ai-python-development", "label": "Python AI, MCP & evals", "stages": ["implement", "verify", "maintenance"] },
+    { "plugin": "ai-adk-development", "label": "Google ADK", "stages": ["design", "implement"] },
+    { "plugin": "ai-langchain-development", "label": "LangChain & LangGraph", "stages": ["design", "implement"] },
+    { "plugin": "development-tooling", "label": "CI, containers, test drivers", "stages": ["implement", "verify", "release", "maintenance"] },
+    { "plugin": "operations-platforms", "label": "Kubernetes, JVM, AKS", "stages": ["release", "maintenance"] },
+    { "plugin": "database-development", "label": "Database performance", "stages": ["maintenance"], "only": ["database-development/database-performance"] }
+  ],
+  "paths": [
+    {
+      "id": "new-product",
+      "label": "A new product",
+      "entry": "development/develop",
+      "steps": [
+        { "label": "Shape product direction", "stage": "direction", "skills": ["strategy/product-management"] },
+        { "label": "Design the system & UX", "stage": "design", "skills": ["development/system-design", "frontend-development/interface-design"] },
+        { "label": "Implement ↔ verify", "stage": "implement", "also": ["verify"], "skills": ["development/git-contributions", "development/deliver-reliable-changes"] },
+        { "label": "Deliver & learn", "stage": "release", "also": ["maintenance"], "skills": ["delivery/delivery-pipelines", "strategy/learn-from-product-feedback"] }
+      ]
+    },
+    {
+      "id": "existing-feature",
+      "label": "An existing feature",
+      "entry": "development/develop",
+      "steps": [
+        { "label": "Inspect accepted context", "stage": "requirements", "skills": ["development/refine"] },
+        { "label": "Resolve decisions", "stage": "design", "skills": ["development/design"] },
+        { "label": "Implement ↔ verify", "stage": "implement", "also": ["verify"], "skills": ["development/implement", "development/test"] },
+        { "label": "Review the increment", "stage": "review", "skills": ["development/review"] }
+      ]
+    },
+    {
+      "id": "bug",
+      "label": "A bug or regression",
+      "entry": "development/improve",
+      "steps": [
+        { "label": "Reproduce the failure", "stage": "verify", "skills": ["development/test"] },
+        { "label": "Diagnose the cause", "stage": "implement", "skills": ["development/diagnosing-bugs"] },
+        { "label": "Repair ↔ verify", "stage": "implement", "also": ["verify"], "skills": ["development/tdd"] },
+        { "label": "Retain regression tests", "stage": "verify", "skills": ["development/deliver-reliable-changes"] }
+      ]
+    },
+    {
+      "id": "assessment",
+      "label": "A scoped assessment",
+      "entry": "development/review",
+      "steps": [
+        { "label": "Inspect the target", "stage": "review", "skills": ["development/review"] },
+        { "label": "Gather relevant evidence", "stage": "verify", "skills": ["development/test"] },
+        { "label": "Return findings & gaps", "stage": "review", "skills": ["development/code-review"] },
+        { "label": "Repair when requested", "stage": "implement", "skills": ["development/implement"] }
+      ]
+    },
+    {
+      "id": "operating",
+      "label": "Operating a system",
+      "entry": "operations/incident-response",
+      "steps": [
+        { "label": "Assess current impact", "stage": "respond", "skills": ["operations/incident-response"] },
+        { "label": "Act within scope", "stage": "respond", "skills": ["operations/runbook-engineering"] },
+        { "label": "Verify the real outcome", "stage": "reliability", "skills": ["operations/observability-operations"] },
+        { "label": "Record & learn", "stage": "learn", "skills": ["operations/postmortem-facilitation", "operations/postmortem-followup"] }
+      ]
+    },
+    {
+      "id": "specialist",
+      "label": "A specialist question",
+      "entry": "strategy/product-management",
+      "steps": [
+        { "label": "Bound the question", "stage": "direction", "skills": ["strategy/product-management"] },
+        { "label": "Select relevant expertise", "stage": "direction", "skills": ["strategy/business-strategy"] },
+        { "label": "Investigate or create", "stage": "review", "skills": ["development/research"] },
+        { "label": "Return the scoped result", "stage": "docs", "skills": ["documentation/documentation-writing"] }
+      ]
+    }
+  ]
+}

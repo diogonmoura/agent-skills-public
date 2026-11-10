@@ -18,7 +18,7 @@ The engineering sequence is **requirements → solution design → implementatio
 | Shared methods | Research, documentation, security and review provide conditional expertise across phases |
 | Technical/domain expertise | Choose by actual engineering concern and accepted stack rather than assuming Python, React or a particular framework |
 
-Green labels identify entry-point skills or directly requested activities; dashed warm labels identify specialist support. Some expertise can also be requested directly. These are explanatory examples, not a fixed dependency graph. An agent must still respect user scope, runtime access, credentials and separate authorization for deployment or production actions.
+Green labels identify entry-point skills or directly requested activities; dashed warm labels identify specialist support. The interactive [skill flow](skill-flow.html) places every skill on this lifecycle and traces the starting paths below; regenerate it with `scripts/build_skill_flow.py` after changing skills or [its stage mapping](skill-flow.json). Some expertise can also be requested directly. These are explanatory examples, not a fixed dependency graph. An agent must still respect user scope, runtime access, credentials and separate authorization for deployment or production actions.
 
 ## User-facing entry points
 
