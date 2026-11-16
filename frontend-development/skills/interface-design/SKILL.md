@@ -3,6 +3,11 @@ name: interface-design
 description: Design, inspect and improve complete user interfaces across navigation, visual hierarchy, behavior, shared composition and accessibility. Use for new UI, cross-screen changes, visual refinements, design reviews and design-to-implementation handoffs; preserve accepted product direction and authorized scope.
 user-invocable: true
 metadata:
+  kind: method
+  origin: local
+  pack: technical
+  domain: frontend
+  phase: design
   scope: generic
   invocation: both
   role: support
@@ -11,6 +16,8 @@ metadata:
 # Design and refine the complete interface experience
 
 Own a coherent user-facing experience rather than separate visual, interaction and critique phases. Work from actual user tasks, accepted product decisions, existing application evidence and the requested stopping point. The method applies across web, desktop, browser extensions and native applications; domain specialists contribute application constraints and archetype patterns, and the accepted technical stack owns implementation.
+
+When the engagement asks for an option set, produce at least three materially different directions at comparable fidelity. State what each optimizes and sacrifices, including empty, loading, error, denied and recovery states. Three cosmetic variants of one direction are not an option set. A routine local change needs one recommended direction with a short rationale.
 
 Use this skill to support `design`, `develop`, `implement`, `improve` and `review`. Direct requests to design, inspect or critique do not authorize source edits; authorized implementation preserves behavior and existing design commitments. A visual-only improvement should not redesign navigation, and a changed flow should not unnecessarily reopen branding.
 
@@ -26,6 +33,16 @@ Use this skill to support `design`, `develop`, `implement`, `improve` and `revie
 
 Establish audience, task, content, platform, roles, accepted choices and scope. Before settling a new design, inspect existing project constraints and relevant **application-archetype/domain** expertise (tasks, objects, data semantics and candidate patterns), **platform/technical** expertise (native surface, actual component-system behavior, accessibility contracts and feasibility), and accepted product evidence. Those inputs shape the design; they are not downstream implementation details. Select optional specialists by capability and installed descriptions, not a hardcoded catalogue or dependency. Distinguish evidence, hypotheses and reversible proposals. Ask only for material unresolved decisions; do not require a brand-asset hunt or research study for routine UI work.
 
+## Discover direction and select supporting methods
+
+When a consequential design choice is open, read [Design Discovery](references/design-discovery.md). Show materially different directions using the same representative task and realistic content. Use wireframes for a structural choice and rendered mockups for a visual choice. Explain the tradeoff, recommend a direction and ask for the user's decision in plain language. If the user delegates, state the choice and its assumptions. Keep unanswered decisions visible.
+
+When the direction is settled, reuse it. For a routine repair, go directly to the affected behavior and its verification.
+
+This package ships two required supporting resources. Read [bundled design methods](references/bundled-design-methods.md) when selecting them: [UI/UX Pro Max](../ui-ux-pro-max/SKILL.md) supplies searchable design candidates and [Impeccable](../impeccable/SKILL.md) supplies critique/refinement methods. Load only the method needed for the task, preserve native invocation controls and explicit direct invocation, and reconcile its advice against the shared brief. This is agent selection and file loading, not a runtime dependency resolver or guaranteed automatic activation. Optional expertise outside this package remains capability-discovered.
+
+For an expressive web experience, interactive canvas or motion editor, read [creative implementation](references/creative-implementation.md) and its original worked mechanisms. For browser implementation or visual regression, read [rendered QA](references/rendered-qa.md); capture, inspect, repair and recheck actual output rather than treating screenshots as an unchecked deliverable.
+
 ## Decide structure, behavior and appearance in one loop
 
 1. **Organize the work.** Map recurring tasks, objects, entry points, navigation, current context and return paths before inventing screens. Separate operation controls from durable settings. Choose pages, panels or dialogs for task complexity and continuity, not habit. For substantial changes read [navigation and configuration](references/navigation-and-configuration.md).
@@ -36,7 +53,11 @@ Establish audience, task, content, platform, roles, accepted choices and scope. 
 
 **Compose with specialists without surrendering design judgment.** Domain/archetype guidance may determine which objects, metrics, workflows and interaction structures are essential; platform guidance may constrain surface lifecycle, component anatomy and achievable behavior. Combine those inputs with generic hierarchy, IA and interaction principles into one proposal. When advice conflicts, prioritize accepted product/user goals, actual domain/authority invariants, accessibility/platform contracts and observed evidence; compare alternatives rather than assuming that a particular library or upstream aesthetic style wins. Specialists retain their independent decision methods and can propose the design directly; this skill should not redo their work or require its own invocation to make them useful. Technical feedback and tested outcomes can reopen design decisions. Future archetypes integrate through specialist descriptions and conditional references, with no change to this skill's route list.
 
-For substantial multi-specialist work, leave **one coherent design handoff** in the existing task or design record: actual user task and domain constraints, selected navigation/flows and important states, justified visual direction and accepted tokens, feasible component/platform mapping, affected surfaces and verification expectations. Reconcile material conflicts there, naming unresolved consequential choices; reuse an existing specialist's adequate handoff rather than multiplying specifications. A small edit needs only the relevant decision and check.
+## Carry the design decision into implementation
+
+Keep one handoff in the existing brief, task or design record. Capture the chosen direction and whether it was accepted or delegated, what feedback changed, and what the first render should demonstrate. Include the affected flows, states, shared patterns and checks needed to implement it. Reuse an adequate handoff and record any unresolved choice that affects the build.
+
+When implementation is authorized, build a representative slice from that handoff. Inspect the first render against the agreed task and checks, then revise discrepancies before propagating the design. Carry any new feedback or revised decision into the same record. A small edit needs only the relevant decision and check.
 
 Apply the relevant subset of these decisions to a scoped request; do not impose a lengthy process on a small fix. `ux-writing` owns specialist message/copy work, and `usability-research` owns participant-study planning and analysis. Domain-specific data/tenant contracts and platform-specific implementation mechanics remain with their relevant specialists; their consequences for hierarchy, actions and behavior must inform the design before implementation.
 
