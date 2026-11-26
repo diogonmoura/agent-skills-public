@@ -4,14 +4,11 @@ description: Implement Python AI evaluation suites with DeepEval for model, retr
 user-invocable: false
 metadata:
   kind: method
-  origin: local
-  pack: technical
   domain: ai
   phase: cross-phase
   scope: stack-specific
   invocation: both
   stack: Python, DeepEval, pytest
-  role: support
 ---
 
 # Implement Python AI evaluations with DeepEval
@@ -27,7 +24,7 @@ Use the accepted task, quality criteria and evaluation approach. This skill owns
 | Map the evaluation decision to cases, datasets, metrics and execution | [DeepEval playbook](references/deepeval-playbook.md) |
 | Wire the suite into CI and preserve result evidence | [CI and reporting](references/ci-and-reporting.md) |
 | Verify application behavior and persisted outcomes | `test` when installed |
-| Understand traces and execution signals | `observability` when installed |
+| Understand traces and execution signals | `design-system` observability guidance when available; project telemetry tooling |
 
 ## Select DeepEval or keep what exists
 

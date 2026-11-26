@@ -3,14 +3,11 @@ name: guide-assurance-assessment
 description: Guide to writing a scoped assurance assessment. Covers applicability, service boundary, controls, evidence, gaps, disposition and ownership.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: governance
   phase: cross-phase
   scope: generic
   invocation: both
-  role: support
 ---
 
 # Assurance assessment guide

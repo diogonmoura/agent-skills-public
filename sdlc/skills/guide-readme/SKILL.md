@@ -3,14 +3,11 @@ name: guide-readme
 description: Guide to writing a repository README. Covers purpose, audience, quickstart, what it does, open-source adoption, honest claims, docs map, development, support, status and limits.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: documentation
   phase: cross-phase
   scope: generic
   invocation: both
-  role: support
 ---
 
 # README guide

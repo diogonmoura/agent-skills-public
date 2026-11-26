@@ -4,8 +4,6 @@ description: Maintain engineering artifacts across intent, change, system knowle
 user-invocable: false
 metadata:
   kind: system
-  origin: local
-  pack: sdlc
   domain: development
   phase: cross-phase
   scope: generic
@@ -54,7 +52,7 @@ Read [the artifact model](references/model.md) for the fields and plane table. U
 2. **Classify** the artifact type and primary plane using the [catalog](references/catalog.md). Identify secondary relations; do not force a cross-plane artifact into one box.
 3. **Resolve the home** with [artifact homes](references/homes.md). Use the established home; if none exists, choose the type default within authorized scope and record a portable pointer.
 4. **Read the contract** for the artifact type. Fill each section to its sufficiency floor, not just its heading. A section that only links elsewhere for its substance is an index, not a record.
-5. **Use the domain method** for the subject (product, architecture, operations, security, API) and available writing-craft expertise for the prose. The contract states the outcome; the domain and craft skills teach how to achieve it.
+5. **Use the matched guide and domain method.** Read the guide for this artifact type for structure, conventions and review, the domain method for the subject (product, architecture, operations, security, API) and available writing-craft expertise for the prose. The contract states the outcome; the guide, domain and craft skills teach how to achieve it.
 6. **Apply the [quality bar](references/quality-bar.md)**: self-contained context, explicit maturity and evidence, reader sufficiency, resolvable links, render fidelity and one authority.
 7. **Check at handoffs** with [artifact assurance](references/assurance.md): consistency, convergence, coverage and freshness across the artifact graph.
 8. **Persist and report** the actual home, revision and access. A tool call is not proof that the reader can open the artifact.
@@ -68,13 +66,13 @@ For a coordination change, the ECR remains the evolving account. For repository 
 3. **Coordination and review views** (issues, PRs, project updates) communicate selected facts to their audiences. They do not become divergent copies of the ECR.
 4. **Work products** (code, tests, migrations, configuration) implement and verify the change. They are artifacts with their own authority and evidence.
 
-The [catalog](references/catalog.md) owns selection, authority and default homes. The [ECR contract](references/contracts/ecr.md) owns the seven sections, status semantics and phase readiness. The [design-proposal contract](references/contracts/design-proposal.md) owns the options, linked design artifacts, seam and decision content wherever the proposal is materialized. The [issue](references/contracts/issue.md) and [PR](references/contracts/pr.md) contracts own their reader views. The [architecture-set](references/contracts/architecture-set.md), [runbook](references/contracts/runbook.md), [work-product](references/contracts/work-product.md), [release-note](references/contracts/release-note.md), [Repository README](references/contracts/repository-readme.md) and [guide](references/contracts/guide.md) contracts own their artifact types. The [research report](references/contracts/research-report.md), [RFC](references/contracts/rfc.md), [decision record](references/contracts/adr.md), [product brief](references/contracts/prd.md) and [roadmap](references/contracts/roadmap.md) contracts own the adjacent artifact types.
+The [catalog](references/catalog.md) owns selection, authority and default homes. The [ECR contract](references/contracts/ecr.md) owns the seven sections, status semantics and phase readiness. The [design-proposal contract](references/contracts/design-proposal.md) owns the options, linked design artifacts, seam and decision content wherever the proposal is materialized. The [issue](references/contracts/issue.md) and [PR](references/contracts/pr.md) contracts own their reader views. The [architecture-set](references/contracts/architecture-set.md), [data-model](references/contracts/data-model.md), [runbook](references/contracts/runbook.md), [work-product](references/contracts/work-product.md), [release-note](references/contracts/release-note.md), [Repository README](references/contracts/repository-readme.md) and [guide](references/contracts/guide.md) contracts own their artifact types. The [research report](references/contracts/research-report.md), [RFC](references/contracts/rfc.md), [decision record](references/contracts/adr.md), [product brief](references/contracts/prd.md), [product feedback analysis](references/contracts/product-feedback-analysis.md) and [roadmap](references/contracts/roadmap.md) contracts own the adjacent artifact types.
 
 ## Artifact guides
 
 Every artifact type has a contract and, where the craft is distinct, a guide. The guide owns structure, conventions, examples, common failures and review; the contract owns lifecycle, authority, maturity, evidence and handoff.
 
-The one-to-one pairing is the [guide registry](references/guide-registry.md). Guides are self-contained writing methods and may be used inside an activity or requested directly.
+The one-to-one pairing is the [guide registry](references/guide-registry.md). Guides are self-contained artifact craft and may be used inside an activity or requested directly.
 
 ## Present outcomes
 

@@ -10,10 +10,16 @@
     {
       "type": "roadmap",
       "contract": "contracts/roadmap.md",
-      "guide": null,
+      "guide": "guide-roadmap",
       "plane": "intent",
-      "home": "product/project workspace",
-      "guidance": "product method and technical writing"
+      "home": "product/project workspace"
+    },
+    {
+      "type": "product-feedback-analysis",
+      "contract": "contracts/product-feedback-analysis.md",
+      "guide": "guide-product-feedback-analysis",
+      "plane": "intent",
+      "home": "engineering workspace or application docs/product/feedback"
     },
     {
       "type": "ecr",
@@ -67,21 +73,28 @@
     {
       "type": "architecture-set",
       "contract": "contracts/architecture-set.md",
-      "guide": "guide-architecture-set",
+      "guide": "guide-system-documentation",
       "plane": "system-knowledge",
       "home": "application docs/architecture"
     },
     {
+      "type": "data-model",
+      "contract": "contracts/data-model.md",
+      "guide": "guide-data-model",
+      "plane": "system-knowledge",
+      "home": "application docs/architecture or database workspace"
+    },
+    {
       "type": "c4-view",
       "contract": "contracts/c4-view.md",
-      "guide": "guide-c4-view",
+      "guide": "guide-architecture-views",
       "plane": "system-knowledge",
       "home": "architecture set or proposed design record"
     },
     {
       "type": "sequence-view",
       "contract": "contracts/sequence-view.md",
-      "guide": "guide-sequence-view",
+      "guide": "guide-architecture-views",
       "plane": "system-knowledge",
       "home": "architecture set or proposed design record"
     },

@@ -3,14 +3,11 @@ name: guide-incident-record
 description: Guide to writing an incident record. Covers impact, severity, ownership, timeline, mitigation, recovery verification, current state and follow-up.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: operations
   phase: maintenance
   scope: generic
   invocation: both
-  role: support
 ---
 
 # Incident record guide

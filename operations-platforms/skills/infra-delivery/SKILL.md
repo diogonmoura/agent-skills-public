@@ -6,13 +6,10 @@ description: Define and deliver infrastructure and platform configuration as rec
   validation, Argo CD/Flux GitOps reconciliation, drift, pruning and recovery.
 metadata:
   kind: method
-  origin: local
-  pack: technical
   domain: platform
-  phase: release
+  phase: deployment
   scope: generic
   invocation: both
-  role: support
 user-invocable: true
 ---
 
@@ -116,7 +113,7 @@ Recovery includes the delivery system itself: lost state, a failed controller, a
 | Verification stages, artifact identity, promotion and pipeline gates | `ci-cd-pipelines` |
 | Release boundary, authorization and served-outcome verification | `release` |
 | Application configuration keys, precedence and secret consumption | `application-configuration` |
-| Capacity, scaling and cost tradeoffs | `capacity-and-cost` |
+| Capacity, scaling and cost tradeoffs | `analyze-capacity-cost` |
 | Provider CLI, workflow syntax and execution mechanics | `tooling-conventions` |
 | Credential rotation, revocation and exposure response | security maintenance and incident response capabilities |
 
@@ -143,12 +140,12 @@ Use installed guidance by capability; absence changes depth, not the outcomes ab
 | --- | --- |
 | Kubernetes manifests, charts, overlays and rendered behavior | `kubernetes-resource-engineering` |
 | AWS accounts, IAM, VPC and service choices | `aws-platform` |
-| Verification, artifact and promotion stage design | `ci-cd-pipelines` |
-| Authorized release, rollout verification and recovery | `release` |
-| Configuration schema, environment values and secret consumption | `application-configuration` |
-| Capacity and cost effect of the delivered platform | `capacity-and-cost` |
-| Provider syntax, CLI and adapter mechanics | `tooling-conventions` |
-| Backup, restore and data recovery design | data recovery capability |
+| Verification, artifact and promotion stage design | Installed delivery-pipeline stage and gate design guidance |
+| Authorized release, rollout verification and recovery | Installed release, rollout-verification and recovery guidance |
+| Configuration schema, environment values and secret consumption | Installed configuration and secret-consumption guidance |
+| Capacity and cost effect of the delivered platform | Installed capacity and cost analysis guidance |
+| Provider syntax, CLI and adapter mechanics | Selected provider's tooling and CLI guidance |
+| Backup, restore and data recovery design | Installed continuity and disaster-recovery guidance, and runbook guidance |
 | Security review of trust boundaries and credentials | security design and maintenance capabilities |
 
 ## Sources

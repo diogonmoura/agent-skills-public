@@ -3,14 +3,11 @@ name: guide-issue
 description: Guide to writing an actionable issue. Covers context, intended outcome, scope, acceptance, constraints, verification, dependencies and ownership.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: development
   phase: implementation
   scope: generic
   invocation: both
-  role: support
 ---
 
 # Issue guide

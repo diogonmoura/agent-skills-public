@@ -3,14 +3,11 @@ name: guide-adr
 description: Guide to writing an architecture or product decision record. Covers context, options, decision, consequences, status and supersession.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: development
   phase: design
   scope: generic
   invocation: both
-  role: support
 ---
 
 # ADR guide

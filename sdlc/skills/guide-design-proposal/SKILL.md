@@ -3,14 +3,11 @@ name: guide-design-proposal
 description: Guide to writing a design proposal. Covers the decision, constraints, affected components, materially different options, linked artifacts, tradeoffs, seam and recommendation.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: development
   phase: design
   scope: generic
   invocation: both
-  role: support
 ---
 
 # Design proposal guide

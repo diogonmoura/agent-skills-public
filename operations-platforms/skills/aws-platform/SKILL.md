@@ -6,13 +6,10 @@ description: Design, implement or review AWS workloads across identity, network,
   WAF and Secrets Manager decisions; verify service detail against current AWS docs.
 metadata:
   kind: method
-  origin: local
-  pack: technical
   domain: platform
   phase: cross-phase
   scope: stack-specific
   invocation: both
-  role: support
   stack: AWS
 user-invocable: true
 ---
@@ -118,10 +115,10 @@ Do not acquire action-heavy AWS skills raw, do not reproduce every service, and 
 | Pipeline stages, gates, artifact identity and promotion | `ci-cd-pipelines` |
 | Release authorization and served-outcome verification | `release` |
 | Application configuration and secret consumption | `application-configuration` |
-| Capacity, scaling and unit-cost tradeoffs | `capacity-and-cost` |
-| Backup, restore and data-recovery design | data recovery capability |
+| Capacity, scaling and unit-cost tradeoffs | `analyze-capacity-cost` |
+| Backup, restore and data-recovery design | continuity and disaster-recovery design, `guide-runbook` |
 | IAM/network threat modeling and credential lifecycle | security design and maintenance capabilities |
-| Provider-neutral observability and SLO design | `observability` |
+| Provider-neutral observability and SLO design | `design-system` observability guidance |
 
 ## Report evidence
 

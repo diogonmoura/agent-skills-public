@@ -3,14 +3,11 @@ name: guide-postmortem
 description: Guide to writing a blameless postmortem. Covers timeline, contributing conditions, what worked, actions, owners, verification and open questions.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: operations
   phase: maintenance
   scope: generic
   invocation: both
-  role: support
 ---
 
 # Postmortem guide

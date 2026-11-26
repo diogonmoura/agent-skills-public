@@ -13,7 +13,7 @@ A contract is **normative**. It states the artifact's purpose, reader questions,
 | Layer | Question | Owner |
 | --- | --- | --- |
 | **Contract** | What must this artifact contain and what may it claim? | This directory |
-| **Guidance** | How do I produce and review it well? Examples, structure, anti-patterns, critique | A `guide-*` method, technical writing or the domain method |
+| **Guidance** | How do I produce and review it well? Examples, structure, anti-patterns, critique | A `kind: guide` skill, technical writing or the domain method |
 | **Handoff** | What does the next phase need, and where does it come from? | The contract's handoff section plus [handoff](../handoff.md) |
 
 A contract may contain a short handoff section; detailed drafting advice, long examples and review checklists belong in guidance. Do not add a new contract because an artifact needs better guidance.
@@ -45,6 +45,7 @@ Read [handoff](../handoff.md) for the phase-to-phase matrix and the rule that a 
 | Artifact | Contract | Primary reader |
 | --- | --- | --- |
 | Product brief / PRD | [prd.md](prd.md) | Product, engineering, leadership |
+| Product feedback analysis | [product-feedback-analysis.md](product-feedback-analysis.md) | Product, planning, requirements |
 | Roadmap | [roadmap.md](roadmap.md) | Product, delivery, leadership |
 
 ## System knowledge
@@ -52,6 +53,7 @@ Read [handoff](../handoff.md) for the phase-to-phase matrix and the rule that a 
 | Artifact | Contract | Primary reader |
 | --- | --- | --- |
 | Architecture set | [architecture-set.md](architecture-set.md) | Contributors, architects, operators |
+| Data model | [data-model.md](data-model.md) | Contributors, architects, data owners, operators |
 | C4 view | [c4-view.md](c4-view.md) | Contributors, architects, operators |
 | Sequence view | [sequence-view.md](sequence-view.md) | Implementers, reviewers, operators |
 | State machine | [state-machine.md](state-machine.md) | Implementers, testers, reviewers |

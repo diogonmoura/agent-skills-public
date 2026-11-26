@@ -3,14 +3,11 @@ name: guide-compatibility-matrix
 description: Guide to producing and reviewing a compatibility matrix. Use for public surfaces, versions, platforms, runtimes, deprecation, migration and consumer evidence across libraries, CLIs and APIs.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: development
   phase: design
   scope: generic
   invocation: both
-  role: support
 ---
 
 # Compatibility matrix guide

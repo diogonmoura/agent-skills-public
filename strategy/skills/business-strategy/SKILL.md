@@ -10,20 +10,17 @@ description: Develop, evaluate, compare, and continuously update business and pr
   should become. Treat the user's initial concept as a hypothesis, not the strategy.
 metadata:
   kind: activity
-  origin: local
-  pack: product
   domain: product
   phase: planning
-  version: '2.4'
+  version: '2.5'
   scope: generic
   invocation: user
-  role: task
+  references: ../../references/sources.md
 ---
 
 # Business Strategy
 
-
-Use this skill as a **strategy-thinking system**, not a consulting-report checklist.
+Determine the business's opportunity, playing field, advantage and value capture, and stop at an accepted strategy brief or decision. This is a **strategy-thinking system**, not a consulting-report checklist.
 
 The objective is to determine:
 
@@ -34,7 +31,28 @@ The objective is to determine:
 - why the advantage can persist;
 - what evidence should cause the strategy to change.
 
-For product scope, prioritization, first useful slices and success measures within an accepted strategy, use [product management](../product-management/SKILL.md). This skill retains business direction, competitive position, economics and value-capture decisions. Product evidence can reopen strategy without making every feature a new strategy engagement.
+For product scope, prioritization, first useful slices and success measures within an accepted strategy, use installed `product-direction` expertise. This skill retains business direction, competitive position, economics and value-capture decisions. Product evidence can reopen strategy without making every feature a new strategy engagement.
+
+## Trigger Activities
+
+This skill owns the strategy logic: the six questions, modes, evidence discipline and references. Start from the request through the thin activity that owns its stopping point and handoff. Load only the references that activity needs.
+
+| Request | Activity |
+|---|---|
+| Is this idea worth more investment? | [validate-idea](../validate-idea/SKILL.md) |
+| Who is the customer, and what do they do today? | [discover-customers](../discover-customers/SKILL.md) |
+| What does the market, segment or competition look like? | [run-market-scan](../run-market-scan/SKILL.md) |
+| What is our position, category and value claim? | [define-positioning](../define-positioning/SKILL.md) |
+| How do we charge, package and make the economics work? | [design-business-model](../design-business-model/SKILL.md) |
+| How do we reach and launch to the buyer? | [plan-go-to-market](../plan-go-to-market/SKILL.md) |
+| What experiment would prove or disprove this? | [test-assumptions](../test-assumptions/SKILL.md) |
+| What should the strategy be, and what are we excluding? | [set-strategy](../set-strategy/SKILL.md) |
+| What are the strategic initiatives, OKRs and capacity? | [build-strategic-roadmap](../build-strategic-roadmap/SKILL.md) |
+| Does the strategy still hold, and should we pivot or stop? | [review-strategy](../review-strategy/SKILL.md) |
+| Should we raise, how much, and for which milestone? | [raise-capital](../raise-capital/SKILL.md) |
+| What do the numbers, scenarios and runway say? | [model-finances](../model-finances/SKILL.md) |
+
+The activities are entry points, not a second copy of the method. **`set-strategy` is the commit and synthesis activity**: analysis, validation and design become a strategy only when it produces the integrated choices, exclusions, falsifiers and an accepted or explicitly proposed brief.
 
 ## Core Principles
 
@@ -70,7 +88,7 @@ Research should change confidence, options, or decisions—not maximize source c
 
 ### 5. Generate before converging
 
-When the engagement is exploratory or choosing among options, develop at least three materially different strategies or business models before converging. Include different customers, buyers, jobs, layers, wedges, channels, business models, monetization models, geographies, and—when useful—different beliefs about how the market will evolve. A feature, price or segment variant of the same business model is not a separate option; compare the structural fields in `references/strategy-option-set.md`.
+When the engagement is exploratory or choosing among options, develop at least three materially different strategies or business models before converging. Include different customers, buyers, jobs, layers, wedges, channels, business models, monetization models, geographies, and—when useful—different beliefs about how the market will evolve. A feature, price or segment variant of the same business model is not a separate option. Compare the structural fields in `references/strategy-option-set.md`.
 
 ### 6. Make the strategy falsifiable
 
@@ -78,7 +96,7 @@ Critical assumptions need evidence, confidence, falsifiers, experiments, and rev
 
 ## Modes
 
-Infer the mode from the request; do not force the user to choose. These mode names are internal to this skill. They are not SDLC activities, commands or plugin dependencies.
+Infer the mode from the request. Do not force the user to choose. These mode names are internal to this skill. They are not SDLC activities, commands or plugin dependencies.
 
 | Mode | Use when | Emphasis |
 |---|---|---|
@@ -92,7 +110,7 @@ Infer the mode from the request; do not force the user to choose. These mode nam
 
 In the exploratory and decision modes described below, do not converge until you have at least three materially different strategies or business models. Compare them across customer/segment, wedge, product layer, channel, monetization, capital intensity, time-to-value, profitability, risk, defensibility and leading indicators. Use `references/strategy-option-set.md` for the matrix, material-difference test, decision record and revisit triggers.
 
-A different feature set, price point or segment label is not a separate option unless it also changes the customer or buyer, wedge, product layer, channel or monetization enough to alter the economics, required capabilities and risks. A light engagement can keep the comparison compact; it does not reduce the minimum to one. End with a recommendation that states the opportunity cost and why each rejected alternative was rejected.
+A different feature set, price point or segment label is not a separate option unless it also changes the customer or buyer, wedge, product layer, channel or monetization enough to alter the economics, required capabilities and risks. A light engagement can keep the comparison compact. It does not reduce the minimum to one. End with a recommendation that states the opportunity cost and why each rejected alternative was rejected.
 
 ### Depth
 
@@ -104,9 +122,15 @@ Do not turn a simple revenue or pricing question into a full strategy engagement
 
 ## Persistent Strategy State
 
-For substantive ongoing strategy work, preserve a durable current thesis and the history of consequential decisions. Reuse the project's authoritative records when they serve these roles; keep decision-relevant evidence, assumptions, alternatives, economics, tests and review triggers with the thesis rather than creating parallel registers.
+For substantive ongoing strategy work, preserve a durable current thesis and the history of consequential decisions. Reuse the project's authoritative records when they serve these roles. Keep decision-relevant evidence, assumptions, alternatives, economics, tests and review triggers with the thesis rather than creating parallel registers.
 
-The names `strategy-state.md` and `decision-log.md` below denote those roles. If no suitable records exist, use those filenames and the templates in `assets/` as starting points. Adapt structure to the decision; a bounded question can remain in the conversation. Read existing state before re-analysis, update the thesis when evidence changes and record material choices, reversals and reopening conditions in the decision history. If no writable workspace exists, maintain the same distinctions in the conversation.
+The names `strategy-state.md` and `decision-log.md` below denote those roles. If no suitable records exist, use those filenames and the templates in `assets/` as starting points. Adapt structure to the decision. A bounded question can remain in the conversation. Read existing state before re-analysis, update the thesis when evidence changes and record material choices, reversals and reopening conditions in the decision history. If no writable workspace exists, maintain the same distinctions in the conversation.
+
+## Durable Outputs
+
+A strategy engagement may leave durable records such as the **strategy brief** — the current choices, economics, exclusions, assumptions and falsifiers — and the **market and competitive analysis** that supports it. Keep them consistent with the persistent state. Use `assets/strategy-brief.md` as a starting structure when no accepted brief exists. A bounded question can stay in the conversation. For the craft and review of the brief, use [craft-strategy-brief](../craft-strategy-brief/SKILL.md). For competitive analysis, use [craft-competitive-analysis](../craft-competitive-analysis/SKILL.md). When a market or competitive analysis needs a durable, reviewable record, use the SDLC `research-report` contract rather than inventing a second artifact type. Until an artifact contract exists, keep the brief in `strategy-state.md`.
+
+Product requirements, product roadmaps and engineering change records belong to the development lifecycle (SDLC). Strategy-level outcome and economic measures belong to the operating plan. Product success measures within an accepted strategy belong to `product-direction` in `sdlc`. This skill supplies the direction those artifacts must remain consistent with. It does not produce a second copy of them.
 
 # Six Fundamental Strategy Questions
 
@@ -144,7 +168,7 @@ Use as relevant:
 
 - `references/decision-framing.md`
 - `references/research-protocol.md`
-- `references/market-system-documentation.md`
+- `references/market-system-mapping.md`
 - `references/customer-behavior-and-culture.md`
 - `references/competitive-dynamics.md`
 - `references/market-sizing.md`
@@ -171,7 +195,7 @@ Separate the **first market** from the **long-term destination**.
 Use as relevant:
 
 - `references/wedge-selection.md`
-- `references/market-system-documentation.md`
+- `references/market-system-mapping.md`
 - `references/customer-behavior-and-culture.md`
 - `references/market-sizing.md`
 
@@ -374,15 +398,15 @@ Classify the evidence and reasoning:
 | Assumption | Unverified belief required by the thesis |
 | Strategic judgment | Recommendation under uncertainty |
 
-Keep recommendations and user-accepted commitments distinct in every persistent artifact. Mark proposed pivots, pricing, buyers and business models as provisional until the user accepts them; a decision log cannot manufacture that acceptance. Carry only accepted commitments into system design and implementation.
+Keep recommendations and user-accepted commitments distinct in every persistent artifact. Mark proposed pivots, pricing, buyers and business models as provisional until the user accepts them. A decision log cannot manufacture that acceptance. Carry only accepted commitments into system design and implementation.
 
-For decision-changing competitor, adoption, pricing, licensing or protocol-support claims, verify current primary evidence and cite the supporting page. Describe untested vendor claims as such. A missing feature in a page is not proof a competitor lacks it; examples and SDKs can have different licenses. Do not invent evidence IDs, customer research, purchase intent or certainty such as zero architectural drift to fill a strategy template. Leave unknowns explicit and label numeric scenarios as assumptions with inputs and sensitivity.
+For decision-changing competitor, adoption, pricing, licensing or protocol-support claims, verify current primary evidence and cite the supporting page. Describe untested vendor claims as such. A missing feature in a page is not proof a competitor lacks it. Examples and SDKs can have different licenses. Do not invent evidence IDs, customer research, purchase intent or certainty such as zero architectural drift to fill a strategy template. Leave unknowns explicit and label numeric scenarios as assumptions with inputs and sensitivity.
 
 Prefer primary sources where possible and match source type to claim type. Actively search for counter-evidence. Multiple pages repeating one origin are not independent confirmation.
 
 When evidence conflicts, examine definition, geography, time period, methodology, accounting basis, incentives, and source independence rather than averaging automatically.
 
-Persist only decision-relevant evidence in `strategy-state.md`; citations and detailed research can remain in the analysis/output rather than becoming a separate bookkeeping artifact.
+Persist only decision-relevant evidence in `strategy-state.md`. Citations and detailed research can remain in the analysis or output rather than becoming a separate bookkeeping artifact.
 
 ## Reference Map
 
@@ -399,9 +423,21 @@ Load references selectively.
 - `references/research-protocol.md` — claim-led research, compact evidence tracking, contradiction handling
 - `references/strategy-stress-testing.md` — pre-mortem, failure mechanisms, coherence and verdict
 
+### Validation and discovery
+
+- `references/idea-validation.md` — premise challenge, assumption ledger, validation plan and precommitted continue/pivot/kill criteria
+- `references/customer-discovery.md` — ICP, status quo, behavioral interviews, commitment signals and discovery evidence limits
+
+### Entry and commercial design
+
+- `references/market-entry.md` — beachhead and mode selection, entry sequencing, competitor profiles and monitoring triggers
+- `references/value-proposition.md` — alternatives, unique attributes, value proof, best-fit customer and switching anxieties
+- `references/pricing-and-packaging.md` — value-based pricing, willingness-to-pay evidence, packaging, margins and payback
+- `references/go-to-market.md` — motion and channel selection, launch gates, growth loops, funnel metrics and a 90-day plan
+
 ### Market reality
 
-- `references/market-system-documentation.md` — actors, value chain, budgets, profit pools, bottlenecks
+- `references/market-system-mapping.md` — actors, value chain, budgets, profit pools, bottlenecks
 - `references/customer-behavior-and-culture.md` — workflow, trust, behavior change, organizational/geographic context
 - `references/competitive-dynamics.md` — three competition levels, trajectories, bundling, internal build/OSS
 
@@ -421,9 +457,22 @@ Load references selectively.
 - `references/valuation-framework.md` — contextual multiples and strategic acquisition value
 - `references/open-source-commercialization.md` — OSS adoption, commercial boundary, monetization and GTM
 
+### Decisions, execution and capital
+
+- `references/experiments-and-pmf.md` — assumption-to-test ladder, precommitted bars, evidence grades and retention interpretation
+- `references/choice-cascade-and-strategy-brief.md` — Playing to Win and Rumelt structures, exclusions, falsifiers and the strategy brief
+- `references/operating-plan.md` — outcome OKRs, initiative portfolio, capacity, cadence, decision rights and product handoff
+- `references/strategy-review-and-pivot.md` — review cadence, tripwires, steelman and attack, continue/narrow/park/kill
+- `references/capital-and-finance.md` — fundraising readiness, round sizing, instruments, investor process and model sanity
+
+### Templates and sources
+
+- `assets/` — compact starting templates for a validation plan, interview guide, strategy brief, GTM plan, operating plan, review, capital plan, unit-economics record and bet record; adapt or omit sections rather than filling them with invented evidence
+- [Source and license record](../../references/sources.md) — reviewed sources, license findings and the decision not to acquire
+
 ## Recommended Deep Output
 
-Adapt to the decision; do not mechanically output every section.
+Adapt to the decision. Do not mechanically output every section.
 
 - **Decision / recommendation** — what should be done, why, its opportunity cost and the rejected alternatives
 - **Current thesis and alternatives** — including the option set and any thesis mutation

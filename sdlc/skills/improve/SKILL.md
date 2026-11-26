@@ -8,22 +8,23 @@ user-invocable: true
 disable-model-invocation: true
 metadata:
   kind: activity
-  origin: local
-  pack: sdlc
   domain: development
   phase: cross-phase
   scope: generic
   invocation: user
-  role: task
 ---
 
 # Improve
 
-Read [activity system](../activity-system/SKILL.md). Read [verification](../test/SKILL.md) for baseline and verification, [git-contributions](../git-contributions/SKILL.md) for implementation when requested. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
+Assess codebase improvement opportunities or carry out a specified improvement objective, and stop at evidence-backed proposals or the requested verified change.
+
+Read [activity system](../activity-system/SKILL.md) for scope and stopping point. Read [verification](../test/SKILL.md) for baseline and verification, [git-contributions](../git-contributions/SKILL.md) for implementation when requested. Load the optional stack/domain guidance selected by task guidance only when relevant and available.
 
 ## Assess opportunities
 
 Use the relevant codebase and history to find a problem that matters in practice. Look for changes that repeatedly touch unrelated modules, expensive operations in an important journey, failures that are difficult to diagnose, inconsistent interactions, or slow and unreliable development checks. Follow the evidence far enough to distinguish a cause from a disliked coding style.
+
+For an architecture request, read [architecture scan](references/architecture-scan.md) for hotspot-weighted scoping, candidate criteria and presentation. Its visual before/after report is optional and stays outside the repository unless the user asks for it. The scan stops at findings. Implementation needs its own request.
 
 For each worthwhile opportunity, make the proposal assessable:
 
@@ -36,7 +37,7 @@ No finding or no worthwhile change is valid. A bare request returns a short prio
 
 ## Implement an authorized improvement
 
-A specific requested improvement can authorize bounded implementation. Keep a bare improvement assessment read-only; do not force another approval for routine choices already authorized.
+A specific requested improvement can authorize bounded implementation. Keep a bare improvement assessment read-only. Do not force another approval for routine choices already authorized.
 
 1. Establish a baseline, diagnose the cause and define the desired outcome.
 2. Make focused changes within scope. Preserve behavior through incremental refactoring and regression checks.
@@ -48,6 +49,6 @@ Choose the relevant analysis without imposing another process:
 | --- | --- |
 | UX | Use available integrated interface-design expertise for interaction intent, visual critique and affected-surface consistency against the accepted design. Seek UX-writing expertise separately for consequential copy. Reuse existing decisions for narrow fixes rather than initiating a redesign. |
 | Usability evidence | Use available research expertise for a requested study or actual observations. |
-| Architecture | Examine responsibilities, dependency direction, ownership, coupling/change hotspots, seams and testability. Use codebase-design/domain-modeling where useful, without forcing deep-module vocabulary, HTML reports or interviews. |
+| Architecture | Examine responsibilities, dependency direction, ownership, coupling/change hotspots, seams and testability. The [architecture scan](references/architecture-scan.md) offers hotspot-weighted candidates, the deletion test and recommendation strength when an architecture assessment is requested; use [codebase-design](../codebase-design/SKILL.md) and domain modeling where useful. Neither the scan nor its optional before/after report is mandatory. |
 
 More abstractions are not inherently better. Tracker proposals/creation and live experiments follow the task's explicit scope.

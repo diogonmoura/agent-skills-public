@@ -3,14 +3,11 @@ name: guide-pr
 description: Guide to writing a pull request description. Covers why, what changed, design impact, validation, risk, release and reviewer links.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: development
-  phase: verification
+  phase: testing
   scope: generic
   invocation: both
-  role: support
 ---
 
 # PR guide
@@ -71,4 +68,4 @@ Read the PR as the reviewer:
 
 ## Handoff
 
-The reviewer needs the why, diff intent, design impact, validation and risk. The release owner needs the migration and rollback notes. A merged PR is not a released or verified production change.
+The reviewer needs the why, diff intent, design impact, validation and risk. Whoever deploys needs the migration and rollback notes. A merged PR is not a released or verified production change.

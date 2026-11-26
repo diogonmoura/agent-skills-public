@@ -1,18 +1,16 @@
 ---
 name: saas-design
-description: Design or evolve SaaS tenancy, organization/customer lifecycle, entitlements
-  and administration independently of framework or billing provider. Use when hosted-product
-  behavior crosses identity, commercial and operating boundaries.
+description: Design or evolve SaaS tenancy, organization/customer lifecycle and administration
+  independently of framework or billing provider. Use when hosted-product behavior crosses
+  identity, commercial and operating boundaries. Entitlement state and commercial mechanics
+  belong to saas-billing.
 license: MIT
 metadata:
   kind: method
-  origin: local
-  pack: technical
   domain: saas
   phase: design
   scope: generic
   invocation: both
-  role: support
   references: ../../references/sources.md
 user-invocable: true
 ---

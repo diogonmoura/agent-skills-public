@@ -33,10 +33,10 @@ A skill that cannot state its stopping point is probably an activity. A skill th
 
 ## Kind and role
 
-`kind` is conceptual: `system`, `activity`, `method`, `workflow` or `reference`.
+`kind` is conceptual: `system`, `activity`, `method`, `workflow`, `guide` or `reference`.
 `role` is packaging: `task` or `support`.
 
-They are independent. A method can be a task entry point; an activity can be support in a larger composition. Native invocation controls are separate again. Use [metadata](https://github.com/joao-aires/agent-skills-public/blob/main/documentation/metadata.md) for the current fields and meanings.
+They are independent. A method can be a task entry point; an activity can be support in a larger composition. Native invocation controls are separate again. Use [metadata](https://github.com/joao-aires/agent-skills-public/blob/main/docs/metadata.md) for the current fields and meanings.
 
 ## Description and trigger
 
@@ -101,7 +101,7 @@ Examples:
 | --- | --- | --- |
 | `design` | Activity | Owns the decision, authority, option set and stopping point; delegates domain methods. |
 | `release` | Activity | Owns target, authorization, verification and recovery; pipeline design is separate. |
-| `architecture-patterns` | Method | Owns forces, pattern candidates and costs; the architecture decision stays with `system-design`. |
+| `architecture-patterns` | Method | Owns forces, pattern candidates and costs; the architecture decision stays with `design-system`. |
 | `ai-evaluation` | Activity | Owns the evaluation program; method, runner and delivery remain separate. |
 | `guide-ecr` | Guide | Owns the artifact shape; the contract owns required content. |
 | `cli-development` | Method | Owns the command surface; shell implementation and packaging mechanics are separate. |

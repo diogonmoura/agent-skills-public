@@ -3,13 +3,10 @@ name: ai-testing
 description: Design and assess AI testing and evaluation across components, retrieval, agent trajectories, conversations, protocols and product journeys. Use for quality criteria, datasets, graders, regression gates and evaluation evidence independently of an implementation library or application language.
 metadata:
   kind: method
-  origin: local
-  pack: technical
   domain: ai
   phase: cross-phase
   scope: generic
   invocation: both
-  role: support
 user-invocable: false
 ---
 
@@ -26,7 +23,7 @@ Start from the accepted user task, architecture and consequential failure modes.
 | Plan the decision, dataset governance, gates, production sampling and reporting | `ai-evaluation` when installed |
 | Implement selected Python/DeepEval checks | `ai-deepeval-testing` when installed and chosen |
 | Verify application behavior, contracts and persisted journeys | `test` when installed |
-| Understand traces and execution signals | `observability` when installed |
+| Understand traces and execution signals | `design-system` observability guidance when available; project telemetry tooling |
 
 `ai-testing` owns the evaluation method: what to evaluate and what the evidence can establish. `ai-evaluation` owns the program-level activity that composes this method with a selected implementation and the project's decision authority. An implementation skill owns its runner and API; this method does not require one.
 

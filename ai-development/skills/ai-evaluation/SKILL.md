@@ -4,27 +4,24 @@ description: Plan, run and report a program-level AI evaluation for a change, re
 user-invocable: true
 metadata:
   kind: activity
-  origin: local
-  pack: technical
   domain: ai
   phase: cross-phase
   scope: generic
   invocation: both
-  role: task
 ---
 
 # Evaluate AI behavior as a program
 
-Use this activity when a decision needs evaluation evidence across several cases, changes or operating conditions, rather than one bounded check. It owns the evaluation program: the decision and claim, acceptance, dataset and slice governance, graders, baseline and experiment, gates, production sampling, reporting and authority.
+Evaluate AI behavior as a program when a decision needs evidence across several cases, changes or operating conditions, rather than one bounded check. Own the evaluation program through the recorded result and its limits. The evaluation method, runner and deployment keep their owners.
 
-It composes [AI testing](../ai-testing/SKILL.md) for what to evaluate and what the evidence means, `ai-deepeval-testing` when that Python implementation is selected, `test` for application verification when installed, `observability` for execution signals when installed, and the project's delivery authority or `release` when available. This skill does not own the evaluation method, the selected runner or the deployment.
+The program covers the decision and claim, acceptance, dataset and slice governance, graders, baseline and experiment, gates, production sampling, reporting and authority. It composes [AI testing](../ai-testing/SKILL.md) for what to evaluate and what the evidence means, installed evaluation-framework guidance for the selected implementation, application verification guidance when installed, installed observability guidance for execution signals, and the project's delivery authority. This skill does not own the evaluation method, the selected runner or the deployment.
 
 | Field | This activity |
 | --- | --- |
 | Intent | Support a named decision with evaluation evidence that is proportionate to its consequence. |
 | Output | An evaluation plan or result: claim, criteria, dataset/slices, graders, baseline, comparison, gate evidence and remaining limits. |
 | Stopping point | Evaluation plan/results and a decision recommendation. Not merge, deployment, publication or live mutation. |
-| Authority | Run evaluations only with authorized data, providers, credentials and budget. The decision owner accepts the result; the project's delivery authority or `release` owns delivery when available. |
+| Authority | Run evaluations only with authorized data, providers, credentials and budget. The decision owner accepts the result; the project's delivery authority owns delivery. |
 
 ## Frame the decision and claim
 
@@ -36,7 +33,7 @@ State the claim as a bounded sentence: candidate, criteria, population and revis
 - an offline comparison from operating evidence;
 - an observed difference from a causal explanation.
 
-Use the narrowest claim that still supports the decision. Widen it only with evidence that covers the wider population or boundary. If the request uses causal language such as "improved" or "safer," design a comparison that can separate the intervention from other changes; otherwise report an observation.
+Use the narrowest claim that still supports the decision. Widen it only with evidence that covers the wider population or boundary. If the request uses causal language such as "improved" or "safer," design a comparison that can separate the intervention from other changes. Otherwise report an observation.
 
 ## Agree acceptance and evidence authority
 
@@ -73,9 +70,9 @@ Choose the cheapest grader that can observe the property:
 3. A model judge for a defined rubric that cannot be reduced to a deterministic check.
 4. Human review where the judgment remains subjective or consequential disagreement persists.
 
-For a model judge, write the criteria, evaluation steps or score bands it must apply. Calibrate it against accepted human assessments that include borderline and unacceptable results, then inspect disagreements rather than relying on an aggregate agreement number. Record the judge model, prompt, parameters and revision; recalibrate after a judge change. Check that the judge cannot be satisfied by a shortcut, leaked answer or superficial format.
+For a model judge, write the criteria, evaluation steps or score bands it must apply. Calibrate it against accepted human assessments that include borderline and unacceptable results, then inspect disagreements rather than relying on an aggregate agreement number. Record the judge model, prompt, parameters and revision. Recalibrate after a judge change. Check that the judge cannot be satisfied by a shortcut, leaked answer or superficial format.
 
-Use one grader for one property. A judge may assess answer quality; it does not establish authorization, persistence or protocol compatibility. When a deterministic check and a judge disagree, investigate the boundary before choosing the convenient result.
+Use one grader for one property. A judge may assess answer quality. It does not establish authorization, persistence or protocol compatibility. When a deterministic check and a judge disagree, investigate the boundary before choosing the convenient result.
 
 ## Establish the baseline, experiment and comparison
 
@@ -100,9 +97,9 @@ Choose when each evidence level runs instead of requiring every expensive suite 
 
 Define which suites gate delivery, which are advisory, their time and cost budget, and what happens when credentials, judges or data are unavailable. Missing access leaves the boundary unverified, not passing.
 
-Production sampling needs an accepted purpose, privacy review, retention and deletion rules. Compare slices with an identifiable baseline, account for changed traffic and sampling, and promote useful failures into privacy-preserving regression cases. Operating scores describe the observed population; they do not replace held-out release evidence.
+Production sampling needs an accepted purpose, privacy review, retention and deletion rules. Compare slices with an identifiable baseline, account for changed traffic and sampling, and promote useful failures into privacy-preserving regression cases. Operating scores describe the observed population. They do not replace held-out release evidence.
 
-Cover failure and adversarial behavior deliberately: ambiguity, missing or conflicting evidence, invalid input, provider/tool failure, prompt injection, data exfiltration, authority bypass, unsafe tool use, harmful content, refusal and over-refusal. Test both "should" and "should not" behavior, assign severity and an acceptable response, and run adversarial work in a bounded environment that cannot cause the harm being tested. A red-team tool or fixed attack list is optional; coverage of the accepted threat model is not.
+Cover failure and adversarial behavior deliberately: ambiguity, missing or conflicting evidence, invalid input, provider/tool failure, prompt injection, data exfiltration, authority bypass, unsafe tool use, harmful content, refusal and over-refusal. Test both "should" and "should not" behavior, assign severity and an acceptable response, and run adversarial work in a bounded environment that cannot cause the harm being tested. A red-team tool or fixed attack list is optional. Coverage of the accepted threat model is not.
 
 ## Diagnose, report and decide
 
@@ -123,7 +120,7 @@ Report at least:
 
 Use the existing ECR verification and release section, or the project's verification record, and link the evaluation evidence. Do not create a new artifact type or copy a dashboard into a second source of truth.
 
-A completed evaluation supports a decision; it does not authorize merge, deployment, publication or live mutation. State a recommendation as go, conditional or no-go with its evidence, then hand the delivery decision to the established delivery authority, or to `release` when available, within the established authority.
+A completed evaluation supports a decision. It does not authorize merge, deployment, publication or live mutation. State a recommendation as go, conditional or no-go with its evidence, then hand the delivery decision to the established delivery authority, within the established authority.
 
 ## Composition
 
@@ -131,10 +128,10 @@ A completed evaluation supports a decision; it does not authorize merge, deploym
 | --- | --- |
 | What to evaluate, case and grader design, evidence boundaries | [`ai-testing`](../ai-testing/SKILL.md) |
 | Program mechanics: dataset versions, slices, variance, denominators, gates, evidence levels | [Evaluation program](../ai-testing/references/evaluation-program.md) |
-| Selected Python/DeepEval implementation | `ai-deepeval-testing` when installed and chosen |
-| Application, contract, persistence and journey verification | `test` when available |
-| Traces, signals and execution diagnosis | `observability` when available |
-| Delivery readiness, promotion and recovery | `release` when available |
+| Selected Python/DeepEval implementation | Installed guidance for the chosen evaluation framework |
+| Application, contract, persistence and journey verification | Verification guidance for the affected surfaces |
+| Traces, signals and execution diagnosis | Installed observability guidance; project telemetry tooling |
+| Delivery readiness, promotion and recovery | Installed delivery and release guidance |
 | Evidence record and artifact homes | The project's ECR/verification record and artifact conventions |
 
 Stop when the plan or result and its limits are reported. If the request continues into deployment, merge or external publication, treat that as a separate authorized activity rather than extending this one.

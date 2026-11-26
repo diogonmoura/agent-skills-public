@@ -3,14 +3,11 @@ name: guide-research-report
 description: Guide to writing a decision-oriented research report. Covers question, recommendation, evidence, alternatives, limits and open decision.
 user-invocable: true
 metadata:
-  kind: method
-  origin: local
-  pack: sdlc
+  kind: guide
   domain: development
   phase: cross-phase
   scope: generic
   invocation: both
-  role: support
 ---
 
 # Research report guide

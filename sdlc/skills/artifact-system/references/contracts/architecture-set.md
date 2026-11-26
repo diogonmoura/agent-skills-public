@@ -6,7 +6,7 @@ This contract defines **which documents the set contains, what each must answer,
 
 Apply the [artifact quality bar](../quality-bar.md) and resolve the home with [artifact homes](../homes.md). The default home is the application repository under `docs/architecture/`; a multi-repo system may use a dedicated architecture repository.
 
-Read the [architecture set guide](../../../guide-architecture-set/SKILL.md) for writing conventions, examples and review checks.
+Read the [architecture set guide](../../../guide-system-documentation/SKILL.md) for writing conventions, examples and review checks.
 
 ## Reader questions
 
@@ -30,7 +30,7 @@ A reader who was not in the conversation must be able to answer:
 | Container view | Applications, data stores, responsibilities, protocols and trust boundaries | `docs/architecture/containers.md` |
 | Component views | Selected components whose internal responsibility or coupling needs explanation | `docs/architecture/components/<name>.md` |
 | Runtime/sequence views | Critical journeys, external interfaces, startup/release, failure and recovery | `docs/architecture/runtime/<journey>.md` |
-| Data and ownership | Canonical stores, ownership, lifecycle, consistency and migration boundaries | `docs/architecture/data.md` |
+| Data and ownership | Summary of canonical stores and ownership; the data model owns the logical detail | `docs/architecture/data.md`, linking the data model |
 | Interface view | Important consumer contracts, authority, errors, idempotency and compatibility | `docs/architecture/interfaces.md` or linked API reference |
 | Deployment view | Environments, nodes/processes, storage, networks, release jobs and trust boundaries | `docs/architecture/deployment.md` |
 | Quality and failure | Relevant quality scenarios, failure/retry/recovery and observability consequences | `docs/architecture/qualities.md` |
@@ -75,7 +75,7 @@ The design, implementation and operations consumer must know the current and pro
 | Component responsibility or coupling | Container or component view |
 | Critical journey, authority, state or external effect | Runtime/sequence and data views |
 | Public interface or contract | Interface view and API reference |
-| Persistence, ownership or migration | Data view and migration/recovery notes |
+| Persistence, ownership or migration | Data model, migration/recovery notes |
 | Deployment topology or release process | Deployment view |
 | Quality target, failure or recovery behavior | Quality/failure view and runbook/SLO links |
 | Accepted consequential decision | Decision record and affected views |
@@ -101,7 +101,7 @@ Applications, data stores, protocols, trust boundaries. [Container diagram]
 - Failure/retry/recovery: <what the reader must understand>.
 
 ## Data and ownership
-Canonical stores, ownership, lifecycle, consistency, migration.
+Canonical stores and an ownership summary. Link the data model for entities, identity, invariants, lifecycle, retention and evolution.
 
 ## Interfaces
 Important consumer contracts, errors, idempotency and compatibility.
