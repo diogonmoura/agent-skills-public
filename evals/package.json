@@ -15,7 +15,7 @@
     "validate": "promptfoo validate config -c promptfooconfig.yaml"
   },
   "dependencies": {
-    "js-yaml": "4.1.0",
+    "js-yaml": "4.3.2",
     "promptfoo": "0.126.0"
   }
 }
